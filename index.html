@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elektra Eliviana — Polymath Portfolio</title>
+
+  <!-- Meta Description -->
+  <meta name="description" content="Polymath portfolio of Elektra Eliviana — bridging mathematical modal logic, speculative botanical literature, classical piano virtuosity, fine art realism, and high-performance process automation." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Elektra Eliviana — Polymath Portfolio" />
+  <meta property="og:description" content="Polymath portfolio of Elektra Eliviana — bridging mathematical modal logic, speculative botanical literature, classical piano virtuosity, fine art realism, and high-performance process automation." />
+  <meta property="og:type" content="website" />
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a class="nav-brand" href="#hero">ELEKTRA ELIVIANA</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#piano">Piano</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="hero" class="hero">
+
+    <!-- Decorative SVG — botanical line art, subtle gold at low opacity -->
+    <svg class="hero-deco" aria-hidden="true" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+      <!-- Central stem -->
+      <line x1="400" y1="650" x2="400" y2="150" stroke="#C9A84C" stroke-width="1" opacity="0.15" />
+      <!-- Branches left -->
+      <path d="M400 480 Q320 440 270 390" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.12" />
+      <path d="M400 400 Q310 370 250 310" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.10" />
+      <path d="M400 320 Q330 290 290 240" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.09" />
+      <!-- Branches right -->
+      <path d="M400 480 Q480 440 530 390" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.12" />
+      <path d="M400 400 Q490 370 550 310" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.10" />
+      <path d="M400 320 Q470 290 510 240" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.09" />
+      <!-- Leaf shapes left -->
+      <ellipse cx="260" cy="380" rx="22" ry="10" transform="rotate(-40 260 380)" fill="#C9A84C" opacity="0.07" />
+      <ellipse cx="240" cy="300" rx="20" ry="9" transform="rotate(-50 240 300)" fill="#C9A84C" opacity="0.06" />
+      <ellipse cx="280" cy="232" rx="18" ry="8" transform="rotate(-35 280 232)" fill="#C9A84C" opacity="0.06" />
+      <!-- Leaf shapes right -->
+      <ellipse cx="540" cy="380" rx="22" ry="10" transform="rotate(40 540 380)" fill="#C9A84C" opacity="0.07" />
+      <ellipse cx="560" cy="300" rx="20" ry="9" transform="rotate(50 560 300)" fill="#C9A84C" opacity="0.06" />
+      <ellipse cx="520" cy="232" rx="18" ry="8" transform="rotate(35 520 232)" fill="#C9A84C" opacity="0.06" />
+      <!-- Crown blossom -->
+      <circle cx="400" cy="150" r="14" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.13" />
+      <circle cx="400" cy="150" r="6" fill="#C9A84C" opacity="0.08" />
+      <!-- Geometric backdrop rings -->
+      <circle cx="400" cy="400" r="280" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.04" />
+      <circle cx="400" cy="400" r="340" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.03" />
+    </svg>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Bandung, West Java · Indonesia</p>
+
+      <h1 class="hero-name">Elektra Eliviana<span class="cursor" aria-hidden="true">|</span></h1>
+
+      <p class="hero-headline" id="hero-headline">
+        Operations &amp; Process Automation Specialist · AI Engineer in Training · Polymath
+      </p>
+
+      <!-- Hero Stats -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-value">100 WPM</span>
+          <span class="stat-label">· 98% Accuracy</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-value">C2</span>
+          <span class="stat-label">Proficient English</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-value">40,000+</span>
+          <span class="stat-label">Community Governed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-value">Chess Champion</span>
+          <span class="stat-label">2025</span>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="hero-cta">
+        <a class="btn-primary" href="#works">Explore Works</a>
+        <a class="btn-ghost" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="about" class="section reveal">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-eyebrow">Who I Am</span>
+        <h2 class="section-title">An Unusual Mind</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <!-- Portrait -->
+        <div class="about-portrait">
+          <div class="portrait-frame">
+            <div class="portrait-placeholder">
+              <span class="portrait-initials">EE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio & Tags -->
+        <div class="about-content">
+          <p id="profile-bio" class="about-bio"><!-- loaded by JS --></p>
+
+          <div class="about-tags">
+            <!-- JS renders tags: Mathematician · Novelist · Pianist · Visual Artist · Researcher -->
+          </div>
+
+          <div class="about-cta">
+            <a href="#credentials" class="btn-ghost btn-sm">View Credentials</a>
+            <a href="assets/cv.pdf" class="btn-ghost btn-sm" download>Download CV</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages Subsection -->
+      <div class="subsection">
+        <h3 class="subsection-title">Languages</h3>
+        <div id="languages-grid" class="languages-grid"><!-- JS renders --></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       WORKS SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="works" class="section">
+    <div class="section-container">
+
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Works &amp; Accomplishments</h2>
+        <p class="section-desc">A living archive across mathematics, literature, visual art, classical music, and analytical research. Updated as new work emerges.</p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="code">⚡ Code &amp; Automation</button>
+        <button class="filter-btn" data-filter="research">🔬 Research</button>
+        <button class="filter-btn" data-filter="novel">📖 Novels &amp; Writing</button>
+        <button class="filter-btn" data-filter="art">🎨 Fine Art</button>
+        <button class="filter-btn" data-filter="music">🎹 Classical Piano</button>
+        <button class="filter-btn" data-filter="chess">♟️ Chess &amp; Strategy</button>
+      </div>
+
+      <!-- Works Grid — JS renders cards -->
+      <div id="works-grid" class="works-grid">
+        <!-- JS renders work cards here -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       RESEARCH HIGHLIGHT SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="research" class="section section-dark reveal">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-eyebrow">Interdisciplinary Inquiry</span>
+        <h2 class="section-title">Flagship Research</h2>
+        <p class="section-desc">Where mathematical modal logic meets classical Islamic theology. Where astronomy meets Quranic hermeneutics. Where musicology meets cultural anthropology.</p>
+      </div>
+
+      <div class="research-features">
+
+        <!-- Card 1 — Flagship -->
+        <article class="research-feature-card featured">
+          <div class="research-card-tag">Mathematical Modal Logic &amp; Kalam</div>
+          <h3>Gödel's Ontological Proof to Define the Existence of Allah</h3>
+          <p>A landmark treatise applying Gödel's formal S5 modal logic axioms — originally formulated to prove the existence of a supremely perfect being — to the classical Kalam cosmological argument and Islamic theological metaphysics.</p>
+          <div class="math-preview" aria-label="Modal logic formula: Necessarily there exists an x such that G(x)">
+            $$\Box \exists x \; G(x)$$
+          </div>
+          <span class="research-status ongoing">Ongoing · Landmark Work</span>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="research-feature-card">
+          <div class="research-card-tag">Astronomy &amp; Quranic Exegesis</div>
+          <h3>Circulation of the Sun: Comparative Hermeneutics of Tafsir Al-Madinah and Al-Muyassar</h3>
+          <p>Comparative analysis of celestial mechanics described in classical Islamic tafsir literature against modern astronomical models of solar motion.</p>
+          <span class="research-status complete">Completed</span>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="research-feature-card">
+          <div class="research-card-tag">Accepted Academic Thesis</div>
+          <h3>Politics of Hierarchy: Progenic Prophets Family</h3>
+          <p>Formal accepted thesis examining political structures and hierarchical systems within prophetic lineage narratives across Islamic scholarly tradition.</p>
+          <span class="research-status accepted">Accepted · Thesis</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       PIANO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="piano" class="section section-lounge reveal">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-eyebrow">The Acoustic Lounge</span>
+        <h2 class="section-title">Classical Repertoire</h2>
+        <p class="section-desc">Pemain Piano Solo Terbaik · SMP &amp; SMA · Romantic &amp; Classical Canon</p>
+      </div>
+
+      <!-- Piano Grid — JS renders piano cards -->
+      <div id="piano-grid" class="piano-grid"><!-- JS renders piano cards --></div>
+
+      <!-- Persistent Audio Player Bar -->
+      <div class="audio-player-bar" id="audio-player">
+        <div class="player-track-info">
+          <span id="player-title">Select a piece</span>
+          <span id="player-composer"></span>
+        </div>
+        <div class="player-controls">
+          <button class="player-btn" id="player-play" aria-label="Play / Pause">▶</button>
+        </div>
+        <div class="player-progress">
+          <div class="player-progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CREDENTIALS SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="credentials" class="section reveal">
+    <div class="section-container">
+
+      <div class="section-header">
+        <span class="section-eyebrow">Verified Achievements</span>
+        <h2 class="section-title">Credentials &amp; Expertise</h2>
+      </div>
+
+      <!-- Certifications -->
+      <div class="subsection">
+        <h3 class="subsection-title">Certifications</h3>
+        <div id="certificates-grid" class="certificates-grid"><!-- JS renders --></div>
+      </div>
+
+      <!-- Skills -->
+      <div class="subsection">
+        <h3 class="subsection-title">Skills &amp; Competencies</h3>
+        <div id="skills-section" class="skills-section"><!-- JS renders --></div>
+      </div>
+
+      <!-- Experience -->
+      <div class="subsection">
+        <h3 class="subsection-title">Experience</h3>
+        <div id="experience-timeline" class="experience-timeline"><!-- JS renders --></div>
+      </div>
+
+      <!-- Education -->
+      <div class="subsection">
+        <h3 class="subsection-title">Education</h3>
+        <div id="education-list" class="education-list"><!-- JS renders --></div>
+      </div>
+
+      <!-- Honors -->
+      <div class="subsection">
+        <h3 class="subsection-title">Honors &amp; Awards</h3>
+        <div id="honors-list" class="honors-list"><!-- JS renders --></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="contact" class="section section-dark reveal">
+    <div class="section-container contact-container">
+
+      <span class="section-eyebrow">Let's Connect</span>
+      <h2 class="contact-title">
+        Open to Scholarly Discourse,<br />
+        Creative Collaboration &amp; New Opportunities
+      </h2>
+
+      <p class="contact-email" id="contact-email" onclick="copyEmail()" title="Click to copy">
+        elivianaelektra@gmail.com
+        <span class="copy-hint">click to copy</span>
+      </p>
+
+      <!-- Social Links — JS renders 8 social icon links -->
+      <div id="social-links" class="social-links"><!-- JS renders 8 social icon links --></div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       DETAIL MODAL
+  ═══════════════════════════════════════════════ -->
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-panel" id="modal-panel">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div id="modal-content" class="modal-content"><!-- JS populates --></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-brand">ELEKTRA ELIVIANA</p>
+      <p class="footer-tagline">Polymath in Progress · Bandung, Indonesia · 2026</p>
+      <div id="footer-socials" class="footer-socials"><!-- JS renders --></div>
+      <p class="footer-copy">© 2026 Elektra Eliviana · Built with intention, not templates.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════ -->
+  <!-- KaTeX JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <!-- KaTeX Auto-render -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <!-- KaTeX initialiser (inline — intentional) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$",  right: "$",  display: false }
+          ]
+        });
+      }
+    });
+  </script>
+
+  <!-- Main App Script -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

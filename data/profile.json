@@ -1,0 +1,220 @@
+{
+  "name": "Elektra Eliviana",
+  "location": "Bandung, West Java, Indonesia · Open to Relocation",
+  "email": "elivianaelektra@gmail.com",
+  "headline": "Operations & Process Automation Specialist · AI Engineer in Training · Polymath",
+  "bio": "Elektra Eliviana is a polymath whose intellectual architecture spans mathematical modal logic, speculative botanical literature, classical piano virtuosity, fine art realism, and high-performance process automation — a rare convergence forged through Olympiad-level competition in mathematics and astronomy, rigorous academic study in Quranic hermeneutics, and hands-on community leadership at scale. A decorated competitive scholar and self-directed autodidact, she is currently deepening her technical edge through a mentor-led AI Engineering bootcamp while pursuing original research that bridges formal logic, Islamic metaphysics, and machine learning theory. Her work defies disciplinary boundaries, embodying the conviction that the most consequential innovations emerge precisely at the intersections others leave unexplored.",
+  "stats": {
+    "typingSpeed": "100 WPM · 98% Accuracy",
+    "englishLevel": "C2 Proficient · EF SET 71/100",
+    "communityManaged": "40,000+ Members Governed",
+    "chessTitle": "Campus Chess Champion 2025"
+  },
+  "socials": [
+    { "platform": "github",    "url": "https://github.com/" },
+    { "platform": "youtube",   "url": "https://youtube.com/@fundrawingandmusic5045" },
+    { "platform": "bluesky",   "url": "https://bluesky.com/elektraeliviana.bsky.social" },
+    { "platform": "twitter",   "url": "https://x.com/ElektraEliviana" },
+    { "platform": "instagram", "url": "https://instagram.com/elektraeliviana" },
+    { "platform": "discord",   "url": "e1ektra" },
+    { "platform": "email",     "url": "mailto:elivianaelektra@gmail.com" }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "level": "C2 Proficient / Bilingual",
+      "note": "EF SET 71/100"
+    },
+    {
+      "language": "Indonesian",
+      "level": "Native",
+      "note": ""
+    },
+    {
+      "language": "Sundanese",
+      "level": "Fluent",
+      "note": ""
+    },
+    {
+      "language": "Arabic",
+      "level": "Upper-Intermediate",
+      "note": "Classical Hermeneutics"
+    },
+    {
+      "language": "Japanese",
+      "level": "JLPT N5 Candidate",
+      "note": "EJU Prep"
+    },
+    {
+      "language": "Mandarin",
+      "level": "Conversational",
+      "note": "Kunkwan Institute"
+    }
+  ],
+  "certificates": [
+    {
+      "title": "EF SET C2 Proficient",
+      "issuer": "EF Education First",
+      "year": 2026
+    },
+    {
+      "title": "Microsoft Applied Skills — Power Automate & Power Apps",
+      "issuer": "Microsoft",
+      "year": 2026
+    },
+    {
+      "title": "Python & Deep Learning Track",
+      "issuer": "Kaggle / Google",
+      "year": 2026
+    },
+    {
+      "title": "Typing Speed 100 WPM Certified",
+      "issuer": "Typing.com",
+      "year": 2026
+    },
+    {
+      "title": "Fundamentals of Digital Marketing",
+      "issuer": "Google Digital Garage",
+      "year": 2026
+    },
+    {
+      "title": "AAJI & AASI Licensed Financial Agent",
+      "issuer": "PT FWD Insurance",
+      "year": 2026,
+      "validity": "2026–2028"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor Degree — Quranic Studies & Tafsir",
+      "institution": "IAIPI Bandung",
+      "period": "2024–2026",
+      "gpa": 3.54,
+      "type": "undergraduate"
+    },
+    {
+      "degree": "Associate Degree — Arabic Language",
+      "institution": "Al-Imarat Bandung",
+      "period": "2021–2024",
+      "grade": 72.06,
+      "type": "associate"
+    },
+    {
+      "degree": "High School — Natural Sciences (IPA)",
+      "institution": "SMAN 6 Cimahi",
+      "period": "2018–2021",
+      "grade": 78.50,
+      "type": "highschool"
+    },
+    {
+      "degree": "AI Engineering Bootcamp — Mentor-Led",
+      "institution": "Online / Mentor-Led Program",
+      "period": "2026–Present",
+      "type": "bootcamp"
+    },
+    {
+      "degree": "Japanese Language Studies",
+      "institution": "PT Yurinoki Nihongo",
+      "period": "2026–Present",
+      "type": "language"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Head Administrator / Community Manager",
+      "organization": "Empire of Caveine",
+      "period": "June 2024–Present",
+      "highlights": [
+        "Governed a 40,000+ member digital community",
+        "Oversaw a 16-member staff team",
+        "Authored SOPs and incident protocols",
+        "Achieved 87.5% task completion rate"
+      ]
+    },
+    {
+      "role": "Operations & Administration Intern",
+      "organization": "Jamil Industry",
+      "period": "June 2025–July 2025",
+      "highlights": [
+        "Processed 50–100 daily orders with zero discrepancies",
+        "Coordinated a 6-member staff workflow"
+      ]
+    },
+    {
+      "role": "Educator & Academic Coordinator",
+      "organization": "Kuttab Al-Barokah",
+      "period": "September 2023–March 2026",
+      "highlights": [
+        "Led a team of 11 educators",
+        "Delivered structured curriculum across multiple disciplines"
+      ]
+    },
+    {
+      "role": "Licensed Financial & Protection Advisor",
+      "organization": "PT FWD Insurance & PT Agrodana",
+      "period": "October 2026–Present",
+      "highlights": [
+        "AAJI & AASI certified practitioner",
+        "Advising on financial protection products"
+      ]
+    }
+  ],
+  "skills": {
+    "Automation & Data Tools": [
+      "Python",
+      "pandas",
+      "numpy",
+      "NLP Preprocessing",
+      "Microsoft Power Automate",
+      "Microsoft Power Apps",
+      "Generative AI Agents Foundry",
+      "Git",
+      "VS Code",
+      "Google Colab",
+      "Google Analytics",
+      "Clockify"
+    ],
+    "Operations & Leadership": [
+      "Digital Community Governance 40,000+ Members",
+      "16-Staff Supervision",
+      "SOP Authoring",
+      "Incident Protocol Design",
+      "Conflict Resolution",
+      "Staff Recruitment Pipeline",
+      "Inventory Reconciliation"
+    ],
+    "Quantitative & Analytical": [
+      "Differential Calculus",
+      "Classical Celestial Mechanics",
+      "Mathematical Modal Logic",
+      "Linear Regression from First Principles",
+      "Competitive Mathematics Olympiad"
+    ],
+    "Arts & Humanities": [
+      "Classical Piano — Romantic & Classical Canon",
+      "Speculative Botanical Fiction",
+      "Pencil & Canvas Realism",
+      "Digital Art Krita",
+      "Quranic Hermeneutics & Semiotics",
+      "Comparative Ethnomusicology"
+    ],
+    "Strategic & Languages": [
+      "Caro-Kann Defense",
+      "King's Indian Defense",
+      "Queen's Gambit",
+      "London System",
+      "Trompowsky Attack",
+      "GeoGuessr Regional Topography"
+    ]
+  },
+  "honors": [
+    "Juara 1 Catur Kampus 2025",
+    "Juara 4–6 Olimpiade Matematika 2016/2017",
+    "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
+    "Kontestan Debat Matematika 2015/2016",
+    "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
+    "Pemain Piano Solo Terbaik di SMP & SMA",
+    "Kontestan Debat Agama Islam 2019/2020",
+    "Calon Kontestan Olimpiade Sains 2019/2020"
+  ]
+}
