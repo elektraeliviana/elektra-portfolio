@@ -120,6 +120,11 @@ window.copyEmail = copyEmail;
  * @returns {Promise<{profile: Object, works: Array}>}
  */
 async function loadData() {
+  // If window.PROFILE_DATA & window.WORKS_DATA are already provided via data.js, use them directly
+  if (window.PROFILE_DATA && window.WORKS_DATA && Array.isArray(window.WORKS_DATA) && window.WORKS_DATA.length > 0) {
+    return { profile: window.PROFILE_DATA, works: window.WORKS_DATA };
+  }
+
   try {
     const [profileRes, worksRes] = await Promise.all([
       fetch('data/profile.json'),
@@ -158,9 +163,9 @@ async function loadData() {
  *  - .scrolled class on the nav after 50 px scroll
  */
 function initNavigation() {
-  const nav         = document.querySelector('.nav');
+  const nav         = document.querySelector('.nav') || document.querySelector('#navbar') || document.querySelector('#header');
   const hamburger   = document.querySelector('.hamburger');
-  const navLinks    = document.querySelectorAll('.nav-link');
+  const navLinks    = document.querySelectorAll('.nav-link, .nav-links a');
   const sections    = document.querySelectorAll('section[id]');
 
   /* ---- Smooth scroll ---- */
@@ -227,7 +232,7 @@ function initNavigation() {
  * Cycles through an array of phrases, typing then deleting each in turn.
  */
 function initTypewriter() {
-  const el = document.getElementById('typewriter-text');
+  const el = document.getElementById('typewriter-text') || document.getElementById('hero-headline');
   if (!el) return;
 
   const phrases = [
@@ -691,7 +696,17 @@ function renderProfile(profile) {
   // ---- Basic identity fields ----
   setTextContent('#profile-name',     profile.name     || '');
   setTextContent('#profile-headline', profile.headline || '');
+  setTextContent('#hero-headline',    profile.headline || '');
   setTextContent('#profile-bio',      profile.bio      || '');
+
+  // ---- About tags ----
+  const aboutTagsEl = document.querySelector('.about-tags');
+  if (aboutTagsEl) {
+    const highlights = [
+      'Mathematician', 'Novelist', 'Classical Pianist', 'Fine Artist', 'Interdisciplinary Researcher', 'Process Automator'
+    ];
+    aboutTagsEl.innerHTML = highlights.map(t => `<span class="work-tag" style="padding: 4px 12px; font-size: 0.8rem;">${escHtml(t)}</span>`).join('');
+  }
 
   // ---- Languages ----
   renderLanguages(profile.languages || []);
@@ -915,15 +930,15 @@ function initScrollAnimations() {
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add('visible', 'revealed');
         revealObserver.unobserve(entry.target); // animate once
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.05 });
 
   // Observe all current .reveal elements (and newly injected ones)
   const observeReveals = () => {
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    document.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
       revealObserver.observe(el);
     });
   };
@@ -931,8 +946,15 @@ function initScrollAnimations() {
   observeReveals();
 
   // Re-run after short delay to pick up dynamically injected .reveal nodes
-  setTimeout(observeReveals, 500);
-  setTimeout(observeReveals, 1500);
+  setTimeout(observeReveals, 300);
+  setTimeout(observeReveals, 800);
+
+  // Safety fallback: ensure no element remains permanently invisible
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
+      el.classList.add('visible', 'revealed');
+    });
+  }, 1200);
 }
 
 /* ============================================================
