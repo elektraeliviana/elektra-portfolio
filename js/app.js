@@ -443,6 +443,23 @@ function buildWorkCard(work) {
     ? `<div class="card-art-preview"><img src="${escHtml(encodeURI(work.image))}" alt="${escHtml(work.title || '')}" loading="lazy" /></div>`
     : '';
 
+  // Direct action buttons (e.g. Wattpad, Live Site, GitHub Repository)
+  let cardActions = '';
+  if (work.links && work.links.wattpad) {
+    cardActions = `
+      <div class="card-direct-actions">
+        <a href="${escHtml(work.links.wattpad)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-wattpad" onclick="event.stopPropagation()">
+          Read on Wattpad ↗
+        </a>
+      </div>`;
+  } else if (work.links && (work.links.live || work.links.github)) {
+    cardActions = `
+      <div class="card-direct-actions">
+        ${work.links.live ? `<a href="${escHtml(work.links.live)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-live" onclick="event.stopPropagation()">Live Site ↗</a>` : ''}
+        ${work.links.github ? `<a href="${escHtml(work.links.github)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-repo" onclick="event.stopPropagation()">Repository ↗</a>` : ''}
+      </div>`;
+  }
+
   card.innerHTML = `
     <span class="card-type-badge">${icon}</span>
     ${artThumbnail}
@@ -450,7 +467,10 @@ function buildWorkCard(work) {
       <h3 class="card-title">${escHtml(work.title || 'Untitled')}</h3>
       ${subtitle ? `<p class="card-subtitle">${escHtml(subtitle)}</p>` : ''}
       <div class="card-tags">${tagsHtml}</div>
-      <span class="card-status ${statusClass}">${escHtml(statusLabel)}</span>
+      <div class="card-footer-row">
+        <span class="card-status ${statusClass}">${escHtml(statusLabel)}</span>
+        ${cardActions}
+      </div>
     </div>
   `;
 
@@ -684,10 +704,14 @@ function buildModalHTML(work) {
  * @returns {string}
  */
 function formatLinkLabel(key) {
+  const k = key.toLowerCase();
+  if (k === 'wattpad') return 'Read on Wattpad ↗';
+  if (k === 'live')    return 'Live Site ↗';
+  if (k === 'github')  return 'Repository ↗';
   return key
     .replace(/[_-]/g, ' ')
     .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .replace(/\b\w/g, c => c.toUpperCase()) + ' ↗';
 }
 
 /**
@@ -851,18 +875,22 @@ function renderExperience(jobs) {
   if (!timeline) return;
 
   timeline.innerHTML = jobs.map(job => {
-    const bullets = Array.isArray(job.bullets)
-      ? `<ul class="exp-bullets">${job.bullets.map(b => `<li>${escHtml(b)}</li>`).join('')}</ul>`
+    const rawHighlights = job.highlights || job.bullets || [];
+    const bullets = Array.isArray(rawHighlights) && rawHighlights.length
+      ? `<ul class="exp-bullets">${rawHighlights.map(b => `<li>${escHtml(b)}</li>`).join('')}</ul>`
       : '';
+    const title = job.role || job.title || '';
+    const org   = job.organization || job.company || job.institution || '';
+    const date  = job.period || job.dateRange || job.date || '';
 
     return `
       <div class="exp-item reveal">
         <div class="exp-meta">
-          <span class="exp-date">${escHtml(formatYear(job.dateRange || job.date || ''))}</span>
-          <span class="exp-company">${escHtml(job.company || '')}</span>
+          <span class="exp-date">${escHtml(date)}</span>
+          <span class="exp-company">${escHtml(org)}</span>
         </div>
         <div class="exp-body">
-          <h4 class="exp-title">${escHtml(job.title || '')}</h4>
+          <h4 class="exp-title">${escHtml(title)}</h4>
           ${bullets}
         </div>
       </div>`;
@@ -877,32 +905,50 @@ function renderEducation(education) {
   const list = document.getElementById('education-list');
   if (!list) return;
 
-  list.innerHTML = education.map(edu => `
-    <div class="edu-item reveal">
-      <div class="edu-year">${escHtml(formatYear(edu.years || edu.year || ''))}</div>
-      <div class="edu-body">
-        <h4 class="edu-degree">${escHtml(edu.degree || '')}</h4>
-        <p class="edu-institution">${escHtml(edu.institution || '')}</p>
-        ${edu.gpa   ? `<span class="edu-grade">GPA ${escHtml(String(edu.gpa))}</span>` : ''}
-        ${edu.grade ? `<span class="edu-grade">Grade ${escHtml(String(edu.grade))}</span>` : ''}
-      </div>
-    </div>
-  `).join('');
+  list.innerHTML = education.map(edu => {
+    const period = edu.period || edu.years || edu.year || '';
+    return `
+      <div class="edu-item reveal">
+        <div class="edu-year">${escHtml(period)}</div>
+        <div class="edu-body">
+          <h4 class="edu-degree">${escHtml(edu.degree || '')}</h4>
+          <p class="edu-institution">${escHtml(edu.institution || '')}</p>
+          ${edu.gpa   ? `<span class="edu-grade">GPA ${escHtml(String(edu.gpa))}</span>` : ''}
+          ${edu.grade ? `<span class="edu-grade">Grade ${escHtml(String(edu.grade))}</span>` : ''}
+        </div>
+      </div>`;
+  }).join('');
 }
 
 /**
- * renderHonors — renders honors/awards badges into #honors-list.
+ * renderHonors — renders honors/awards badges into #honors-list with distinct color coding.
+ * Green: Chess & Strategy
+ * Blue: Science & Olympiads
+ * Crimson: Humanities, Debate & Music
  * @param {Array} honors
  */
 function renderHonors(honors) {
   const list = document.getElementById('honors-list');
   if (!list) return;
 
-  list.innerHTML = honors.map((honor, i) => {
-    // Alternate between trophy icons for variety
-    const icon = i === 0 ? '🥇' : '🏆';
-    const label = typeof honor === 'string' ? honor : (honor.title || honor.name || '');
-    return `<div class="honor-badge reveal"><span class="honor-icon">${icon}</span><span class="honor-label">${escHtml(label)}</span></div>`;
+  list.innerHTML = honors.map(honor => {
+    const title = typeof honor === 'string' ? honor : (honor.title || honor.name || '');
+    let color = typeof honor === 'object' && honor.badgeColor ? honor.badgeColor : '';
+
+    if (!color) {
+      if (/catur|chess/i.test(title)) color = 'green';
+      else if (/astronomi|matematika|sains/i.test(title)) color = 'blue';
+      else if (/agama|debat|piano/i.test(title)) color = 'crimson';
+      else color = 'gold';
+    }
+
+    const dotIcon = color === 'green' ? '🟢' : color === 'blue' ? '🔵' : '🔴';
+
+    return `
+      <div class="honor-badge honor-badge-${color} reveal">
+        <span class="honor-dot" aria-hidden="true">${dotIcon}</span>
+        <span class="honor-label">${escHtml(title)}</span>
+      </div>`;
   }).join('');
 }
 
@@ -1030,6 +1076,7 @@ function renderPianoGrid(works) {
     const composer = work.composer || '';
     const era      = work.era || work.genre || '';
     const statusClass = STATUS_CLASSES[work.status] || 'status-complete';
+    const audioSrc = work.audio || `assets/audio/${work.id || 'track'}.mp3`;
 
     return `
       <div class="piano-card reveal" style="--delay: ${idx * 80}ms" data-id="${escHtml(work.id || slugify(work.title || ''))}">
@@ -1042,10 +1089,14 @@ function renderPianoGrid(works) {
         ${era      ? `<p class="piano-era">${escHtml(era)}</p>`           : ''}
         <div class="piano-player">
           <button
-            class="piano-play-btn"
-            aria-label="Play/Pause ${escHtml(work.title || '')}"
-            onclick="togglePianoPlayer(this, ${idx})"
+            class="piano-play-piece-btn"
+            aria-label="Play ${escHtml(work.title || '')}"
+            onclick="togglePianoPlayer(this, ${idx}, '${escHtml(audioSrc)}', '${escHtml(work.title || '')}', '${escHtml(composer)}')"
           >
+            <span class="soundwave-pulse" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+            <span class="piano-btn-label">Play a piece</span>
             <span class="piano-play-icon">▶</span>
           </button>
           <div class="piano-progress-bar">
@@ -1061,53 +1112,103 @@ function renderPianoGrid(works) {
 
 /** Track which piano player is currently "playing" (by index) */
 let _activePianoIdx = null;
+let _globalAudio = null;
 
 /**
- * togglePianoPlayer — visual play/pause state machine for piano cards.
+ * togglePianoPlayer — visual play/pause state machine with template audio wiring.
  * Only one card plays at a time; clicking another pauses the first.
  * @param {HTMLButtonElement} btn
- * @param {number}            idx  Card index.
+ * @param {number}            idx       Card index.
+ * @param {string}            audioSrc  Path to mp3.
+ * @param {string}            title     Track title.
+ * @param {string}            composer  Composer.
  */
-function togglePianoPlayer(btn, idx) {
+function togglePianoPlayer(btn, idx, audioSrc, title, composer) {
   const isPlaying = btn.classList.contains('playing');
+  const labelEl = btn.querySelector('.piano-btn-label');
+  const iconEl  = btn.querySelector('.piano-play-icon');
 
-  // Pause any currently playing card
+  // Sync with persistent audio player bar
+  const pTitle    = document.getElementById('player-title');
+  const pComposer = document.getElementById('player-composer');
+  const pPlay     = document.getElementById('player-play');
+  if (pTitle && title)       pTitle.textContent = title;
+  if (pComposer && composer) pComposer.textContent = composer;
+
+  // Pause any previously playing card
   if (_activePianoIdx !== null && _activePianoIdx !== idx) {
-    const prevBtn = document.querySelector(`.piano-play-btn.playing`);
+    const prevBtn = document.querySelector(`.piano-play-piece-btn.playing`);
     if (prevBtn) {
       prevBtn.classList.remove('playing');
-      const prevIcon = prevBtn.querySelector('.piano-play-icon');
-      if (prevIcon) prevIcon.textContent = '▶';
-      const prevProgress = document.getElementById(`piano-progress-${_activePianoIdx}`);
-      if (prevProgress) {
-        prevProgress.style.animation = 'none';
-        prevProgress.style.width = '0%';
+      const prevLbl = prevBtn.querySelector('.piano-btn-label');
+      if (prevLbl) prevLbl.textContent = 'Play a piece';
+      const prevIcn = prevBtn.querySelector('.piano-play-icon');
+      if (prevIcn) prevIcn.textContent = '▶';
+      const prevProg = document.getElementById(`piano-progress-${_activePianoIdx}`);
+      if (prevProg) {
+        prevProg.style.animation = 'none';
+        prevProg.style.width = '0%';
       }
+    }
+    if (_globalAudio) {
+      _globalAudio.pause();
+      _globalAudio = null;
     }
   }
 
   if (isPlaying) {
-    // Pause this card
     btn.classList.remove('playing');
-    btn.querySelector('.piano-play-icon').textContent = '▶';
+    if (labelEl) labelEl.textContent = 'Play a piece';
+    if (iconEl)  iconEl.textContent = '▶';
+    if (pPlay)   pPlay.textContent = '▶';
     const progress = document.getElementById(`piano-progress-${idx}`);
     if (progress) progress.style.animationPlayState = 'paused';
+    if (_globalAudio) _globalAudio.pause();
     _activePianoIdx = null;
   } else {
-    // Play this card
     btn.classList.add('playing');
-    btn.querySelector('.piano-play-icon').textContent = '⏸';
+    if (labelEl) labelEl.textContent = 'Playing...';
+    if (iconEl)  iconEl.textContent = '⏸';
+    if (pPlay)   pPlay.textContent = '⏸';
+
     const progress = document.getElementById(`piano-progress-${idx}`);
     if (progress) {
       progress.style.animation = 'none';
-      // Force reflow
-      void progress.offsetWidth;
-      progress.style.animation = 'trackProgress 240s linear forwards';
+      void progress.offsetWidth; // Force reflow
+      progress.style.animation = 'trackProgress 180s linear forwards';
     }
+
+    if (audioSrc) {
+      try {
+        if (_globalAudio) _globalAudio.pause();
+        _globalAudio = new Audio(audioSrc);
+        _globalAudio.play().catch(() => {
+          console.info('[Elektra Audio] Playing template preview mode:', audioSrc);
+        });
+      } catch (err) {
+        console.info('[Elektra Audio] Template preview active');
+      }
+    }
+
     _activePianoIdx = idx;
   }
 }
 window.togglePianoPlayer = togglePianoPlayer;
+
+/**
+ * openWorkById — helper to open the rich detail modal from any link or button.
+ * @param {string} id
+ */
+function openWorkById(id) {
+  const allWorks = window.WORKS_DATA || [];
+  const work = allWorks.find(w => w.id === id);
+  if (work) {
+    openModal(work);
+  } else {
+    console.warn('[Elektra] Work not found for id:', id);
+  }
+}
+window.openWorkById = openWorkById;
 
 /* ============================================================
    HELPER: HTML escaping

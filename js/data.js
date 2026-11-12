@@ -64,7 +64,7 @@ window.PROFILE_DATA = {
     {
       "name": "Japanese",
       "level": "Conversational",
-      "detail": "EJU Prep · PT Yurinoki"
+      "detail": "EJU Prep / JLPT Candidate"
     },
     {
       "name": "Mandarin",
@@ -243,19 +243,78 @@ window.PROFILE_DATA = {
     ]
   },
   "honors": [
-    "Juara 1 Catur Kampus 2025",
-    "IAPI Chess Champion 2025",
-    "Juara 4–6 Olimpiade Matematika 2016/2017",
-    "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
-    "Kontestan Debat Matematika 2015/2016",
-    "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
-    "Pemain Piano Solo Terbaik di SMP & SMA",
-    "Kontestan Debat Agama Islam 2019/2020",
-    "Calon Kontestan Olimpiade Sains 2019/2020"
+    {
+      "title": "Juara 1 Catur Kampus 2025",
+      "badgeColor": "green",
+      "category": "Chess & Strategy"
+    },
+    {
+      "title": "IAPI Chess Champion 2025",
+      "badgeColor": "green",
+      "category": "Chess & Strategy"
+    },
+    {
+      "title": "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Juara 4–6 Olimpiade Matematika 2016/2017",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Kontestan Debat Matematika 2015/2016",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Calon Kontestan Olimpiade Sains 2019/2020",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Kontestan Debat Agama Islam 2019/2020",
+      "badgeColor": "crimson",
+      "category": "Humanities & Debate"
+    },
+    {
+      "title": "Pemain Piano Solo Terbaik di SMP & SMA",
+      "badgeColor": "crimson",
+      "category": "Music & Performing Arts"
+    }
   ]
 };
 
 window.WORKS_DATA = [
+  {
+    "id": "polymath-portfolio-architecture",
+    "title": "Polymath Portfolio Architecture & Agentic Engineering",
+    "type": "code",
+    "category": "Web & Software Development",
+    "status": "Live",
+    "role": "Lead Architect, Designer & AI Prompt Engineer",
+    "year": 2026,
+    "description": "A luxury editorial portfolio conceived, designed, and built by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features dynamic JSON data binding, custom botanical SVG typography, an interactive classical audio visualizer, client-side filtering, and automated CI/CD pipeline deployment via GitHub and Vercel.",
+    "tags": [
+      "Agentic AI",
+      "Google Antigravity",
+      "JavaScript (ES6+)",
+      "Custom CSS Architecture",
+      "Vercel CI/CD",
+      "Responsive UI/UX"
+    ],
+    "links": {
+      "live": "https://elektra-portfolio-nine.vercel.app",
+      "github": "https://github.com/elektraeliviana/elektra-portfolio"
+    },
+    "featured": true
+  },
   {
     "id": "celestial-orbit-dynamics",
     "type": "code",
@@ -544,7 +603,8 @@ window.WORKS_DATA = [
     "composer": "Frédéric Chopin",
     "era": "Romantic",
     "difficulty": "Virtuoso",
-    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages and deeply lyrical cantabile sections."
+    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages and deeply lyrical cantabile sections.",
+    "audio": "assets/audio/ballade-1.mp3"
   },
   {
     "id": "music-beethoven-moonlight-3rd",
@@ -554,7 +614,8 @@ window.WORKS_DATA = [
     "composer": "Ludwig van Beethoven",
     "era": "Classical-Romantic",
     "difficulty": "Virtuoso",
-    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both technical precision and dramatic intensity."
+    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both technical precision and dramatic intensity.",
+    "audio": "assets/audio/moonlight-3rd.mp3"
   },
   {
     "id": "music-liszt-hungarian-rhapsody-2",
@@ -564,7 +625,8 @@ window.WORKS_DATA = [
     "composer": "Franz Liszt",
     "era": "Romantic",
     "difficulty": "Virtuoso",
-    "description": "30% mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the piano repertoire."
+    "description": "30% mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the piano repertoire.",
+    "audio": "assets/audio/hungarian-rhapsody-2.mp3"
   },
   {
     "id": "music-chopin-nocturne-op9-no1",
@@ -574,7 +636,8 @@ window.WORKS_DATA = [
     "composer": "Frédéric Chopin",
     "era": "Romantic",
     "difficulty": "Advanced",
-    "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation."
+    "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation.",
+    "audio": "assets/audio/nocturne-op9-no1.mp3"
   },
   {
     "id": "performance-piano-drawing-combined",
@@ -606,5 +669,26 @@ window.WORKS_DATA = [
       "Trompowsky Attack",
       "Vienna Game"
     ]
+  },
+  {
+    "id": "path-of-life-and-hope-under-magnolias",
+    "title": "The Path of Life and Hope Under the Magnolia's",
+    "type": "novel",
+    "category": "Speculative Short Fiction / Botanical Literature",
+    "status": "Published",
+    "role": "Author",
+    "year": 2026,
+    "description": "A lyrical speculative work of botanical literature weaving existential hope, grief, and intellectual illumination beneath the flowering canopy of antique magnolias.",
+    "tags": [
+      "Speculative Fiction",
+      "Botanical Literature",
+      "Wattpad",
+      "Lyrical Prose",
+      "Existentialism"
+    ],
+    "links": {
+      "wattpad": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s"
+    },
+    "featured": true
   }
 ];

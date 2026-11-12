@@ -1,5 +1,28 @@
 [
   {
+    "id": "polymath-portfolio-architecture",
+    "title": "Polymath Portfolio Architecture & Agentic Engineering",
+    "type": "code",
+    "category": "Web & Software Development",
+    "status": "Live",
+    "role": "Lead Architect, Designer & AI Prompt Engineer",
+    "year": 2026,
+    "description": "A luxury editorial portfolio conceived, designed, and built by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features dynamic JSON data binding, custom botanical SVG typography, an interactive classical audio visualizer, client-side filtering, and automated CI/CD pipeline deployment via GitHub and Vercel.",
+    "tags": [
+      "Agentic AI",
+      "Google Antigravity",
+      "JavaScript (ES6+)",
+      "Custom CSS Architecture",
+      "Vercel CI/CD",
+      "Responsive UI/UX"
+    ],
+    "links": {
+      "live": "https://elektra-portfolio-nine.vercel.app",
+      "github": "https://github.com/elektraeliviana/elektra-portfolio"
+    },
+    "featured": true
+  },
+  {
     "id": "celestial-orbit-dynamics",
     "type": "code",
     "title": "Celestial Orbit Dynamics & N-Body Simulator",
@@ -7,7 +30,12 @@
     "status": "roadmap",
     "repo": "n-body-orbital-sim",
     "description": "A numerical simulation of gravitational N-body interactions using real astrophysical constants, visualising orbital paths, Lagrange points, and chaotic divergence in multi-body systems.",
-    "tags": ["Python", "NumPy", "Physics Simulation", "Astrophysics"]
+    "tags": [
+      "Python",
+      "NumPy",
+      "Physics Simulation",
+      "Astrophysics"
+    ]
   },
   {
     "id": "neural-net-from-scratch",
@@ -17,7 +45,12 @@
     "status": "roadmap",
     "repo": "neural-net-from-scratch",
     "description": "Full implementation of forward propagation, backpropagation, and gradient descent built entirely from first principles using only NumPy — no ML frameworks.",
-    "tags": ["Python", "NumPy", "Machine Learning", "First Principles"]
+    "tags": [
+      "Python",
+      "NumPy",
+      "Machine Learning",
+      "First Principles"
+    ]
   },
   {
     "id": "ai-rag-novel-analyzer",
@@ -27,7 +60,12 @@
     "status": "roadmap",
     "repo": "ai-rag-novel-analyzer",
     "description": "A dual-purpose AI system: classifies exoplanet transit signatures from photometric light-curve data and powers a local retrieval-augmented generation assistant for literary text analysis.",
-    "tags": ["Python", "NLP", "Astrophysics", "AI"]
+    "tags": [
+      "Python",
+      "NLP",
+      "Astrophysics",
+      "AI"
+    ]
   },
   {
     "id": "automated-data-cleaner",
@@ -36,7 +74,12 @@
     "year": 2026,
     "status": "roadmap",
     "description": "A robust ETL pipeline that automates detection, cleaning, and structured ingestion of messy tabular datasets — handling nulls, type coercion, deduplication, and schema enforcement.",
-    "tags": ["Python", "pandas", "ETL", "Data Engineering"]
+    "tags": [
+      "Python",
+      "pandas",
+      "ETL",
+      "Data Engineering"
+    ]
   },
   {
     "id": "japan-cs-scholarship-journey",
@@ -46,7 +89,11 @@
     "status": "roadmap",
     "repo": "japan-cs-scholarship-journey",
     "description": "A living documentation portal tracking the full journey toward a Japanese Computer Science university scholarship — EJU preparation, language study milestones, application materials, and research logs.",
-    "tags": ["Documentation", "EJU", "Computer Science"]
+    "tags": [
+      "Documentation",
+      "EJU",
+      "Computer Science"
+    ]
   },
   {
     "id": "personal-analytics-engine",
@@ -55,7 +102,12 @@
     "year": 2025,
     "status": "live",
     "description": "550-line CLI productivity engine with CRUD ops, persistent JSON storage, streak tracking, ASCII visualization, keyword search, and report exports.",
-    "tags": ["Python", "CLI", "NLP", "Data"]
+    "tags": [
+      "Python",
+      "CLI",
+      "NLP",
+      "Data"
+    ]
   },
   {
     "id": "godels-ontological-proof-allah",
@@ -258,7 +310,8 @@
     "composer": "Frédéric Chopin",
     "era": "Romantic",
     "difficulty": "Virtuoso",
-    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages and deeply lyrical cantabile sections."
+    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages and deeply lyrical cantabile sections.",
+    "audio": "assets/audio/ballade-1.mp3"
   },
   {
     "id": "music-beethoven-moonlight-3rd",
@@ -268,7 +321,8 @@
     "composer": "Ludwig van Beethoven",
     "era": "Classical-Romantic",
     "difficulty": "Virtuoso",
-    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both technical precision and dramatic intensity."
+    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both technical precision and dramatic intensity.",
+    "audio": "assets/audio/moonlight-3rd.mp3"
   },
   {
     "id": "music-liszt-hungarian-rhapsody-2",
@@ -278,7 +332,8 @@
     "composer": "Franz Liszt",
     "era": "Romantic",
     "difficulty": "Virtuoso",
-    "description": "30% mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the piano repertoire."
+    "description": "30% mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the piano repertoire.",
+    "audio": "assets/audio/hungarian-rhapsody-2.mp3"
   },
   {
     "id": "music-chopin-nocturne-op9-no1",
@@ -288,7 +343,8 @@
     "composer": "Frédéric Chopin",
     "era": "Romantic",
     "difficulty": "Advanced",
-    "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation."
+    "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation.",
+    "audio": "assets/audio/nocturne-op9-no1.mp3"
   },
   {
     "id": "performance-piano-drawing-combined",
@@ -297,7 +353,12 @@
     "year": 2025,
     "platform": "YouTube",
     "description": "A synergistic video performance combining live classical piano playing with simultaneous real-time drawing — an exploration of multi-disciplinary artistic expression.",
-    "tags": ["Piano", "Drawing", "Performance Art", "YouTube"]
+    "tags": [
+      "Piano",
+      "Drawing",
+      "Performance Art",
+      "YouTube"
+    ]
   },
   {
     "id": "chess-campus-champion-2025",
@@ -315,5 +376,26 @@
       "Trompowsky Attack",
       "Vienna Game"
     ]
+  },
+  {
+    "id": "path-of-life-and-hope-under-magnolias",
+    "title": "The Path of Life and Hope Under the Magnolia's",
+    "type": "novel",
+    "category": "Speculative Short Fiction / Botanical Literature",
+    "status": "Published",
+    "role": "Author",
+    "year": 2026,
+    "description": "A lyrical speculative work of botanical literature weaving existential hope, grief, and intellectual illumination beneath the flowering canopy of antique magnolias.",
+    "tags": [
+      "Speculative Fiction",
+      "Botanical Literature",
+      "Wattpad",
+      "Lyrical Prose",
+      "Existentialism"
+    ],
+    "links": {
+      "wattpad": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s"
+    },
+    "featured": true
   }
 ]

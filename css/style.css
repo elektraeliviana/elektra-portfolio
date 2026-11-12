@@ -3161,5 +3161,673 @@ section {
 }
 
 /* ════════════════════════════════════════════════════════════
+   ANTIGRAVITY PORTFOLIO MASTER SPECIFICATION REMODELING
+   ════════════════════════════════════════════════════════════ */
+
+/* 1. Global Refined Typography & Container Spacing */
+body {
+  line-height: 1.75;
+}
+
+p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
+  line-height: 1.75;
+}
+
+.section-container,
+.nav-container,
+.nav-inner,
+.footer-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.works-grid,
+.certificates-grid,
+.languages-grid,
+.piano-grid {
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* 2. Hero Section — True Center Alignment */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 960px;
+}
+
+.hero-eyebrow {
+  text-align: center;
+  letter-spacing: 0.28em;
+  color: var(--accent-primary, #c9a84c);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.hero-name {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-inline: auto;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.6rem;
+}
+
+.hero-headline {
+  min-height: 2.4em;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-inline: auto;
+  max-width: 800px;
+  color: var(--text-secondary, #b8b0a2);
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-block: 1.8rem;
+  max-width: 840px;
+}
+
+.hero-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(20, 20, 24, 0.75);
+  border: 1px solid rgba(201, 168, 76, 0.28);
+  border-radius: var(--radius-full, 9999px);
+  padding: 0.5rem 1.1rem;
+  backdrop-filter: blur(10px);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  color: var(--text-primary, #e8e0d0);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.hero-stat:hover {
+  border-color: rgba(201, 168, 76, 0.6);
+  transform: translateY(-2px);
+}
+
+.hero-stat .stat-value {
+  color: var(--accent-primary, #c9a84c);
+  font-weight: 600;
+}
+
+.hero-stat .stat-label {
+  color: var(--text-muted, #8a8275);
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.6rem;
+}
+
+/* 3. "About Me" & Botanical Magnolia "EE" Crest */
+.about-luxury-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-crest-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.botanical-seal {
+  position: relative;
+  width: clamp(180px, 20vw, 230px);
+  height: clamp(180px, 20vw, 230px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 35px rgba(201, 168, 76, 0.25));
+  animation: sealFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes sealFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+.botanical-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.about-bio-container {
+  max-width: 850px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.about-bio {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-primary, #e8e0d0);
+  margin: 0;
+  text-align: center;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.about-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* 4. Flagship Research Showcase (Option 1) */
+.research-flagship-plaque {
+  background: linear-gradient(145deg, rgba(24, 23, 28, 0.95), rgba(16, 15, 20, 0.95));
+  border: 1.5px solid rgba(201, 168, 76, 0.4);
+  border-radius: var(--radius-lg, 16px);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 168, 76, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.research-flagship-plaque::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, #f3e5ab, #c9a84c, transparent);
+}
+
+.flagship-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.flagship-discipline {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #c9a84c);
+  font-weight: 500;
+}
+
+.flagship-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-primary, #e8e0d0);
+  margin-bottom: 1.5rem;
+}
+
+/* Formula Plaque */
+.formula-plaque {
+  background: rgba(12, 12, 15, 0.85);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: var(--radius-md, 10px);
+  padding: 1.25rem 2rem;
+  margin-block: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: inset 0 0 25px rgba(201, 168, 76, 0.06), 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.formula-math {
+  font-size: 1.45rem;
+  color: #f7eed7;
+}
+
+.formula-caption {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #c9a84c);
+  opacity: 0.85;
+}
+
+.flagship-abstract {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--text-secondary, #b8b0a2);
+  margin-bottom: 1.8rem;
+}
+
+.flagship-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Companion Grid */
+.research-companion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+@media (max-width: 768px) {
+  .research-companion-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.companion-card {
+  background: var(--bg-surface, #141418);
+  border: 1px solid var(--border-gold, rgba(201, 168, 76, 0.2));
+  border-radius: var(--radius-md, 12px);
+  padding: clamp(1.6rem, 2.5vw, 2.2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.companion-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 168, 76, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.companion-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.companion-discipline {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #c9a84c);
+}
+
+.companion-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-primary, #e8e0d0);
+  margin: 0;
+}
+
+.companion-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary, #b8b0a2);
+  flex: 1;
+}
+
+.companion-actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+/* 5. Split Academic & Professional Layout + Color-Coded Awards */
+.split-credentials-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.8rem, 3.5vw, 3rem);
+  margin-top: var(--space-2xl, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .split-credentials-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.credentials-col {
+  background: var(--bg-surface, #141418);
+  border: 1px solid var(--border-gold, rgba(201, 168, 76, 0.18));
+  border-radius: var(--radius-lg, 16px);
+  padding: clamp(1.8rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.col-icon {
+  font-size: 1.6rem;
+}
+
+.col-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 500;
+  color: var(--text-primary, #e8e0d0);
+  margin: 0;
+}
+
+.sub-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sub-block-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #c9a84c);
+  margin: 0;
+}
+
+/* Honors & Awards Color-Coded Badges */
+.honors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.honor-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-md, 8px);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.honor-badge:hover {
+  transform: translateX(4px);
+}
+
+.honor-dot {
+  font-size: 0.85rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.honor-label {
+  flex: 1;
+}
+
+/* 🟢 Green Badges (Chess & Strategy) */
+.honor-badge-green {
+  background: rgba(39, 174, 96, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  color: #a8f0c2;
+}
+
+.honor-badge-green:hover {
+  border-color: rgba(46, 204, 113, 0.6);
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.18);
+}
+
+/* 🔵 Blue Badges (Science & Olympiads) */
+.honor-badge-blue {
+  background: rgba(41, 128, 185, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.35);
+  color: #bce0fd;
+}
+
+.honor-badge-blue:hover {
+  border-color: rgba(52, 152, 219, 0.6);
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.18);
+}
+
+/* 🔴 Crimson / Red Badges (Humanities, Debate & Music) */
+.honor-badge-crimson {
+  background: rgba(192, 57, 43, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.35);
+  color: #fcc2ba;
+}
+
+.honor-badge-crimson:hover {
+  border-color: rgba(231, 76, 60, 0.6);
+  box-shadow: 0 4px 15px rgba(192, 57, 43, 0.18);
+}
+
+.strategic-badge.badge-green {
+  background: rgba(39, 174, 96, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  color: #a8f0c2;
+}
+
+.strategic-badge.badge-blue {
+  background: rgba(41, 128, 185, 0.15);
+  border: 1px solid rgba(52, 152, 219, 0.4);
+  color: #bce0fd;
+}
+
+/* 6. Classical Repertoire — Animated "Play a piece" Player */
+.piano-play-piece-btn {
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: var(--radius-full, 9999px);
+  padding: 0.45rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  color: var(--accent-primary, #c9a84c);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.piano-play-piece-btn:hover {
+  background: rgba(201, 168, 76, 0.18);
+  border-color: rgba(201, 168, 76, 0.65);
+  transform: translateY(-1px);
+}
+
+.piano-play-piece-btn.playing {
+  background: rgba(201, 168, 76, 0.22);
+  border-color: #c9a84c;
+  color: #fdf3d0;
+}
+
+.soundwave-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 14px;
+}
+
+.soundwave-pulse span {
+  display: inline-block;
+  width: 2.5px;
+  background: var(--accent-primary, #c9a84c);
+  border-radius: 1px;
+  height: 4px;
+  transition: height 0.2s ease;
+}
+
+.soundwave-pulse span:nth-child(1) { height: 6px; }
+.soundwave-pulse span:nth-child(2) { height: 11px; }
+.soundwave-pulse span:nth-child(3) { height: 14px; }
+.soundwave-pulse span:nth-child(4) { height: 7px; }
+
+.piano-play-piece-btn:hover .soundwave-pulse span,
+.piano-play-piece-btn.playing .soundwave-pulse span {
+  animation: soundwaveBeat 0.8s ease-in-out infinite alternate;
+}
+
+.piano-play-piece-btn:hover .soundwave-pulse span:nth-child(1),
+.piano-play-piece-btn.playing .soundwave-pulse span:nth-child(1) { animation-delay: 0s; }
+.piano-play-piece-btn:hover .soundwave-pulse span:nth-child(2),
+.piano-play-piece-btn.playing .soundwave-pulse span:nth-child(2) { animation-delay: 0.15s; }
+.piano-play-piece-btn:hover .soundwave-pulse span:nth-child(3),
+.piano-play-piece-btn.playing .soundwave-pulse span:nth-child(3) { animation-delay: 0.3s; }
+.piano-play-piece-btn:hover .soundwave-pulse span:nth-child(4),
+.piano-play-piece-btn.playing .soundwave-pulse span:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes soundwaveBeat {
+  0% { transform: scaleY(0.4); opacity: 0.6; }
+  100% { transform: scaleY(1.3); opacity: 1; }
+}
+
+.piano-play-icon {
+  font-size: 0.75rem;
+}
+
+/* 7. Work Cards Direct Action Buttons (Wattpad & Code) */
+.card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.card-direct-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.btn-card-action {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm, 4px);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-wattpad {
+  background: rgba(255, 102, 0, 0.12);
+  border: 1px solid rgba(255, 102, 0, 0.4);
+  color: #ff944d;
+}
+
+.btn-wattpad:hover {
+  background: rgba(255, 102, 0, 0.22);
+  border-color: #ff6600;
+  color: #ffffff;
+}
+
+.btn-live {
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  color: #f3e5ab;
+}
+
+.btn-live:hover {
+  background: rgba(201, 168, 76, 0.24);
+  border-color: var(--accent-primary, #c9a84c);
+  color: #ffffff;
+}
+
+.btn-repo {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary, #b8b0a2);
+}
+
+.btn-repo:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+/* 9. Verified Achievements & Certificates Spacing */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.cert-card {
+  padding: 1.5rem 1.6rem;
+  line-height: 1.6;
+}
+
+.cert-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-primary, #e8e0d0);
+}
+
+.cert-issuer {
+  font-size: 0.82rem;
+  color: var(--text-muted, #8a8275);
+}
+
+/* ════════════════════════════════════════════════════════════
    END OF STYLESHEET
    ════════════════════════════════════════════════════════════ */

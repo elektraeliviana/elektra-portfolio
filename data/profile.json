@@ -64,7 +64,7 @@
     {
       "name": "Japanese",
       "level": "Conversational",
-      "detail": "EJU Prep · PT Yurinoki"
+      "detail": "EJU Prep / JLPT Candidate"
     },
     {
       "name": "Mandarin",
@@ -243,14 +243,50 @@
     ]
   },
   "honors": [
-    "Juara 1 Catur Kampus 2025",
-    "IAPI Chess Champion 2025",
-    "Juara 4–6 Olimpiade Matematika 2016/2017",
-    "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
-    "Kontestan Debat Matematika 2015/2016",
-    "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
-    "Pemain Piano Solo Terbaik di SMP & SMA",
-    "Kontestan Debat Agama Islam 2019/2020",
-    "Calon Kontestan Olimpiade Sains 2019/2020"
+    {
+      "title": "Juara 1 Catur Kampus 2025",
+      "badgeColor": "green",
+      "category": "Chess & Strategy"
+    },
+    {
+      "title": "IAPI Chess Champion 2025",
+      "badgeColor": "green",
+      "category": "Chess & Strategy"
+    },
+    {
+      "title": "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Juara 4–6 Olimpiade Matematika 2016/2017",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Kontestan Debat Matematika 2015/2016",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Calon Kontestan Olimpiade Sains 2019/2020",
+      "badgeColor": "blue",
+      "category": "Science & Olympiads"
+    },
+    {
+      "title": "Kontestan Debat Agama Islam 2019/2020",
+      "badgeColor": "crimson",
+      "category": "Humanities & Debate"
+    },
+    {
+      "title": "Pemain Piano Solo Terbaik di SMP & SMA",
+      "badgeColor": "crimson",
+      "category": "Music & Performing Arts"
+    }
   ]
 }
