@@ -11,77 +11,122 @@
     "chessTitle": "Campus Chess Champion 2025"
   },
   "socials": [
-    { "platform": "github",    "url": "https://github.com/" },
-    { "platform": "youtube",   "url": "https://youtube.com/@fundrawingandmusic5045" },
-    { "platform": "bluesky",   "url": "https://bluesky.com/elektraeliviana.bsky.social" },
-    { "platform": "twitter",   "url": "https://x.com/ElektraEliviana" },
-    { "platform": "instagram", "url": "https://instagram.com/elektraeliviana" },
-    { "platform": "discord",   "url": "e1ektra" },
-    { "platform": "email",     "url": "mailto:elivianaelektra@gmail.com" }
+    {
+      "platform": "github",
+      "url": "https://github.com/"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://youtube.com/@fundrawingandmusic5045"
+    },
+    {
+      "platform": "bluesky",
+      "url": "https://bluesky.com/elektraeliviana.bsky.social"
+    },
+    {
+      "platform": "twitter",
+      "url": "https://x.com/ElektraEliviana"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://instagram.com/elektraeliviana"
+    },
+    {
+      "platform": "discord",
+      "url": "e1ektra"
+    },
+    {
+      "platform": "email",
+      "url": "mailto:elivianaelektra@gmail.com"
+    }
   ],
   "languages": [
     {
-      "language": "English",
-      "level": "C2 Proficient / Bilingual",
-      "note": "EF SET 71/100"
+      "name": "English",
+      "level": "C2 Proficient / Professional Working",
+      "detail": "EF SET 71/100"
     },
     {
-      "language": "Indonesian",
+      "name": "Indonesian",
       "level": "Native",
-      "note": ""
+      "detail": ""
     },
     {
-      "language": "Sundanese",
+      "name": "Sundanese",
       "level": "Fluent",
-      "note": ""
+      "detail": ""
     },
     {
-      "language": "Arabic",
-      "level": "Upper-Intermediate",
-      "note": "Classical Hermeneutics"
-    },
-    {
-      "language": "Japanese",
-      "level": "JLPT N5 Candidate",
-      "note": "EJU Prep"
-    },
-    {
-      "language": "Mandarin",
+      "name": "Arabic",
       "level": "Conversational",
-      "note": "Kunkwan Institute"
+      "detail": "Classical Hermeneutics"
+    },
+    {
+      "name": "Japanese",
+      "level": "Conversational",
+      "detail": "EJU Prep · PT Yurinoki"
+    },
+    {
+      "name": "Mandarin",
+      "level": "Conversational Basics",
+      "detail": "Kunkwan Institute"
     }
   ],
   "certificates": [
     {
       "title": "EF SET C2 Proficient",
       "issuer": "EF Education First",
-      "year": 2026
+      "year": 2026,
+      "file": "assets/certificates/ef-set.pdf"
     },
     {
       "title": "Microsoft Applied Skills — Power Automate & Power Apps",
       "issuer": "Microsoft",
-      "year": 2026
+      "year": 2026,
+      "file": "assets/certificates/microsoft-power-automate.pdf"
     },
     {
       "title": "Python & Deep Learning Track",
       "issuer": "Kaggle / Google",
-      "year": 2026
+      "year": 2026,
+      "file": "assets/certificates/kaggle-python.pdf"
     },
     {
       "title": "Typing Speed 100 WPM Certified",
       "issuer": "Typing.com",
-      "year": 2026
+      "year": 2026,
+      "file": "assets/certificates/typing-100wpm.pdf"
     },
     {
       "title": "Fundamentals of Digital Marketing",
       "issuer": "Google Digital Garage",
-      "year": 2026
+      "year": 2026,
+      "file": "assets/certificates/google-digital-marketing.pdf"
     },
     {
       "title": "AAJI & AASI Licensed Financial Agent",
       "issuer": "PT FWD Insurance",
       "year": 2026,
-      "validity": "2026–2028"
+      "validity": "2026–2028",
+      "file": "assets/certificates/fwd-aaji.pdf"
+    },
+    {
+      "title": "TOEFL Prediction Certificate",
+      "issuer": "TOEFL Prediction Program",
+      "year": 2026,
+      "file": "assets/certificates/toefl-prediction.pdf"
+    },
+    {
+      "title": "Amazing Mandarin Conversation Certificate",
+      "issuer": "PT Kunkwan Mandarin",
+      "year": 2026,
+      "file": "assets/certificates/mandarin-conversation.pdf"
+    },
+    {
+      "title": "Chess IAPI Champion Certificate",
+      "issuer": "IAPI — Institut Agama Islam Persis",
+      "year": 2025,
+      "file": "assets/certificates/chess-iapi-champion.pdf"
     }
   ],
   "education": [
@@ -103,7 +148,7 @@
       "degree": "High School — Natural Sciences (IPA)",
       "institution": "SMAN 6 Cimahi",
       "period": "2018–2021",
-      "grade": 78.50,
+      "grade": 78.5,
       "type": "highschool"
     },
     {
@@ -160,55 +205,46 @@
     }
   ],
   "skills": {
-    "Automation & Data Tools": [
-      "Python",
-      "pandas",
-      "numpy",
-      "NLP Preprocessing",
+    "Technical & Operational": [
+      "Python · pandas · NumPy",
+      "NLP Preprocessing & Text Analysis",
       "Microsoft Power Automate",
       "Microsoft Power Apps",
-      "Generative AI Agents Foundry",
-      "Git",
-      "VS Code",
-      "Google Colab",
-      "Google Analytics",
-      "Clockify"
-    ],
-    "Operations & Leadership": [
-      "Digital Community Governance 40,000+ Members",
-      "16-Staff Supervision",
-      "SOP Authoring",
-      "Incident Protocol Design",
-      "Conflict Resolution",
-      "Staff Recruitment Pipeline",
-      "Inventory Reconciliation"
-    ],
-    "Quantitative & Analytical": [
-      "Differential Calculus",
-      "Classical Celestial Mechanics",
+      "Generative AI Agents (Foundry)",
+      "Git · VS Code · Google Colab",
+      "ETL Pipeline Engineering",
+      "Process Automation Architecture",
       "Mathematical Modal Logic",
-      "Linear Regression from First Principles",
-      "Competitive Mathematics Olympiad"
+      "Differential Calculus & Mechanics",
+      "Clockify · Google Analytics"
     ],
-    "Arts & Humanities": [
-      "Classical Piano — Romantic & Classical Canon",
-      "Speculative Botanical Fiction",
-      "Pencil & Canvas Realism",
-      "Digital Art Krita",
-      "Quranic Hermeneutics & Semiotics",
-      "Comparative Ethnomusicology"
+    "Education & Academic Honors": [
+      "BSc Quranic Studies & Tafsir — IAIPI (GPA 3.54)",
+      "Associate Degree Arabic Language — Al-Imarat",
+      "AI Engineering Bootcamp (Mentor-Led, 2026–Present)",
+      "Japanese Language Studies — PT Yurinoki Nihongo",
+      "Juara 4–6 Olimpiade Matematika (2016/2017)",
+      "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung (2019/2020)",
+      "Peringkat 1 Ulangan Matematika se-Angkatan SMA (2018)",
+      "Campus Chess Champion 2025 · IAPI Chess Champion",
+      "Pemain Piano Solo Terbaik SMP & SMA",
+      "Kontestan Debat Agama Islam (2019/2020)"
     ],
-    "Strategic & Languages": [
-      "Caro-Kann Defense",
-      "King's Indian Defense",
-      "Queen's Gambit",
-      "London System",
-      "Trompowsky Attack",
-      "GeoGuessr Regional Topography"
+    "Experience & Leadership": [
+      "Head Admin — Empire of Caveine (40,000+ members, 16 staff)",
+      "Operations Intern — Jamil Industry (50–100 orders/day, zero errors)",
+      "Educator & Academic Coordinator — Kuttab Al-Barokah (11 educators)",
+      "Licensed Financial Advisor — PT FWD Insurance & PT Agrodana",
+      "SOP Authoring & Incident Protocol Design",
+      "Staff Recruitment Pipeline Management",
+      "87.5% task completion rate under governance",
+      "Conflict Resolution & Cross-Team Coordination",
+      "Inventory Reconciliation & Warehouse Operations"
     ]
   },
   "honors": [
     "Juara 1 Catur Kampus 2025",
+    "IAPI Chess Champion 2025",
     "Juara 4–6 Olimpiade Matematika 2016/2017",
     "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
     "Kontestan Debat Matematika 2015/2016",

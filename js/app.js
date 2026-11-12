@@ -109,6 +109,54 @@ function copyEmail() {
 // Expose copyEmail globally so onclick="copyEmail()" works
 window.copyEmail = copyEmail;
 
+/**
+ * copyDiscord — copies the Discord tag to clipboard and displays feedback.
+ * Bound to the #discord-copy-btn click handler.
+ */
+function copyDiscord() {
+  const tag = '@e1ektra';
+  const hintEl = document.getElementById('discord-copy-hint');
+
+  const showCopied = () => {
+    if (hintEl) {
+      const original = hintEl.textContent;
+      hintEl.textContent = 'Copied! ✓';
+      hintEl.classList.add('copied');
+      setTimeout(() => {
+        hintEl.textContent = original;
+        hintEl.classList.remove('copied');
+      }, 2000);
+    }
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(tag).then(showCopied).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = tag;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showCopied();
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = tag;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showCopied();
+  }
+}
+
+// Expose copyDiscord globally so onclick="copyDiscord()" works
+window.copyDiscord = copyDiscord;
+
 /* ============================================================
    2. DATA LOADING
    ============================================================ */
@@ -763,7 +811,10 @@ function renderCertificates(certs) {
         <span class="cert-verified" title="Verified">✓</span>
       </div>
       <span class="cert-issuer">${escHtml(cert.issuer || '')}</span>
-      <span class="cert-year">${escHtml(formatYear(cert.year))}</span>
+      <div class="cert-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+        <span class="cert-year">${escHtml(formatYear(cert.year))}</span>
+        ${cert.file ? `<a href="${escHtml(cert.file)}" target="_blank" rel="noopener noreferrer" class="cert-link" style="font-family:var(--font-mono); font-size:0.72rem; color:var(--accent-primary); text-decoration:none;" title="View credential">View Credential ↗</a>` : ''}
+      </div>
     </div>
   `).join('');
 }
