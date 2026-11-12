@@ -16,6 +16,11 @@
   <!-- KaTeX CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
 
+  <!-- Google Fonts: Calligraphic Spencerian Script & Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&display=swap" rel="stylesheet" />
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -33,12 +38,14 @@
         <span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#piano">Piano</a></li>
-        <li><a href="#credentials">Credentials</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#tools" class="nav-link">Tools</a></li>
+        <li><a href="#horizons" class="nav-link">Horizons</a></li>
+        <li><a href="#works" class="nav-link">Works</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#piano" class="nav-link">Piano</a></li>
+        <li><a href="#credentials" class="nav-link">Credentials</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -79,7 +86,52 @@
     <div class="hero-content">
       <p class="hero-eyebrow">BANDUNG, WEST JAVA · INDONESIA</p>
 
-      <h1 class="hero-name">Elektra Eliviana<span class="cursor" aria-hidden="true">|</span></h1>
+      <!-- Bespoke Spencerian / Copperplate Flourished Script SVG -->
+      <div class="hero-title-wrapper">
+        <h1 class="visually-hidden">Elektra Eliviana</h1>
+        <svg class="hero-calligraphy-svg" viewBox="0 0 940 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elektra Eliviana — Calligraphic Script">
+          <defs>
+            <linearGradient id="spencerianGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff9ea" />
+              <stop offset="25%" stop-color="#f5df97" />
+              <stop offset="55%" stop-color="#d4af37" />
+              <stop offset="85%" stop-color="#9a761e" />
+              <stop offset="100%" stop-color="#fdf3d0" />
+            </linearGradient>
+            <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3.2" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- Top Spencerian Calligraphic Swash & Flourish -->
+          <path d="M 280,38 Q 380,22 470,25 Q 560,28 660,18 Q 630,30 520,32 Q 410,34 310,44 Z" fill="url(#spencerianGold)" opacity="0.6" />
+          <circle cx="270" cy="38" r="2.5" fill="#fdf3d0" />
+          <circle cx="670" cy="18" r="2.5" fill="#fdf3d0" />
+
+          <!-- Left Quill Flourish -->
+          <path d="M 120,115 C 160,80 200,55 240,75 C 210,85 180,105 160,135 C 150,150 135,160 115,152 C 95,142 100,125 120,115 Z" fill="none" stroke="url(#spencerianGold)" stroke-width="1.4" opacity="0.75" />
+          <path d="M 115,152 C 105,156 90,154 85,145 C 80,135 90,122 105,120" fill="none" stroke="url(#spencerianGold)" stroke-width="0.8" opacity="0.5" />
+
+          <!-- Main Calligraphic Spencerian Text -->
+          <text
+            x="470"
+            y="118"
+            text-anchor="middle"
+            font-family="'Great Vibes', 'Alex Brush', 'Playfair Display', cursive, serif"
+            font-size="106"
+            font-weight="400"
+            letter-spacing="0.02em"
+            fill="url(#spencerianGold)"
+            filter="url(#softGlow)"
+          >Elektra Eliviana</text>
+
+          <!-- Underline Spencerian Scroll Flourish -->
+          <path d="M 220,135 C 340,152 460,158 580,148 C 660,141 740,128 810,108 C 760,125 670,146 570,152 C 450,158 330,154 220,135 Z" fill="url(#spencerianGold)" opacity="0.8" />
+          <path d="M 580,150 Q 640,165 710,162 Q 740,160 760,152" fill="none" stroke="url(#spencerianGold)" stroke-width="1.2" opacity="0.7" />
+          <circle cx="765" cy="151" r="2.5" fill="#fdf3d0" />
+        </svg>
+      </div>
 
       <p class="hero-headline" id="hero-headline">
         Operations &amp; Process Automation Specialist · AI Engineer in Training · Polymath
@@ -251,9 +303,257 @@
       <!-- Languages Subsection -->
       <div class="subsection">
         <h3 class="subsection-title text-center">Languages</h3>
-        <div id="languages-grid" class="languages-grid"><!-- JS renders --></div>
+        <div id="languages-grid" class="languages-grid"><!-- JS renders 2x3 grid --></div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       AUTOMATION & DATA TOOLS ECOSYSTEM
+  ═══════════════════════════════════════════════ -->
+  <section id="tools" class="section reveal">
+    <div class="section-container">
+
+      <div class="section-header text-center">
+        <span class="section-eyebrow">Technical Arsenal &amp; Systems</span>
+        <h2 class="section-title">Automation &amp; Data Tools Ecosystem</h2>
+        <p class="section-desc">Granular computational suites, analytical data engines, and creative workflows driving end-to-end execution across AI, mathematics, data, and the arts.</p>
+      </div>
+
+      <div class="tools-ecosystem">
+
+        <!-- Row 1: Automation & AI -->
+        <div class="tools-row-group reveal">
+          <div class="tools-group-header">
+            <span class="tools-group-badge">Row 01</span>
+            <h3 class="tools-group-heading">⚡ Automation &amp; AI Systems</h3>
+          </div>
+          <div class="tools-grid-6">
+            <div class="tool-card">
+              <span class="tool-icon">⚡</span>
+              <h4 class="tool-name">Microsoft Power Automate</h4>
+              <p class="tool-capability">Enterprise robotic process automation &amp; multi-cloud webhook pipelines</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🐍</span>
+              <h4 class="tool-name">Python (NumPy / pandas)</h4>
+              <p class="tool-capability">High-performance vector operations, ETL processing &amp; ML models</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🟣</span>
+              <h4 class="tool-name">Julia</h4>
+              <p class="tool-capability">High-velocity scientific simulation &amp; mathematical dynamics</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📱</span>
+              <h4 class="tool-name">Microsoft Power Apps</h4>
+              <p class="tool-capability">Low-code internal business solutions &amp; automated UI tooling</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">✨</span>
+              <h4 class="tool-name">Google AI Studio</h4>
+              <p class="tool-capability">Multimodal LLM architecture &amp; structured agent prompt engineering</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">💻</span>
+              <h4 class="tool-name">VS Code &amp; Linux</h4>
+              <p class="tool-capability">Native Unix scripting, bash CLI automation &amp; version control</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Data & Analysis -->
+        <div class="tools-row-group reveal">
+          <div class="tools-group-header">
+            <span class="tools-group-badge">Row 02</span>
+            <h3 class="tools-group-heading">📊 Data Engineering &amp; Empirical Analysis</h3>
+          </div>
+          <div class="tools-grid-6">
+            <div class="tool-card">
+              <span class="tool-icon">📊</span>
+              <h4 class="tool-name">Microsoft Power BI</h4>
+              <p class="tool-capability">Interactive executive business intelligence &amp; DAX modeling</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📈</span>
+              <h4 class="tool-name">Looker Studio</h4>
+              <p class="tool-capability">Multi-source cloud reporting &amp; real-time metric telemetry</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">☁️</span>
+              <h4 class="tool-name">Google Colab</h4>
+              <p class="tool-capability">Accelerated cloud GPU Jupyter notebooks &amp; DL inference</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🏛️</span>
+              <h4 class="tool-name">FRED Data</h4>
+              <p class="tool-capability">Macroeconomic empirical research &amp; Federal Reserve time series</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📉</span>
+              <h4 class="tool-name">MetaTrader</h4>
+              <p class="tool-capability">Algorithmic quantitative strategies &amp; market price execution</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">⏱️</span>
+              <h4 class="tool-name">Clockify</h4>
+              <p class="tool-capability">Granular time telemetry, operational audits &amp; productivity tracking</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Math & Bioscience -->
+        <div class="tools-row-group reveal">
+          <div class="tools-group-header">
+            <span class="tools-group-badge">Row 03</span>
+            <h3 class="tools-group-heading">📐 Mathematics &amp; Bioscience</h3>
+          </div>
+          <div class="tools-grid-6">
+            <div class="tool-card">
+              <span class="tool-icon">∫</span>
+              <h4 class="tool-name">SymPy</h4>
+              <p class="tool-capability">Symbolic modal calculus, algebra &amp; formal mathematical verification</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📐</span>
+              <h4 class="tool-name">GeoGebra</h4>
+              <p class="tool-capability">Dynamic geometric constructions &amp; high-dimensional coordinate mapping</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📈</span>
+              <h4 class="tool-name">Desmos Graphing</h4>
+              <p class="tool-capability">Parametric curve plotting &amp; analytical function visualization</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🧬</span>
+              <h4 class="tool-name">NCBI BLAST</h4>
+              <p class="tool-capability">Genomic sequence alignment &amp; biological nucleotide comparisons</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🌿</span>
+              <h4 class="tool-name">iNaturalist</h4>
+              <p class="tool-capability">Field taxonomy observations, botanical metadata &amp; species verification</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🌍</span>
+              <h4 class="tool-name">Global Biodiversity (GBIF)</h4>
+              <p class="tool-capability">Macro-scale biogeography datasets &amp; species spatial distribution</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Music, Media & Knowledge -->
+        <div class="tools-row-group reveal">
+          <div class="tools-group-header">
+            <span class="tools-group-badge">Row 04</span>
+            <h3 class="tools-group-heading">🎼 Musicology, Creative Media &amp; Knowledge Graphs</h3>
+          </div>
+          <div class="tools-grid-6">
+            <div class="tool-card">
+              <span class="tool-icon">🎼</span>
+              <h4 class="tool-name">MuseScore Studio</h4>
+              <p class="tool-capability">Orchestral score engraving, polyphonic notation &amp; transcriptions</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📚</span>
+              <h4 class="tool-name">IMSLP</h4>
+              <p class="tool-capability">Urtext musicological canon research &amp; historical manuscripts</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🎨</span>
+              <h4 class="tool-name">Krita</h4>
+              <p class="tool-capability">Digital canvas illustration, tonal shading &amp; botanical realism</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">🎬</span>
+              <h4 class="tool-name">DaVinci Resolve</h4>
+              <p class="tool-capability">Color grading, performance mastering &amp; audiovisual production</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">💎</span>
+              <h4 class="tool-name">Obsidian</h4>
+              <p class="tool-capability">Bidirectional zettelkasten synthesis &amp; scholarly research graph</p>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📓</span>
+              <h4 class="tool-name">Notion</h4>
+              <p class="tool-capability">Systematic project taxonomies, database design &amp; lifecycle architecture</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CORE INTERESTS & INTELLECTUAL HORIZONS
+  ═══════════════════════════════════════════════ -->
+  <section id="horizons" class="section section-dark reveal">
+    <div class="section-container">
+
+      <div class="section-header text-center">
+        <span class="section-eyebrow">Intellectual Horizons</span>
+        <h2 class="section-title">Core Interests &amp; Foundations</h2>
+        <p class="section-desc">Four interdisciplinary pillars uniting formal deductive logic, empirical science, classical humanities, and artistic virtuosity.</p>
+      </div>
+
+      <div class="pillars-grid">
+
+        <!-- Pillar I -->
+        <article class="pillar-card reveal">
+          <div class="pillar-header">
+            <span class="pillar-badge">Pillar I</span>
+            <span class="pillar-icon">🌌</span>
+          </div>
+          <h3 class="pillar-title">Formal Sciences &amp; The Cosmos</h3>
+          <p class="pillar-fields">Formal Mathematics &amp; Modal Logic · Theoretical Physics &amp; Astrophysics · Analytical Chemistry</p>
+          <div class="pillar-tagline">
+            <span class="tagline-quote">“</span>From differential gravitational dynamics to Gödelian formal proofs.<span class="tagline-quote">”</span>
+          </div>
+        </article>
+
+        <!-- Pillar II -->
+        <article class="pillar-card reveal">
+          <div class="pillar-header">
+            <span class="pillar-badge">Pillar II</span>
+            <span class="pillar-icon">🌿</span>
+          </div>
+          <h3 class="pillar-title">Biological Inquiry &amp; Fine Craft</h3>
+          <p class="pillar-fields">Systematic Botanical Science &amp; Flora Neurobiology · Artisan Realism &amp; Canvas Painting</p>
+          <div class="pillar-tagline">
+            <span class="tagline-quote">“</span>Empirical observation of natural structures and fine graphite realism.<span class="tagline-quote">”</span>
+          </div>
+        </article>
+
+        <!-- Pillar III -->
+        <article class="pillar-card reveal">
+          <div class="pillar-header">
+            <span class="pillar-badge">Pillar III</span>
+            <span class="pillar-icon">📜</span>
+          </div>
+          <h3 class="pillar-title">Sacred Hermeneutics &amp; The Human Spirit</h3>
+          <p class="pillar-fields">Qur'an &amp; Tafsir Hermeneutics · Islamic Theology (Kalam) · Comparative Linguistics</p>
+          <div class="pillar-tagline">
+            <span class="tagline-quote">“</span>Classical Arabic morphology, ontological metaphysics, and polyglot semiotics.<span class="tagline-quote">”</span>
+          </div>
+        </article>
+
+        <!-- Pillar IV -->
+        <article class="pillar-card reveal">
+          <div class="pillar-header">
+            <span class="pillar-badge">Pillar IV</span>
+            <span class="pillar-icon">🎹</span>
+          </div>
+          <h3 class="pillar-title">Literature, Music &amp; Agentic Systems</h3>
+          <p class="pillar-fields">Classical Piano Virtuosity · Speculative Botanical Fiction &amp; Travel Memoirs · AI &amp; Agentic Architecture</p>
+          <div class="pillar-tagline">
+            <span class="tagline-quote">“</span>Romantic pianism, high-concept florilegium literature, and autonomous engineering.<span class="tagline-quote">”</span>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -390,105 +690,87 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       CREDENTIALS SECTION (SPLIT LAYOUT)
+       CERTIFICATES & CREDENTIALS SECTION
   ═══════════════════════════════════════════════ -->
   <section id="credentials" class="section reveal">
     <div class="section-container">
 
       <div class="section-header text-center">
-        <span class="section-eyebrow">Verified Achievements</span>
+        <span class="section-eyebrow">Verified Credentials &amp; Honors</span>
         <h2 class="section-title">Certificates &amp; Credentials</h2>
-        <p class="section-desc">Formal accreditations, interdisciplinary academic progression, and leadership credentials.</p>
+        <p class="section-desc">Formal industry certifications, verified competitive championships, strategic masteries, and academic olympiad honors.</p>
       </div>
 
-      <!-- Certifications Subsection (Expanded Luxurious Grid) -->
+      <!-- Subsection 1: Certifications & Accreditations (Expanded Luxurious Grid) -->
       <div class="subsection">
-        <h3 class="subsection-title">Certifications &amp; Accreditations</h3>
-        <div id="certificates-grid" class="certificates-grid"><!-- JS renders --></div>
+        <h3 class="subsection-title text-center">Certifications &amp; Accreditations</h3>
+        <p class="subsection-desc text-center">Verified technical proficiencies, enterprise automation licenses, and language credentials.</p>
+        <div id="certificates-grid" class="certificates-grid"><!-- JS renders 9 certificates --></div>
       </div>
 
-      <!-- Two-Column Split Layout: Academic Path vs Professional Leadership -->
-      <div class="split-credentials-layout">
+      <!-- Subsection 2: Strategic & Kinetic Mastery (3 Feature Cards) -->
+      <div class="subsection">
+        <h3 class="subsection-title text-center">Strategic &amp; Kinetic Mastery</h3>
+        <p class="subsection-desc text-center">Deep positional game theory, geospatial spatial inference, and high-BPM kinetic multi-finger reflexes.</p>
 
-        <!-- Column 1: Academic Path (Education & Honors) -->
-        <div class="credentials-col academic-col">
-          <div class="col-header">
-            <span class="col-icon">🎓</span>
-            <h3 class="col-title">Academic Path &amp; Scholarly Foundations</h3>
-          </div>
+        <div class="strategic-grid-3">
 
-          <!-- Education Timeline -->
-          <div class="sub-block">
-            <h4 class="sub-block-title">Formal Education</h4>
-            <div id="education-list" class="education-list"><!-- JS renders --></div>
-          </div>
-
-          <!-- Honors & Awards with Color-Coded Badges -->
-          <div class="sub-block">
-            <h4 class="sub-block-title">Honors, Olympiads &amp; Awards</h4>
-            <div id="honors-list" class="honors-list"><!-- JS renders with color-coded badges --></div>
-          </div>
-        </div>
-
-        <!-- Column 2: Professional Leadership & Strategic Prowess -->
-        <div class="credentials-col professional-col">
-          <div class="col-header">
-            <span class="col-icon">⚡</span>
-            <h3 class="col-title">Professional Leadership &amp; Strategic Prowess</h3>
-          </div>
-
-          <!-- Experience Highlights -->
-          <div class="sub-block">
-            <h4 class="sub-block-title">Experience &amp; Governance</h4>
-            <div id="experience-timeline" class="experience-timeline"><!-- JS renders --></div>
-          </div>
-
-          <!-- Strategic Showcase Cards (Chess & GeoGuessr) -->
-          <div class="sub-block">
-            <h4 class="sub-block-title">Strategic Mastery</h4>
-            <div class="strategic-grid">
-              <!-- Chess Feature Card -->
-              <div class="strategic-card chess-card">
-                <div class="strategic-card-icon">♟️</div>
-                <div class="strategic-card-body">
-                  <h5 class="strategic-card-title">Chess — Competitive Strategy</h5>
-                  <div class="strategic-card-badges">
-                    <span class="strategic-badge badge-green">🏆 Campus Champion · IAPI 2025</span>
-                  </div>
-                  <p class="strategic-card-desc">An analytical opening repertoire built on positional discipline, tactical sharpness, and deep theoretical preparation.</p>
-                  <div class="strategic-card-repertoire">
-                    <span class="repertoire-label">Favorite Repertoire:</span>
-                    <span class="repertoire-line">Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- GeoGuessr Feature Card -->
-              <div class="strategic-card geo-card">
-                <div class="strategic-card-icon">🌍</div>
-                <div class="strategic-card-body">
-                  <h5 class="strategic-card-title">GeoGuessr — Regional Topography</h5>
-                  <div class="strategic-card-badges">
-                    <span class="strategic-badge badge-blue">🗺️ European Meta Specialist</span>
-                  </div>
-                  <p class="strategic-card-desc">Spatial deduction and high-accuracy regional guessing via architectural nuances, botanical geography, utility infrastructure, and linguistic visual cues.</p>
-                  <div class="strategic-card-repertoire">
-                    <span class="repertoire-label">Domain Focus:</span>
-                    <span class="repertoire-line">European Meta · Regional Topography · High-Accuracy Location Inference</span>
-                  </div>
-                </div>
+          <!-- Card 1: Chess -->
+          <div class="strategic-card chess-card reveal">
+            <div class="strategic-card-header">
+              <span class="strategic-card-icon">♟️</span>
+              <span class="strategic-badge badge-green">Campus &amp; IAPI Champion</span>
+            </div>
+            <div class="strategic-card-body">
+              <h4 class="strategic-card-title">Chess — Competitive Strategy</h4>
+              <p class="strategic-card-desc">Deep positional play, dynamic tactical foresight, and sharp opening theoretical preparation.</p>
+              <div class="strategic-card-repertoire">
+                <span class="repertoire-label">Favorite Repertoire:</span>
+                <span class="repertoire-line">Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation</span>
               </div>
             </div>
           </div>
 
-          <!-- Technical & Operational Skills -->
-          <div class="sub-block">
-            <h4 class="sub-block-title">Technical Competencies</h4>
-            <div id="skills-section" class="skills-section"><!-- JS renders --></div>
+          <!-- Card 2: GeoGuessr -->
+          <div class="strategic-card geo-card reveal">
+            <div class="strategic-card-header">
+              <span class="strategic-card-icon">🌍</span>
+              <span class="strategic-badge badge-blue">European Meta Specialist</span>
+            </div>
+            <div class="strategic-card-body">
+              <h4 class="strategic-card-title">GeoGuessr — Regional Topography</h4>
+              <p class="strategic-card-desc">High-accuracy regional deduction via architectural nuances, flora geography, road infrastructure, utility pole meta, and linguistic visual cues.</p>
+              <div class="strategic-card-repertoire">
+                <span class="repertoire-label">Domain Focus:</span>
+                <span class="repertoire-line">European Meta · Regional Topography · High-Accuracy Location Inference</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Rhythm Games -->
+          <div class="strategic-card rhythm-card reveal">
+            <div class="strategic-card-header">
+              <span class="strategic-card-icon">⚡</span>
+              <span class="strategic-badge badge-gold">High-BPM Kinetic Reflexes</span>
+            </div>
+            <div class="strategic-card-body">
+              <h4 class="strategic-card-title">Rhythm Games — Kinetic Reflexes</h4>
+              <p class="strategic-card-desc">Million Master in Cytus; high-level multi-finger coordination across VOEZ, Deemo, Dynamix, BanG Dream!, and osu!</p>
+              <div class="strategic-card-repertoire">
+                <span class="repertoire-label">Kinetic Link:</span>
+                <span class="repertoire-line">Directly connects multi-finger kinetic speed &amp; finger independence to virtuoso classical piano mechanics.</span>
+              </div>
+            </div>
           </div>
 
         </div>
+      </div>
 
+      <!-- Subsection 3: Curated Achievements (3-Column Grid with Medal/Specific Icons) -->
+      <div class="subsection">
+        <h3 class="subsection-title text-center">Curated Achievements</h3>
+        <p class="subsection-desc text-center">Verified academic olympiads, regional debate tournaments, and performance honors.</p>
+        <div id="honors-list" class="honors-grid-3"><!-- JS renders 8 curated achievements with icons --></div>
       </div>
 
     </div>

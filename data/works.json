@@ -7,14 +7,13 @@
     "status": "Live",
     "role": "Lead Architect, Designer & AI Prompt Engineer",
     "year": 2026,
-    "description": "A luxury editorial portfolio conceived, designed, and built by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features dynamic JSON data binding, custom botanical SVG typography, an interactive classical audio visualizer, client-side filtering, and automated CI/CD pipeline deployment via GitHub and Vercel.",
+    "description": "Conceived, designed, and architected by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features responsive JSON data binding, bespoke Spencerian SVG calligraphy, dynamic audio visualizers, and automated CI/CD deployment via GitHub and Vercel.",
     "tags": [
       "Agentic AI",
-      "Google Antigravity",
-      "JavaScript (ES6+)",
-      "Custom CSS Architecture",
-      "Vercel CI/CD",
-      "Responsive UI/UX"
+      "Antigravity",
+      "JavaScript",
+      "Custom CSS",
+      "Vercel CI/CD"
     ],
     "links": {
       "live": "https://elektra-portfolio-nine.vercel.app",
@@ -380,12 +379,12 @@
   {
     "id": "path-of-life-and-hope-under-magnolias",
     "title": "The Path of Life and Hope Under the Magnolia's",
-    "type": "novel",
+    "type": "writing",
     "category": "Speculative Short Fiction / Botanical Literature",
     "status": "Published",
     "role": "Author",
     "year": 2026,
-    "description": "A lyrical speculative work of botanical literature weaving existential hope, grief, and intellectual illumination beneath the flowering canopy of antique magnolias.",
+    "description": "A philosophical short fiction exploring memory, nature, and redemption beneath blooming magnolias.",
     "tags": [
       "Speculative Fiction",
       "Botanical Literature",

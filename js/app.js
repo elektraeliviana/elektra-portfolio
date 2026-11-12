@@ -805,6 +805,7 @@ function renderProfile(profile) {
 
 /**
  * renderLanguages — renders language cards into #languages-grid.
+ * Displays subtle national flags and proficiency levels.
  * @param {Array} languages
  */
 function renderLanguages(languages) {
@@ -813,9 +814,12 @@ function renderLanguages(languages) {
 
   grid.innerHTML = languages.map(lang => `
     <div class="lang-card reveal">
-      <span class="lang-name">${escHtml(lang.name || '')}</span>
-      <span class="lang-level">${escHtml(lang.level || '')}</span>
-      ${lang.detail ? `<span class="lang-detail">${escHtml(lang.detail)}</span>` : ''}
+      <div class="lang-top">
+        <span class="lang-flag" aria-hidden="true">${escHtml(lang.flag || '🌐')}</span>
+        <span class="lang-name">${escHtml(lang.name || '')}</span>
+      </div>
+      <div class="lang-level">${escHtml(lang.level || '')}</div>
+      ${lang.detail ? `<div class="lang-detail">${escHtml(lang.detail)}</div>` : ''}
     </div>
   `).join('');
 }
@@ -921,10 +925,13 @@ function renderEducation(education) {
 }
 
 /**
- * renderHonors — renders honors/awards badges into #honors-list with distinct color coding.
- * Green: Chess & Strategy
- * Blue: Science & Olympiads
- * Crimson: Humanities, Debate & Music
+ * renderHonors — renders curated achievements into #honors-list with semantic icons.
+ * ♞ Knight: Chess Champion
+ * 🪐 Saturn: Astronomy Olympiad
+ * 🌾 Rural / Geometry: Mathematics Olympiad & Exams
+ * ⚖️ Balance Scale: Mathematics & Islamic Theology Debate
+ * 🔬 Microscope: Science Olympiad
+ * 🎹 Piano Keys: Classical Piano Soloist
  * @param {Array} honors
  */
 function renderHonors(honors) {
@@ -933,21 +940,27 @@ function renderHonors(honors) {
 
   list.innerHTML = honors.map(honor => {
     const title = typeof honor === 'string' ? honor : (honor.title || honor.name || '');
-    let color = typeof honor === 'object' && honor.badgeColor ? honor.badgeColor : '';
+    let icon = (typeof honor === 'object' && honor.icon) ? honor.icon : '';
+    const category = typeof honor === 'object' ? (honor.category || '') : '';
 
-    if (!color) {
-      if (/catur|chess/i.test(title)) color = 'green';
-      else if (/astronomi|matematika|sains/i.test(title)) color = 'blue';
-      else if (/agama|debat|piano/i.test(title)) color = 'crimson';
-      else color = 'gold';
+    if (!icon) {
+      const lower = title.toLowerCase();
+      if (lower.includes('catur') || lower.includes('chess')) icon = '♞';
+      else if (lower.includes('astronomi')) icon = '🪐';
+      else if (lower.includes('matematika') && (lower.includes('olimpiade') || lower.includes('ulangan'))) icon = '🌾';
+      else if (lower.includes('debat')) icon = '⚖️';
+      else if (lower.includes('sains')) icon = '🔬';
+      else if (lower.includes('piano')) icon = '🎹';
+      else icon = '🏆';
     }
 
-    const dotIcon = color === 'green' ? '🟢' : color === 'blue' ? '🔵' : '🔴';
-
     return `
-      <div class="honor-badge honor-badge-${color} reveal">
-        <span class="honor-dot" aria-hidden="true">${dotIcon}</span>
-        <span class="honor-label">${escHtml(title)}</span>
+      <div class="achievement-card reveal">
+        <span class="achievement-icon" aria-hidden="true">${icon}</span>
+        <div class="achievement-body">
+          <h4 class="achievement-title">${escHtml(title)}</h4>
+          ${category ? `<span class="achievement-category">${escHtml(category)}</span>` : ''}
+        </div>
       </div>`;
   }).join('');
 }

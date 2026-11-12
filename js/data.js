@@ -42,32 +42,38 @@ window.PROFILE_DATA = {
   ],
   "languages": [
     {
+      "flag": "🇬🇧",
       "name": "English",
       "level": "C2 Proficient / Professional Working",
       "detail": "EF SET 71/100"
     },
     {
+      "flag": "🇮🇩",
       "name": "Indonesian",
       "level": "Native",
       "detail": ""
     },
     {
+      "flag": "🇮🇩",
       "name": "Sundanese",
       "level": "Fluent",
       "detail": ""
     },
     {
-      "name": "Arabic",
-      "level": "Conversational",
-      "detail": "Classical Hermeneutics"
-    },
-    {
+      "flag": "🇯🇵",
       "name": "Japanese",
       "level": "Conversational",
       "detail": "EJU Prep / JLPT Candidate"
     },
     {
-      "name": "Mandarin",
+      "flag": "🇸🇦",
+      "name": "Arabic",
+      "level": "Conversational",
+      "detail": "Classical Hermeneutics"
+    },
+    {
+      "flag": "🇨🇳",
+      "name": "Mandarin (Simplified)",
       "level": "Conversational Basics",
       "detail": "Kunkwan Institute"
     }
@@ -244,49 +250,238 @@ window.PROFILE_DATA = {
   },
   "honors": [
     {
-      "title": "Juara 1 Catur Kampus 2025",
-      "badgeColor": "green",
-      "category": "Chess & Strategy"
-    },
-    {
+      "icon": "♞",
       "title": "IAPI Chess Champion 2025",
-      "badgeColor": "green",
       "category": "Chess & Strategy"
     },
     {
+      "icon": "🪐",
       "title": "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
-      "badgeColor": "blue",
-      "category": "Science & Olympiads"
+      "category": "Astronomy & Physics"
     },
     {
+      "icon": "🌾",
       "title": "Juara 4–6 Olimpiade Matematika 2016/2017",
-      "badgeColor": "blue",
-      "category": "Science & Olympiads"
+      "category": "Mathematics"
     },
     {
+      "icon": "🌾",
       "title": "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
-      "badgeColor": "blue",
-      "category": "Science & Olympiads"
+      "category": "Mathematics"
     },
     {
+      "icon": "⚖️",
       "title": "Kontestan Debat Matematika 2015/2016",
-      "badgeColor": "blue",
-      "category": "Science & Olympiads"
+      "category": "Debate & Logic"
     },
     {
+      "icon": "🔬",
       "title": "Calon Kontestan Olimpiade Sains 2019/2020",
-      "badgeColor": "blue",
-      "category": "Science & Olympiads"
+      "category": "Natural Sciences"
     },
     {
+      "icon": "⚖️",
       "title": "Kontestan Debat Agama Islam 2019/2020",
-      "badgeColor": "crimson",
-      "category": "Humanities & Debate"
+      "category": "Theology & Debate"
     },
     {
+      "icon": "🎹",
       "title": "Pemain Piano Solo Terbaik di SMP & SMA",
-      "badgeColor": "crimson",
-      "category": "Music & Performing Arts"
+      "category": "Classical Repertoire"
+    }
+  ],
+  "tools_ecosystem": [
+    {
+      "category": "Automation & AI",
+      "tools": [
+        {
+          "name": "Microsoft Power Automate",
+          "icon": "⚡",
+          "capability": "Enterprise workflow & API robotic process automation"
+        },
+        {
+          "name": "Python (NumPy / pandas)",
+          "icon": "🐍",
+          "capability": "High-performance scientific computing & data pipelines"
+        },
+        {
+          "name": "Julia",
+          "icon": "🟣",
+          "capability": "High-velocity scientific simulation & numerical algorithms"
+        },
+        {
+          "name": "Microsoft Power Apps",
+          "icon": "📱",
+          "capability": "Custom business solutions & internal utility tooling"
+        },
+        {
+          "name": "Google AI Studio",
+          "icon": "✨",
+          "capability": "Multimodal LLM architecture & prompt agent engineering"
+        },
+        {
+          "name": "VS Code & Linux",
+          "icon": "💻",
+          "capability": "Native Unix scripting, bash CLI & development workflows"
+        }
+      ]
+    },
+    {
+      "category": "Data & Analysis",
+      "tools": [
+        {
+          "name": "Microsoft Power BI",
+          "icon": "📊",
+          "capability": "Interactive business intelligence & executive analytics dashboards"
+        },
+        {
+          "name": "Looker Studio",
+          "icon": "📈",
+          "capability": "Multi-source cloud reporting & visual metric telemetry"
+        },
+        {
+          "name": "Google Colab",
+          "icon": "☁️",
+          "capability": "Cloud GPU Jupyter notebooks & ML model execution"
+        },
+        {
+          "name": "FRED (Federal Reserve Data)",
+          "icon": "🏛️",
+          "capability": "Macroeconomic empirical research & monetary data analysis"
+        },
+        {
+          "name": "MetaTrader",
+          "icon": "📉",
+          "capability": "Algorithmic quantitative strategies & technical execution"
+        },
+        {
+          "name": "Clockify",
+          "icon": "⏱️",
+          "capability": "Granular time analytics, operational audit & productivity tracking"
+        }
+      ]
+    },
+    {
+      "category": "Math & Bioscience",
+      "tools": [
+        {
+          "name": "SymPy",
+          "icon": "∫",
+          "capability": "Symbolic modal calculus, algebra & mathematical verification"
+        },
+        {
+          "name": "GeoGebra",
+          "icon": "📐",
+          "capability": "Dynamic geometric constructions & coordinate space mapping"
+        },
+        {
+          "name": "Desmos Graphing",
+          "icon": "📈",
+          "capability": "Advanced parametric plotting & curve visualization"
+        },
+        {
+          "name": "NCBI BLAST",
+          "icon": "🧬",
+          "capability": "Genomic alignment & nucleotide bio-sequence comparisons"
+        },
+        {
+          "name": "iNaturalist",
+          "icon": "🌿",
+          "capability": "Field taxonomy observation, plant metadata & species mapping"
+        },
+        {
+          "name": "Global Biodiversity (GBIF)",
+          "icon": "🌍",
+          "capability": "Spatial biogeography datasets & biodiversity distribution"
+        }
+      ]
+    },
+    {
+      "category": "Music, Media & Knowledge",
+      "tools": [
+        {
+          "name": "MuseScore Studio",
+          "icon": "🎼",
+          "capability": "Orchestral score engraving, polyphony & classical transcription"
+        },
+        {
+          "name": "IMSLP",
+          "icon": "📚",
+          "capability": "Urtext musicological canon research & historical manuscripts"
+        },
+        {
+          "name": "Krita",
+          "icon": "🎨",
+          "capability": "Digital canvas illustration, tonal shading & botanical realism"
+        },
+        {
+          "name": "DaVinci Resolve",
+          "icon": "🎬",
+          "capability": "Color grading, performance mastering & audio-visual production"
+        },
+        {
+          "name": "Obsidian",
+          "icon": "💎",
+          "capability": "Graph-linked zettelkasten synthesis & research repository"
+        },
+        {
+          "name": "Notion",
+          "icon": "📓",
+          "capability": "Systematic project taxonomies, database design & life OS"
+        }
+      ]
+    }
+  ],
+  "intellectual_pillars": [
+    {
+      "pillar": "Pillar I: Formal Sciences & The Cosmos",
+      "icon": "🌌",
+      "fields": "Formal Mathematics & Modal Logic, Theoretical Physics & Astrophysics, Analytical Chemistry",
+      "tagline": "From differential gravitational dynamics to Gödelian formal proofs."
+    },
+    {
+      "pillar": "Pillar II: Biological Inquiry & Fine Craft",
+      "icon": "🌿",
+      "fields": "Systematic Botanical Science & Flora Neurobiology, Artisan Realism & Canvas Painting",
+      "tagline": "Empirical observation of natural structures and fine graphite realism."
+    },
+    {
+      "pillar": "Pillar III: Sacred Hermeneutics & The Human Spirit",
+      "icon": "📜",
+      "fields": "Qur'an & Tafsir Hermeneutics, Islamic Theology (Kalam), Comparative Linguistics",
+      "tagline": "Classical Arabic morphology, ontological metaphysics, and polyglot semiotics."
+    },
+    {
+      "pillar": "Pillar IV: Literature, Music & Agentic Systems",
+      "icon": "🎹",
+      "fields": "Classical Piano Virtuosity, Speculative Botanical Fiction & Travel Memoirs, AI & Agentic Architecture",
+      "tagline": "Romantic pianism, high-concept florilegium literature, and autonomous engineering."
+    }
+  ],
+  "strategic_mastery": [
+    {
+      "id": "chess",
+      "icon": "♟️",
+      "title": "Chess — Competitive Strategy",
+      "badge": "Campus & IAPI Champion",
+      "description": "Deep positional play, dynamic tactical foresight, and sharp opening theory.",
+      "repertoire": "Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation"
+    },
+    {
+      "id": "geoguessr",
+      "icon": "🌍",
+      "title": "GeoGuessr — Regional Topography",
+      "badge": "European Meta Specialist",
+      "description": "High-accuracy regional deduction via architectural nuances, flora geography, utility infrastructure, and linguistic visual cues.",
+      "repertoire": "European Meta · Regional Topography · High-Accuracy Location Inference"
+    },
+    {
+      "id": "rhythm",
+      "icon": "⚡",
+      "title": "Rhythm Games — High-BPM Kinetic Reflexes",
+      "badge": "High-BPM Kinetic Reflexes",
+      "description": "Million Master in Cytus; elite multi-finger coordination across VOEZ, Deemo, Dynamix, BanG Dream!, and osu!",
+      "repertoire": "Multi-finger kinetic speed directly powering virtuoso piano mechanics & rapid pattern recognition"
     }
   ]
 };
@@ -300,14 +495,13 @@ window.WORKS_DATA = [
     "status": "Live",
     "role": "Lead Architect, Designer & AI Prompt Engineer",
     "year": 2026,
-    "description": "A luxury editorial portfolio conceived, designed, and built by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features dynamic JSON data binding, custom botanical SVG typography, an interactive classical audio visualizer, client-side filtering, and automated CI/CD pipeline deployment via GitHub and Vercel.",
+    "description": "Conceived, designed, and architected by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features responsive JSON data binding, bespoke Spencerian SVG calligraphy, dynamic audio visualizers, and automated CI/CD deployment via GitHub and Vercel.",
     "tags": [
       "Agentic AI",
-      "Google Antigravity",
-      "JavaScript (ES6+)",
-      "Custom CSS Architecture",
-      "Vercel CI/CD",
-      "Responsive UI/UX"
+      "Antigravity",
+      "JavaScript",
+      "Custom CSS",
+      "Vercel CI/CD"
     ],
     "links": {
       "live": "https://elektra-portfolio-nine.vercel.app",
@@ -673,12 +867,12 @@ window.WORKS_DATA = [
   {
     "id": "path-of-life-and-hope-under-magnolias",
     "title": "The Path of Life and Hope Under the Magnolia's",
-    "type": "novel",
+    "type": "writing",
     "category": "Speculative Short Fiction / Botanical Literature",
     "status": "Published",
     "role": "Author",
     "year": 2026,
-    "description": "A lyrical speculative work of botanical literature weaving existential hope, grief, and intellectual illumination beneath the flowering canopy of antique magnolias.",
+    "description": "A philosophical short fiction exploring memory, nature, and redemption beneath blooming magnolias.",
     "tags": [
       "Speculative Fiction",
       "Botanical Literature",
