@@ -2879,22 +2879,25 @@ body.modal-open {
   letter-spacing: 0.05em;
 }
 
-/* ══ STRATEGIC SHOWCASE ═══════════════════════════════════ */
-.strategic-grid {
+/* ══ STRATEGIC SHOWCASE (CR-01) ═══════════════════════════ */
+.strategic-grid,
+.strategic-grid-3 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
-  margin-top: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2.2rem);
+  margin: 3.5rem 0;
+  width: 100%;
 }
 
 .strategic-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 2rem;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
   display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: stretch;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   position: relative;
   overflow: hidden;
@@ -2913,29 +2916,38 @@ body.modal-open {
   box-shadow: 0 12px 48px rgba(0,0,0,0.4);
 }
 
-.chess-card { border-left: 3px solid var(--card-border-chess); }
-.geo-card   { border-left: 3px solid #2a7a4c; }
+.chess-card  { border-left: 3px solid #78909c; }
+.geo-card    { border-left: 3px solid #27ae60; }
+.rhythm-card { border-left: 3px solid var(--accent-primary, #C5A059); }
+
+.strategic-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
 .strategic-card-icon {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   line-height: 1;
   flex-shrink: 0;
-  margin-top: 0.1rem;
+  margin: 0;
 }
 
 .strategic-card-body {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  flex: 1;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .strategic-card-title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.35;
+  margin: 0;
 }
 
 .strategic-card-badges {
@@ -2957,33 +2969,38 @@ body.modal-open {
 
 .strategic-card-desc {
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  margin: 0;
 }
 
 .strategic-card-repertoire {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid var(--border-gold);
-  margin-top: 0.4rem;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(201, 168, 76, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: var(--radius-sm, 6px);
 }
 
 .repertoire-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--accent-primary, #C5A059);
+  font-weight: 600;
 }
 
 .repertoire-line {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-secondary);
-  font-style: italic;
+  line-height: 1.5;
+  font-style: normal;
 }
 
 @media (max-width: 768px) {
@@ -4236,24 +4253,29 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 }
 
 /* 9. Strategic & Kinetic Mastery (3 Feature Cards) */
-.strategic-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(1.5rem, 2.5vw, 2.2rem);
-  margin: 4.5rem 0;
-}
-
 .strategic-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.8rem;
+  width: 100%;
 }
 
 .strategic-badge.badge-gold {
   background: rgba(201, 168, 76, 0.15);
   border: 1px solid rgba(201, 168, 76, 0.4);
   color: #f7eed7;
+}
+
+.strategic-badge.badge-green {
+  background: rgba(39, 174, 96, 0.12);
+  border: 1px solid rgba(39, 174, 96, 0.4);
+  color: #a8e6cf;
+}
+
+.strategic-badge.badge-blue {
+  background: rgba(41, 128, 185, 0.12);
+  border: 1px solid rgba(41, 128, 185, 0.4);
+  color: #a0c4ff;
 }
 
 /* 10. Curated Achievements (3-Column Grid) */
