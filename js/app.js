@@ -526,7 +526,10 @@ function initWorksFilter() {
 function applyWorksFilter(filter) {
   const cards = document.querySelectorAll('#works-grid .work-card');
   cards.forEach(card => {
-    const matches = filter === 'all' || card.dataset.type === filter;
+    const cardType = card.dataset.type;
+    const matches = filter === 'all' ||
+      cardType === filter ||
+      (filter === 'novel' && (cardType === 'writing' || cardType === 'novel'));
     // Fade out first, then hide
     if (matches) {
       card.style.display = '';
@@ -564,7 +567,7 @@ function openModal(work) {
 
   // Lock body scroll
   document.body.classList.add('modal-open');
-  overlay.classList.add('active');
+  overlay.classList.add('active', 'visible');
 
   // Focus the close button for accessibility
   const closeBtn = document.getElementById('modal-close');
@@ -577,7 +580,7 @@ function openModal(work) {
 function closeModal() {
   const overlay = document.getElementById('modal-overlay');
   if (!overlay) return;
-  overlay.classList.remove('active');
+  overlay.classList.remove('active', 'visible');
   document.body.classList.remove('modal-open');
   _modalWork = null;
 }
@@ -639,9 +642,10 @@ function buildModalHTML(work) {
   if (work.type === 'research') {
     const abstract = work.abstract || work.description || work.synopsis || '';
     const paperId  = work.id || slugify(work.title || '');
+    const pdfPath  = work.pdf || `assets/papers/${escHtml(paperId)}.pdf`;
     typeSpecificHtml = `
       ${abstract ? `<div class="modal-abstract"><h4 class="modal-section-label">Abstract</h4><p>${escHtml(abstract)}</p></div>` : ''}
-      <a class="modal-pdf-btn" href="assets/papers/${escHtml(paperId)}.pdf" target="_blank" rel="noopener">
+      <a class="modal-pdf-btn" href="${escHtml(pdfPath)}" target="_blank" rel="noopener">
         📄 Download PDF
       </a>`;
   }
@@ -1285,6 +1289,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await loadData();
     profile = data.profile || {};
     works   = Array.isArray(data.works) ? data.works : [];
+    window.PROFILE_DATA = profile;
+    window.WORKS_DATA   = works;
   } catch (err) {
     console.error('[Elektra] Data load error:', err);
   }

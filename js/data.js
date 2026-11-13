@@ -13,7 +13,7 @@ window.PROFILE_DATA = {
   "socials": [
     {
       "platform": "github",
-      "url": "https://github.com/"
+      "url": "https://github.com/elektraeliviana/elektra-portfolio"
     },
     {
       "platform": "youtube",
@@ -21,7 +21,7 @@ window.PROFILE_DATA = {
     },
     {
       "platform": "bluesky",
-      "url": "https://bluesky.com/elektraeliviana.bsky.social"
+      "url": "https://bsky.app/profile/elektraeliviana.bsky.social"
     },
     {
       "platform": "twitter",
@@ -101,7 +101,7 @@ window.PROFILE_DATA = {
       "title": "Typing Speed 100 WPM Certified",
       "issuer": "Typing.com",
       "year": 2026,
-      "file": "assets/certificates/typing-100wpm.pdf"
+      "file": "assets/certificates/Elektra-WPM.pdf"
     },
     {
       "title": "Fundamentals of Digital Marketing",
@@ -492,7 +492,7 @@ window.WORKS_DATA = [
     "title": "Polymath Portfolio Architecture & Agentic Engineering",
     "type": "code",
     "category": "Web & Software Development",
-    "status": "Live",
+    "status": "live",
     "role": "Lead Architect, Designer & AI Prompt Engineer",
     "year": 2026,
     "description": "Conceived, designed, and architected by Elektra Eliviana leveraging agentic AI pair programming (Google Antigravity & Gemini). Features responsive JSON data binding, bespoke Spencerian SVG calligraphy, dynamic audio visualizers, and automated CI/CD deployment via GitHub and Vercel.",
@@ -612,6 +612,7 @@ window.WORKS_DATA = [
     "year": 2025,
     "status": "accepted thesis",
     "field": "Islamic Studies & Political Theology",
+    "pdf": "assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf",
     "description": "An accepted academic thesis examining hierarchical structures and political dynamics within prophetic lineages as recorded in classical Islamic sources."
   },
   {
@@ -711,7 +712,7 @@ window.WORKS_DATA = [
     "year": 2024,
     "status": "showcase",
     "medium": "Graphite Pencil",
-    "image": "assets/art/Luthfi's Drawing - Eye.jpg"
+    "image": "assets/art/Elektra's Art Realistic Eye.jpg"
   },
   {
     "id": "art-flandres-sprite",
@@ -720,7 +721,7 @@ window.WORKS_DATA = [
     "year": 2024,
     "status": "showcase",
     "medium": "Digital Art · Krita",
-    "image": "assets/art/Luthfi's Drawing - Flandre.jpg"
+    "image": "assets/art/Elektra's Art Flandre's Sprite.jpg"
   },
   {
     "id": "art-detailed-mountain-canvas",
@@ -729,7 +730,7 @@ window.WORKS_DATA = [
     "year": 2024,
     "status": "showcase",
     "medium": "Acrylic on Canvas",
-    "image": "assets/art/Luthfi's Drawing - Mountain.jpg"
+    "image": "assets/art/Elektra's Art Realistic Mountain.jpg"
   },
   {
     "id": "art-detailed-tree-canvas",
@@ -738,7 +739,7 @@ window.WORKS_DATA = [
     "year": 2024,
     "status": "showcase",
     "medium": "Acrylic on Canvas · Botanical",
-    "image": "assets/art/Luthfi's Art - Tree.jpg"
+    "image": "assets/art/Elektra's Art Tree.jpg"
   },
   {
     "id": "art-tea-still-life",
@@ -747,7 +748,7 @@ window.WORKS_DATA = [
     "year": 2024,
     "status": "showcase",
     "medium": "Graphite Pencil",
-    "image": "assets/art/Luthfi's Drawing - Tea.jpg"
+    "image": "assets/art/Elektra's Art Realistic Tea.jpg"
   },
   {
     "id": "art-pewdiepie-portrait",
