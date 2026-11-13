@@ -13,7 +13,7 @@
   "socials": [
     {
       "platform": "github",
-      "url": "https://github.com/elektraeliviana/elektra-portfolio"
+      "url": "https://github.com/elektraeliviana"
     },
     {
       "platform": "youtube",
@@ -320,9 +320,9 @@
           "capability": "Multimodal LLM architecture & prompt agent engineering"
         },
         {
-          "name": "VS Code & Linux",
-          "icon": "💻",
-          "capability": "Native Unix scripting, bash CLI & development workflows"
+          "name": "Azure AI Foundry",
+          "icon": "assets/icons/foundry.png",
+          "capability": "Autonomous Azure AI Agent orchestration, model evaluations & enterprise RAG workflows"
         }
       ]
     },
