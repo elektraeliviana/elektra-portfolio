@@ -1302,6 +1302,33 @@ function initHorizonsAura() {
 }
 
 /* ============================================================
+   11c. TOOLS DOCK INTERACTION CONTROLLER (Google Workspace Style)
+   ============================================================ */
+/**
+ * initToolDockInteraction — manages click & touch toggle for tool popovers.
+ */
+function initToolDockInteraction() {
+  const dockItems = document.querySelectorAll('.tool-dock-item');
+  if (!dockItems.length) return;
+
+  dockItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Toggle active state on mobile tap
+      const wasActive = item.classList.contains('is-active');
+      dockItems.forEach(d => d.classList.remove('is-active'));
+      if (!wasActive) item.classList.add('is-active');
+    });
+  });
+
+  // Tap outside dismisses any open mobile tool card
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.tool-dock-item')) {
+      dockItems.forEach(d => d.classList.remove('is-active'));
+    }
+  });
+}
+
+/* ============================================================
    12. INITIALISATION — DOMContentLoaded entry point
    ============================================================ */
 
@@ -1316,6 +1343,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   /* ---- B2. Horizons Ambient Atmosphere ---- */
   initHorizonsAura();
+
+  /* ---- B3. Tools Google Workspace Dock ---- */
+  initToolDockInteraction();
 
   /* ---- C. Modal close wiring ---- */
   initModal();

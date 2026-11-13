@@ -4072,15 +4072,18 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   margin: 0;
 }
 
+/* ── Tools Grid & Google Workspace Floating Dock ──────────────── */
 .tools-grid-6 {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
+  gap: 1.5rem 1rem;
+  position: relative;
 }
 
 @media (max-width: 1100px) {
   .tools-grid-6 {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.25rem;
   }
 }
 
@@ -4096,45 +4099,143 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   }
 }
 
-.tool-card {
-  background: var(--bg-surface, #141418);
-  border: 1px solid rgba(201, 168, 76, 0.18);
-  border-radius: var(--radius-md, 10px);
-  padding: 1.15rem 1rem;
+/* Staggered Float-In Entrance (Downside to Upside) */
+.tool-dock-item {
+  position: relative;
+  min-height: 92px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tools-row-group.revealed .tool-dock-item,
+.tools-row-group.visible .tool-dock-item,
+.tools-row-group.active .tool-dock-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tools-row-group.revealed .tool-dock-item:nth-child(1),
+.tools-row-group.visible .tool-dock-item:nth-child(1) { transition-delay: 0.05s; }
+.tools-row-group.revealed .tool-dock-item:nth-child(2),
+.tools-row-group.visible .tool-dock-item:nth-child(2) { transition-delay: 0.10s; }
+.tools-row-group.revealed .tool-dock-item:nth-child(3),
+.tools-row-group.visible .tool-dock-item:nth-child(3) { transition-delay: 0.15s; }
+.tools-row-group.revealed .tool-dock-item:nth-child(4),
+.tools-row-group.visible .tool-dock-item:nth-child(4) { transition-delay: 0.20s; }
+.tools-row-group.revealed .tool-dock-item:nth-child(5),
+.tools-row-group.visible .tool-dock-item:nth-child(5) { transition-delay: 0.25s; }
+.tools-row-group.revealed .tool-dock-item:nth-child(6),
+.tools-row-group.visible .tool-dock-item:nth-child(6) { transition-delay: 0.30s; }
+
+/* Floating Card / Popover Container (No Card at Rest) */
+.tool-popover {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  max-width: 195px;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  text-align: left;
+  align-items: center;
+  text-align: center;
+  padding: 0.65rem 0.5rem;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+  z-index: 2;
+  cursor: pointer;
 }
 
-.tool-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(201, 168, 76, 0.45);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-  background: rgba(24, 23, 29, 0.95);
+/* Icon Frame */
+.tool-icon-frame {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tool-icon {
-  font-size: 1.45rem;
-  line-height: 1;
+.tool-brand-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
+/* Tool Label (Visible at Rest) */
 .tool-name {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 500;
   line-height: 1.25;
-  color: var(--accent-primary, #c9a84c);
+  color: var(--text-primary, #E8E0D0);
   margin: 0;
+  transition: color 0.3s ease;
 }
 
+/* Capability Description (Hidden in Rest, Fades in on Hover) */
 .tool-capability {
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.76rem;
-  line-height: 1.5;
-  color: var(--text-secondary, #b8b0a2);
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: #B0A898;
   margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              max-height 0.35s ease,
+              margin-top 0.35s ease;
+}
+
+/* ── Hover Elevation (Google Workspace Popover) ─────────────── */
+.tool-dock-item:hover .tool-popover,
+.tool-dock-item:focus-within .tool-popover,
+.tool-dock-item.is-active .tool-popover {
+  z-index: 50;
+  transform: translateY(-14px) scale(1.04);
+  background: rgba(18, 17, 23, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(201, 168, 76, 0.45);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(201, 168, 76, 0.12);
+  padding: 0.95rem 0.85rem;
+}
+
+.tool-dock-item:hover .tool-icon-frame,
+.tool-dock-item.is-active .tool-icon-frame {
+  transform: scale(1.12);
+}
+
+.tool-dock-item:hover .tool-brand-img,
+.tool-dock-item.is-active .tool-brand-img {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
+}
+
+.tool-dock-item:hover .tool-name,
+.tool-dock-item.is-active .tool-name {
+  color: var(--accent-primary, #C5A059);
+}
+
+.tool-dock-item:hover .tool-capability,
+.tool-dock-item:focus-within .tool-capability,
+.tool-dock-item.is-active .tool-capability {
+  opacity: 1;
+  max-height: 95px;
+  transform: translateY(0);
+  margin-top: 0.55rem;
 }
 
 /* 5. Core Interests & Intellectual Horizons (4 Pillars - Remodeled) */
