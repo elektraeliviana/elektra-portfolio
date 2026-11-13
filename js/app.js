@@ -1263,6 +1263,45 @@ function setTextContent(selector, text) {
 // The HTML uses onclick="copyEmail()" directly.
 
 /* ============================================================
+   11b. HORIZONS AMBIENT ATMOSPHERE CONTROLLER
+   ============================================================ */
+/**
+ * initHorizonsAura — manages atmospheric chromatic auras on pillar hover/touch.
+ * Completely responsive and agnostic to viewport minimize/maximize.
+ */
+function initHorizonsAura() {
+  const horizonsSection = document.getElementById('horizons');
+  if (!horizonsSection) return;
+
+  const cards = horizonsSection.querySelectorAll('.pillar-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    const id = card.dataset.pillarId;
+    if (!id) return;
+
+    card.addEventListener('mouseenter', () => {
+      horizonsSection.dataset.activePillar = id;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      horizonsSection.dataset.activePillar = '0';
+    });
+
+    card.addEventListener('touchstart', () => {
+      horizonsSection.dataset.activePillar = id;
+    }, { passive: true });
+  });
+
+  // Tap outside dismisses aura on touch viewports
+  document.addEventListener('touchstart', (e) => {
+    if (!horizonsSection.contains(e.target)) {
+      horizonsSection.dataset.activePillar = '0';
+    }
+  }, { passive: true });
+}
+
+/* ============================================================
    12. INITIALISATION — DOMContentLoaded entry point
    ============================================================ */
 
@@ -1274,6 +1313,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   /* ---- B. Hero animations (no data needed) ---- */
   initTypewriter();
   initStatsCounter();
+
+  /* ---- B2. Horizons Ambient Atmosphere ---- */
+  initHorizonsAura();
 
   /* ---- C. Modal close wiring ---- */
   initModal();

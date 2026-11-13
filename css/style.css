@@ -4137,38 +4137,91 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   margin: 0;
 }
 
-/* 5. Core Interests & Intellectual Horizons (4 Pillars) */
+/* 5. Core Interests & Intellectual Horizons (4 Pillars - Remodeled) */
+.horizons-section {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.8s ease;
+}
+
+/* Fluid Ambient Outer Backdrop (Tracks Hover State & Safe Across All Viewports) */
+.horizons-ambient-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-glow {
+  position: absolute;
+  inset: -15%;
+  opacity: 0;
+  filter: blur(120px);
+  -webkit-filter: blur(120px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+/* 4 distinct atmospheric chromatic signatures */
+.aura-pillar-1 {
+  background: radial-gradient(circle at 35% 35%, rgba(65, 85, 150, 0.22) 0%, rgba(197, 160, 89, 0.08) 45%, transparent 70%);
+}
+.aura-pillar-2 {
+  background: radial-gradient(circle at 65% 35%, rgba(40, 110, 70, 0.2) 0%, rgba(197, 160, 89, 0.08) 45%, transparent 70%);
+}
+.aura-pillar-3 {
+  background: radial-gradient(circle at 35% 65%, rgba(160, 100, 35, 0.22) 0%, rgba(197, 160, 89, 0.08) 45%, transparent 70%);
+}
+.aura-pillar-4 {
+  background: radial-gradient(circle at 65% 65%, rgba(140, 45, 60, 0.2) 0%, rgba(197, 160, 89, 0.08) 45%, transparent 70%);
+}
+
+/* Activated by parent data-active-pillar on #horizons */
+[data-active-pillar="1"] .aura-pillar-1,
+[data-active-pillar="2"] .aura-pillar-2,
+[data-active-pillar="3"] .aura-pillar-3,
+[data-active-pillar="4"] .aura-pillar-4 {
+  opacity: 1;
+}
+
 .pillars-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: clamp(1.5rem, 2.5vw, 2.5rem);
   margin-top: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .pillars-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .pillar-card {
-  background: linear-gradient(145deg, rgba(22, 21, 26, 0.95), rgba(15, 14, 18, 0.95));
-  border: 1px solid rgba(201, 168, 76, 0.3);
+  background: linear-gradient(145deg, rgba(22, 21, 26, 0.92), rgba(15, 14, 18, 0.96));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.28);
   border-radius: var(--radius-lg, 14px);
   padding: clamp(1.8rem, 3vw, 2.5rem);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
 }
 
 .pillar-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201, 168, 76, 0.55);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(201, 168, 76, 0.08);
+  transform: translateY(-5px);
+  border-color: rgba(201, 168, 76, 0.65);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), 0 0 28px rgba(201, 168, 76, 0.12);
 }
 
 .pillar-card::before {
@@ -4180,12 +4233,38 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   height: 2px;
   background: linear-gradient(90deg, transparent, #c9a84c, transparent);
   opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.pillar-card:hover::before {
+  opacity: 1;
+}
+
+/* Inset Watermark Geometry (Micro-Plate inside Card) */
+.pillar-watermark {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  color: var(--accent-primary, #c9a84c);
+  opacity: 0.05;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+.pillar-card:hover .pillar-watermark {
+  opacity: 0.15;
+  transform: scale(1.08) rotate(2deg);
 }
 
 .pillar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .pillar-badge {
@@ -4200,9 +4279,20 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   border-radius: var(--radius-full, 9999px);
 }
 
-.pillar-icon {
-  font-size: 1.6rem;
-  line-height: 1;
+/* Bespoke Minimalist Vector Emblem */
+.pillar-emblem {
+  color: var(--accent-primary, #c9a84c);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.pillar-card:hover .pillar-emblem {
+  opacity: 1;
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.5));
 }
 
 .pillar-title {
@@ -4214,6 +4304,7 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   margin: 0;
 }
 
+/* Staggered & Illuminated Discipline Tags */
 .pillar-fields {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 0.92rem;
@@ -4221,8 +4312,28 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   color: var(--text-secondary, #b8b0a2);
   margin: 0;
   flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.45rem;
 }
 
+.discipline-tag {
+  transition: color 0.3s ease, transform 0.25s ease;
+  display: inline-block;
+}
+
+.pillar-card:hover .discipline-tag {
+  color: #f2ede4;
+}
+
+.tag-divider {
+  color: rgba(201, 168, 76, 0.4);
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Responsive Quote & Shimmer Highlight */
 .pillar-tagline {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
   font-size: 1.05rem;
@@ -4232,11 +4343,30 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   border-left: 2px solid rgba(201, 168, 76, 0.4);
   padding-left: 0.85rem;
   margin-top: 0.5rem;
+  transition: border-color 0.3s ease;
 }
 
 .tagline-quote {
   color: var(--accent-primary, #c9a84c);
   font-weight: bold;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tagline-text {
+  transition: color 0.3s ease;
+}
+
+.pillar-card:hover .pillar-tagline {
+  border-left-color: var(--accent-primary, #c9a84c);
+}
+
+.pillar-card:hover .tagline-quote {
+  transform: scale(1.18);
+}
+
+.pillar-card:hover .tagline-text {
+  color: #fffaf0;
 }
 
 /* 8. Classical Repertoire Spacious Row Layout */
