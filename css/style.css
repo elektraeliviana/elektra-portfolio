@@ -4034,41 +4034,33 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 .tools-ecosystem {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  margin-top: 1.5rem;
+  gap: clamp(4rem, 6vw, 5.5rem);
+  margin-top: clamp(2rem, 3.5vw, 3rem);
 }
 
 .tools-row-group {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: clamp(2rem, 3vw, 2.75rem);
 }
 
 .tools-group-header {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.8rem;
+  width: 100%;
   border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-  padding-bottom: 0.6rem;
-}
-
-.tools-group-badge {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent-primary, #c9a84c);
-  padding: 0.2rem 0.55rem;
-  background: rgba(201, 168, 76, 0.1);
-  border: 1px solid rgba(201, 168, 76, 0.25);
-  border-radius: var(--radius-full, 9999px);
+  padding-bottom: 0.9rem;
+  text-align: center;
 }
 
 .tools-group-heading {
   font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
-  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
   font-weight: 500;
   color: var(--text-primary, #e8e0d0);
+  letter-spacing: 0.02em;
+  text-align: center;
   margin: 0;
 }
 
@@ -4076,7 +4068,7 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 .tools-grid-6 {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1.5rem 1rem;
+  gap: clamp(1.6rem, 2.5vw, 2.2rem) clamp(1rem, 2vw, 1.5rem);
   position: relative;
 }
 
