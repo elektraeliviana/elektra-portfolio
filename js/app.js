@@ -168,7 +168,25 @@ window.copyDiscord = copyDiscord;
  * @returns {Promise<{profile: Object, works: Array}>}
  */
 async function loadData() {
-  // If window.PROFILE_DATA & window.WORKS_DATA are already provided via data.js, use them directly
+  // On HTTP/S protocols, prefer fresh JSON with cache busting to guarantee real-time updates
+  if (window.location.protocol.startsWith('http')) {
+    try {
+      const [profileRes, worksRes] = await Promise.all([
+        fetch('data/profile.json?t=' + Date.now()),
+        fetch('data/works.json?t=' + Date.now()),
+      ]);
+
+      if (profileRes.ok && worksRes.ok) {
+        const profile = await profileRes.json();
+        const works   = await worksRes.json();
+        return { profile, works };
+      }
+    } catch (err) {
+      console.warn('[Elektra] live fetch failed, falling back to data.js globals:', err.message);
+    }
+  }
+
+  // Fallback (or file:// protocol): use window globals from data.js
   if (window.PROFILE_DATA && window.WORKS_DATA && Array.isArray(window.WORKS_DATA) && window.WORKS_DATA.length > 0) {
     return { profile: window.PROFILE_DATA, works: window.WORKS_DATA };
   }
