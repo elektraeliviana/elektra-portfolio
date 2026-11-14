@@ -22,6 +22,30 @@
     "featured": true
   },
   {
+    "id": "portfolio-rizky-maulana",
+    "title": "Portfolio Rizky Maulana",
+    "subtitle": "Systems Narrative Architect",
+    "type": "code",
+    "category": "Web & Software Development",
+    "status": "live",
+    "role": "Lead Web Architect, UI/UX Designer & AI Systems Engineer",
+    "year": 2026,
+    "description": "Architected, designed, and deployed a bespoke digital platform for Systems Narrative Architect Rizky Maulana using Google Antigravity agentic AI workflows. Engineered with high-density epistemic narrative structures, sociological case study architectures, responsive typography, and automated CI/CD deployment via GitHub and Vercel.",
+    "tags": [
+      "Agentic AI",
+      "Antigravity",
+      "Systems Architecture",
+      "UI/UX Design",
+      "JavaScript",
+      "Vercel CI/CD"
+    ],
+    "links": {
+      "live": "https://rizki-portfolio-seven.vercel.app/",
+      "github": "https://github.com/elektraeliviana/rizki-portfolio"
+    },
+    "featured": true
+  },
+  {
     "id": "celestial-orbit-dynamics",
     "type": "code",
     "title": "Celestial Orbit Dynamics & N-Body Simulator",
