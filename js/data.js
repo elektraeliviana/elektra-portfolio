@@ -612,18 +612,28 @@ window.WORKS_DATA = [
     ]
   },
   {
-    "id": "personal-analytics-engine",
+    "id": "daily-writing-companion",
     "type": "code",
-    "title": "Personal Analytics & Journaling Engine",
-    "year": 2025,
+    "title": "Daily Writing Companion — Desktop Journaling Suite & AI Mentor",
+    "subtitle": "Clean Architecture Desktop Application & LLM Integration",
+    "category": "Web & Software Development",
     "status": "live",
-    "description": "550-line CLI productivity engine with CRUD ops, persistent JSON storage, streak tracking, ASCII visualization, keyword search, and report exports.",
+    "role": "Lead Software Architect & Python Engineer",
+    "year": 2026,
+    "description": "Architected and engineered a distraction-free desktop journaling and creative writing application, refactoring a monolithic procedural script into Clean Architecture. Features an obsidian dark-mode GUI using CustomTkinter, relational persistence via SQLAlchemy 2.0 ORM & SQLite with zero-data-loss migration, dynamic writing prompts & constructive mentorship powered by Google Gemini API, live goal progress tracking with consecutive streak algorithms, and 100% automated test coverage across 20 pytest suites.",
     "tags": [
-      "Python",
-      "CLI",
-      "NLP",
-      "Data"
-    ]
+      "Python 3.14",
+      "CustomTkinter",
+      "SQLAlchemy 2.0",
+      "SQLite",
+      "Google Gemini AI",
+      "Clean Architecture",
+      "Pytest (20/20)"
+    ],
+    "links": {
+      "github": "https://github.com/elektraeliviana/daily-writing-companion"
+    },
+    "featured": true
   },
   {
     "id": "godels-ontological-proof-allah",
