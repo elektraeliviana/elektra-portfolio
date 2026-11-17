@@ -95,14 +95,19 @@
     "type": "code",
     "title": "Automated Data Cleaner & Ingestion Pipeline",
     "year": 2026,
-    "status": "roadmap",
-    "description": "A robust ETL pipeline that automates detection, cleaning, and structured ingestion of messy tabular datasets — handling nulls, type coercion, deduplication, and schema enforcement.",
+    "status": "live",
+    "role": "Data Engineer & Pipeline Developer",
+    "description": "A high-efficiency ETL pipeline that automates sanitization and structured ingestion of messy tabular datasets — executing whitespace stripping, case normalization, number extraction, and category deduplication in 0.0005 seconds runtime.",
     "tags": [
       "Python",
-      "pandas",
       "ETL",
-      "Data Engineering"
-    ]
+      "Data Cleaning",
+      "Benchmark: 0.0005s"
+    ],
+    "links": {
+      "github": "https://github.com/elektraeliviana/AI-Engineering-Journey/blob/main/project_csv_cleaner.py"
+    },
+    "featured": true
   },
   {
     "id": "japan-cs-scholarship-journey",
