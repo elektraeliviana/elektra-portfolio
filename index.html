@@ -812,32 +812,87 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       PIANO SECTION
+       PIANO SECTION: THE ACOUSTIC LOUNGE (CONCERT SALON)
   ═══════════════════════════════════════════════ -->
   <section id="piano" class="section section-lounge reveal">
     <div class="section-container">
 
-      <div class="section-header">
+      <div class="section-header text-center reveal">
         <span class="section-eyebrow">The Acoustic Lounge</span>
         <h2 class="section-title">Classical Repertoire</h2>
-        <p class="section-desc">Pemain Piano Solo Terbaik · SMP &amp; SMA · Romantic &amp; Classical Canon</p>
+        <p class="section-desc">Pemain Piano Solo Terbaik · SMP &amp; SMA · Romantic &amp; Classical Virtuoso Canon</p>
       </div>
 
-      <!-- Piano Grid — JS renders piano cards -->
-      <div id="piano-grid" class="piano-grid"><!-- JS renders piano cards --></div>
+      <!-- Concert Salon Dual-Pane Console -->
+      <div class="salon-console reveal">
 
-      <!-- Persistent Audio Player Bar -->
-      <div class="audio-player-bar" id="audio-player">
-        <div class="player-track-info">
-          <span id="player-title">Select a piece</span>
-          <span id="player-composer"></span>
+        <!-- Left Pane: Recital Program Dossier (42%) -->
+        <div class="salon-program">
+          <div class="salon-program-header">
+            <span class="program-kicker">Recital Program</span>
+            <span class="program-count">4 Canonical Works</span>
+          </div>
+          <div class="salon-tracklist" id="salon-tracklist">
+            <!-- Dynamically populated program cards (I, II, III, IV) -->
+          </div>
         </div>
-        <div class="player-controls">
-          <button class="player-btn" id="player-play" aria-label="Play / Pause">▶</button>
+
+        <!-- Right Pane: Active Recital Stage Plate (58%) -->
+        <div class="salon-stage">
+          <!-- Laureate Honor Plaque -->
+          <div class="salon-laureate-badge">
+            <span class="laureate-icon">🏅</span>
+            <span class="laureate-text">Laureate Soloist · Pemain Piano Solo Terbaik SMP &amp; SMA</span>
+          </div>
+
+          <!-- Active Piece Title & Meta -->
+          <div class="stage-piece-header">
+            <div class="stage-meta-row">
+              <span class="stage-era" id="stage-era">Romantic Canon</span>
+              <span class="stage-key" id="stage-key">G Minor · Op. 23</span>
+              <span class="stage-tempo" id="stage-tempo">Largo – Presto con fuoco</span>
+            </div>
+            <h3 class="stage-title" id="stage-title">Ballade No. 1 in G Minor, Op. 23</h3>
+            <p class="stage-composer" id="stage-composer">Frédéric Chopin</p>
+          </div>
+
+          <!-- Archetype 3: Urtext Manuscript Cadence Visualizer -->
+          <div class="stage-urtext-container">
+            <div class="urtext-staff-header">
+              <span class="urtext-clef">𝄞</span>
+              <span class="urtext-time-sig">4/4</span>
+              <span class="urtext-tempo-marking" id="urtext-tempo-marking">Presto con fuoco</span>
+              <span class="urtext-expression" id="urtext-expression">espress. e legato</span>
+            </div>
+            <canvas id="urtext-canvas" class="urtext-canvas" width="600" height="110"></canvas>
+          </div>
+
+          <!-- Description Note -->
+          <p class="stage-desc" id="stage-desc">
+            One of Chopin's most dramatic and technically demanding works. Features stormy octave passages, polyphonic counterpoint, and deeply lyrical cantabile sections.
+          </p>
+
+          <!-- Audio Player Console & Scrub Controls -->
+          <div class="stage-player-controls">
+            <button class="stage-play-btn" id="stage-play-btn" aria-label="Play or Pause Recital">
+              <span class="play-icon" id="stage-play-icon">▶</span>
+            </button>
+            
+            <div class="stage-timeline">
+              <div class="timeline-labels">
+                <span class="time-current" id="time-current">0:00</span>
+                <span class="time-status" id="time-status">Interactive Preview</span>
+                <span class="time-total" id="time-total">9:30</span>
+              </div>
+              <div class="stage-scrub-bar" id="stage-scrub-bar">
+                <div class="stage-scrub-fill" id="stage-scrub-fill"></div>
+                <div class="stage-scrub-thumb" id="stage-scrub-thumb"></div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="player-progress">
-          <div class="player-progress-bar" id="progress-bar"></div>
-        </div>
+
       </div>
 
     </div>
@@ -863,52 +918,69 @@
         <h3 class="subsection-title text-center">Strategic &amp; Kinetic Mastery</h3>
         <p class="subsection-desc text-center">Deep positional game theory, geospatial spatial inference, and high-BPM kinetic multi-finger reflexes.</p>
 
-        <div class="strategic-grid-3">
+        <!-- Theater Media Console -->
+        <div class="strategic-theater-console reveal" id="strategic-theater" data-active-theme="chess">
 
-          <!-- Card 1: Chess -->
-          <div class="strategic-card chess-card reveal">
-            <div class="strategic-card-header">
-              <span class="strategic-card-icon">♟️</span>
-              <span class="strategic-badge badge-green">Campus &amp; IAPI Champion</span>
+          <!-- Left Column: Tab Selector + Attached Dossier (45%) -->
+          <div class="theater-sidebar">
+            <div class="theater-tab-selector" role="tablist">
+              <button class="theater-tab-btn active" data-id="chess" role="tab" aria-selected="true" onclick="selectStrategicDiscipline('chess')">
+                <span class="tab-icon">♟️</span>
+                <span class="tab-label">Chess</span>
+                <span class="tab-badge badge-slate">Campus &amp; IAPI Champion</span>
+              </button>
+              <button class="theater-tab-btn" data-id="geoguessr" role="tab" aria-selected="false" onclick="selectStrategicDiscipline('geoguessr')">
+                <span class="tab-icon">🌍</span>
+                <span class="tab-label">GeoGuessr</span>
+                <span class="tab-badge badge-emerald">European Meta</span>
+              </button>
+              <button class="theater-tab-btn" data-id="rhythm" role="tab" aria-selected="false" onclick="selectStrategicDiscipline('rhythm')">
+                <span class="tab-icon">⚡</span>
+                <span class="tab-label">Rhythm Games</span>
+                <span class="tab-badge badge-gold">High-BPM Reflexes</span>
+              </button>
             </div>
-            <div class="strategic-card-body">
-              <h4 class="strategic-card-title">Chess — Competitive Strategy</h4>
-              <p class="strategic-card-desc">Deep positional play, dynamic tactical foresight, and sharp opening theoretical preparation.</p>
-              <div class="strategic-card-repertoire">
-                <span class="repertoire-label">Favorite Repertoire:</span>
-                <span class="repertoire-line">Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation</span>
+
+            <!-- Active Dossier Body & Attached Repertoire Box -->
+            <div class="theater-dossier-body">
+              <div class="dossier-header">
+                <span class="dossier-kicker" id="dossier-kicker">Competitive Strategy · Board Vision</span>
+                <h4 class="dossier-title" id="dossier-title">Chess — Competitive Strategy</h4>
+              </div>
+              <p class="dossier-desc" id="dossier-desc">
+                Deep positional play, dynamic tactical foresight, and sharp opening theoretical preparation. Campus and national competitive tournament champion.
+              </p>
+              <div class="theater-repertoire-box">
+                <span class="repertoire-label" id="repertoire-label">Favorite Repertoire:</span>
+                <span class="repertoire-line" id="repertoire-line">Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation</span>
               </div>
             </div>
           </div>
 
-          <!-- Card 2: GeoGuessr -->
-          <div class="strategic-card geo-card reveal">
-            <div class="strategic-card-header">
-              <span class="strategic-card-icon">🌍</span>
-              <span class="strategic-badge badge-blue">European Meta Specialist</span>
-            </div>
-            <div class="strategic-card-body">
-              <h4 class="strategic-card-title">GeoGuessr — Regional Topography</h4>
-              <p class="strategic-card-desc">High-accuracy regional deduction via architectural nuances, flora geography, road infrastructure, utility pole meta, and linguistic visual cues.</p>
-              <div class="strategic-card-repertoire">
-                <span class="repertoire-label">Domain Focus:</span>
-                <span class="repertoire-line">European Meta · Regional Topography · High-Accuracy Location Inference</span>
-              </div>
-            </div>
-          </div>
+          <!-- Right Column: 16:9 Video Theater Stage (55%) -->
+          <div class="theater-screen-column">
+            <div class="theater-screen-wrapper">
+              <video id="strategic-video-player" class="theater-video" preload="metadata" playsinline controls style="display: none;">
+                <source id="strategic-video-source" src="assets/video/chess-analysis.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
 
-          <!-- Card 3: Rhythm Games -->
-          <div class="strategic-card rhythm-card reveal">
-            <div class="strategic-card-header">
-              <span class="strategic-card-icon">⚡</span>
-              <span class="strategic-badge badge-gold">High-BPM Kinetic Reflexes</span>
-            </div>
-            <div class="strategic-card-body">
-              <h4 class="strategic-card-title">Rhythm Games — Kinetic Reflexes</h4>
-              <p class="strategic-card-desc">Million Master in Cytus; high-level multi-finger coordination across VOEZ, Deemo, Dynamix, BanG Dream!, and osu!</p>
-              <div class="strategic-card-repertoire">
-                <span class="repertoire-label">Kinetic Link:</span>
-                <span class="repertoire-line">Directly connects multi-finger kinetic speed &amp; finger independence to virtuoso classical piano mechanics.</span>
+              <!-- Luxury Standby / In-Editing Poster Frame -->
+              <div class="theater-standby-poster" id="theater-standby-poster" onclick="handleTheaterPosterClick()">
+                <div class="standby-backdrop-glow"></div>
+                <div class="standby-content">
+                  <div class="standby-play-btn" aria-label="Play Analysis Video">
+                    <span class="standby-play-icon">▶</span>
+                  </div>
+                  <div class="standby-meta">
+                    <span class="standby-title" id="standby-title">Chess Analysis &amp; Tactical Repertoire</span>
+                    <span class="standby-badge">Footage Reel in Post-Production · 1080p 60fps</span>
+                  </div>
+                </div>
+                <div class="standby-telemetry">
+                  <span class="telemetry-item" id="telemetry-resolution">1920 × 1080 · 60 FPS</span>
+                  <span class="telemetry-item" id="telemetry-focus">Match Telemetry &amp; Analysis</span>
+                </div>
               </div>
             </div>
           </div>

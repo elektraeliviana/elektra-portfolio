@@ -1103,145 +1103,419 @@ function initScrollAnimations() {
 }
 
 /* ============================================================
-   10. PIANO SECTION
+   10. PIANO SECTION: THE CONCERT SALON & URTEXT MANUSCRIPT CADENCE
    ============================================================ */
 
+let _salonMusicWorks = [];
+let _salonActiveIdx  = 0;
+let _salonAudio      = null;
+let _salonIsPlaying  = false;
+let _salonSimTimer   = null;
+let _salonSimSeconds = 0;
+let _salonDurationSec = 570; // 9:30 default
+let _urtextAnimId    = null;
+let _urtextCanvas    = null;
+let _urtextCtx       = null;
+let _urtextPhase     = 0;
+
 /**
- * renderPianoGrid — populates #piano-grid with music-type works.
- * @param {Array} works  All works; will be filtered to type===music.
+ * renderPianoGrid — populates #salon-tracklist and initialises the Concert Salon.
+ * @param {Array} works
  */
 function renderPianoGrid(works) {
-  const grid = document.getElementById('piano-grid');
-  if (!grid) return;
+  _salonMusicWorks = (works || []).filter(w => w.type === 'music');
+  const tracklistEl = document.getElementById('salon-tracklist');
+  if (!tracklistEl || !_salonMusicWorks.length) return;
 
-  const musicWorks = works.filter(w => w.type === 'music');
-  if (!musicWorks.length) {
-    grid.innerHTML = '<p class="piano-empty">No repertoire entries found.</p>';
-    return;
-  }
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 
-  grid.innerHTML = musicWorks.map((work, idx) => {
-    const composer = work.composer || '';
-    const era      = work.era || work.genre || '';
-    const statusClass = STATUS_CLASSES[work.status] || 'status-complete';
-    const audioSrc = work.audio || `assets/audio/${work.id || 'track'}.mp3`;
+  tracklistEl.innerHTML = _salonMusicWorks.map((work, idx) => {
+    const rNum = romanNumerals[idx] || (idx + 1);
+    const keyInfo = work.key || work.era || '';
+    const opusInfo = work.opus ? ` · ${work.opus}` : '';
+    const isActive = idx === _salonActiveIdx ? 'active' : '';
 
     return `
-      <div class="piano-card reveal" style="--delay: ${idx * 80}ms" data-id="${escHtml(work.id || slugify(work.title || ''))}">
-        <div class="piano-card-header">
-          <span class="piano-icon">🎹</span>
-          <span class="piano-status ${statusClass}">${escHtml(STATUS_LABELS[work.status] || '')}</span>
-        </div>
-        <h3 class="piano-title">${escHtml(work.title || 'Untitled')}</h3>
-        ${composer ? `<p class="piano-composer">${escHtml(composer)}</p>` : ''}
-        ${era      ? `<p class="piano-era">${escHtml(era)}</p>`           : ''}
-        <div class="piano-player">
-          <button
-            class="piano-play-piece-btn"
-            aria-label="Play ${escHtml(work.title || '')}"
-            onclick="togglePianoPlayer(this, ${idx}, '${escHtml(audioSrc)}', '${escHtml(work.title || '')}', '${escHtml(composer)}')"
-          >
-            <span class="soundwave-pulse" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </span>
-            <span class="piano-btn-label">Play a piece</span>
-            <span class="piano-play-icon">▶</span>
-          </button>
-          <div class="piano-progress-bar">
-            <div class="piano-progress-fill" id="piano-progress-${idx}"></div>
+      <div class="salon-track-item ${isActive}" data-idx="${idx}" onclick="selectSalonPiece(${idx})">
+        <span class="track-num">${rNum}</span>
+        <div class="track-info">
+          <h4 class="track-title">${escHtml(work.title || 'Untitled')}</h4>
+          <div class="track-meta">
+            <span>${escHtml(work.composer || '')}</span>
+            <span>${escHtml(keyInfo + opusInfo)}</span>
           </div>
         </div>
-        ${Array.isArray(work.tags) && work.tags.length
-          ? `<div class="piano-tags">${work.tags.map(t => `<span class="card-tag">${escHtml(t)}</span>`).join('')}</div>`
-          : ''}
-      </div>`;
+        <div class="track-play-indicator" id="salon-track-indicator-${idx}">
+          ${idx === _salonActiveIdx && _salonIsPlaying ? '⏸' : '▶'}
+        </div>
+      </div>
+    `;
   }).join('');
-}
 
-/** Track which piano player is currently "playing" (by index) */
-let _activePianoIdx = null;
-let _globalAudio = null;
+  // Setup Stage Plate
+  updateSalonStage(_salonActiveIdx);
+
+  // Setup Controls
+  initSalonControls();
+
+  // Setup Urtext Canvas
+  setupUrtextCanvas();
+}
 
 /**
- * togglePianoPlayer — visual play/pause state machine with template audio wiring.
- * Only one card plays at a time; clicking another pauses the first.
- * @param {HTMLButtonElement} btn
- * @param {number}            idx       Card index.
- * @param {string}            audioSrc  Path to mp3.
- * @param {string}            title     Track title.
- * @param {string}            composer  Composer.
+ * selectSalonPiece — selects and loads a piece into the Active Recital Stage.
+ * @param {number} idx
  */
-function togglePianoPlayer(btn, idx, audioSrc, title, composer) {
-  const isPlaying = btn.classList.contains('playing');
-  const labelEl = btn.querySelector('.piano-btn-label');
-  const iconEl  = btn.querySelector('.piano-play-icon');
+function selectSalonPiece(idx) {
+  if (idx < 0 || idx >= _salonMusicWorks.length) return;
 
-  // Sync with persistent audio player bar
-  const pTitle    = document.getElementById('player-title');
-  const pComposer = document.getElementById('player-composer');
-  const pPlay     = document.getElementById('player-play');
-  if (pTitle && title)       pTitle.textContent = title;
-  if (pComposer && composer) pComposer.textContent = composer;
-
-  // Pause any previously playing card
-  if (_activePianoIdx !== null && _activePianoIdx !== idx) {
-    const prevBtn = document.querySelector(`.piano-play-piece-btn.playing`);
-    if (prevBtn) {
-      prevBtn.classList.remove('playing');
-      const prevLbl = prevBtn.querySelector('.piano-btn-label');
-      if (prevLbl) prevLbl.textContent = 'Play a piece';
-      const prevIcn = prevBtn.querySelector('.piano-play-icon');
-      if (prevIcn) prevIcn.textContent = '▶';
-      const prevProg = document.getElementById(`piano-progress-${_activePianoIdx}`);
-      if (prevProg) {
-        prevProg.style.animation = 'none';
-        prevProg.style.width = '0%';
-      }
-    }
-    if (_globalAudio) {
-      _globalAudio.pause();
-      _globalAudio = null;
-    }
+  const wasPlaying = _salonIsPlaying;
+  if (_salonIsPlaying) {
+    pauseSalonPiece();
   }
 
-  if (isPlaying) {
-    btn.classList.remove('playing');
-    if (labelEl) labelEl.textContent = 'Play a piece';
-    if (iconEl)  iconEl.textContent = '▶';
-    if (pPlay)   pPlay.textContent = '▶';
-    const progress = document.getElementById(`piano-progress-${idx}`);
-    if (progress) progress.style.animationPlayState = 'paused';
-    if (_globalAudio) _globalAudio.pause();
-    _activePianoIdx = null;
-  } else {
-    btn.classList.add('playing');
-    if (labelEl) labelEl.textContent = 'Playing...';
-    if (iconEl)  iconEl.textContent = '⏸';
-    if (pPlay)   pPlay.textContent = '⏸';
+  _salonActiveIdx = idx;
+  _salonSimSeconds = 0;
 
-    const progress = document.getElementById(`piano-progress-${idx}`);
-    if (progress) {
-      progress.style.animation = 'none';
-      void progress.offsetWidth; // Force reflow
-      progress.style.animation = 'trackProgress 180s linear forwards';
-    }
+  // Update tracklist active states
+  document.querySelectorAll('.salon-track-item').forEach((item, i) => {
+    item.classList.toggle('active', i === idx);
+    const ind = document.getElementById(`salon-track-indicator-${i}`);
+    if (ind) ind.textContent = '▶';
+  });
 
-    if (audioSrc) {
-      try {
-        if (_globalAudio) _globalAudio.pause();
-        _globalAudio = new Audio(audioSrc);
-        _globalAudio.play().catch(() => {
-          console.info('[Elektra Audio] Playing template preview mode:', audioSrc);
-        });
-      } catch (err) {
-        console.info('[Elektra Audio] Template preview active');
-      }
-    }
+  updateSalonStage(idx);
 
-    _activePianoIdx = idx;
+  if (wasPlaying) {
+    playSalonPiece();
   }
 }
-window.togglePianoPlayer = togglePianoPlayer;
+window.selectSalonPiece = selectSalonPiece;
+
+/**
+ * parseDurationSec — parses "MM:SS" string to total seconds.
+ */
+function parseDurationSec(str) {
+  if (!str) return 300;
+  const parts = str.split(':').map(Number);
+  if (parts.length === 2) return (parts[0] * 60) + parts[1];
+  return 300;
+}
+
+/**
+ * formatTimeSec — formats seconds to "M:SS".
+ */
+function formatTimeSec(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
+/**
+ * updateSalonStage — populates the Right Pane (Active Recital Stage Plate).
+ */
+function updateSalonStage(idx) {
+  const work = _salonMusicWorks[idx];
+  if (!work) return;
+
+  const stageTitle = document.getElementById('stage-title');
+  const stageComposer = document.getElementById('stage-composer');
+  const stageEra = document.getElementById('stage-era');
+  const stageKey = document.getElementById('stage-key');
+  const stageTempo = document.getElementById('stage-tempo');
+  const stageDesc = document.getElementById('stage-desc');
+  const timeTotal = document.getElementById('time-total');
+  const urtextTempo = document.getElementById('urtext-tempo-marking');
+  const urtextExpr = document.getElementById('urtext-expression');
+  const fill = document.getElementById('stage-scrub-fill');
+  const thumb = document.getElementById('stage-scrub-thumb');
+  const timeCur = document.getElementById('time-current');
+
+  if (stageTitle) stageTitle.textContent = work.title || '';
+  if (stageComposer) stageComposer.textContent = work.composer || '';
+  if (stageEra) stageEra.textContent = work.era ? `${work.era} Canon` : 'Romantic Canon';
+  if (stageKey) stageKey.textContent = `${work.key || 'Solo Repertoire'}${work.opus ? ` · ${work.opus}` : ''}`;
+  if (stageTempo) stageTempo.textContent = work.tempo || 'Virtuoso Movement';
+  if (stageDesc) stageDesc.textContent = work.description || '';
+  if (urtextTempo) urtextTempo.textContent = work.tempo ? work.tempo.split('–')[0].trim() : 'Presto con fuoco';
+  if (urtextExpr) urtextExpr.textContent = idx % 2 === 0 ? 'espress. e legato' : 'appassionato e brillante';
+
+  _salonDurationSec = parseDurationSec(work.duration);
+  if (timeTotal) timeTotal.textContent = work.duration || formatTimeSec(_salonDurationSec);
+  if (fill) fill.style.width = '0%';
+  if (thumb) thumb.style.left = '0%';
+  if (timeCur) timeCur.textContent = '0:00';
+}
+
+/**
+ * initSalonControls — wires up play/pause button and scrub bar.
+ */
+function initSalonControls() {
+  const playBtn = document.getElementById('stage-play-btn');
+  if (playBtn) {
+    playBtn.onclick = () => {
+      if (_salonIsPlaying) {
+        pauseSalonPiece();
+      } else {
+        playSalonPiece();
+      }
+    };
+  }
+
+  const scrubBar = document.getElementById('stage-scrub-bar');
+  if (scrubBar) {
+    scrubBar.onclick = (e) => {
+      const rect = scrubBar.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      _salonSimSeconds = pct * _salonDurationSec;
+      if (_salonAudio && !isNaN(_salonAudio.duration) && _salonAudio.duration > 0) {
+        try {
+          _salonAudio.currentTime = pct * _salonAudio.duration;
+        } catch (_) {}
+      }
+      updateSalonTimeline();
+    };
+  }
+}
+
+/**
+ * playSalonPiece — starts audio playback (real or synthetic fallback).
+ */
+function playSalonPiece() {
+  const work = _salonMusicWorks[_salonActiveIdx];
+  if (!work) return;
+
+  _salonIsPlaying = true;
+  const playIcon = document.getElementById('stage-play-icon');
+  if (playIcon) playIcon.textContent = '⏸';
+
+  const trackInd = document.getElementById(`salon-track-indicator-${_salonActiveIdx}`);
+  if (trackInd) trackInd.textContent = '⏸';
+
+  const audioSrc = work.audio || `assets/audio/${work.id || 'track'}.mp3`;
+
+  // Attempt real audio if present
+  let realAudioStarted = false;
+  try {
+    if (!_salonAudio || _salonAudio.src !== new URL(audioSrc, window.location.href).href) {
+      if (_salonAudio) _salonAudio.pause();
+      _salonAudio = new Audio(audioSrc);
+    }
+    const playPromise = _salonAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        realAudioStarted = true;
+        const statusEl = document.getElementById('time-status');
+        if (statusEl) statusEl.textContent = 'Live Audio Playing';
+      }).catch(() => {
+        // Fallback to synthetic
+        realAudioStarted = false;
+      });
+    }
+  } catch (_) {
+    realAudioStarted = false;
+  }
+
+  // Fallback simulator loop (runs smoothly whether audio plays or is in preview)
+  clearInterval(_salonSimTimer);
+  _salonSimTimer = setInterval(() => {
+    if (_salonAudio && realAudioStarted && !isNaN(_salonAudio.currentTime) && _salonAudio.duration > 0) {
+      _salonSimSeconds = _salonAudio.currentTime;
+      _salonDurationSec = _salonAudio.duration;
+    } else {
+      _salonSimSeconds += 0.25;
+      if (_salonSimSeconds >= _salonDurationSec) {
+        _salonSimSeconds = 0;
+        selectSalonPiece((_salonActiveIdx + 1) % _salonMusicWorks.length);
+        return;
+      }
+    }
+    updateSalonTimeline();
+  }, 250);
+
+  // Start Urtext canvas animation loop
+  startUrtextAnimation();
+}
+
+/**
+ * pauseSalonPiece — pauses audio and halts animation.
+ */
+function pauseSalonPiece() {
+  _salonIsPlaying = false;
+  const playIcon = document.getElementById('stage-play-icon');
+  if (playIcon) playIcon.textContent = '▶';
+
+  const trackInd = document.getElementById(`salon-track-indicator-${_salonActiveIdx}`);
+  if (trackInd) trackInd.textContent = '▶';
+
+  if (_salonAudio) {
+    try { _salonAudio.pause(); } catch (_) {}
+  }
+
+  clearInterval(_salonSimTimer);
+  _salonSimTimer = null;
+}
+
+/**
+ * updateSalonTimeline — updates scrub bar fill and timestamp labels.
+ */
+function updateSalonTimeline() {
+  const pct = Math.min(100, (_salonSimSeconds / Math.max(1, _salonDurationSec)) * 100);
+  const fill = document.getElementById('stage-scrub-fill');
+  const thumb = document.getElementById('stage-scrub-thumb');
+  const timeCur = document.getElementById('time-current');
+
+  if (fill) fill.style.width = `${pct}%`;
+  if (thumb) thumb.style.left = `${pct}%`;
+  if (timeCur) timeCur.textContent = formatTimeSec(_salonSimSeconds);
+}
+
+/**
+ * setupUrtextCanvas — initialises the Classical Grand Staff Canvas.
+ */
+function setupUrtextCanvas() {
+  _urtextCanvas = document.getElementById('urtext-canvas');
+  if (!_urtextCanvas) return;
+  _urtextCtx = _urtextCanvas.getContext('2d');
+
+  // Resize canvas to match display container
+  const rect = _urtextCanvas.getBoundingClientRect();
+  if (rect.width > 0) {
+    _urtextCanvas.width = rect.width * (window.devicePixelRatio || 1);
+    _urtextCanvas.height = 90 * (window.devicePixelRatio || 1);
+  }
+
+  drawUrtextFrame(0);
+}
+
+/**
+ * startUrtextAnimation — runs continuous render loop while playing.
+ */
+function startUrtextAnimation() {
+  cancelAnimationFrame(_urtextAnimId);
+  function loop() {
+    _urtextPhase += 0.05;
+    drawUrtextFrame(_urtextPhase);
+    if (_salonIsPlaying) {
+      _urtextAnimId = requestAnimationFrame(loop);
+    }
+  }
+  _urtextAnimId = requestAnimationFrame(loop);
+}
+
+/**
+ * drawUrtextFrame — renders the Urtext 5-line grand staff, barlines, and cadence pulses.
+ */
+function drawUrtextFrame(phase) {
+  if (!_urtextCanvas || !_urtextCtx) return;
+  const ctx = _urtextCtx;
+  const w = _urtextCanvas.width;
+  const h = _urtextCanvas.height;
+
+  ctx.clearRect(0, 0, w, h);
+
+  const staffTop = h * 0.25;
+  const lineSpacing = (h * 0.45) / 4;
+
+  // 1. Draw 5 golden staff lines
+  ctx.strokeStyle = 'rgba(201, 168, 76, 0.28)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < 5; i++) {
+    const y = staffTop + (i * lineSpacing);
+    ctx.beginPath();
+    ctx.moveTo(w * 0.04, y);
+    ctx.lineTo(w * 0.96, y);
+    ctx.stroke();
+  }
+
+  // 2. Measure barlines
+  const measureCount = 4;
+  const measureW = (w * 0.92) / measureCount;
+  ctx.strokeStyle = 'rgba(201, 168, 76, 0.35)';
+  for (let m = 0; m <= measureCount; m++) {
+    const x = (w * 0.04) + (m * measureW);
+    ctx.beginPath();
+    ctx.moveTo(x, staffTop);
+    ctx.lineTo(x, staffTop + (4 * lineSpacing));
+    ctx.stroke();
+  }
+
+  // 3. Classical Musical Noteheads & Harmonic Cadence Nodes
+  const notePositions = [
+    { m: 0, pitch: 3, type: 'quarter' },
+    { m: 0, pitch: 1, type: 'quarter' },
+    { m: 1, pitch: 2, type: 'eighth' },
+    { m: 1, pitch: 0, type: 'eighth' },
+    { m: 2, pitch: 4, type: 'quarter' },
+    { m: 2, pitch: 2, type: 'quarter' },
+    { m: 3, pitch: 1, type: 'half' },
+  ];
+
+  const pct = Math.min(1, _salonSimSeconds / Math.max(1, _salonDurationSec));
+  const activeX = (w * 0.04) + (pct * w * 0.92);
+
+  // Playhead glowing vertical hairline
+  ctx.strokeStyle = 'rgba(201, 168, 76, 0.85)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(activeX, staffTop - 8);
+  ctx.lineTo(activeX, staffTop + (4 * lineSpacing) + 8);
+  ctx.stroke();
+
+  // Draw notes
+  notePositions.forEach((note, i) => {
+    const nx = (w * 0.08) + (i * (w * 0.12));
+    const ny = staffTop + (note.pitch * (lineSpacing / 2));
+    const distToPlayhead = Math.abs(nx - activeX);
+    const isLit = distToPlayhead < (w * 0.08) && _salonIsPlaying;
+
+    ctx.save();
+    ctx.translate(nx, ny);
+    ctx.rotate(-0.25); // Slanted classical notehead
+
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 5, 3.8, 0, 0, Math.PI * 2);
+    if (isLit) {
+      const pulseScale = 1 + (0.35 * Math.sin(phase * 4 + i));
+      ctx.fillStyle = '#fffaf0';
+      ctx.shadowColor = 'rgba(201, 168, 76, 0.9)';
+      ctx.shadowBlur = 12 * pulseScale;
+      ctx.fill();
+    } else {
+      ctx.fillStyle = 'rgba(201, 168, 76, 0.75)';
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // Note stem
+    ctx.strokeStyle = isLit ? '#fffaf0' : 'rgba(201, 168, 76, 0.65)';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(nx + 4.5, ny);
+    ctx.lineTo(nx + 4.5, ny - 24);
+    ctx.stroke();
+  });
+
+  // 4. Subtle Polyphonic Waveform Ribbon beneath staff
+  if (_salonIsPlaying) {
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(201, 168, 76, 0.35)';
+    ctx.lineWidth = 1.5;
+    for (let x = w * 0.04; x <= w * 0.96; x += 4) {
+      const wave = Math.sin((x * 0.02) + phase * 2) * 5
+                 + Math.sin((x * 0.04) - phase * 1.5) * 3;
+      const y = staffTop + (2 * lineSpacing) + wave;
+      if (x === w * 0.04) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+}
+
+// Window resize listener to keep canvas crisp
+window.addEventListener('resize', () => {
+  setupUrtextCanvas();
+});
 
 /**
  * openWorkById — helper to open the rich detail modal from any link or button.
@@ -1442,6 +1716,120 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   console.info('[Elektra] Portfolio initialised ✓ — profile loaded, works loaded:', works.length);
 });
+
+/* ============================================================
+   STRATEGIC & KINETIC THEATER CONSOLE CONTROLLER (TASK-SK-07)
+   ============================================================ */
+const STRATEGIC_DISCIPLINES = {
+  chess: {
+    id: "chess",
+    theme: "chess",
+    title: "Chess — Competitive Strategy",
+    kicker: "Competitive Strategy · Board Vision",
+    badge: "Campus & IAPI Champion",
+    description: "Deep positional play, dynamic tactical foresight, and sharp opening theoretical preparation. Campus and national competitive tournament champion.",
+    repertoireLabel: "Favorite Repertoire:",
+    repertoireLine: "Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation",
+    videoSrc: "assets/video/chess-analysis.mp4",
+    videoTitle: "Chess Analysis & Tactical Repertoire",
+    telemetry: "1920 × 1080 · 60 FPS · Tournament Replay"
+  },
+  geoguessr: {
+    id: "geoguessr",
+    theme: "geoguessr",
+    title: "GeoGuessr — Regional Topography",
+    kicker: "Geospatial Inference · Meta Deduction",
+    badge: "European Meta Specialist",
+    description: "High-accuracy regional deduction via architectural nuances, flora geography, utility infrastructure, road meta, and linguistic visual cues.",
+    repertoireLabel: "Domain Focus:",
+    repertoireLine: "European Meta · Regional Topography · High-Accuracy Location Inference",
+    videoSrc: "assets/video/geoguessr-analysis.mp4",
+    videoTitle: "GeoGuessr European Meta Deduction",
+    telemetry: "1920 × 1080 · 60 FPS · NMPZ 5k Runs"
+  },
+  rhythm: {
+    id: "rhythm",
+    theme: "rhythm",
+    title: "Rhythm Games — High-BPM Kinetic Reflexes",
+    kicker: "Kinetic Multi-Finger Coordination",
+    badge: "High-BPM Kinetic Reflexes",
+    description: "Million Master in Cytus; elite multi-finger coordination across VOEZ, Deemo, Dynamix, BanG Dream!, and osu! Directly connects multi-finger kinetic speed to virtuoso classical piano mechanics.",
+    repertoireLabel: "Kinetic Link:",
+    repertoireLine: "Directly connects multi-finger kinetic speed & finger independence to virtuoso classical piano mechanics.",
+    videoSrc: "assets/video/rhythm-gameplay.mp4",
+    videoTitle: "High-BPM Multi-Finger Finger Cam & Play",
+    telemetry: "1920 × 1080 · 60 FPS · Million Master"
+  }
+};
+
+function selectStrategicDiscipline(id) {
+  const data = STRATEGIC_DISCIPLINES[id];
+  if (!data) return;
+
+  const consoleEl = document.getElementById('strategic-theater');
+  if (consoleEl) consoleEl.setAttribute('data-active-theme', data.theme);
+
+  // 1. Update Tabs
+  document.querySelectorAll('.theater-tab-btn').forEach(btn => {
+    const isMatch = btn.dataset.id === id;
+    btn.classList.toggle('active', isMatch);
+    btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+  });
+
+  // 2. Update Dossier Info
+  const kicker = document.getElementById('dossier-kicker');
+  const title = document.getElementById('dossier-title');
+  const desc = document.getElementById('dossier-desc');
+  const repLabel = document.getElementById('repertoire-label');
+  const repLine = document.getElementById('repertoire-line');
+
+  if (kicker) kicker.textContent = data.kicker;
+  if (title) title.textContent = data.title;
+  if (desc) desc.textContent = data.description;
+  if (repLabel) repLabel.textContent = data.repertoireLabel;
+  if (repLine) repLine.textContent = data.repertoireLine;
+
+  // 3. Update Video & Standby Poster
+  const video = document.getElementById('strategic-video-player');
+  const source = document.getElementById('strategic-video-source');
+  const poster = document.getElementById('theater-standby-poster');
+  const standbyTitle = document.getElementById('standby-title');
+  const telemetry = document.getElementById('telemetry-focus');
+
+  if (video) {
+    video.pause();
+    video.style.display = 'none';
+  }
+  if (poster) poster.style.display = 'flex';
+  if (source) source.src = data.videoSrc;
+  if (video) video.load();
+  if (standbyTitle) standbyTitle.textContent = data.videoTitle;
+  if (telemetry) telemetry.textContent = data.telemetry;
+}
+window.selectStrategicDiscipline = selectStrategicDiscipline;
+
+/**
+ * handleTheaterPosterClick — attempts to play video or indicates standby status.
+ */
+function handleTheaterPosterClick() {
+  const video = document.getElementById('strategic-video-player');
+  const poster = document.getElementById('theater-standby-poster');
+
+  if (video) {
+    video.style.display = 'block';
+    if (poster) poster.style.display = 'none';
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Fallback: If video file isn't uploaded yet, revert to standby poster with notification
+        if (poster) poster.style.display = 'flex';
+        video.style.display = 'none';
+        console.info('[Elektra Video] Video reel in post-production. Drop MP4 file into assets/video/');
+      });
+    }
+  }
+}
+window.handleTheaterPosterClick = handleTheaterPosterClick;
 
 /* ============================================================
    CSS KEYFRAME INJECTION (trackProgress animation)

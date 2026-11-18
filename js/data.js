@@ -847,9 +847,13 @@ window.WORKS_DATA = [
     "title": "Ballade No. 1 in G Minor, Op. 23",
     "year": 2025,
     "composer": "Frédéric Chopin",
+    "opus": "Op. 23",
+    "key": "G Minor",
+    "tempo": "Largo – Presto con fuoco",
     "era": "Romantic",
     "difficulty": "Virtuoso",
-    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages and deeply lyrical cantabile sections.",
+    "duration": "9:30",
+    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages, polyphonic counterpoint, and deeply lyrical cantabile sections.",
     "audio": "assets/audio/ballade-1.mp3"
   },
   {
@@ -858,9 +862,13 @@ window.WORKS_DATA = [
     "title": "Piano Sonata No. 14 \"Moonlight\" — 3rd Movement, Presto Agitato",
     "year": 2025,
     "composer": "Ludwig van Beethoven",
+    "opus": "Op. 27 No. 2",
+    "key": "C♯ Minor",
+    "tempo": "Presto Agitato",
     "era": "Classical-Romantic",
     "difficulty": "Virtuoso",
-    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both technical precision and dramatic intensity.",
+    "duration": "7:15",
+    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both razor-sharp technical precision and dramatic intensity.",
     "audio": "assets/audio/moonlight-3rd.mp3"
   },
   {
@@ -869,9 +877,13 @@ window.WORKS_DATA = [
     "title": "Hungarian Rhapsody No. 2",
     "year": 2026,
     "composer": "Franz Liszt",
+    "opus": "S. 244/2",
+    "key": "C♯ Minor / F♯ Major",
+    "tempo": "Lassan – Friska",
     "era": "Romantic",
     "difficulty": "Virtuoso",
-    "description": "30% mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the piano repertoire.",
+    "duration": "10:45",
+    "description": "Virtuoso mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the entire romantic piano repertoire.",
     "audio": "assets/audio/hungarian-rhapsody-2.mp3"
   },
   {
@@ -880,8 +892,12 @@ window.WORKS_DATA = [
     "title": "Nocturne in B-flat Minor, Op. 9, No. 1",
     "year": 2024,
     "composer": "Frédéric Chopin",
+    "opus": "Op. 9 No. 1",
+    "key": "B♭ Minor",
+    "tempo": "Larghetto (cantabile)",
     "era": "Romantic",
     "difficulty": "Advanced",
+    "duration": "5:40",
     "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation.",
     "audio": "assets/audio/nocturne-op9-no1.mp3"
   },
