@@ -42,40 +42,52 @@ window.PROFILE_DATA = {
   ],
   "languages": [
     {
-      "flag": "🇬🇧",
+      "code": "EN",
       "name": "English",
-      "level": "C2 Proficient / Professional Working",
-      "detail": "EF SET 71/100"
+      "native": "English",
+      "level": "C2 Proficient / Professional",
+      "percent": 100,
+      "detail": "EF SET 71/100 · Oxford C2 Equivalent"
     },
     {
-      "flag": "🇮🇩",
+      "code": "ID",
       "name": "Indonesian",
-      "level": "Native",
-      "detail": ""
+      "native": "Bahasa",
+      "level": "Native / Mother Tongue",
+      "percent": 100,
+      "detail": "Scholarly, Literary & Scientific Medium"
     },
     {
-      "flag": "🇮🇩",
+      "code": "SU",
       "name": "Sundanese",
-      "level": "Fluent",
-      "detail": ""
+      "native": "ᮘᮞ ᮞᮥᮔ᮪ᮓ",
+      "level": "Fluent / Heritage",
+      "percent": 95,
+      "detail": "West Java Vernacular & Oral Tradition"
     },
     {
-      "flag": "🇯🇵",
+      "code": "JA",
       "name": "Japanese",
+      "native": "日本語",
       "level": "Conversational",
-      "detail": "EJU Prep / JLPT Candidate"
+      "percent": 60,
+      "detail": "EJU Mathematics & JLPT Prep"
     },
     {
-      "flag": "🇸🇦",
+      "code": "AR",
       "name": "Arabic",
-      "level": "Conversational",
-      "detail": "Classical Hermeneutics"
+      "native": "العربية",
+      "level": "Conversational / Exegetical",
+      "percent": 55,
+      "detail": "Classical Quranic Hermeneutics & Kalam"
     },
     {
-      "flag": "🇨🇳",
+      "code": "ZH",
       "name": "Mandarin (Simplified)",
+      "native": "中文",
       "level": "Conversational Basics",
-      "detail": "Kunkwan Institute"
+      "percent": 35,
+      "detail": "Kunkwan International Institute"
     }
   ],
   "certificates": [

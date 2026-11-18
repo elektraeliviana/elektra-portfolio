@@ -836,12 +836,25 @@ function renderLanguages(languages) {
 
   grid.innerHTML = languages.map(lang => `
     <div class="lang-card reveal">
-      <div class="lang-top">
-        <span class="lang-flag" aria-hidden="true">${escHtml(lang.flag || '🌐')}</span>
-        <span class="lang-name">${escHtml(lang.name || '')}</span>
+      <!-- Ambient Native Script Ghost Watermark -->
+      <span class="lang-native-watermark" aria-hidden="true">${escHtml(lang.native || '')}</span>
+
+      <div class="lang-header">
+        <div class="lang-identity">
+          <span class="lang-iso-badge">${escHtml(lang.code || '')}</span>
+          <h4 class="lang-name">${escHtml(lang.name || '')}</h4>
+        </div>
+        <span class="lang-native-label">${escHtml(lang.native || '')}</span>
       </div>
-      <div class="lang-level">${escHtml(lang.level || '')}</div>
-      ${lang.detail ? `<div class="lang-detail">${escHtml(lang.detail)}</div>` : ''}
+
+      <div class="lang-level-badge">${escHtml(lang.level || '')}</div>
+
+      <!-- Fluency Progress Bar -->
+      <div class="lang-meter-track" role="progressbar" aria-valuenow="${lang.percent}" aria-valuemin="0" aria-valuemax="100">
+        <div class="lang-meter-fill" style="width: ${lang.percent}%;"></div>
+      </div>
+
+      <div class="lang-detail">${escHtml(lang.detail || '')}</div>
     </div>
   `).join('');
 }
