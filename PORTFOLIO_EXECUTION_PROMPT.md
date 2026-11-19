@@ -19,7 +19,8 @@
 | **TASK-CS-08** | Trust & Safety Case Study Card & Token Compliance Refactor | **COMPLETED & VERIFIED** | `css/style.css`, `data/works.json`, `js/data.js` |
 | **TASK-MD-09** | Modal UX & Mobile Micro-Fit Polish (Close-Button Spacing & Squeezed Icon) | **COMPLETED & VERIFIED** | `css/style.css` |
 | **TASK-AN-10** | Global Kinetic Choreography & Visual Balance (Non-Destructive Motion System) | **COMPLETED & VERIFIED** | `css/style.css`, `js/app.js` |
-| **TASK-SN-11** | Claude Sonnet 5.5 High Master Aesthetic, Kinetic & Responsive Polish | **READY FOR EXECUTION** | `index.html`, `css/style.css`, `js/app.js` |
+| **TASK-SN-11** | Claude Sonnet 5.5 High Master Aesthetic, Kinetic & Responsive Polish | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js` |
+| **TASK-SN-12** | Claude Sonnet 5.5 High Deep Audit: Dynamic Emoji Purge & Final Kinetic Directives | **READY FOR EXECUTION** | `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js`, `css/style.css`, `index.html` |
 
 ---
 
@@ -1331,13 +1332,137 @@ git push origin main
 ---
 
 ### 4. Verification & Acceptance Criteria
-- [ ] Gravitational cursor never appears or interferes on mobile touch screens (`pointer: coarse`) or during touch gestures.
-- [ ] Spencerian calligraphy draws on with organic fluid cadence; short flourishes do not snap or pop; terminal dots bloom at $t = 2.0\text{s}$.
-- [ ] Sundanese script `ᮘᮞ ᮞᮥᮔ᮪ᮓ` displays crisp native glyphs on Windows Chromium without tofu boxes.
-- [ ] Floating pill navbar scales seamlessly across 768px, 1024px, 1440px, and 1920px with zero text-wrapping.
-- [ ] Strategic theater standby click shows a refined gold toast message; zero 404 console errors.
-- [ ] Urtext canvas loop pauses when scrolled away from `#piano` section (GPU/battery safe).
-- [ ] Hero horological tumblers roll in smoothly with mechanical stagger.
-- [ ] Section vertical rhythm feels stately and unified.
-- [ ] Validated on local preview and deployed cleanly with commit message:  
+- [x] Gravitational cursor never appears or interferes on mobile touch screens (`pointer: coarse`) or during touch gestures.
+- [x] Spencerian calligraphy draws on with organic fluid cadence; short flourishes do not snap or pop; terminal dots bloom at $t = 2.0\text{s}$.
+- [x] Sundanese script `ᮘᮞ ᮞᮥᮔ᮪ᮓ` displays crisp native glyphs on Windows Chromium without tofu boxes.
+- [x] Floating pill navbar scales seamlessly across 768px, 1024px, 1440px, and 1920px with zero text-wrapping.
+- [x] Strategic theater standby click shows a refined gold toast message; zero 404 console errors.
+- [x] Urtext canvas loop pauses when scrolled away from `#piano` section (GPU/battery safe).
+- [x] Hero horological tumblers roll in smoothly with mechanical stagger.
+- [x] Section vertical rhythm feels stately and unified.
+- [x] Validated on local preview and deployed cleanly with commit message:  
   `git commit -am "feat(polish): sonnet 5.5 master aesthetic, kinetic & responsive polish (TASK-SN-11)"`
+
+---
+
+## 🛠️ TASK-SN-12: Claude Sonnet 5.5 High — Deep Audit of Unexecuted Conversation Directives & Dynamic Emoji Purge
+
+> **Assigned Model**: **Claude Sonnet 5.5 (Reasoning Tier: High)**  
+> **Target Files**: `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js`, `css/style.css`, `index.html`  
+> **Current Commit Base**: `e5c17c1`  
+> **Execution Mandate**: Complete the remaining 5 nuanced requirements from the 10-Phase Master Interview that were not yet touched or were only applied to static HTML rather than dynamic JS templates.
+
+---
+
+### 1. Audit of Remaining Unexecuted Directives from Our Conversation
+
+#### 1.1 Dynamic JS Emoji Purge (`TYPE_ICONS`, `renderHonors`, Modal Buttons & Case Study Document Cards)
+* **Conversation Directive (Phase 0, 1, 10)**:
+  > *"about emoticons, I think it's too generic. I need more improvement"*  
+  > *"Purge all color emojis. Replace them with bespoke, etched champagne gold (`#C5A059`) monoline SVG vector crests."*
+* **What Remains Unexecuted**:
+  While static emojis in `index.html` were replaced with etched SVGs, **four dynamic JS/JSON templates still inject multi-colored smartphone emojis**:
+  1. **`TYPE_ICONS` in `js/app.js` (lines 403–414 & lines 449, 485, 650, 754)**:
+     Every work card in `#works-grid` (38 cards) and the Detail Modal header still outputs raw OS emojis: `⚡`, `🔬`, `📖`, `✍️`, `🎨`, `🎹`, `♟️`, `🎬`, `⚖️`, `🛡️`, `📄` via `${escHtml(icon)}`.
+     - **Exact Fix**: Replace `TYPE_ICONS` with etched `#C5A059` monoline inline `<svg>` strings (`width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"`), and insert `${icon}` (un-escaped SVG markup) inside `.card-type-icon` and `.modal-type-badge`.
+  2. **Curated Achievements Grid (`renderHonors` in `js/app.js` lines 1016–1050 & `data/profile.json` lines 263–305 & `js/data.js`)**:
+     The 8 cards in `#honors-list` still render cartoon emojis (`🪐` Saturn planet, `🌾` wheat stalk, `⚖️` scale, `🔬` microscope, `🎹` piano keys, `🏆` trophy).
+     - **Exact Fix**: Create a helper `getHonorMonolineSvg(category, title)` in `js/app.js` returning bespoke `#C5A059` monoline SVGs (Chess Knight crest, Astrolabe/Celestial orbital rings for Astronomy, Geometric compass/Euler triangle for Mathematics, Scales of dialectic for Debate, Atomic/Optical prism for Natural Sciences, Grand staff/Lyre crest for Classical Piano) and render that SVG inside `.honor-card-icon` regardless of any legacy emoji string in `profile.json`.
+  3. **Modal Action Buttons (`js/app.js` lines 704 & 713)**:
+     Replace `📄 Download PDF` and `📖 Read Excerpt` with etched gold monoline SVG icons + text.
+  4. **Trust & Safety Case Study PDF Download Cards (`data/works.json` & `js/data.js` inside `case_study_html`)**:
+     Replace `<span class="doc-icon">📄</span>` and `<span class="doc-icon">⚖️</span>` with inline `#C5A059` monoline SVGs (archival codex scroll & scales of governance).
+
+---
+
+#### 1.2 Phase 3: Authentic Cultural Calligraphic Watermarks on Language Cards & Unified Parchment Unveiling
+* **Conversation Directive (Phase 3)**:
+  > *"emerge as a unified parchment engraving. It slowly rotate/drift on a continuous 60s harmonic axis"*  
+  > *"do not put a colorful modern flags so rebase to cultural calligraphic watermarks as what we've discussed before"*
+* **What Remains Unexecuted**:
+  1. In `data/profile.json` (and `js/data.js`), the **English** card has `"native": "English"` and **Indonesian** has `"native": "Bahasa"`, which simply prints duplicate Latin text in the bottom-right corner rather than an authentic **cultural calligraphic watermark**:
+     - For **English (`EN`)**: Render the `.lang-native-watermark` in Spencerian calligraphic script (`font-family: 'Great Vibes', 'Alex Brush', cursive; font-size: 3.8rem;`) or display `"Spencerian"` / `"Albion"` monogram flourish.
+     - For **Indonesian (`ID`)**: Display a refined Nusantara calligraphic script / `"Nusantara"` in high-contrast italic calligraphic serif (`'Cormorant Garamond', italic`).
+     - For **Arabic (`AR`)**, **Japanese (`JA`)**, and **Mandarin (`ZH`)**: Ensure `.lang-native-watermark` has dedicated script font-family support (`'Amiri', 'Noto Serif JP', 'Noto Serif SC'`) so each cultural watermark looks like an engraved manuscript seal.
+  2. **Unified Parchment Engraving Wipe for `#about`**:
+     Add a smooth parchment unmasking transition when `#about.revealed` enters the viewport (`clip-path` or vertical mask reveal accompanied by a subtle gold hairline sweep).
+
+---
+
+#### 1.3 Phase 8: Elastic Needle Tension Dragging on the Audio Scrubber
+* **Conversation Directive (Phase 8)**:
+  > *"elastic needle tension that springs precisely to the playhead"*
+* **What Remains Unexecuted**:
+  Currently, `initSalonControls()` in `js/app.js` (line 1323) only supports a single static `scrubBar.onclick` jump. Visitors cannot drag/scrub the needle across the timeline!
+* **Exact Fix**:
+  Upgrade `initSalonControls()` in `js/app.js` to support full **pointer drag scrubbing with elastic needle tension**:
+  - On `pointerdown` on `#stage-scrub-bar`: capture pointer, set `.is-scrubbing` on `#stage-scrub-bar`.
+  - On `pointermove`: smoothly interpolate the thumb position toward the pointer with subtle elastic tension (visual thumb follows cursor immediately while fill bar trails with critically damped spring easing), updating `#time-current` and `drawUrtextFrame(_urtextPhase)` in real time.
+  - On `pointerup` / `pointercancel`: release pointer capture, snap playhead with spring overshoot (`cubic-bezier(0.34, 1.56, 0.64, 1)`), and commit `_salonSimSeconds` / `_salonAudio.currentTime`.
+
+---
+
+#### 1.4 Phase 6: True Origin-Card Coordinate Fold-Back on the Clerestory Glass Plate Modal
+* **Conversation Directive (Phase 6)**:
+  > *"it should emerges as an illuminated glass plate descending from the upper clerestory while the background dips into a soft 12px lens blur. Fold back into the card"*
+* **What Remains Unexecuted**:
+  Currently, `closeModal()` always translates straight down by a generic `translateY(20px) scale(0.92)` instead of folding back toward the specific card that opened it.
+* **Exact Fix**:
+  - In `openModal(work)` (or when clicking a `.work-card` / `.companion-card` / `.research-flagship-plaque`): find the DOM card matching `work.id` (`document.querySelector(\`[data-id="\${work.id}"]\`)`), compute the vector $(\Delta x, \Delta y)$ between the viewport center (modal panel center) and that card's bounding-box center, and store `--origin-dx: ${dx}px; --origin-dy: ${dy}px;` on `#modal-panel`.
+  - In `css/style.css`:
+    ```css
+    #modal-overlay.closing .modal-panel {
+      transform: translate3d(calc(var(--origin-dx, 0px) * 0.45), calc(var(--origin-dy, 24px) * 0.45), 0) scale(0.86) !important;
+      opacity: 0 !important;
+      transition: transform 0.34s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    ```
+  - This makes the Clerestory Glass Plate physically fold back toward the exact card that summoned it!
+
+---
+
+#### 1.5 Phase 0 & 1: Lateral Ink-Bleed Section Unveiling & Gravitational Hairline Divider Pull
+* **Conversation Directive (Phase 0)**:
+  > *"it has gravitational lens that subtly pulls nearby typography and hairline dividers toward it, be sure to make a differentiation in colors when cursor points at it"*  
+  > *"Lateral unveiling like ink bleeding into water"*
+* **What Remains Unexecuted**:
+  1. **Lateral Ink-Bleed Unveiling**:
+     Add a lateral ink-bleed reveal on `.section-title` and `.subsection-title` when their parent `.reveal.revealed` triggers: a smooth horizontal gradient mask / shimmer transition from champagne gold (`#dfc285`) into crisp parchment ivory (`#e8e0d0`).
+  2. **Gravitational Hairline Divider Pull & Color Differentiation**:
+     In `initGravitationalCursor()` (`js/app.js`), extend the magnetic proximity check to hairline dividers (`.tools-group-header`, `.dispatch-console-header`, `.salon-program-header`): when the cursor approaches within $80\text{px}$, subtly bow/translate the divider by $2\text{px}$ toward the cursor and shift its border/text color toward luminous `#dfc285`.
+
+---
+
+### 2. Step-by-Step Prompt to Paste into Claude Sonnet 5.5 High Chat
+
+```text
+Please read and execute TASK-SN-12 from PORTFOLIO_EXECUTION_PROMPT.md directly in the repository at c:\Users\ASUS PC\.gemini\antigravity\scratch\elektra-portfolio.
+
+Target files:
+1. js/app.js
+2. css/style.css
+3. data/profile.json & js/data.js
+4. data/works.json
+5. index.html
+
+Requirements — Execute all 5 remaining items from our 10-Phase Master Interview with surgical precision:
+1. Dynamic JS Emoji Purge:
+   - Replace TYPE_ICONS and SOCIAL_ICONS in js/app.js with etched champagne gold (#C5A059) monoline inline SVGs and render them inside .card-type-icon and .modal-type-badge across all 38 works cards and modals.
+   - Update renderHonors() in js/app.js to render bespoke etched #C5A059 monoline SVG crests for all 8 Curated Achievements cards in #honors-list (replacing 🪐, 🌾, ⚖️, 🔬, 🎹, 🏆).
+   - Replace 📄 and 📖 in modal PDF/Excerpt buttons (js/app.js) and replace 📄 and ⚖️ in case_study_html (data/works.json & js/data.js) with inline #C5A059 monoline SVGs.
+2. Phase 3 Cultural Calligraphic Watermarks & Parchment Unmasking:
+   - Style .lang-native-watermark in css/style.css & renderLanguages() so English ('EN') renders in ornate Spencerian calligraphy ('Great Vibes' / 'Alex Brush'), Indonesian ('ID') renders in classical italic serif calligraphy, and SU/JA/AR/ZH render with sculptural archival watermark depth.
+   - Add a unified parchment unveiling wipe to #about when revealed.
+3. Phase 8 Elastic Needle Tension Dragging on the Audio Scrubber:
+   - Upgrade initSalonControls() in js/app.js with pointerdown / pointermove / pointerup drag-scrubbing so visitors can smoothly drag the gilded scrubber needle with elastic spring tension and real-time Urtext canvas feedback.
+4. Phase 6 True Origin-Card Coordinate Fold-Back on the Clerestory Modal:
+   - In openModal(work) and closeModal(), compute --origin-dx and --origin-dy toward the originating [data-id] card so #modal-panel physically folds back into the card that opened it.
+5. Phase 0 Lateral Ink-Bleed Unveiling & Gravitational Hairline Divider Pull:
+   - Add lateral ink-bleed reveal animation on .section-title when revealed, and include hairline headers (.tools-group-header, .salon-program-header, .dispatch-console-header) in the gravitational cursor magnetic pull + gold color differentiation.
+
+Maintain CLS=0, reduced-motion safety, and zero console errors. Bump asset cache-busting query strings in index.html to ?v=3.1.0.
+Commit and push to GitHub:
+git commit -am "feat(polish): complete TASK-SN-12 dynamic emoji purge & final kinetic directives"
+git push origin main
+```
+
