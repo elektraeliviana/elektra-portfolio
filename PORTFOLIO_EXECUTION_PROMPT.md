@@ -19,6 +19,7 @@
 | **TASK-CS-08** | Trust & Safety Case Study Card & Token Compliance Refactor | **COMPLETED & VERIFIED** | `css/style.css`, `data/works.json`, `js/data.js` |
 | **TASK-MD-09** | Modal UX & Mobile Micro-Fit Polish (Close-Button Spacing & Squeezed Icon) | **COMPLETED & VERIFIED** | `css/style.css` |
 | **TASK-AN-10** | Global Kinetic Choreography & Visual Balance (Non-Destructive Motion System) | **COMPLETED & VERIFIED** | `css/style.css`, `js/app.js` |
+| **TASK-SN-11** | Claude Sonnet 5.5 High Master Aesthetic, Kinetic & Responsive Polish | **READY FOR EXECUTION** | `index.html`, `css/style.css`, `js/app.js` |
 
 ---
 
@@ -1149,3 +1150,93 @@ The portfolio is structurally and textually complete. However, across the full s
 - [x] All interactive cards feel responsive and tactile with uniform luxury easing.
 - [x] Reduced-motion mode instantly disables all continuous animations and transitions.
 - [x] Zero horizontal scrollbars introduced across all responsive breakpoints.
+
+---
+
+## 🛠️ TASK-SN-11: Claude Sonnet 5.5 High Master Aesthetic, Kinetic & Responsive Polish
+
+> **Model Assigned**: **Claude Sonnet 5.5 (Reasoning Tier: High)**  
+> **Target Files**: `index.html`, `css/style.css`, `js/app.js`  
+> **Mission**: Gemini 4 Argon High has established the core machinery for Phases 0–10 (commit `b4b36db`). Your task is surgical, high-precision aesthetic and kinetic polish. Do NOT rewrite layouts from scratch. Refine timing curves, eliminate visual friction, fix font fallbacks, and harden mobile edge cases.
+
+---
+
+### Detailed Scope of Enhancements
+
+#### 1. Mobile Touch Guardrail for Gravitational Cursor (`#custom-cursor`)
+* **File**: `js/app.js` & `css/style.css`
+* **Defect**: On touch devices (smartphones/tablets), touch taps can cause the cursor or trail elements to spawn or linger on screen.
+* **Refinement**: 
+  - Ensure `#custom-cursor` and `#custom-cursor-trail` have `display: none !important;` under `@media (hover: none) and (pointer: coarse)`.
+  - In `initGravitationalCursor()`, wrap event listeners with an active touch-abort controller so mobile battery and GPU cycles are 100% preserved.
+
+#### 2. Spencerian Calligraphy Draw-in Path-by-Path Calibration
+* **File**: `css/style.css` & `index.html`
+* **Defect**: The current draw-in uses a blanket hardcoded `stroke-dasharray: 900;` on all paths. Shorter flourishes (~50px–100px) complete their stroke draw instantly and pop abruptly, while the main signature text is still writing.
+* **Refinement**:
+  - Calibrate the stroke-dasharray and timing per element:
+    - Main title text (`.hero-spencerian-text`): Smooth organic ink bleed (`fade-in + subtle blur reduction` over 1.8s).
+    - Top flourish swash: `stroke-dasharray: 450;` over 1.8s.
+    - Long underline whip (`M 160,156 C 320,164...`): `stroke-dasharray: 750;` over 2.2s with `cubic-bezier(0.16, 1, 0.3, 1)`.
+    - Terminal dots (`<circle ...>`): Blossom softly at $t = 2.0\text{s}$ with scale bloom (`transform: scale(0) -> scale(1)`).
+
+#### 3. Aksara Sunda (Sundanese) Missing-Glyph Tofu Box Repair
+* **File**: `index.html` & `css/style.css`
+* **Defect**: On Windows Chromium (Chrome/Edge/Brave), the Sundanese card renders `ᮘᮞ ᮞᮥᮔ᮪ᮓ` as empty tofu boxes (`▯▯ ▯▯▯▯▯`) because the local system lacks Sundanese fonts.
+* **Refinement**:
+  - In `index.html` `<head>`, append the Google Font link for `Noto Sans Sundanese`:
+    ```html
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sundanese:wght@400;600;700&display=swap" rel="stylesheet" />
+    ```
+  - In `css/style.css`, declare font-family fallback:
+    ```css
+    .lang-native-watermark, .lang-native-label {
+      font-family: 'Noto Sans Sundanese', var(--font-display), serif;
+    }
+    ```
+
+#### 4. Floating Frosted Pill Navbar Intermediate Tablet Spacing (768px–1024px)
+* **File**: `css/style.css`
+* **Defect**: On tablets and iPad viewports (~768px to 1024px), the 8 navigation links inside the floating capsule (`min-width: 560px; max-width: 860px`) can suffer text-wrapping or collision with the brand logo.
+* **Refinement**:
+  - Set `gap: clamp(0.75rem, 1.5vw, 1.25rem);` on `.nav-links`.
+  - Ensure `.nav-link` font size scales to `clamp(0.72rem, 1.1vw, 0.82rem)` with `white-space: nowrap;`.
+
+#### 5. Strategic Theater Post-Production Video Feedback Toast
+* **File**: `js/app.js` & `css/style.css`
+* **Defect**: Clicking the 16:9 video standby poster in `#credentials` triggers a console `GET 404 (Not Found)` because `chess-analysis.mp4` is in post-production.
+* **Refinement**:
+  - In `handleTheaterPosterClick()`, intercept clicks gracefully: instead of triggering unhandled audio/video promises, display a luxury floating champagne toast at the bottom of the screen:
+    `"Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon."`
+  - Style `.theater-toast` with dark obsidian glassmorphism (`backdrop-filter: blur(16px)`), gold border, and automatic 3.5s fade-out.
+
+#### 6. Section Vertical Chasm Compression (296px Dead Void Fix)
+* **File**: `css/style.css`
+* **Defect**: Stacked `margin-top: clamp(4.5rem, 8vw, 7rem)` combined with `padding-top: clamp(3rem, 5vw, 4.5rem)` on `#tools`, `#horizons`, `#works`, `#piano`, `#credentials`, and `#contact` generates empty 280px–300px voids between sections.
+* **Refinement**:
+  - Remove redundant `margin-top` overrides.
+  - Establish a clean, unified vertical rhythm:
+    ```css
+    #about, #tools, #horizons, #works, #research, #piano, #credentials, #contact {
+      margin-top: 0 !important;
+      padding-block: clamp(3.5rem, 6vw, 5.5rem) !important;
+    }
+    ```
+
+#### 7. CSS `!important` Specificity Sanitization
+* **File**: `css/style.css`
+* **Defect**: Over 40 `!important` declarations were appended in Phase 0–10 to overpower legacy cascade rules.
+* **Refinement**:
+  - Restructure selector specificity so that core tokens and hover elevations cascade naturally without fragile `!important` wars.
+
+---
+
+### Verification & Acceptance Criteria
+- [ ] Gravitational cursor never appears or interferes on mobile touch screens (`pointer: coarse`).
+- [ ] Spencerian calligraphy draws on with organic fluid cadence; short flourishes do not snap or pop.
+- [ ] Sundanese script `ᮘᮞ ᮞᮥᮔ᮪ᮓ` displays crisp native glyphs on Windows Chromium without tofu boxes.
+- [ ] Floating pill navbar scales seamlessly across 768px, 1024px, 1440px, and 1920px with zero text-wrapping.
+- [ ] Strategic theater standby click shows a refined gold toast message; zero 404 console errors.
+- [ ] Section-to-section vertical gaps feel unified, stately, and free of massive empty black chasms.
+- [ ] Validated on local preview and deployed cleanly with commit message:  
+  `git commit -am "feat(polish): sonnet 5.5 master aesthetic, kinetic & responsive polish (TASK-SN-11)"`
