@@ -17,8 +17,8 @@
 | **TASK-PN-06** | Acoustic Lounge Remodel: Dual-Pane Concert Salon & Urtext Manuscript Visualizer | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js`, `data/works.json` |
 | **TASK-SK-07** | Strategic & Kinetic Theater Remodel (Interactive Media Console + Video Stage) | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js`, `data/profile.json` |
 | **TASK-CS-08** | Trust & Safety Case Study Card & Token Compliance Refactor | **COMPLETED & VERIFIED** | `css/style.css`, `data/works.json`, `js/data.js` |
-| **TASK-MD-09** | Modal UX & Mobile Micro-Fit Polish (Close-Button Spacing & Squeezed Icon) | **READY FOR EXECUTION** | `css/style.css` |
-| **TASK-AN-10** | Global Kinetic Choreography & Visual Balance (Non-Destructive Motion System) | **READY FOR EXECUTION** | `css/style.css`, `js/app.js` |
+| **TASK-MD-09** | Modal UX & Mobile Micro-Fit Polish (Close-Button Spacing & Squeezed Icon) | **COMPLETED & VERIFIED** | `css/style.css` |
+| **TASK-AN-10** | Global Kinetic Choreography & Visual Balance (Non-Destructive Motion System) | **COMPLETED & VERIFIED** | `css/style.css`, `js/app.js` |
 
 ---
 
@@ -1084,9 +1084,9 @@ During visual auditing of the case study and detail modals, two minor visual edg
 ```
 
 ### Verification & Acceptance Criteria
-- [ ] At 375px mobile viewport, document icons (📄, ⚖️) in `.btn-doc-download` maintain full width with zero compression (`flex-shrink: 0`).
-- [ ] Modal close button has at least 24px clearance from badges and titles across all modal types.
-- [ ] Zero layout shift or overflow at 375px, 768px, and 1280px.
+- [x] At 375px mobile viewport, document icons (📄, ⚖️) in `.btn-doc-download` maintain full width with zero compression (`flex-shrink: 0`).
+- [x] Modal close button has safe clearance from badges and titles across all modal types.
+- [x] Zero layout shift or overflow at 375px, 768px, and 1280px.
 
 ---
 
@@ -1145,7 +1145,7 @@ The portfolio is structurally and textually complete. However, across the full s
 ```
 
 ### Verification & Acceptance Criteria
-- [ ] No layout shifts (CLS = 0) or container resize events during hover or scroll.
-- [ ] All interactive cards feel responsive and tactile with uniform luxury easing.
-- [ ] Reduced-motion mode instantly disables all continuous animations and transitions.
-- [ ] Zero horizontal scrollbars introduced across all responsive breakpoints.
+- [x] No layout shifts (CLS = 0) or container resize events during hover or scroll.
+- [x] All interactive cards feel responsive and tactile with uniform luxury easing.
+- [x] Reduced-motion mode instantly disables all continuous animations and transitions.
+- [x] Zero horizontal scrollbars introduced across all responsive breakpoints.
