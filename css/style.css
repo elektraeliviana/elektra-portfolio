@@ -6450,10 +6450,12 @@ body {
   opacity: 1;
 }
 
+/* Phase 6: the plate folds back toward the exact card that summoned it.
+   --origin-dx / --origin-dy / --origin-scale are written by setModalOriginVector() in app.js. */
 #modal-overlay.closing .modal-panel {
-  transform: scale(0.92) translateY(20px) !important;
+  transform: translate3d(var(--origin-dx, 0px), var(--origin-dy, 24px), 0) scale(var(--origin-scale, 0.86)) !important;
   opacity: 0 !important;
-  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: transform 0.34s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.34s cubic-bezier(0.55, 0, 1, 0.45) !important;
 }
 
 /* ── Phase 7: Research Sanctum — Bronze Slab Unveiling, Modal Flux & Vellum Marginalia ── */
@@ -7033,4 +7035,316 @@ footer.footer-minimal::before {
 .theater-toast.is-visible {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   TASK-SN-12 — Dynamic emoji purge & final kinetic directives
+   ════════════════════════════════════════════════════════════ */
+
+/* ── 1. Etched champagne-gold monoline SVG icons (#C5A059) ── */
+.mono-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.card-type-icon .mono-icon,
+.modal-type-badge .mono-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.modal-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-pdf-btn .btn-icon,
+.modal-excerpt-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.art-placeholder-icon {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.achievement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 0;
+}
+
+.achievement-icon .honor-crest {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.22));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+}
+
+.achievement-card:hover .achievement-icon .honor-crest {
+  transform: scale(1.08) rotate(-3deg);
+  filter: drop-shadow(0 0 9px rgba(223, 194, 133, 0.45));
+}
+
+.btn-doc-download .doc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-size: 0;
+}
+
+.social-icon,
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-svg {
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.social-link:hover .social-svg,
+.social-icon-link:hover .social-svg {
+  filter: drop-shadow(0 0 7px rgba(223, 194, 133, 0.5));
+  transform: scale(1.08);
+}
+
+/* ── 2. Phase 3: cultural calligraphic watermarks ── */
+.lang-card[data-lang="EN"] .lang-native-watermark {
+  font-family: 'Great Vibes', 'Alex Brush', cursive;
+  font-size: 4.2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  right: 0.9rem;
+  bottom: -0.35rem;
+  opacity: 0.13;
+  transform: rotate(-5deg);
+  transform-origin: right bottom;
+}
+
+.lang-card[data-lang="ID"] .lang-native-watermark {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 3rem;
+  letter-spacing: 0.01em;
+  right: 0.9rem;
+  bottom: -0.1rem;
+  opacity: 0.12;
+}
+
+/* SU / JA / AR / ZH: sculptural archival depth — gilt-to-bronze face with an
+   inner highlight above and a cast shadow below, like an engraved manuscript seal */
+.lang-card[data-lang="SU"] .lang-native-watermark,
+.lang-card[data-lang="JA"] .lang-native-watermark,
+.lang-card[data-lang="AR"] .lang-native-watermark,
+.lang-card[data-lang="ZH"] .lang-native-watermark {
+  font-weight: 700;
+  line-height: 1.05;
+  opacity: 0.2;
+  background: linear-gradient(160deg, rgba(240, 215, 150, 0.95) 0%, rgba(197, 160, 89, 0.55) 52%, rgba(96, 72, 30, 0.75) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 240, 200, 0.28)) drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.75)) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.lang-card[data-lang="JA"] .lang-native-watermark { font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif; font-size: 3.1rem; }
+.lang-card[data-lang="ZH"] .lang-native-watermark { font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; font-size: 3.1rem; }
+.lang-card[data-lang="AR"] .lang-native-watermark { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; font-size: 3.4rem; }
+.lang-card[data-lang="SU"] .lang-native-watermark { font-family: 'Noto Sans Sundanese', serif; font-size: 3rem; }
+
+/* Unified parchment unveiling wipe on #about: content is unmasked top-to-bottom
+   while a gold hairline rides the leading edge. clip-path/transform only → CLS 0. */
+@keyframes parchmentUnveil {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes parchmentHairline {
+  0%   { transform: translateY(-100%); opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+#about.revealed .section-container {
+  animation: parchmentUnveil 1.35s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+#about::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent 88%, rgba(197, 160, 89, 0.08) 96%, rgba(223, 194, 133, 0.75) 99.6%, transparent 100%);
+}
+
+#about.revealed::after {
+  animation: parchmentHairline 1.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── 3. Phase 8: elastic needle tension on the audio scrubber ── */
+.stage-scrub-bar {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* generous invisible hit area around the 6px rail */
+.stage-scrub-bar::before {
+  content: '';
+  position: absolute;
+  inset: -11px 0;
+}
+
+.stage-scrub-bar:focus-visible {
+  outline: 1px solid rgba(223, 194, 133, 0.7);
+  outline-offset: 7px;
+}
+
+.stage-scrub-bar.is-scrubbing {
+  cursor: grabbing;
+}
+
+.stage-scrub-bar.is-scrubbing .stage-scrub-fill,
+.stage-scrub-bar.is-settling .stage-scrub-fill {
+  transition: none;
+}
+
+/* needle position is driven by the JS springs → no CSS transition on `left` */
+.stage-scrub-bar.is-scrubbing .stage-scrub-thumb,
+.stage-scrub-bar.is-settling .stage-scrub-thumb {
+  opacity: 1 !important;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease !important;
+}
+
+.stage-scrub-bar.is-scrubbing .stage-scrub-thumb {
+  transform: translate(-50%, -50%) scale(1.45) scaleX(var(--scrub-stretch, 1)) !important;
+  box-shadow: 0 0 18px rgba(223, 194, 133, 0.95) !important;
+}
+
+/* ── 4. Phase 0: lateral ink-bleed title unveiling ── */
+@keyframes inkBleedLateral {
+  0% {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    color: #dfc285;
+    text-shadow: 0 0 22px rgba(223, 194, 133, 0.45);
+  }
+  100% {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+    text-shadow: 0 0 0 rgba(223, 194, 133, 0);
+  }
+}
+
+.reveal.revealed .section-title,
+.section-title.ink-revealed,
+.subsection-title.ink-revealed {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 45%, transparent 55%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 45%, transparent 55%, transparent 100%);
+  -webkit-mask-size: 250% 100%;
+  mask-size: 250% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0% 0;
+  mask-position: 0% 0;
+  animation: inkBleedLateral 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.12s backwards;
+}
+
+.section-title.ink-pending,
+.subsection-title.ink-pending {
+  opacity: 0;
+}
+
+/* ── 5. Phase 0: gravitational hairline dividers ── */
+.tools-group-header,
+.salon-program-header,
+.dispatch-console-header {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.tools-group-heading,
+.program-kicker,
+.dispatch-kicker {
+  transition: color 0.3s ease;
+}
+
+.tools-group-header.hairline-attracted,
+.salon-program-header.hairline-attracted,
+.dispatch-console-header.hairline-attracted {
+  transform: translate3d(var(--hairline-dx, 0px), var(--hairline-dy, 0px), 0);
+  border-bottom-color: rgba(223, 194, 133, calc(0.35 + 0.5 * var(--hairline-glow, 1)));
+  box-shadow: 0 1px 0 rgba(223, 194, 133, calc(0.14 * var(--hairline-glow, 1)));
+}
+
+.tools-group-header.hairline-attracted .tools-group-heading,
+.salon-program-header.hairline-attracted .program-kicker,
+.dispatch-console-header.hairline-attracted .dispatch-kicker {
+  color: #dfc285;
+}
+
+/* ── Reduced-motion safety for every TASK-SN-12 effect ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal.revealed .section-title,
+  .section-title.ink-revealed,
+  .subsection-title.ink-revealed {
+    animation: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .section-title.ink-pending,
+  .subsection-title.ink-pending {
+    opacity: 1;
+  }
+
+  #about.revealed .section-container,
+  #about.revealed::after {
+    animation: none;
+  }
+
+  #about::after {
+    display: none;
+  }
+
+  .tools-group-header,
+  .salon-program-header,
+  .dispatch-console-header {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tools-group-header.hairline-attracted,
+  .salon-program-header.hairline-attracted,
+  .dispatch-console-header.hairline-attracted {
+    transform: none;
+  }
+
+  .stage-scrub-bar.is-scrubbing .stage-scrub-thumb,
+  .stage-scrub-bar.is-settling .stage-scrub-thumb {
+    transition: none !important;
+  }
+
+  .achievement-card:hover .achievement-icon .honor-crest,
+  .social-link:hover .social-svg,
+  .social-icon-link:hover .social-svg {
+    transform: none;
+  }
+
+  #modal-overlay.closing .modal-panel {
+    transform: none !important;
+    transition: opacity 0.15s linear !important;
+  }
 }

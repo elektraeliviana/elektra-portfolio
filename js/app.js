@@ -399,18 +399,50 @@ function initStatsCounter() {
    5. WORKS GRID RENDERING
    ============================================================ */
 
-/** Mapping from work type to its emoji icon */
+/* ── Etched champagne-gold (#C5A059) monoline SVG library ──────────────────
+   Replaces every OS colour emoji. Markup is trusted, static and inserted
+   un-escaped; all dynamic text elsewhere still goes through escHtml(). */
+const GOLD_ETCH = '#C5A059';
+
+/**
+ * monoSvg — wraps an inner path string in the shared etched-gold monoline shell.
+ * @param {string} inner        SVG child markup (24×24 viewBox coordinates).
+ * @param {number} size         Rendered width/height in px.
+ * @param {number} strokeWidth  Monoline weight.
+ * @param {string} extraClass   Optional extra class on the <svg>.
+ * @returns {string}
+ */
+function monoSvg(inner, size = 14, strokeWidth = 1.6, extraClass = '') {
+  return `<svg class="mono-icon${extraClass ? ' ' + extraClass : ''}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${GOLD_ETCH}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${inner}</svg>`;
+}
+
+const ICON_PATHS = {
+  code:         '<path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4.5l-4 15"/>',
+  research:     '<path d="M9.5 3h5M10.5 3v6L5 19a1.6 1.6 0 0 0 1.4 2.4h11.2A1.6 1.6 0 0 0 19 19l-5.500-10V3"/><path d="M7.600 15h8.800"/>',
+  novel:        '<path d="M12 6.500C10 5 7 4.500 3.500 5v13c3.500-.5 6.500 0 8.500 1.500 2-1.500 5-2 8.500-1.500V5c-3.500-.5-6.500 0-8.500 1.500z"/><path d="M12 6.500v13"/>',
+  writing:      '<path d="M20 4c-7 0-12 4-14 11l-1.500 5 5-1.500C16 16.500 20 11 20 4z"/><path d="M4.500 20 14 10.500"/>',
+  art:          '<rect x="3.500" y="4.500" width="17" height="15" rx="1.500"/><circle cx="9" cy="10" r="1.600"/><path d="m4 18 5.500-5 4 3.500 3-2.500 3.500 4"/>',
+  music:        '<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+  chess:        '<path d="M7.500 20.500h10M8.500 20.500c0-3.500.3-5 1.800-7-2.200.6-3.800-.6-4.800-2.200l3-3.800.9-2 2 1.200c3 .9 5.100 3.200 5.100 7v6.800"/><circle cx="10.200" cy="9" r=".6"/>',
+  performance:  '<path d="m3.500 7.500 15-4 1 3.500-15 4z"/><rect x="3" y="11" width="18" height="9.500" rx="1.500"/><path d="m8 7.500 1 3M13 6.300l1 3"/>',
+  'case-study': '<path d="M12 3v17M8 21h8M4 6.500h16"/><path d="M6 6.500 3 13.500h6zM18 6.500l-3 7h6z"/><path d="M3 13.500a3 3 0 0 0 6 0M15 13.500a3 3 0 0 0 6 0"/>',
+  operations:   '<path d="M12 2.500 4.500 5.500v6c0 5 3.200 8.300 7.500 10 4.300-1.700 7.500-5 7.500-10v-6z"/><path d="m9 12 2.200 2.200L15.500 10"/>',
+  document:     '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8.500 13h7M8.500 16.500h5"/>',
+};
+
+/** Mapping from work type to its etched monoline SVG icon */
 const TYPE_ICONS = {
-  code:        '⚡',
-  research:    '🔬',
-  novel:       '📖',
-  writing:     '✍️',
-  art:         '🎨',
-  music:       '🎹',
-  chess:       '♟️',
-  performance: '🎬',
-  'case-study':'⚖️',
-  operations:  '🛡️',
+  code:        monoSvg(ICON_PATHS.code),
+  research:    monoSvg(ICON_PATHS.research),
+  novel:       monoSvg(ICON_PATHS.novel),
+  writing:     monoSvg(ICON_PATHS.writing),
+  art:         monoSvg(ICON_PATHS.art),
+  music:       monoSvg(ICON_PATHS.music),
+  chess:       monoSvg(ICON_PATHS.chess),
+  performance: monoSvg(ICON_PATHS.performance),
+  'case-study':monoSvg(ICON_PATHS['case-study']),
+  operations:  monoSvg(ICON_PATHS.operations),
+  default:     monoSvg(ICON_PATHS.document),
 };
 
 /** Mapping from work status value to CSS class */
@@ -446,7 +478,7 @@ function buildWorkCard(work) {
   card.dataset.type = work.type || 'code';
   card.dataset.id   = work.id   || slugify(work.title || '');
 
-  const icon        = TYPE_ICONS[work.type]   || '📄';
+  const icon        = TYPE_ICONS[work.type]   || TYPE_ICONS.default;
   const statusClass = STATUS_CLASSES[work.status] || 'status-roadmap';
   const statusLabel = STATUS_LABELS[work.status]  || work.status || '';
 
@@ -483,7 +515,7 @@ function buildWorkCard(work) {
   }
 
   card.innerHTML = `
-    <span class="card-type-badge">${icon}</span>
+    <span class="card-type-badge card-type-icon">${icon}</span>
     ${artThumbnail}
     <div class="card-body">
       <h3 class="card-title">${escHtml(work.title || 'Untitled')}</h3>
@@ -610,11 +642,15 @@ let _modalWork = null;
  */
 function openModal(work) {
   _modalWork = work;
+  clearTimeout(_modalCloseTimer);
   const overlay     = document.getElementById('modal-overlay');
   const contentEl   = document.getElementById('modal-content');
   if (!overlay || !contentEl) return;
 
   contentEl.innerHTML = buildModalHTML(work);
+
+  // Phase 6: remember where the plate came from so closing folds it back there
+  setModalOriginVector(work, false);
 
   // Lock body scroll
   document.body.classList.add('modal-open');
@@ -631,13 +667,71 @@ function openModal(work) {
  */
 function closeModal() {
   const overlay = document.getElementById('modal-overlay');
-  if (!overlay) return;
+  if (!overlay || !_modalWork || overlay.classList.contains('closing')) return; // already closed / folding
+  // Re-measure at close time against the settled panel, then fold back into the originating card
+  setModalOriginVector(_modalWork, true);
   overlay.classList.add('closing');
-  setTimeout(() => {
+  clearTimeout(_modalCloseTimer);
+  _modalCloseTimer = setTimeout(() => {
     overlay.classList.remove('active', 'visible', 'open', 'closing');
     document.body.classList.remove('modal-open');
     _modalWork = null;
-  }, 280);
+  }, 360);
+}
+
+/** Pending close timer (cleared if a modal re-opens mid-fold) */
+let _modalCloseTimer = null;
+
+/**
+ * findModalOriginCard — locates the visible [data-id] card that opened the modal.
+ * @param {Object|null} work
+ * @returns {HTMLElement|null}
+ */
+function findModalOriginCard(work) {
+  if (!work) return null;
+  const id = work.id || slugify(work.title || '');
+  if (!id) return null;
+  const safe = String(id).replace(/["\\]/g, '\\$&');
+  const nodes = document.querySelectorAll(`[data-id="${safe}"]`);
+  for (const node of nodes) {
+    const r = node.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) return node;
+  }
+  return null;
+}
+
+/**
+ * setModalOriginVector — stores --origin-dx / --origin-dy / --origin-scale on #modal-panel.
+ * The vector runs from the panel's centre to the originating card's centre, so the
+ * closing Clerestory Glass Plate physically folds back into that card.
+ * @param {Object|null} work
+ * @param {boolean}     measurePanel  true → use the settled panel rect, false → assume viewport-centred.
+ */
+function setModalOriginVector(work, measurePanel) {
+  const panel = document.getElementById('modal-panel');
+  if (!panel) return;
+  const card = findModalOriginCard(work);
+  if (!card) {
+    panel.style.removeProperty('--origin-dx');
+    panel.style.removeProperty('--origin-dy');
+    panel.style.removeProperty('--origin-scale');
+    return;
+  }
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const cr = card.getBoundingClientRect();
+  const pr = panel.getBoundingClientRect();
+  const usePanel = measurePanel && pr.width > 0 && pr.height > 0;
+  const pcx = usePanel ? pr.left + pr.width / 2  : vw / 2;
+  const pcy = usePanel ? pr.top  + pr.height / 2 : vh / 2;
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const dx = clamp((cr.left + cr.width / 2) - pcx, -vw, vw);
+  const dy = clamp((cr.top + cr.height / 2) - pcy, -vh, vh);
+  let scale = 0.86;
+  if (usePanel) scale = clamp(Math.min(cr.width / pr.width, cr.height / pr.height), 0.16, 0.6);
+  panel.style.setProperty('--origin-dx', `${dx.toFixed(1)}px`);
+  panel.style.setProperty('--origin-dy', `${dy.toFixed(1)}px`);
+  panel.style.setProperty('--origin-scale', scale.toFixed(3));
 }
 
 /**
@@ -647,7 +741,7 @@ function closeModal() {
  * @returns {string}
  */
 function buildModalHTML(work) {
-  const icon        = TYPE_ICONS[work.type]        || '📄';
+  const icon        = TYPE_ICONS[work.type]        || TYPE_ICONS.default;
   const statusClass = STATUS_CLASSES[work.status]  || 'status-roadmap';
   const statusLabel = STATUS_LABELS[work.status]   || work.status || '';
   const tagsHtml    = Array.isArray(work.tags)
@@ -669,7 +763,7 @@ function buildModalHTML(work) {
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
         <div class="modal-art-placeholder" style="display:none;">
-          <span class="art-placeholder-icon">🎨</span>
+          <span class="art-placeholder-icon">${monoSvg(ICON_PATHS.art, 40, 1.2)}</span>
           <p class="art-placeholder-note">Add your image to <code>${escHtml(imgSrc)}</code></p>
         </div>
       </div>`;
@@ -701,7 +795,7 @@ function buildModalHTML(work) {
     typeSpecificHtml = `
       ${abstract ? `<div class="modal-abstract"><h4 class="modal-section-label">Abstract</h4><p>${escHtml(abstract)}</p></div>` : ''}
       <a class="modal-pdf-btn" href="${escHtml(pdfPath)}" target="_blank" rel="noopener">
-        📄 Download PDF
+        ${monoSvg(ICON_PATHS.document, 16, 1.6, 'btn-icon')}<span>Download PDF</span>
       </a>`;
   }
 
@@ -710,7 +804,7 @@ function buildModalHTML(work) {
     typeSpecificHtml = `
       ${synopsis ? `<div class="modal-synopsis"><h4 class="modal-section-label">Synopsis</h4><p>${escHtml(synopsis)}</p></div>` : ''}
       <button class="modal-excerpt-btn" onclick="alert('Full excerpt coming soon…')">
-        📖 Read Excerpt
+        ${monoSvg(ICON_PATHS.novel, 16, 1.6, 'btn-icon')}<span>Read Excerpt</span>
       </button>`;
   }
 
@@ -751,7 +845,7 @@ function buildModalHTML(work) {
 
   return `
     <div class="modal-header">
-      <span class="modal-type-badge">${icon} ${escHtml(work.type || '')}</span>
+      <span class="modal-type-badge">${icon}<span class="modal-type-label">${escHtml(work.type || '')}</span></span>
       <span class="modal-year">${escHtml(formatYear(work.year))}</span>
       <span class="modal-status-badge ${statusClass}">${escHtml(statusLabel)}</span>
     </div>
@@ -869,6 +963,20 @@ function renderProfile(profile) {
   renderSocials(profile.socials || [], '#footer-socials', true);
 }
 
+/** BCP-47 tags so each watermark picks the right script font / shaping */
+const LANG_HTML_TAGS = { EN: 'en', ID: 'id', SU: 'su', JA: 'ja', AR: 'ar', ZH: 'zh-Hans' };
+
+/**
+ * langWatermarkAttrs — lang / dir attributes for a language watermark span.
+ * @param {string} code  ISO-ish language code (EN, ID, SU, JA, AR, ZH).
+ * @returns {string}
+ */
+function langWatermarkAttrs(code) {
+  const up  = String(code || '').toUpperCase();
+  const tag = LANG_HTML_TAGS[up];
+  return (tag ? ` lang="${tag}"` : '') + (up === 'AR' ? ' dir="rtl"' : '');
+}
+
 /**
  * renderLanguages — renders language cards into #languages-grid.
  * Displays subtle national flags and proficiency levels.
@@ -879,9 +987,9 @@ function renderLanguages(languages) {
   if (!grid) return;
 
   grid.innerHTML = languages.map(lang => `
-    <div class="lang-card reveal">
-      <!-- Ambient Native Script Ghost Watermark -->
-      <span class="lang-native-watermark" aria-hidden="true">${escHtml(lang.native || '')}</span>
+    <div class="lang-card reveal" data-lang="${escHtml(String(lang.code || '').toUpperCase())}">
+      <!-- Cultural calligraphic watermark: Spencerian (EN), italic serif (ID), engraved native script (SU/JA/AR/ZH) -->
+      <span class="lang-native-watermark" aria-hidden="true"${langWatermarkAttrs(lang.code)}>${escHtml(lang.watermark || lang.native || '')}</span>
 
       <div class="lang-header">
         <div class="lang-identity">
@@ -1003,14 +1111,48 @@ function renderEducation(education) {
   }).join('');
 }
 
+/** Bespoke etched crest motifs for the Curated Achievements cards (24×24, inside a ring) */
+const HONOR_PATHS = {
+  knight:    '<path d="M8.500 18.500h8M9.500 18.500c0-2.800.3-4.400 1.800-6.200-2.200.6-3.800-.6-4.800-2.200l3-3.600.9-1.800 1.900 1.100c2.600.8 4.600 2.800 4.600 6.600v6.100"/><circle cx="11.200" cy="8.900" r=".5"/>',
+  astrolabe: '<circle cx="12" cy="12" r="2.600"/><ellipse cx="12" cy="12" rx="7.200" ry="2.700" transform="rotate(-28 12 12)"/><path d="M12 4.800v1.700M12 17.500v1.700M4.800 12h1.700M17.500 12h1.700"/>',
+  euler:     '<path d="M12 5.500 5.800 17h12.400z"/><circle cx="12" cy="13.600" r="2.400"/><path d="M12 5.500v5.700"/>',
+  scales:    '<path d="M12 5.500v12M9 18h6M6 8h12"/><path d="m6 8-2.200 5h4.400zM18 8l-2.200 5h4.400z"/><path d="M3.800 13a2.200 2.200 0 0 0 4.400 0M15.800 13a2.200 2.200 0 0 0 4.400 0"/>',
+  atom:      '<circle cx="12" cy="12" r="1.200"/><ellipse cx="12" cy="12" rx="7.200" ry="2.800"/><ellipse cx="12" cy="12" rx="7.200" ry="2.800" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="7.200" ry="2.800" transform="rotate(120 12 12)"/>',
+  lyre:      '<path d="M8 6c-.8 3.400-.6 6.400 1 9 .8 1.300 1.800 2 3 2s2.200-.7 3-2c1.600-2.600 1.800-5.600 1-9"/><path d="M12 6v11M10 7.500v8M14 7.500v8M10 19.500h4"/>',
+  trophy:    '<path d="M8.500 5.500h7v4a3.500 3.500 0 0 1-7 0zM8.500 7H6.200a2.300 2.300 0 0 0 2.600 3.200M15.500 7h2.300a2.300 2.300 0 0 1-2.600 3.200M12 13v4M9 19.500h6M10 17h4"/>',
+};
+
 /**
- * renderHonors — renders curated achievements into #honors-list with semantic icons.
- * ♞ Knight: Chess Champion
- * 🪐 Saturn: Astronomy Olympiad
- * 🌾 Rural / Geometry: Mathematics Olympiad & Exams
- * ⚖️ Balance Scale: Mathematics & Islamic Theology Debate
- * 🔬 Microscope: Science Olympiad
- * 🎹 Piano Keys: Classical Piano Soloist
+ * getHonorMonolineSvg — returns a bespoke etched #C5A059 monoline crest for an honor.
+ * Any legacy emoji stored in profile.json is ignored; only a known crest key,
+ * or the category / title, selects the motif.
+ * @param {string} category
+ * @param {string} title
+ * @param {string} [iconKey]
+ * @returns {string}
+ */
+function getHonorMonolineSvg(category, title, iconKey) {
+  const t = String(title || '').toLowerCase();
+  const c = String(category || '').toLowerCase();
+  let key = (iconKey && HONOR_PATHS[iconKey]) ? iconKey : '';
+  if (!key) {
+    if (t.includes('catur') || t.includes('chess') || c.includes('chess')) key = 'knight';
+    else if (t.includes('astronomi') || c.includes('astronomy')) key = 'astrolabe';
+    else if (t.includes('debat') || c.includes('debate')) key = 'scales';
+    else if (t.includes('sains') || c.includes('natural science')) key = 'atom';
+    else if (t.includes('piano') || c.includes('classical')) key = 'lyre';
+    else if (t.includes('matematika') || c.includes('math')) key = 'euler';
+    else key = 'trophy';
+  }
+  const ring = '<circle cx="12" cy="12" r="10.600" stroke-opacity="0.38"/>';
+  return monoSvg(ring + HONOR_PATHS[key], 30, 1.2, 'honor-crest');
+}
+
+/**
+ * renderHonors — renders curated achievements into #honors-list with bespoke
+ * etched #C5A059 monoline SVG crests:
+ *   Knight → Chess · Astrolabe → Astronomy · Euler triangle → Mathematics
+ *   Scales → Debate / Theology · Atom → Natural Sciences · Lyre → Classical Piano
  * @param {Array} honors
  */
 function renderHonors(honors) {
@@ -1018,24 +1160,14 @@ function renderHonors(honors) {
   if (!list) return;
 
   list.innerHTML = honors.map(honor => {
-    const title = typeof honor === 'string' ? honor : (honor.title || honor.name || '');
-    let icon = (typeof honor === 'object' && honor.icon) ? honor.icon : '';
+    const title    = typeof honor === 'string' ? honor : (honor.title || honor.name || '');
     const category = typeof honor === 'object' ? (honor.category || '') : '';
-
-    if (!icon) {
-      const lower = title.toLowerCase();
-      if (lower.includes('catur') || lower.includes('chess')) icon = '♞';
-      else if (lower.includes('astronomi')) icon = '🪐';
-      else if (lower.includes('matematika') && (lower.includes('olimpiade') || lower.includes('ulangan'))) icon = '🌾';
-      else if (lower.includes('debat')) icon = '⚖️';
-      else if (lower.includes('sains')) icon = '🔬';
-      else if (lower.includes('piano')) icon = '🎹';
-      else icon = '🏆';
-    }
+    const iconKey  = (typeof honor === 'object' && honor.icon) ? honor.icon : '';
+    const crest    = getHonorMonolineSvg(category, title, iconKey);
 
     return `
       <div class="achievement-card reveal">
-        <span class="achievement-icon" aria-hidden="true">${icon}</span>
+        <span class="achievement-icon honor-card-icon" aria-hidden="true">${crest}</span>
         <div class="achievement-body">
           <h4 class="achievement-title">${escHtml(title)}</h4>
           ${category ? `<span class="achievement-category">${escHtml(category)}</span>` : ''}
@@ -1044,17 +1176,21 @@ function renderHonors(honors) {
   }).join('');
 }
 
-/** Social platform icon mapping */
-const SOCIAL_ICONS = {
-  github:    '⌥',  // GitHub
-  youtube:   '▶',
-  linkedin:  'in',
-  bluesky:   '🦋',
-  twitter:   '𝕏',
-  instagram: '◈',
-  discord:   '◎',
-  email:     '✉',
+/** Social platform etched monoline SVG icons (replaces glyph / emoji stand-ins) */
+const SOCIAL_PATHS = {
+  github:    '<path d="M9 19c-4.300 1.400-4.300-2.500-6-3m12 5v-3.500c0-1 .1-1.400-.5-2 2.800-.3 5.500-1.400 5.500-6a4.600 4.600 0 0 0-1.300-3.200 4.200 4.200 0 0 0-.1-3.200s-1.100-.3-3.500 1.300a12.300 12.300 0 0 0-6.200 0C6.500 2.800 5.400 3.100 5.400 3.100a4.200 4.200 0 0 0-.1 3.200A4.600 4.600 0 0 0 4 9.500c0 4.600 2.700 5.700 5.500 6-.6.600-.6 1.200-.5 2V21"/>',
+  youtube:   '<rect x="2.500" y="5" width="19" height="14" rx="4"/><path d="m10 9.200 5 2.800-5 2.800z"/>',
+  linkedin:  '<rect x="3" y="3" width="18" height="18" rx="2.500"/><path d="M8 10.500V17M8 7.500v.01M12 17v-6.500M12 13.500c0-2 1.300-3 2.800-3s2.700 1 2.700 3V17"/>',
+  bluesky:   '<path d="M12 11.200C10.900 9 8.200 5.500 5.400 4.300 3.800 3.700 3 4.200 3 5.800c0 1.200.5 4.800 1 5.800.8 1.600 2.400 2.200 4.200 2-2.600.5-3.600 2-1.800 3.800 1.700 1.700 3.400.4 4.200-2.200L12 14l.4 1.200c.8 2.600 2.500 3.900 4.200 2.200 1.800-1.800.8-3.300-1.800-3.800 1.800.2 3.400-.4 4.200-2 .5-1 1-4.600 1-5.800 0-1.600-.8-2.100-2.400-1.500C15.800 5.500 13.100 9 12 11.200z"/>',
+  twitter:   '<path d="M4 4h4.500L20 20h-4.500zM19.500 4l-6.300 6.900M4.500 20l6.300-6.900"/>',
+  instagram: '<rect x="3.500" y="3.500" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/>',
+  discord:   '<path d="M8.500 7C6.600 7.400 5.100 8.100 4 9c-1.300 3.200-1.800 6.200-1.500 9.200 1.400 1 3 1.700 4.700 2l1-1.700M15.500 7c1.900.4 3.400 1.100 4.500 2 1.300 3.200 1.800 6.200 1.500 9.200-1.400 1-3 1.700-4.700 2l-1-1.700M9 7c2-.8 4-.8 6 0M8.200 17.300c2.500 1 5.100 1 7.600 0"/><circle cx="9.200" cy="12.500" r="1.300"/><circle cx="14.800" cy="12.500" r="1.300"/>',
+  email:     '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.500 7 8.500 6.500L20.500 7"/>',
+  link:      '<path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/>',
 };
+
+const SOCIAL_ICONS = {};
+Object.keys(SOCIAL_PATHS).forEach(k => { SOCIAL_ICONS[k] = monoSvg(SOCIAL_PATHS[k], 20, 1.5, 'social-svg'); });
 
 /** Social platform display labels */
 const SOCIAL_LABELS = {
@@ -1081,7 +1217,7 @@ function renderSocials(socials, selector, iconsOnly = false) {
   container.innerHTML = socials.map(s => {
     const platform = s.platform || s.name || '';
     const url      = s.url      || '#';
-    const icon     = SOCIAL_ICONS[platform] || '🔗';
+    const icon     = SOCIAL_ICONS[platform] || SOCIAL_ICONS.link;
     const label    = SOCIAL_LABELS[platform] || platform;
     const href     = platform === 'email' ? `mailto:${url.replace('mailto:', '')}` : url;
 
@@ -1183,6 +1319,15 @@ let _urtextObserver  = null;
 let _urtextCanvas    = null;
 let _urtextCtx       = null;
 let _urtextPhase     = 0;
+
+/** Phase 8: elastic-tension scrubber state (all positions are 0‒1 fractions of the timeline) */
+const _scrub = {
+  dragging: false, animating: false, pointerId: null,
+  target: 0,                 // where the visitor's pointer wants the needle
+  thumb: 0, thumbV: 0,       // needle position / velocity (under-damped → springs & overshoots)
+  fill: 0,  fillV: 0,        // gilded trail (critically damped → trails the needle)
+  raf: 0, lastT: 0,
+};
 
 /**
  * renderPianoGrid — populates #salon-tracklist and initialises the Concert Salon.
@@ -1326,6 +1471,11 @@ function updateSalonStage(idx) {
   if (urtextTempo) urtextTempo.textContent = work.tempo ? work.tempo.split('–')[0].trim() : 'Presto con fuoco';
   if (urtextExpr) urtextExpr.textContent = idx % 2 === 0 ? 'espress. e legato' : 'appassionato e brillante';
 
+  // A new piece cancels any in-flight scrub spring
+  cancelAnimationFrame(_scrub.raf);
+  _scrub.raf = 0; _scrub.animating = false; _scrub.dragging = false;
+  _scrub.target = _scrub.thumb = _scrub.fill = 0; _scrub.thumbV = _scrub.fillV = 0;
+
   _salonDurationSec = parseDurationSec(work.duration);
   if (timeTotal) timeTotal.textContent = work.duration || formatTimeSec(_salonDurationSec);
   if (fill) fill.style.width = '0%';
@@ -1349,19 +1499,157 @@ function initSalonControls() {
   }
 
   const scrubBar = document.getElementById('stage-scrub-bar');
-  if (scrubBar) {
-    scrubBar.onclick = (e) => {
+  if (scrubBar && !scrubBar.dataset.scrubBound) {
+    scrubBar.dataset.scrubBound = '1';
+    scrubBar.setAttribute('role', 'slider');
+    scrubBar.setAttribute('tabindex', '0');
+    scrubBar.setAttribute('aria-label', 'Playback position');
+    scrubBar.setAttribute('aria-valuemin', '0');
+    scrubBar.setAttribute('aria-valuemax', '100');
+
+    const reduced = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pctFrom = (e) => {
       const rect = scrubBar.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      _salonSimSeconds = pct * _salonDurationSec;
+      return Math.max(0, Math.min(1, (e.clientX - rect.left) / Math.max(1, rect.width)));
+    };
+
+    scrubBar.addEventListener('pointerdown', (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
+      e.preventDefault();
+      _scrub.dragging  = true;
+      _scrub.pointerId = e.pointerId;
+      try { scrubBar.setPointerCapture(e.pointerId); } catch (_) {}
+      scrubBar.classList.remove('is-settling');
+      scrubBar.classList.add('is-scrubbing');
+      // Start the springs from wherever the playhead currently rests
+      if (!_scrub.animating) {
+        const cur = Math.min(1, _salonSimSeconds / Math.max(1, _salonDurationSec));
+        _scrub.thumb = _scrub.fill = cur;
+        _scrub.thumbV = _scrub.fillV = 0;
+      }
+      _scrub.target = pctFrom(e);
+      scrubStart(scrubBar, reduced());
+    });
+
+    scrubBar.addEventListener('pointermove', (e) => {
+      if (!_scrub.dragging || e.pointerId !== _scrub.pointerId) return;
+      _scrub.target = pctFrom(e);
+      if (reduced()) scrubStart(scrubBar, true);
+    });
+
+    const release = (e) => {
+      if (!_scrub.dragging || (e && e.pointerId !== _scrub.pointerId)) return;
+      _scrub.dragging = false;
+      try { scrubBar.releasePointerCapture(_scrub.pointerId); } catch (_) {}
+      _scrub.pointerId = null;
+      scrubBar.classList.remove('is-scrubbing');
+      scrubBar.classList.add('is-settling');   // springy overshoot pop on the needle
+
+      // Commit the playhead (real audio when available, simulated clock otherwise)
+      _salonSimSeconds = _scrub.target * _salonDurationSec;
       if (_salonAudio && !isNaN(_salonAudio.duration) && _salonAudio.duration > 0) {
-        try {
-          _salonAudio.currentTime = pct * _salonAudio.duration;
-        } catch (_) {}
+        try { _salonAudio.currentTime = _scrub.target * _salonAudio.duration; } catch (_) {}
+      }
+      scrubStart(scrubBar, reduced());
+    };
+    scrubBar.addEventListener('pointerup', release);
+    scrubBar.addEventListener('pointercancel', release);
+    scrubBar.addEventListener('lostpointercapture', release);
+
+    // Keyboard: ←/→ nudge 5 s, Home/End jump
+    scrubBar.addEventListener('keydown', (e) => {
+      const dur = Math.max(1, _salonDurationSec);
+      let secs = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') secs = _salonSimSeconds + 5;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') secs = _salonSimSeconds - 5;
+      else if (e.key === 'Home') secs = 0;
+      else if (e.key === 'End') secs = dur;
+      if (secs === null) return;
+      e.preventDefault();
+      secs = Math.max(0, Math.min(dur, secs));
+      _salonSimSeconds = secs;
+      if (_salonAudio && !isNaN(_salonAudio.duration) && _salonAudio.duration > 0) {
+        try { _salonAudio.currentTime = (secs / dur) * _salonAudio.duration; } catch (_) {}
       }
       updateSalonTimeline();
-    };
+    });
   }
+}
+
+/**
+ * scrubStart — (re)starts the elastic spring loop that drives the gilded needle & trail.
+ * @param {HTMLElement} bar
+ * @param {boolean} instant  true under prefers-reduced-motion: snap, no spring.
+ */
+function scrubStart(bar, instant) {
+  if (instant) {
+    cancelAnimationFrame(_scrub.raf);
+    _scrub.thumb = _scrub.fill = _scrub.target;
+    _scrub.thumbV = _scrub.fillV = 0;
+    scrubRender(bar);
+    if (!_scrub.dragging) scrubFinish(bar);
+    return;
+  }
+  _scrub.animating = true;
+  if (_scrub.raf) return;
+  _scrub.lastT = 0;
+  const tick = (t) => {
+    const dt = Math.min(0.032, _scrub.lastT ? (t - _scrub.lastT) / 1000 : 0.016);
+    _scrub.lastT = t;
+
+    // Needle: under-damped spring (ζ≈0.6) → elastic lag while dragging, overshoot on release
+    const kT = 420, cT = 24;
+    _scrub.thumbV += (-kT * (_scrub.thumb - _scrub.target) - cT * _scrub.thumbV) * dt;
+    _scrub.thumb  += _scrub.thumbV * dt;
+
+    // Gilded trail: critically damped spring (c = 2√k) → trails the needle without ringing
+    const kF = 160, cF = 2 * Math.sqrt(kF);
+    _scrub.fillV += (-kF * (_scrub.fill - _scrub.target) - cF * _scrub.fillV) * dt;
+    _scrub.fill  += _scrub.fillV * dt;
+
+    scrubRender(bar);
+
+    const settled = !_scrub.dragging
+      && Math.abs(_scrub.thumb - _scrub.target) < 0.0004 && Math.abs(_scrub.thumbV) < 0.004
+      && Math.abs(_scrub.fill  - _scrub.target) < 0.0004 && Math.abs(_scrub.fillV)  < 0.004;
+    if (settled) {
+      _scrub.raf = 0;
+      scrubFinish(bar);
+      return;
+    }
+    _scrub.raf = requestAnimationFrame(tick);
+  };
+  _scrub.raf = requestAnimationFrame(tick);
+}
+
+/** scrubRender — paints needle, trail, clock and the live Urtext canvas for the current spring state. */
+function scrubRender(bar) {
+  const fill    = document.getElementById('stage-scrub-fill');
+  const thumb   = document.getElementById('stage-scrub-thumb');
+  const timeCur = document.getElementById('time-current');
+  const clamp01 = (v) => Math.max(0, Math.min(1, v));
+  const thumbPct = clamp01(_scrub.thumb);
+  const fillPct  = clamp01(_scrub.fill);
+
+  if (fill)  fill.style.width = `${(fillPct * 100).toFixed(3)}%`;
+  if (thumb) thumb.style.left = `${(thumbPct * 100).toFixed(3)}%`;
+  // Elastic stretch of the needle grows with the tension between pointer and trail
+  const tension = Math.min(0.9, Math.abs(_scrub.target - _scrub.fill) * 8);
+  bar.style.setProperty('--scrub-stretch', (1 + tension).toFixed(3));
+
+  _salonSimSeconds = thumbPct * _salonDurationSec;
+  if (timeCur) timeCur.textContent = formatTimeSec(_salonSimSeconds);
+  bar.setAttribute('aria-valuenow', String(Math.round(thumbPct * 100)));
+  drawUrtextFrame(_urtextPhase);   // real-time Urtext feedback
+}
+
+/** scrubFinish — lands the playhead exactly on target and hands control back to the playback clock. */
+function scrubFinish(bar) {
+  _scrub.animating = false;
+  _salonSimSeconds = _scrub.target * _salonDurationSec;
+  bar.style.removeProperty('--scrub-stretch');
+  bar.classList.remove('is-settling');
+  updateSalonTimeline();
 }
 
 /**
@@ -1405,6 +1693,7 @@ function playSalonPiece() {
   // Fallback simulator loop (runs smoothly whether audio plays or is in preview)
   clearInterval(_salonSimTimer);
   _salonSimTimer = setInterval(() => {
+    if (_scrub.dragging || _scrub.animating) return;   // visitor is scrubbing
     if (_salonAudio && realAudioStarted && !isNaN(_salonAudio.currentTime) && _salonAudio.duration > 0) {
       _salonSimSeconds = _salonAudio.currentTime;
       _salonDurationSec = _salonAudio.duration;
@@ -1446,6 +1735,7 @@ function pauseSalonPiece() {
  * updateSalonTimeline — updates scrub bar fill and timestamp labels.
  */
 function updateSalonTimeline() {
+  if (_scrub.dragging || _scrub.animating) return;   // springs own the needle while scrubbing
   const pct = Math.min(100, (_salonSimSeconds / Math.max(1, _salonDurationSec)) * 100);
   const fill = document.getElementById('stage-scrub-fill');
   const thumb = document.getElementById('stage-scrub-thumb');
@@ -2222,4 +2512,83 @@ window.handleDiplomaticDispatch = handleDiplomaticDispatch;
       el.style.transition = 'transform 0.42s cubic-bezier(0.16, 1, 0.3, 1)';
     });
   });
+
+  // Phase 0: Gravitational pull on hairline dividers.
+  // Within 80px the header bows ≤2px toward the cursor and its hairline + heading
+  // shift to luminous #dfc285 (class .hairline-attracted; transitions live in CSS).
+  const HAIRLINE_SELECTOR = '.tools-group-header, .salon-program-header, .dispatch-console-header';
+  const HAIRLINE_RADIUS   = 80;
+  const hairlineReduced   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let hairlineQueued = false;
+
+  function updateHairlinePull() {
+    hairlineQueued = false;
+    document.querySelectorAll(HAIRLINE_SELECTOR).forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -HAIRLINE_RADIUS || r.top > window.innerHeight + HAIRLINE_RADIUS) {
+        el.classList.remove('hairline-attracted');
+        return;
+      }
+      // distance from the cursor to the nearest point of the header box
+      const nx = Math.max(r.left, Math.min(mouseX, r.right));
+      const ny = Math.max(r.top,  Math.min(mouseY, r.bottom));
+      const dist = Math.hypot(mouseX - nx, mouseY - ny);
+      if (dist <= HAIRLINE_RADIUS) {
+        const strength = 1 - dist / HAIRLINE_RADIUS;                  // 0 → 1
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const px = Math.max(-1, Math.min(1, (mouseX - cx) / Math.max(1, r.width / 2)));
+        const py = Math.max(-1, Math.min(1, (mouseY - cy) / Math.max(1, r.height / 2)));
+        const pull = hairlineReduced ? 0 : 2 * strength;               // ≤ 2px
+        el.style.setProperty('--hairline-dx', `${(px * pull).toFixed(2)}px`);
+        el.style.setProperty('--hairline-dy', `${(py * pull).toFixed(2)}px`);
+        el.style.setProperty('--hairline-glow', strength.toFixed(2));
+        el.classList.add('hairline-attracted');
+      } else if (el.classList.contains('hairline-attracted')) {
+        el.classList.remove('hairline-attracted');
+        el.style.removeProperty('--hairline-dx');
+        el.style.removeProperty('--hairline-dy');
+        el.style.removeProperty('--hairline-glow');
+      }
+    });
+  }
+  document.addEventListener('mousemove', () => {
+    if (hairlineQueued) return;
+    hairlineQueued = true;
+    requestAnimationFrame(updateHairlinePull);
+  }, { passive: true });
+})();
+
+/* ============================================================
+   PHASE 0: LATERAL INK-BLEED TITLE UNVEILING
+   Section titles inside a .reveal section animate via pure CSS when that section
+   gets .revealed. Titles outside one (e.g. #works) and every subsection title are
+   observed individually and get .ink-revealed as they enter the viewport.
+   ============================================================ */
+(function initInkBleedTitles() {
+  const titles = Array.from(document.querySelectorAll('.section-title, .subsection-title'))
+    .filter(el => el.classList.contains('subsection-title') || !el.closest('.reveal'));
+  if (!titles.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    titles.forEach(el => el.classList.add('ink-revealed'));
+    return;
+  }
+  titles.forEach(el => el.classList.add('ink-pending'));
+  const inkObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove('ink-pending');
+      entry.target.classList.add('ink-revealed');
+      inkObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+  titles.forEach(el => inkObserver.observe(el));
+  // Safety net: never leave a heading permanently hidden
+  setTimeout(() => titles.forEach(el => {
+    if (el.classList.contains('ink-pending')) {
+      el.classList.remove('ink-pending');
+      el.classList.add('ink-revealed');
+    }
+  }), 4000);
 })();

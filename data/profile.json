@@ -44,6 +44,7 @@
     {
       "code": "EN",
       "name": "English",
+      "watermark": "Albion",
       "native": "English",
       "level": "C2 Proficient / Professional",
       "percent": 100,
@@ -52,6 +53,7 @@
     {
       "code": "ID",
       "name": "Indonesian",
+      "watermark": "Nusantara",
       "native": "Bahasa",
       "level": "Native / Mother Tongue",
       "percent": 100,
@@ -262,42 +264,42 @@
   },
   "honors": [
     {
-      "icon": "♞",
+      "icon": "knight",
       "title": "IAPI Chess Champion 2025",
       "category": "Chess & Strategy"
     },
     {
-      "icon": "🪐",
+      "icon": "astrolabe",
       "title": "Peringkat ke-20 Olimpiade Astronomi se-Kota Bandung 2019/2020",
       "category": "Astronomy & Physics"
     },
     {
-      "icon": "🌾",
+      "icon": "euler",
       "title": "Juara 4–6 Olimpiade Matematika 2016/2017",
       "category": "Mathematics"
     },
     {
-      "icon": "🌾",
+      "icon": "euler",
       "title": "Peringkat 1 Ulangan Matematika se-Angkatan SMA 2018",
       "category": "Mathematics"
     },
     {
-      "icon": "⚖️",
+      "icon": "scales",
       "title": "Kontestan Debat Matematika 2015/2016",
       "category": "Debate & Logic"
     },
     {
-      "icon": "🔬",
+      "icon": "atom",
       "title": "Calon Kontestan Olimpiade Sains 2019/2020",
       "category": "Natural Sciences"
     },
     {
-      "icon": "⚖️",
+      "icon": "scales",
       "title": "Kontestan Debat Agama Islam 2019/2020",
       "category": "Theology & Debate"
     },
     {
-      "icon": "🎹",
+      "icon": "lyre",
       "title": "Pemain Piano Solo Terbaik di SMP & SMA",
       "category": "Classical Repertoire"
     }
