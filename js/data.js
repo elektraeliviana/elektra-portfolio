@@ -546,6 +546,239 @@ window.WORKS_DATA = [
     "featured": true
   },
   {
+    "id": "trust-safety-platform-governance",
+    "title": "Architecting an 81-Page Codified Governance & Trust/Safety Framework for 40,000+ Active Users",
+    "type": "case-study",
+    "category": "Operations & Platform Governance",
+    "status": "live",
+    "role": "Head Administrator & Trust/Safety Policy Architect",
+    "year": "2024–2026",
+    "description": "Authored and codified an 81-page statutory governance framework spanning a Constitutional & Executive Charter (33 pp.) and Penal/Procedural Matrix (48 pp.) for a 40,000+ member digital platform. Codified Lex Specialis hierarchies, a 6-tier violation taxonomy, strict bounds on moderator discretion, bot raid countermeasures, and autonomous AI acceptable-use policies.",
+    "tags": [
+      "Trust & Safety",
+      "Platform Governance",
+      "Jurisprudence",
+      "Incident Response",
+      "AI Policy",
+      "Operations Architecture"
+    ],
+    "links": {
+      "live": "assets/docs/PIAGAM_AGUNG_KEKAISARAN_CAVEINE.pdf",
+      "charters": "assets/docs/KITAB_HUKUM_KEKAISARAN_CAVEINE.pdf"
+    },
+    "case_study_html": "<div class=\"modal-case-study\">
+
+  <!-- Executive Summary Callout -->
+  <div class=\"cs-callout\">
+    <div class=\"cs-callout-header\">
+      <span class=\"cs-badge-gold\">TRUST & SAFETY CASE STUDY</span>
+      <span class=\"cs-scope-meta\">81 Pages Codified · 40,000+ Members · 2024–Present</span>
+    </div>
+    <h3 class=\"cs-heading\">Architecting an 81-Page Codified Governance & Platform Trust/Safety Framework</h3>
+    <p class=\"cs-lead\">
+      Operating large-scale digital ecosystems (40,000+ concurrent members) requires transitioning from reactive, arbitrary moderation to <strong>formal, codified jurisprudence</strong>. As Head Administrator and Trust & Safety Policy Architect for the <em>Empire of Caveine</em> digital platform, I drafted, implemented, and governed an exhaustive two-pillar statutory ecosystem comprising an 81-page codified legal framework.
+    </p>
+  </div>
+
+  <!-- Primary Jurisprudential Maxims -->
+  <div class=\"cs-maxim-card\">
+    <div class=\"cs-maxim-latin\">\"Justitia caeca est, Fiat justitia ruat caelum\"</div>
+    <div class=\"cs-maxim-trans\">Justice is blind, and justice must be upheld though the heavens fall. — <em>Mukadimah Kitab Hukum</em></div>
+    <div class=\"cs-maxim-sub\">Guided by the statutory principle of <strong>Lex Specialis derogat legi generali</strong> (special channel rules take precedence over general norms, while remaining subordinate to the Constitutional Charter).</div>
+  </div>
+
+  <!-- 3 Pillars Architecture Grid -->
+  <div class=\"cs-pillars-grid\">
+    
+    <!-- Pillar 1 -->
+    <div class=\"cs-pillar-card\">
+      <div class=\"cs-pillar-num\">PILLAR I · 33 PAGES</div>
+      <h4 class=\"cs-pillar-title\">Constitutional & Executive Architecture</h4>
+      <div class=\"cs-pillar-source\">Piagam Agung Kekaisaran (PAK)</div>
+      <ul class=\"cs-pillar-list\">
+        <li><strong>Statutory Supremacy:</strong> Codified hierarchical legal structure where the Constitutional Charter supersedes all operational rules and channel guidelines.</li>
+        <li><strong>Executive Continuity:</strong> Defined clear succession protocols (<em>Pelaksana Tugas / Plt</em>), quorum requirements, and 2/3 supermajority voting matrices for leadership transitions and amendments.</li>
+        <li><strong>Single-Identity Enforcement:</strong> Enacted anti-evasion protocols (<em>Pasal 14</em>) linking secondary/alternate accounts to prevent bad actors from evading disciplinary sanctions.</li>
+        <li><strong>Demographic Safety Thresholds:</strong> Established rigorous age-verification rules and child safety boundaries aligning with international digital platform compliance standards.</li>
+      </ul>
+    </div>
+
+    <!-- Pillar 2 -->
+    <div class=\"cs-pillar-card\">
+      <div class=\"cs-pillar-num\">PILLAR II · 48 PAGES</div>
+      <h4 class=\"cs-pillar-title\">Penal Matrix & Discretionary Bounds</h4>
+      <div class=\"cs-pillar-source\">Kitab Hukum Kekaisaran (KHK)</div>
+      <ul class=\"cs-pillar-list\">
+        <li><strong>Strict Standard of Proof:</strong> Mandated full contextual logging (<em>Pasal 3C</em>) for incident adjudication. Criminalized doctored/falsified screenshots (<em>Fake Chat</em>) with severe penalties.</li>
+        <li><strong>6-Tier Violation Taxonomy:</strong> Structured violations from Golongan I (Basic Order), II (Social Ethics), III (Ecosystem Security), IV (Severe Moral Hazards), V (Demographic Exploitation), up to VI (Critical Compromise & Treason).</li>
+        <li><strong>Discretionary Boundaries (Anti-Abuse):</strong> Enforced strict duration ceilings on moderator timeouts (<em>Pasal 6</em>: max 3 days for Gol I/II, max 1 week for Gol III), curbing arbitrary moderator overreach.</li>
+        <li><strong>Appellate Tribunal & Amnesty:</strong> Provided formal due-process appeal channels (<em>Bab VI</em>) allowing penalized users to submit evidence, seek mediation, and qualify for earned record expungement (<em>Pemutihan</em>).</li>
+      </ul>
+    </div>
+
+    <!-- Pillar 3 -->
+    <div class=\"cs-pillar-card\">
+      <div class=\"cs-pillar-num\">PILLAR III · OPERATIONAL PROTOCOLS</div>
+      <h4 class=\"cs-pillar-title\">Emergency Defense & AI Governance</h4>
+      <div class=\"cs-pillar-source\">Operational SOPs & AI Addenda</div>
+      <ul class=\"cs-pillar-list\">
+        <li><strong>Bot Raid Defense (Pasal 13):</strong> Engineered multi-stage emergency response protocols during coordinated mass-join raids, including lockdown triggers, automated role suspension, and containment channels.</li>
+        <li><strong>AI Agent Governance (Pasal 12A):</strong> Established an acceptable-use framework for generative AI and automated bot agents, distinguishing synthetic hallucinations from human malicious intent.</li>
+        <li><strong>Shift Management & SOPs:</strong> Standardized incident escalation matrices across 16 staff members covering 24/7 cross-time-zone coverage.</li>
+        <li><strong>Cross-DM Evidence Jurisdiction:</strong> Regulated the admissibility of off-platform or private DM evidence, protecting user privacy while prosecuting predatory harassment and doxxing.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Quantified Operational Impact -->
+  <div class=\"cs-section\">
+    <h4 class=\"cs-section-title\">Quantified Operational & Governance Impact</h4>
+    <div class=\"cs-metrics-grid\">
+      <div class=\"cs-metric-box\">
+        <span class=\"cs-metric-val\">40,000+</span>
+        <span class=\"cs-metric-label\">Active Members Governed</span>
+      </div>
+      <div class=\"cs-metric-box\">
+        <span class=\"cs-metric-val\">81</span>
+        <span class=\"cs-metric-label\">Codified Statutory Pages</span>
+      </div>
+      <div class=\"cs-metric-box\">
+        <span class=\"cs-metric-val\">16</span>
+        <span class=\"cs-metric-label\">Staff Officers Directed</span>
+      </div>
+      <div class=\"cs-metric-box\">
+        <span class=\"cs-metric-val\">87.5%</span>
+        <span class=\"cs-metric-label\">Shift Task Completion Rate</span>
+      </div>
+      <div class=\"cs-metric-box\">
+        <span class=\"cs-metric-val\">-40%</span>
+        <span class=\"cs-metric-label\">Onboarding & Ramp-Up Time</span>
+      </div>
+      <div class=\"cs-metric-box\">
+        <span class=\"cs-metric-val\">0</span>
+        <span class=\"cs-metric-label\">Catastrophic Raid Breaches</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Escalation Flow Architecture (SVG) -->
+  <div class=\"cs-section\">
+    <h4 class=\"cs-section-title\">Codified Incident Escalation & Adjudication Lifecycle</h4>
+    <div class=\"cs-flow-container\">
+      <svg viewBox=\"0 0 860 180\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\">
+        <defs>
+          <linearGradient id=\"flowGold\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">
+            <stop offset=\"0%\" stop-color=\"#C5A059\" stop-opacity=\"0.8\" />
+            <stop offset=\"100%\" stop-color=\"#E5C178\" stop-opacity=\"0.9\" />
+          </linearGradient>
+          <filter id=\"glow\" x=\"-20%\" y=\"-20%\" width=\"140%\" height=\"140%\">
+            <feGaussianBlur stdDeviation=\"3\" result=\"blur\" />
+            <feComposite in=\"SourceGraphic\" in2=\"blur\" operator=\"over\" />
+          </filter>
+        </defs>
+
+        <!-- Connecting Flow Spine -->
+        <path d=\"M 120 70 L 260 70 L 400 70 L 540 70 L 680 70 L 760 70\" stroke=\"rgba(201,168,76,0.3)\" stroke-width=\"2\" stroke-dasharray=\"4 4\" fill=\"none\" />
+
+        <!-- Node 1: Ingestion -->
+        <g transform=\"translate(40, 30)\">
+          <rect width=\"110\" height=\"80\" rx=\"8\" fill=\"#181720\" stroke=\"#C5A059\" stroke-width=\"1.2\" />
+          <text x=\"55\" y=\"28\" text-anchor=\"middle\" fill=\"#C5A059\" font-size=\"11\" font-weight=\"700\">PHASE 1</text>
+          <text x=\"55\" y=\"46\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Incident</text>
+          <text x=\"55\" y=\"62\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Detection</text>
+          <text x=\"55\" y=\"100\" text-anchor=\"middle\" fill=\"#A0A0A8\" font-size=\"9\">Auto / Report</text>
+        </g>
+
+        <!-- Arrow 1 -->
+        <polygon points=\"165,66 175,70 165,74\" fill=\"#C5A059\" />
+
+        <!-- Node 2: Evidence Audit -->
+        <g transform=\"translate(185, 30)\">
+          <rect width=\"110\" height=\"80\" rx=\"8\" fill=\"#181720\" stroke=\"#C5A059\" stroke-width=\"1.2\" />
+          <text x=\"55\" y=\"28\" text-anchor=\"middle\" fill=\"#C5A059\" font-size=\"11\" font-weight=\"700\">PHASE 2</text>
+          <text x=\"55\" y=\"46\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Evidence</text>
+          <text x=\"55\" y=\"62\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Audit (3C)</text>
+          <text x=\"55\" y=\"100\" text-anchor=\"middle\" fill=\"#A0A0A8\" font-size=\"9\">Context Logs</text>
+        </g>
+
+        <!-- Arrow 2 -->
+        <polygon points=\"310,66 320,70 310,74\" fill=\"#C5A059\" />
+
+        <!-- Node 3: Taxonomy Tiering -->
+        <g transform=\"translate(330, 30)\">
+          <rect width=\"110\" height=\"80\" rx=\"8\" fill=\"#181720\" stroke=\"#C5A059\" stroke-width=\"1.2\" />
+          <text x=\"55\" y=\"28\" text-anchor=\"middle\" fill=\"#C5A059\" font-size=\"11\" font-weight=\"700\">PHASE 3</text>
+          <text x=\"55\" y=\"46\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Taxonomy</text>
+          <text x=\"55\" y=\"62\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Tiering</text>
+          <text x=\"55\" y=\"100\" text-anchor=\"middle\" fill=\"#A0A0A8\" font-size=\"9\">Golongan I–VI</text>
+        </g>
+
+        <!-- Arrow 3 -->
+        <polygon points=\"455,66 465,70 455,74\" fill=\"#C5A059\" />
+
+        <!-- Node 4: Discretion Bounds -->
+        <g transform=\"translate(475, 30)\">
+          <rect width=\"110\" height=\"80\" rx=\"8\" fill=\"#181720\" stroke=\"#C5A059\" stroke-width=\"1.2\" />
+          <text x=\"55\" y=\"28\" text-anchor=\"middle\" fill=\"#C5A059\" font-size=\"11\" font-weight=\"700\">PHASE 4</text>
+          <text x=\"55\" y=\"46\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Discretion</text>
+          <text x=\"55\" y=\"62\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Ceilings (P.6)</text>
+          <text x=\"55\" y=\"100\" text-anchor=\"middle\" fill=\"#A0A0A8\" font-size=\"9\">Anti-Abuse Cap</text>
+        </g>
+
+        <!-- Arrow 4 -->
+        <polygon points=\"600,66 610,70 600,74\" fill=\"#C5A059\" />
+
+        <!-- Node 5: Execution -->
+        <g transform=\"translate(620, 30)\">
+          <rect width=\"110\" height=\"80\" rx=\"8\" fill=\"#181720\" stroke=\"#C5A059\" stroke-width=\"1.2\" />
+          <text x=\"55\" y=\"28\" text-anchor=\"middle\" fill=\"#C5A059\" font-size=\"11\" font-weight=\"700\">PHASE 5</text>
+          <text x=\"55\" y=\"46\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Sanction</text>
+          <text x=\"55\" y=\"62\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"12\" font-weight=\"600\">Execution</text>
+          <text x=\"55\" y=\"100\" text-anchor=\"middle\" fill=\"#A0A0A8\" font-size=\"9\">Warn/Timeout/Ban</text>
+        </g>
+
+        <!-- Arrow 5 -->
+        <polygon points=\"745,66 755,70 745,74\" fill=\"#C5A059\" />
+
+        <!-- Node 6: Appellate -->
+        <g transform=\"translate(765, 30)\">
+          <rect width=\"85\" height=\"80\" rx=\"8\" fill=\"#181720\" stroke=\"#C5A059\" stroke-width=\"1.2\" />
+          <text x=\"42.5\" y=\"28\" text-anchor=\"middle\" fill=\"#C5A059\" font-size=\"10\" font-weight=\"700\">PHASE 6</text>
+          <text x=\"42.5\" y=\"46\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"11\" font-weight=\"600\">Appellate</text>
+          <text x=\"42.5\" y=\"62\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-size=\"11\" font-weight=\"600\">Tribunal</text>
+          <text x=\"42.5\" y=\"100\" text-anchor=\"middle\" fill=\"#A0A0A8\" font-size=\"9\">Amnesty / Review</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Primary Source Documents Download CTA -->
+  <div class=\"cs-docs-cta\">
+    <h4 class=\"cs-docs-title\">Primary Statutory Charters (81 Pages Total)</h4>
+    <p class=\"cs-docs-desc\">Original constitutional charters and technical penal matrices authored and codified by Elektra Eliviana:</p>
+    <div class=\"cs-docs-actions\">
+      <a href=\"assets/docs/PIAGAM_AGUNG_KEKAISARAN_CAVEINE.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-doc-download\">
+        <span class=\"doc-icon\">📄</span>
+        <div class=\"doc-meta\">
+          <span class=\"doc-name\">Piagam Agung Kekaisaran (PAK)</span>
+          <span class=\"doc-sub\">Constitutional & Executive Charter · 33 Pages PDF</span>
+        </div>
+      </a>
+      <a href=\"assets/docs/KITAB_HUKUM_KEKAISARAN_CAVEINE.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-doc-download\">
+        <span class=\"doc-icon\">⚖️</span>
+        <div class=\"doc-meta\">
+          <span class=\"doc-name\">Kitab Hukum Kekaisaran (KHK)</span>
+          <span class=\"doc-sub\">Penal, Procedural & Discretionary Matrix · 48 Pages PDF</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>",
+    "featured": true
+  },
+  {
     "id": "celestial-orbit-dynamics",
     "type": "code",
     "title": "Celestial Orbit Dynamics & N-Body Simulator",

@@ -409,6 +409,8 @@ const TYPE_ICONS = {
   music:       '🎹',
   chess:       '♟️',
   performance: '🎬',
+  'case-study':'⚖️',
+  operations:  '🛡️',
 };
 
 /** Mapping from work status value to CSS class */
@@ -470,10 +472,12 @@ function buildWorkCard(work) {
           Read on Wattpad ↗
         </a>
       </div>`;
-  } else if (work.links && (work.links.live || work.links.github)) {
+  } else if (work.links && (work.links.live || work.links.github || work.links.charters)) {
+    const liveLabel = (work.type === 'case-study') ? 'Executive Charter ↗' : 'Live Site ↗';
     cardActions = `
       <div class="card-direct-actions">
-        ${work.links.live ? `<a href="${escHtml(work.links.live)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-live" onclick="event.stopPropagation()">Live Site ↗</a>` : ''}
+        ${work.links.live ? `<a href="${escHtml(work.links.live)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-live" onclick="event.stopPropagation()">${liveLabel}</a>` : ''}
+        ${work.links.charters ? `<a href="${escHtml(work.links.charters)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-repo" onclick="event.stopPropagation()">Penal Matrix ↗</a>` : ''}
         ${work.links.github ? `<a href="${escHtml(work.links.github)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-repo" onclick="event.stopPropagation()">Repository ↗</a>` : ''}
       </div>`;
   }
@@ -677,6 +681,13 @@ function buildModalHTML(work) {
       </button>`;
   }
 
+  if (work.type === 'case-study' || work.case_study_html) {
+    typeSpecificHtml = `
+      <div class="modal-case-study-wrapper">
+        ${work.case_study_html || ''}
+      </div>`;
+  }
+
   // External links
   let linksHtml = '';
   if (work.links && typeof work.links === 'object') {
@@ -701,7 +712,7 @@ function buildModalHTML(work) {
 
   // General description (shown for all types unless type-specific block already has it)
   const descriptionSrc =
-    (work.type === 'research' || work.type === 'novel' || work.type === 'writing')
+    (work.type === 'research' || work.type === 'novel' || work.type === 'writing' || work.type === 'case-study' || work.case_study_html)
       ? '' // already included in typeSpecificHtml
       : (work.description || work.synopsis || '');
 
