@@ -1480,6 +1480,8 @@ body.modal-open {
   justify-content: space-between;
   gap: var(--space-md);
   padding-bottom: 0.8rem;
+  /* TASK-MD-09: safe zone so the absolute #modal-close never collides with badges */
+  padding-right: clamp(2.5rem, 5vw, 3.5rem);
   border-bottom: 1px solid var(--border-gold, rgba(201, 168, 76, 0.15));
   flex-shrink: 0;
 }
@@ -5487,10 +5489,6 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   max-width: min(880px, 100%);
 }
 
-/* Keep the status badge clear of the absolutely-positioned close button */
-.modal-panel:has(.modal-case-study) .modal-header {
-  padding-right: 3.5rem;
-}
 
 .modal-case-study {
   display: flex;
@@ -5846,6 +5844,7 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 .btn-doc-download .doc-icon {
   font-size: 1.6rem;
   line-height: 1;
+  flex-shrink: 0; /* TASK-MD-09: keep icon from being squeezed at 375px */
 }
 
 .btn-doc-download .doc-meta {
