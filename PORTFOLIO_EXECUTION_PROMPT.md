@@ -15,7 +15,62 @@
 | **TASK-HR-04** | Hero Section Watermark Integration (Option 1: Ambient Backdrop) | **COMPLETED & VERIFIED** | `css/style.css`, `index.html` |
 | **TASK-WK-05** | Works Grid Client Expansion: Portfolio Rizky Maulana Integration | **COMPLETED & VERIFIED** | `data/works.json` |
 | **TASK-PN-06** | Acoustic Lounge Remodel: Dual-Pane Concert Salon & Urtext Manuscript Visualizer | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js`, `data/works.json` |
-| **TASK-SK-07** | Strategic & Kinetic Theater Remodel (Interactive Media Console + Video Stage) | **READY FOR EXECUTION** | `index.html`, `css/style.css`, `js/app.js`, `data/profile.json` |
+| **TASK-SK-07** | Strategic & Kinetic Theater Remodel (Interactive Media Console + Video Stage) | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js`, `data/profile.json` |
+| **TASK-CS-08** | Trust & Safety Case Study Card & Token Compliance Refactor | **COMPLETED & VERIFIED** | `css/style.css`, `data/works.json`, `js/data.js` |
+| **TASK-MD-09** | Modal UX & Mobile Micro-Fit Polish (Close-Button Spacing & Squeezed Icon) | **READY FOR EXECUTION** | `css/style.css` |
+| **TASK-AN-10** | Global Kinetic Choreography & Visual Balance (Non-Destructive Motion System) | **READY FOR EXECUTION** | `css/style.css`, `js/app.js` |
+
+---
+
+## 🛡️ Model Execution Protocols & Technical Guardrails
+
+> **Critical Operational Mandate**: Every executing agent must adhere strictly to these model recommendations and negative constraints before touching any file in this repository.
+
+### 1. Recommended Model & Reasoning Configuration
+
+| Priority | Model | Reasoning Tier | Ideal Task Scope |
+| :--- | :--- | :--- | :--- |
+| **Primary (Recommended)** | **Claude Sonnet 5.5** | **Medium / High** | **Gold standard for CSS & frontend surgery.** Exceptional spatial awareness, zero layout regressions, and 100% adherence to negative constraints. |
+| **Secondary** | **Gemini 4 Argon / Neon** | **Medium / High** | **Multi-file synthesis & large context.** Excellent for cross-referencing `index.html`, `style.css`, `app.js`, and data registries simultaneously. |
+| **Third Choice** | **Claude Opus 5.5** | **Medium** | Deep analytical architectural reasoning. |
+| **⚠️ Prohibited for CSS Surgery** | **Gemini 3.8 Flash** | *Do Not Use* | Lightweight models take aggressive shortcuts on 4,800+ line stylesheets, causing duplicate classes and ruined layouts. |
+
+#### When to Use "High" vs. "Medium" Reasoning:
+- **Use "High"**: Complex layout restructuring (e.g. dual-pane consoles, 16:9 theater plates), HTML5 canvas visualizer math, or multi-file cascading modifications.
+- **Use "Medium"**: Component-isolated CSS polish, hover micro-interactions, or adding structured data entries to `works.json` and `profile.json`.
+
+---
+
+### 2. The 5 Immutable Execution Guardrails
+
+1. **NO MONOLITHIC REWRITES (Targeted Surgery Only)**:
+   - Never replace, clear, or rewrite entire existing CSS files.
+   - Only modify or append the specific classes belonging to the designated Task ID.
+   - Never alter global wrappers, container rules, or reset blocks without explicit directive.
+
+2. **STRICT DESIGN TOKEN COMPLIANCE**:
+   - All colors, fonts, borders, and transitions MUST strictly use existing CSS custom properties defined in `:root`:
+     - Backgrounds: `var(--bg-base, #0d0d0f)`, `var(--bg-surface, #13131a)`, `var(--bg-elevated, #1a1a24)`
+     - Accents: `var(--accent-primary, #c9a84c)`, `var(--accent-secondary, #8b6914)`, `var(--accent-link, #d4a853)`
+     - Borders: `var(--border-gold)`, `var(--border-gold-hover)`
+     - Typography: `var(--font-display)` (Cormorant Garamond), `var(--font-body)` (Inter), `var(--font-mono)` (JetBrains Mono)
+   - Never introduce unapproved arbitrary hex values or un-tokenized inline colors.
+
+3. **SPATIAL INTEGRITY & CONTAINER BOUNDARIES**:
+   - Preserve the 1200px maximum layout container (`--container-max: 1200px;`).
+   - Every container must enforce `box-sizing: border-box;` and zero horizontal overflow across all viewports from 375px to 1920px.
+   - Ensure Cumulative Layout Shift remains zero (`CLS = 0`).
+
+4. **RESTRAINED KINETIC MOTION STANDARDS**:
+   - Animations must be subtle, high-taste, and majestic (transitions: `0.2s`–`0.4s` using `cubic-bezier(0.16, 1, 0.3, 1)`).
+   - Translations on hover must be restrained to `translateY(-2px)` to `translateY(-4px)` with soft radial glows.
+   - No aggressive jitter, rapid strobing, or layout-displacing keyframes.
+   - Always honor `@media (prefers-reduced-motion: reduce)`.
+
+5. **COMPONENT-BY-COMPONENT VERIFICATION**:
+   - Execute only **ONE task at a time**.
+   - Verify visually in the browser before staging git commits.
+   - Run `git status` and test all interactive states before declaring a task completed.
 
 ---
 
@@ -973,9 +1028,124 @@ window.handleTheaterPosterClick = handleTheaterPosterClick;
 ---
 
 ### Verification & Acceptance Criteria
-- [ ] Section `#credentials` `.strategic-mastery-subsection` displays the 45%/55% dual-column Media Console.
-- [ ] Tab switching between Chess, GeoGuessr, and Rhythm updates text, attached repertoire box, and video state dynamically.
-- [ ] Left-hand dossier holds title, description, and attached specialized metadata box without layout shifting.
-- [ ] Right-hand 16:9 video frame displays a luxury standby poster with playhead when MP4 files are in editing.
-- [ ] Thematic tri-color ambient glow updates dynamically on selection (Slate, Emerald, Gold).
-- [ ] Reflows to a clean single column on mobile (<960px).
+- [x] Section `#credentials` `.strategic-mastery-subsection` displays the 45%/55% dual-column Media Console.
+- [x] Tab switching between Chess, GeoGuessr, and Rhythm updates text, attached repertoire box, and video state dynamically.
+- [x] Left-hand dossier holds title, description, and attached specialized metadata box without layout shifting.
+- [x] Right-hand 16:9 video frame displays a luxury standby poster with playhead when MP4 files are in editing.
+- [x] Thematic tri-color ambient glow updates dynamically on selection (Slate, Emerald, Gold).
+- [x] Reflows to a clean single column on mobile (<960px).
+
+---
+
+## 🛠️ TASK-CS-08: Trust & Safety Case Study Card & Design Token Compliance
+
+### Context & Strategic Rationale
+In `#works`, added a comprehensive 81-page Trust & Safety Platform Governance case study card with attached dual PDF reports. The initial commit (`6992ee9`) introduced raw hex values and un-tokenized transitions. Under the Model Execution Protocols, this was refactored in commit `42c003b` to achieve 100% design token compliance.
+
+### Architectural Solution Implemented
+1. **Design Token Standardization**: Replaced all raw hex colors (`#fff`, `#ddd`, `#ccc9be`, raw rgba) with `:root` tokens: `var(--text-primary)`, `var(--text-secondary)`, `var(--accent-primary)`, `var(--accent-link)`, and `var(--border-gold)`. Translucent gold highlights use CSS `color-mix()`.
+2. **Restrained Motion**: Replaced linear transitions with `0.3s cubic-bezier(0.16, 1, 0.3, 1)` and `translateY(-2px)` lift.
+3. **Accessibility**: Added `@media (prefers-reduced-motion: reduce)` to disable transitions and hover transforms for motion-sensitive users.
+4. **Data Sync & Syntax Repair**: Fixed invalid multi-line string escaping in `js/data.js` and regenerated the offline fallback cache for 38 total works.
+5. **Modal Header Clearance**: Added `padding-right: 3.5rem` to `.cs-modal-header` to guarantee zero collision between the green "Live" badge and the modal close button.
+
+### Verification & Acceptance Criteria
+- [x] All `.cs-*` classes use design tokens with zero raw hex or raw rgba values.
+- [x] Tested and verified on preview at 375px, 768px, and 1280px with 0 overflow elements.
+- [x] Flow chart SVG and badge elements fit cleanly inside modal boundaries.
+- [x] Offline fallback in `js/data.js` parses cleanly with valid string escaping.
+
+---
+
+## 🛠️ TASK-MD-09: Modal UX & Mobile Micro-Fit Polish
+
+### Context & Problem Statement
+During visual auditing of the case study and detail modals, two minor visual edge-case bugs were identified:
+1. **Squeezed Icon Bug at 375px**: In the second PDF download button on narrow mobile screens (375px), the icon (⚖️) gets compressed to ~13px wide due to default flex item shrinking.
+2. **Global Modal Header Clearance**: The close button (`#modal-close`) can overlap with status badges on other modals if narrow viewports wrap the title text.
+
+### Architectural Solution
+1. **Icon Flex Protection**: Add `flex-shrink: 0;` to `.doc-icon` so metadata and document icons retain their crisp circular dimensions.
+2. **Global Close-Button Safe Zone**: Ensure `.modal-header` has a guaranteed `padding-right: clamp(2.5rem, 5vw, 3.5rem);` so the absolute-positioned `#modal-close` button never collides with title badges or status indicators across any modal.
+
+### Technical Implementation
+
+#### `css/style.css`
+```css
+/* ── Modal Micro-Fit & Mobile Protection (TASK-MD-09) ────── */
+.doc-icon,
+.btn-doc-download .doc-icon {
+  flex-shrink: 0;
+}
+
+.modal-header {
+  padding-right: clamp(2.5rem, 5vw, 3.5rem);
+}
+```
+
+### Verification & Acceptance Criteria
+- [ ] At 375px mobile viewport, document icons (📄, ⚖️) in `.btn-doc-download` maintain full width with zero compression (`flex-shrink: 0`).
+- [ ] Modal close button has at least 24px clearance from badges and titles across all modal types.
+- [ ] Zero layout shift or overflow at 375px, 768px, and 1280px.
+
+---
+
+## 🛠️ TASK-AN-10: Global Kinetic Choreography & Visual Balance (Non-Destructive)
+
+### Context & Problem Statement
+The portfolio is structurally and textually complete. However, across the full scroll from Hero to Footer, certain sections feel static at rest. We need a cohesive, non-destructive kinetic system that adds living depth without altering any grid columns, fonts, or container widths.
+
+### Architectural Solution
+1. **Unified Physics Tokens in `:root`**:
+   - `--ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);`
+   - `--duration-reveal: 0.65s;`
+   - `--duration-hover: 0.28s;`
+2. **Subtle Interactive Lift**:
+   - Ensure all interactive cards (`.lang-card`, `.cert-card`, `.work-card`, `.companion-card`) share an identical, restrained hover elevation: `transform: translateY(-3px);` accompanied by a soft champagne border glow (`rgba(201, 168, 76, 0.45)`).
+3. **Staggered Intersection Cascade**:
+   - Enhance the IntersectionObserver stagger in `js/app.js` to ensure cards ripple into view sequentially (`--delay: calc(var(--index, 0) * 60ms)`) rather than appearing as a rigid wall.
+4. **Watermark Breathing Cadence**:
+   - Harmonize ambient background watermarks (`.hero-deco`, `.about-botanical-watermark`, `.pillar-watermark`) with ultra-slow, low-impact breathing opacity cycles (`12s`–`16s`).
+5. **Universal Reduced Motion Safety**:
+   - Wrap all continuous kinetic and transform rules inside `@media (prefers-reduced-motion: reduce)` to gracefully lock elements in their default restful states.
+
+### Technical Implementation
+
+#### `css/style.css`
+```css
+/* ══ GLOBAL KINETIC CHOREOGRAPHY (TASK-AN-10) ═══════════════ */
+:root {
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-reveal: 0.65s;
+  --duration-hover: 0.28s;
+}
+
+/* Unified Card Hover Elevation */
+.work-card,
+.cert-card,
+.lang-card,
+.companion-card,
+.theater-tab-btn {
+  transition: transform var(--duration-hover) var(--ease-luxury),
+              border-color var(--duration-hover) var(--ease-luxury),
+              box-shadow var(--duration-hover) var(--ease-luxury);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+### Verification & Acceptance Criteria
+- [ ] No layout shifts (CLS = 0) or container resize events during hover or scroll.
+- [ ] All interactive cards feel responsive and tactile with uniform luxury easing.
+- [ ] Reduced-motion mode instantly disables all continuous animations and transitions.
+- [ ] Zero horizontal scrollbars introduced across all responsive breakpoints.
