@@ -524,15 +524,37 @@ function renderWorksGrid(works) {
  * initWorksFilter — wires up the filter buttons above the works grid.
  * Filters cards by their data-type attribute with a fade transition.
  */
+function updateFilterPillIndicator(activeBtn) {
+  const indicator = document.getElementById('filter-pill-indicator');
+  const bar = document.getElementById('works-filter-bar') || document.querySelector('.filter-bar');
+  if (!indicator || !bar || !activeBtn) return;
+
+  const barRect = bar.getBoundingClientRect();
+  const btnRect = activeBtn.getBoundingClientRect();
+  const left = btnRect.left - barRect.left;
+  const top = (btnRect.bottom - barRect.top) - 2;
+  indicator.style.left = `${left}px`;
+  indicator.style.width = `${btnRect.width}px`;
+  indicator.style.top = `${top}px`;
+}
+
 function initWorksFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   if (!filterBtns.length) return;
+
+  const activeInitial = document.querySelector('.filter-btn.active') || filterBtns[0];
+  setTimeout(() => updateFilterPillIndicator(activeInitial), 120);
+  window.addEventListener('resize', () => {
+    const cur = document.querySelector('.filter-btn.active');
+    if (cur) updateFilterPillIndicator(cur);
+  });
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       // Update active button state
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      updateFilterPillIndicator(btn);
 
       const filter = btn.dataset.filter || 'all';
       applyWorksFilter(filter);
@@ -541,29 +563,36 @@ function initWorksFilter() {
 }
 
 /**
- * applyWorksFilter — shows/hides work cards based on the selected type.
- * Uses a CSS class .hidden for display:none and opacity fade.
+ * applyWorksFilter — Phase 6 Recessed Parchment Plane:
+ * Unselected cards remain visible & 100% readable in a recessed spatial plane (0.65 opacity, softened border),
+ * while selected cards illuminate at 1.0 opacity with a gilded border & elevation halo.
  * @param {string} filter  'all' or a specific type string.
  */
 function applyWorksFilter(filter) {
+  const grid = document.getElementById('works-grid') || document.querySelector('.works-grid');
   const cards = document.querySelectorAll('#works-grid .work-card');
+
+  if (grid) {
+    grid.classList.toggle('has-active-filter', filter !== 'all');
+  }
+
   cards.forEach(card => {
+    card.style.display = '';
+    card.classList.remove('hidden');
+
     const cardType = card.dataset.type;
     const matches = filter === 'all' ||
       cardType === filter ||
       (filter === 'novel' && (cardType === 'writing' || cardType === 'novel'));
-    // Fade out first, then hide
-    if (matches) {
-      card.style.display = '';
-      // Let the browser paint before adding visible
-      requestAnimationFrame(() => card.classList.remove('hidden'));
+
+    if (filter === 'all') {
+      card.classList.remove('filter-match', 'filter-not-match');
+    } else if (matches) {
+      card.classList.add('filter-match');
+      card.classList.remove('filter-not-match');
     } else {
-      card.classList.add('hidden');
-      // After CSS transition, actually hide from layout
-      card.addEventListener('transitionend', function handler() {
-        if (card.classList.contains('hidden')) card.style.display = 'none';
-        card.removeEventListener('transitionend', handler);
-      });
+      card.classList.remove('filter-match');
+      card.classList.add('filter-not-match');
     }
   });
 }
@@ -589,7 +618,8 @@ function openModal(work) {
 
   // Lock body scroll
   document.body.classList.add('modal-open');
-  overlay.classList.add('active', 'visible');
+  overlay.classList.remove('closing');
+  overlay.classList.add('active', 'visible', 'open');
 
   // Focus the close button for accessibility
   const closeBtn = document.getElementById('modal-close');
@@ -597,14 +627,17 @@ function openModal(work) {
 }
 
 /**
- * closeModal — hides the detail modal and restores body scroll.
+ * closeModal — folds the Clerestory Glass Plate modal back and restores body scroll.
  */
 function closeModal() {
   const overlay = document.getElementById('modal-overlay');
   if (!overlay) return;
-  overlay.classList.remove('active', 'visible');
-  document.body.classList.remove('modal-open');
-  _modalWork = null;
+  overlay.classList.add('closing');
+  setTimeout(() => {
+    overlay.classList.remove('active', 'visible', 'open', 'closing');
+    document.body.classList.remove('modal-open');
+    _modalWork = null;
+  }, 280);
 }
 
 /**
@@ -1079,12 +1112,18 @@ function initScrollAnimations() {
   // Stagger delay for direct grid children. The index wraps every 6 cards so a
   // card far down a long grid never waits seconds for its entrance (row ripple).
   const grids = document.querySelectorAll(
-    '.works-grid, .certificates-grid, .languages-grid, .honors-list, .honors-grid-3, .pillars-grid, .research-companion-grid, .skills-section'
+    '.works-grid, .certificates-grid, .languages-grid, .honors-list, .honors-grid-3, .pillars-grid, .tools-grid-6, .research-companion-grid, .skills-section'
   );
   grids.forEach(grid => {
     Array.from(grid.children).forEach((child, i) => {
-      child.style.setProperty('--delay', `${(i % 6) * 60}ms`);
+      child.style.setProperty('--delay', `${(i % 6) * 65}ms`);
     });
+  });
+
+  // Also ensure .tool-dock-item elements are observed for Horological Velvet Sinking entrance
+  document.querySelectorAll('.tool-dock-item').forEach((item, idx) => {
+    item.classList.add('reveal');
+    item.style.setProperty('--delay', `${(idx % 6) * 65}ms`);
   });
 
   // Once the entrance transition has finished, mark the element "settled" so CSS
@@ -1209,13 +1248,33 @@ function selectSalonPiece(idx) {
     if (ind) ind.textContent = '▶';
   });
 
-  updateSalonStage(idx);
+  // Phase 8: Archival Manuscript Page Turn in Soft Darkness
+  triggerPageTurn(() => {
+    updateSalonStage(idx);
+  });
 
   if (wasPlaying) {
-    playSalonPiece();
+    setTimeout(() => playSalonPiece(), 290);
   }
 }
 window.selectSalonPiece = selectSalonPiece;
+
+/**
+ * triggerPageTurn — Phase 8 archival vellum score page-turn transition.
+ */
+function triggerPageTurn(callback) {
+  const plate = document.querySelector('.salon-stage, .salon-stage-plate');
+  if (plate) {
+    plate.classList.add('track-turning');
+    setTimeout(() => {
+      if (callback) callback();
+      plate.classList.remove('track-turning');
+    }, 260);
+  } else if (callback) {
+    callback();
+  }
+}
+window.triggerPageTurn = triggerPageTurn;
 
 /**
  * parseDurationSec — parses "MM:SS" string to total seconds.
@@ -1410,26 +1469,24 @@ function setupUrtextCanvas() {
     _urtextCanvas.height = 90 * (window.devicePixelRatio || 1);
   }
 
-  drawUrtextFrame(0);
+  startUrtextAnimation();
 }
 
 /**
- * startUrtextAnimation — runs continuous render loop while playing.
+ * startUrtextAnimation — runs continuous render loop (taut piano string rest tremor + active harmonic waves).
  */
 function startUrtextAnimation() {
   cancelAnimationFrame(_urtextAnimId);
   function loop() {
-    _urtextPhase += 0.05;
+    _urtextPhase += _salonIsPlaying ? 0.055 : 0.015;
     drawUrtextFrame(_urtextPhase);
-    if (_salonIsPlaying) {
-      _urtextAnimId = requestAnimationFrame(loop);
-    }
+    _urtextAnimId = requestAnimationFrame(loop);
   }
   _urtextAnimId = requestAnimationFrame(loop);
 }
 
 /**
- * drawUrtextFrame — renders the Urtext 5-line grand staff, barlines, and cadence pulses.
+ * drawUrtextFrame — renders the Urtext 5-line grand staff, barlines, taut string micro-tremor, and measure-bar harmonic waves.
  */
 function drawUrtextFrame(phase) {
   if (!_urtextCanvas || !_urtextCtx) return;
@@ -1441,27 +1498,43 @@ function drawUrtextFrame(phase) {
 
   const staffTop = h * 0.25;
   const lineSpacing = (h * 0.45) / 4;
+  const pct = Math.min(1, _salonSimSeconds / Math.max(1, _salonDurationSec));
+  const activeX = (w * 0.04) + (pct * w * 0.92);
 
-  // 1. Draw 5 golden staff lines
-  ctx.strokeStyle = 'rgba(201, 168, 76, 0.28)';
+  // 1. Draw 5 golden staff lines with taut piano string tension (rest: 0.35px tremor; playing: harmonic propagation)
+  ctx.strokeStyle = 'rgba(201, 168, 76, 0.32)';
   ctx.lineWidth = 1;
   for (let i = 0; i < 5; i++) {
-    const y = staffTop + (i * lineSpacing);
+    const baseY = staffTop + (i * lineSpacing);
     ctx.beginPath();
-    ctx.moveTo(w * 0.04, y);
-    ctx.lineTo(w * 0.96, y);
+    for (let x = w * 0.04; x <= w * 0.96; x += 6) {
+      const distFromPlayhead = Math.abs(x - activeX);
+      const decay = Math.exp(-distFromPlayhead / (w * 0.18));
+      const amp = _salonIsPlaying ? (0.4 + 2.4 * decay) : 0.35;
+      const dy = Math.sin((x * 0.025) - (phase * 2.2) + (i * 0.7)) * amp;
+      if (x === w * 0.04) ctx.moveTo(x, baseY + dy);
+      else ctx.lineTo(x, baseY + dy);
+    }
     ctx.stroke();
   }
 
-  // 2. Measure barlines
+  // 2. Measure barlines with vertical harmonic ripple
   const measureCount = 4;
   const measureW = (w * 0.92) / measureCount;
-  ctx.strokeStyle = 'rgba(201, 168, 76, 0.35)';
   for (let m = 0; m <= measureCount; m++) {
     const x = (w * 0.04) + (m * measureW);
+    const distM = Math.abs(x - activeX);
+    const barGlow = _salonIsPlaying && distM < (w * 0.12);
+    ctx.strokeStyle = barGlow ? 'rgba(223, 194, 133, 0.75)' : 'rgba(201, 168, 76, 0.38)';
+    ctx.lineWidth = barGlow ? 1.5 : 1;
     ctx.beginPath();
-    ctx.moveTo(x, staffTop);
-    ctx.lineTo(x, staffTop + (4 * lineSpacing));
+    for (let y = staffTop; y <= staffTop + (4 * lineSpacing); y += 3) {
+      const waveX = _salonIsPlaying
+        ? Math.sin((y * 0.12) + (phase * 3) + m) * (barGlow ? 2.2 : 0.7)
+        : 0;
+      if (y === staffTop) ctx.moveTo(x + waveX, y);
+      else ctx.lineTo(x + waveX, y);
+    }
     ctx.stroke();
   }
 
@@ -1475,9 +1548,6 @@ function drawUrtextFrame(phase) {
     { m: 2, pitch: 2, type: 'quarter' },
     { m: 3, pitch: 1, type: 'half' },
   ];
-
-  const pct = Math.min(1, _salonSimSeconds / Math.max(1, _salonDurationSec));
-  const activeX = (w * 0.04) + (pct * w * 0.92);
 
   // Playhead glowing vertical hairline
   ctx.strokeStyle = 'rgba(201, 168, 76, 0.85)';
@@ -1521,10 +1591,10 @@ function drawUrtextFrame(phase) {
     ctx.stroke();
   });
 
-  // 4. Subtle Polyphonic Waveform Ribbon beneath staff
+  // 4. Polyphonic Harmonic Waveform Ribbon across Measure Bars
   if (_salonIsPlaying) {
     ctx.beginPath();
-    ctx.strokeStyle = 'rgba(201, 168, 76, 0.35)';
+    ctx.strokeStyle = 'rgba(201, 168, 76, 0.38)';
     ctx.lineWidth = 1.5;
     for (let x = w * 0.04; x <= w * 0.96; x += 4) {
       const wave = Math.sin((x * 0.02) + phase * 2) * 5
@@ -1743,14 +1813,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /* ============================================================
-   STRATEGIC & KINETIC THEATER CONSOLE CONTROLLER (TASK-SK-07)
+   STRATEGIC & KINETIC THEATER CONSOLE CONTROLLER (PHASE 9)
+   4-Video Architecture · Blueprint Inline Accordion · Frosted Echo
    ============================================================ */
 const STRATEGIC_DISCIPLINES = {
+  overture: {
+    id: "overture",
+    theme: "chess",
+    title: "Synthesized Kinetic Reflexes — Polymath Overview",
+    kicker: "TRI-DISCIPLINE MASTER OVERTURE · AMBIENT FEED",
+    badge: "Tri-Discipline Composite",
+    description: "Unified synthesis of Grandmaster positional chess calculation, high-accuracy European geospatial deduction, and high-BPM multi-finger rhythm reflexes.",
+    repertoireLabel: "Synthesized Domains:",
+    repertoireLine: "Positional Game Theory · European Topographical Meta · Virtuoso Multi-Finger Mechanics",
+    videoSrc: "assets/video/overture-montage.mp4",
+    videoTitle: "Tri-Discipline Master Overture Montage",
+    telemetry: "1920 × 1080 · 60 FPS · Composite Master Feed"
+  },
   chess: {
     id: "chess",
     theme: "chess",
     title: "Chess — Competitive Strategy",
-    kicker: "Competitive Strategy · Board Vision",
+    kicker: "ACTIVE FEED · CHESS STRATEGY",
     badge: "Campus & IAPI Champion",
     description: "Deep positional play, dynamic tactical foresight, and sharp opening theoretical preparation. Campus and national competitive tournament champion.",
     repertoireLabel: "Favorite Repertoire:",
@@ -1763,7 +1847,7 @@ const STRATEGIC_DISCIPLINES = {
     id: "geoguessr",
     theme: "geoguessr",
     title: "GeoGuessr — Regional Topography",
-    kicker: "Geospatial Inference · Meta Deduction",
+    kicker: "ACTIVE FEED · GEOGUESSR TOPOGRAPHY",
     badge: "European Meta Specialist",
     description: "High-accuracy regional deduction via architectural nuances, flora geography, utility infrastructure, road meta, and linguistic visual cues.",
     repertoireLabel: "Domain Focus:",
@@ -1776,7 +1860,7 @@ const STRATEGIC_DISCIPLINES = {
     id: "rhythm",
     theme: "rhythm",
     title: "Rhythm Games — High-BPM Kinetic Reflexes",
-    kicker: "Kinetic Multi-Finger Coordination",
+    kicker: "ACTIVE FEED · KINETIC REFLEXES",
     badge: "High-BPM Kinetic Reflexes",
     description: "Million Master in Cytus; elite multi-finger coordination across VOEZ, Deemo, Dynamix, BanG Dream!, and osu! Directly connects multi-finger kinetic speed to virtuoso classical piano mechanics.",
     repertoireLabel: "Kinetic Link:",
@@ -1787,51 +1871,124 @@ const STRATEGIC_DISCIPLINES = {
   }
 };
 
+let _activeStrategicId = 'chess';
+let _overtureIdleTimer = null;
+let _theaterSoundUnmuted = false;
+
 function selectStrategicDiscipline(id) {
+  clearTimeout(_overtureIdleTimer);
   const data = STRATEGIC_DISCIPLINES[id];
   if (!data) return;
+
+  if (_activeStrategicId === id) return;
+  _activeStrategicId = id;
 
   const consoleEl = document.getElementById('strategic-theater');
   if (consoleEl) consoleEl.setAttribute('data-active-theme', data.theme);
 
-  // 1. Update Tabs
-  document.querySelectorAll('.theater-tab-btn').forEach(btn => {
-    const isMatch = btn.dataset.id === id;
-    btn.classList.toggle('active', isMatch);
-    btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
-  });
+  // 1. Update Blueprint Inline Accordion Items & Stamped Golden Wax Seals
+  if (id !== 'overture') {
+    document.querySelectorAll('.theater-accordion-item').forEach(item => {
+      const isMatch = item.dataset.id === id;
+      item.classList.toggle('active', isMatch);
+    });
 
-  // 2. Update Dossier Info
-  const kicker = document.getElementById('dossier-kicker');
-  const title = document.getElementById('dossier-title');
-  const desc = document.getElementById('dossier-desc');
+    document.querySelectorAll('.theater-tab-btn').forEach(btn => {
+      const isMatch = btn.dataset.id === id;
+      btn.classList.toggle('active', isMatch);
+      btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      if (isMatch) {
+        const badge = btn.querySelector('.tab-badge');
+        if (badge) {
+          badge.style.animation = 'none';
+          void badge.offsetHeight;
+          badge.style.animation = '';
+        }
+      }
+    });
+  }
+
+  // 2. Update Under-Video Metadata Anchor Box (Directly beneath 16:9 Video Frame)
+  const repBox = document.getElementById('theater-repertoire-box');
   const repLabel = document.getElementById('repertoire-label');
   const repLine = document.getElementById('repertoire-line');
-
-  if (kicker) kicker.textContent = data.kicker;
-  if (title) title.textContent = data.title;
-  if (desc) desc.textContent = data.description;
-  if (repLabel) repLabel.textContent = data.repertoireLabel;
-  if (repLine) repLine.textContent = data.repertoireLine;
-
-  // 3. Update Video & Standby Poster
-  const video = document.getElementById('strategic-video-player');
-  const source = document.getElementById('strategic-video-source');
-  const poster = document.getElementById('theater-standby-poster');
-  const standbyTitle = document.getElementById('standby-title');
-  const telemetry = document.getElementById('telemetry-focus');
-
-  if (video) {
-    video.pause();
-    video.style.display = 'none';
+  if (repBox) {
+    repBox.classList.add('updating');
+    setTimeout(() => {
+      if (repLabel) repLabel.textContent = data.repertoireLabel;
+      if (repLine) repLine.textContent = data.repertoireLine;
+      repBox.classList.remove('updating');
+    }, 160);
+  } else {
+    if (repLabel) repLabel.textContent = data.repertoireLabel;
+    if (repLine) repLine.textContent = data.repertoireLine;
   }
-  if (poster) poster.style.display = 'flex';
-  if (source) source.src = data.videoSrc;
-  if (video) video.load();
-  if (standbyTitle) standbyTitle.textContent = data.videoTitle;
-  if (telemetry) telemetry.textContent = data.telemetry;
+
+  // 3. 16:9 Video Stage Frosted Glass Defocus / Refocus Transition (180ms)
+  const wrapper = document.querySelector('.theater-screen-wrapper');
+  if (wrapper) {
+    wrapper.classList.add('defocusing');
+    setTimeout(() => {
+      const video = document.getElementById('strategic-video-player');
+      const source = document.getElementById('strategic-video-source');
+      const poster = document.getElementById('theater-standby-poster');
+      const standbyKicker = document.getElementById('standby-kicker');
+      const standbyTitle = document.getElementById('standby-title');
+      const telemetry = document.getElementById('telemetry-focus');
+
+      if (video) {
+        video.pause();
+        video.style.display = 'none';
+      }
+      if (poster) poster.style.display = 'flex';
+      if (source) source.src = data.videoSrc;
+      if (video) video.load();
+      if (standbyKicker) standbyKicker.textContent = data.kicker;
+      if (standbyTitle) standbyTitle.textContent = data.videoTitle;
+      if (telemetry) telemetry.textContent = data.telemetry;
+      wrapper.classList.remove('defocusing');
+    }, 180);
+  }
 }
 window.selectStrategicDiscipline = selectStrategicDiscipline;
+
+/**
+ * handleTheaterMouseLeave — politely cross-fades the 16:9 stage to the Tri-Discipline Master Overture
+ * after a 1.8s idle delay when the cursor leaves the theater console.
+ */
+function handleTheaterMouseLeave() {
+  clearTimeout(_overtureIdleTimer);
+  _overtureIdleTimer = setTimeout(() => {
+    const video = document.getElementById('strategic-video-player');
+    if (video && !video.paused && video.style.display !== 'none') return;
+    selectStrategicDiscipline('overture');
+  }, 1800);
+}
+window.handleTheaterMouseLeave = handleTheaterMouseLeave;
+
+/**
+ * toggleTheaterSoundstage — Acoustic Sovereignty Guardrail:
+ * Muted by default; unmuting pauses the Classical Piano Recital so audio streams never collide.
+ */
+function toggleTheaterSoundstage(e) {
+  if (e) e.stopPropagation();
+  _theaterSoundUnmuted = !_theaterSoundUnmuted;
+  const btn = document.getElementById('theater-soundstage-toggle');
+  const label = document.getElementById('soundstage-label');
+  const video = document.getElementById('strategic-video-player');
+
+  if (btn) btn.classList.toggle('unmuted', _theaterSoundUnmuted);
+  if (label) {
+    label.textContent = _theaterSoundUnmuted ? 'SOUNDSTAGE ACTIVE' : 'MUTED · AMBIENT OVERLAY';
+  }
+  if (video) {
+    video.muted = !_theaterSoundUnmuted;
+  }
+  if (_theaterSoundUnmuted && typeof pauseSalonPiece === 'function' && _salonIsPlaying) {
+    pauseSalonPiece();
+  }
+}
+window.toggleTheaterSoundstage = toggleTheaterSoundstage;
 
 /**
  * handleTheaterPosterClick — attempts to play video or indicates standby status.
@@ -1841,15 +1998,18 @@ function handleTheaterPosterClick() {
   const poster = document.getElementById('theater-standby-poster');
 
   if (video) {
+    video.muted = !_theaterSoundUnmuted;
     video.style.display = 'block';
     if (poster) poster.style.display = 'none';
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Fallback: If video file isn't uploaded yet, revert to standby poster with notification
         if (poster) poster.style.display = 'flex';
         video.style.display = 'none';
-        console.info('[Elektra Video] Video reel in post-production. Drop MP4 file into assets/video/');
+        const badge = document.getElementById('standby-badge');
+        if (badge) {
+          badge.textContent = 'Master Footage in Final Post-Production · 1080p 60fps';
+        }
       });
     }
   }
@@ -1857,9 +2017,44 @@ function handleTheaterPosterClick() {
 window.handleTheaterPosterClick = handleTheaterPosterClick;
 
 /* ============================================================
+   PHASE 10: DIPLOMATIC DISPATCH CONSOLE (WAX SEAL COMPRESSION)
+   ============================================================ */
+function handleDiplomaticDispatch(e) {
+  if (e) e.preventDefault();
+  const btn = document.getElementById('dispatch-submit-btn');
+  const textEl = document.getElementById('dispatch-submit-text');
+  const nameEl = document.getElementById('dispatch-name');
+  const domainEl = document.getElementById('dispatch-domain');
+  const msgEl = document.getElementById('dispatch-message');
+
+  const name = nameEl ? nameEl.value.trim() : '';
+  const domain = domainEl ? domainEl.value.trim() : 'Scholarly Inquiry';
+  const msg = msgEl ? msgEl.value.trim() : '';
+
+  if (btn) {
+    btn.classList.add('wax-sealing');
+    if (textEl) textEl.textContent = 'Compressing Golden Wax Seal...';
+  }
+
+  setTimeout(() => {
+    if (btn) btn.classList.remove('wax-sealing');
+    if (textEl) textEl.textContent = 'Treatise Sealed & Transmitted ✓';
+
+    const subject = encodeURIComponent(`[Archival Dispatch] ${domain} — ${name}`);
+    const body = encodeURIComponent(`Correspondent: ${name}\nDomain: ${domain}\n\n${msg}`);
+    window.location.href = `mailto:elivianaelektra@gmail.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      if (textEl) textEl.textContent = 'Seal & Dispatch Treatise';
+      const form = document.getElementById('diplomatic-dispatch-form');
+      if (form) form.reset();
+    }, 3200);
+  }, 420);
+}
+window.handleDiplomaticDispatch = handleDiplomaticDispatch;
+
+/* ============================================================
    CSS KEYFRAME INJECTION (trackProgress animation)
-   We inject it here so the JS file is self-contained and the
-   progress bar animation works without editing the CSS file.
    ============================================================ */
 (function injectKeyframes() {
   const style = document.createElement('style');
@@ -1870,4 +2065,88 @@ window.handleTheaterPosterClick = handleTheaterPosterClick;
     }
   `;
   document.head.appendChild(style);
+})();
+
+/* ============================================================
+   PHASE 0 & 2: GRAVITATIONAL LENS CURSOR & 2.5D BOTANICAL TILT
+   ============================================================ */
+(function initGravitationalCursor() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const cursor = document.createElement('div');
+  cursor.id = 'custom-cursor';
+  const trail = document.createElement('div');
+  trail.id = 'custom-cursor-trail';
+  document.body.appendChild(cursor);
+  document.body.appendChild(trail);
+
+  cursor.style.opacity = '0';
+  trail.style.opacity = '0';
+
+  let mouseX = 0, mouseY = 0;
+  let trailX = 0, trailY = 0;
+  let hasMoved = false;
+
+  const heroDeco = document.querySelector('.hero-deco');
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+
+    if (!hasMoved) {
+      hasMoved = true;
+      trailX = mouseX;
+      trailY = mouseY;
+      cursor.style.opacity = '1';
+      trail.style.opacity = '1';
+    }
+
+    // Phase 2: Subtle 2.5D Optical Parallax Tilt on Hero Botanical Watermark
+    if (heroDeco && window.scrollY < window.innerHeight) {
+      const nx = (mouseX / window.innerWidth) - 0.5;
+      const ny = (mouseY / window.innerHeight) - 0.5;
+      heroDeco.style.transform = `translate(calc(-50% + ${nx * -16}px), calc(-50% + ${ny * -16}px)) rotateX(${ny * -4}deg) rotateY(${nx * 4}deg)`;
+    }
+  });
+
+  function animateTrail() {
+    trailX += (mouseX - trailX) * 0.15;
+    trailY += (mouseY - trailY) * 0.15;
+    trail.style.left = trailX + 'px';
+    trail.style.top = trailY + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+  requestAnimationFrame(animateTrail);
+
+  const interactiveSelectors = 'a, button, [role="button"], input, textarea, select, .nav-link, .work-card, .tool-dock-item, .theater-tab-btn, .filter-btn, .social-pill, .pillar-card, .companion-card';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveSelectors)) {
+      cursor.classList.add('cursor-hover');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveSelectors)) {
+      cursor.classList.remove('cursor-hover');
+    }
+  });
+
+  // Gravitational Lens Magnetic Pull on Typography & Nav Links
+  const magneticEls = document.querySelectorAll('.hero-name, .section-title, .nav-link, .subsection-title');
+  magneticEls.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = (e.clientX - centerX) * 0.055;
+      const dy = (e.clientY - centerY) * 0.055;
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      el.style.transition = 'transform 0.1s ease';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+      el.style.transition = 'transform 0.42s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+  });
 })();
