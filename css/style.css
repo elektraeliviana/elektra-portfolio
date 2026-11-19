@@ -971,7 +971,6 @@ section {
   background: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.04) 0%, transparent 70%), var(--bg-base);
   position: relative;
   overflow: hidden;
-  padding-top: clamp(4rem, 6vw, 5.5rem);
 }
 
 .about-botanical-watermark {
@@ -2875,7 +2874,8 @@ body.modal-open {
 }
 
 .section {
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-block: clamp(2.5rem, 4vw, 3.8rem);
+  margin-block: 0;
 }
 
 /* ══ MONOGRAM SEAL ════════════════════════════════════════ */
@@ -4106,12 +4106,17 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
+/* Native-script labels: Noto Sans Sundanese first (Windows ships no Sundanese font) */
+.lang-native-watermark,
+.lang-native-label {
+  font-family: 'Noto Sans Sundanese', var(--font-display), 'Cormorant Garamond', serif;
+}
+
 /* Ghosted Background Script Watermark */
 .lang-native-watermark {
   position: absolute;
   right: 0.75rem;
   bottom: -0.25rem;
-  font-family: var(--font-display, serif);
   font-size: 3.2rem;
   font-weight: 700;
   color: var(--accent-primary, #c9a84c);
@@ -4155,7 +4160,6 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 }
 
 .lang-native-label {
-  font-family: var(--font-body, sans-serif);
   font-size: 0.85rem;
   color: var(--text-muted, #8a8275);
 }
@@ -5117,17 +5121,6 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 
 /* ══ SYSTEMATIC SECTION SPACING & ARCHITECTURAL GAPS ══════════════ */
 
-/* Major Sections Vertical Separation */
-#tools,
-#horizons,
-#works,
-#piano,
-#credentials,
-#contact {
-  margin-top: clamp(4.5rem, 8vw, 7rem);
-  padding-top: clamp(3rem, 5vw, 4.5rem);
-}
-
 /* Fix for CTA Buttons to Languages (Picture 4) */
 .languages-subsection,
 #about .languages-subsection {
@@ -5152,12 +5145,6 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
   margin-top: clamp(5rem, 8vw, 7rem) !important;
   padding-top: clamp(3rem, 5vw, 4rem) !important;
   border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
-}
-
-/* Fix for Flagship Research (Picture 3) */
-#research {
-  margin-top: clamp(5rem, 8vw, 7rem) !important;
-  padding-top: clamp(3rem, 5vw, 4.5rem) !important;
 }
 
 /* Minimalist Footer (Option B) */
@@ -6056,6 +6043,17 @@ body {
   will-change: left, top;
 }
 
+/* Touch guardrail: the gravitational cursor never renders on coarse / hover-less devices.
+   !important is intentional here: it must beat the inline styles written by app.js. */
+@media (hover: none) and (pointer: coarse) {
+  #custom-cursor,
+  #custom-cursor-trail {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
 /* ── Phase 1: Floating Frosted Pill Navigation & Kinetic Stylus ── */
 #navbar {
   transition: all 0.42s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -6091,8 +6089,22 @@ body {
 }
 
 #navbar.scrolled .nav-brand {
-  font-size: 0.74rem;
-  letter-spacing: 0.18em;
+  font-size: clamp(0.68rem, 1vw, 0.74rem);
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+/* Tablet calibration (768px–1024px): compress gap so 8 links + brand never wrap.
+   Base .nav-link font-size/padding carry !important, so only those two need it here. */
+#navbar.scrolled .nav-links {
+  gap: clamp(0.55rem, 1.25vw, 1.15rem);
+}
+
+#navbar.scrolled .nav-link,
+#navbar.scrolled .nav-links a {
+  font-size: clamp(0.72rem, 1.05vw, 0.8rem) !important;
+  padding: 0.25rem 0.15rem !important;
+  white-space: nowrap;
 }
 
 .nav-link,
@@ -6145,11 +6157,23 @@ body {
   position: relative;
 }
 
+/* Per-path calibration: --spencerian-len ≈ measured path length so each stroke
+   finishes drawing exactly when its own animation ends (no early freeze). */
 .hero-spencerian-whip {
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
-  animation: spencerianStrokeDraw 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.35s;
+  --spencerian-len: 900;
+  --spencerian-dur: 2.4s;
+  stroke-dasharray: var(--spencerian-len);
+  stroke-dashoffset: var(--spencerian-len);
+  opacity: 0;
+  animation:
+    spencerianStrokeDraw var(--spencerian-dur) cubic-bezier(0.4, 0, 0.2, 1) forwards 0.35s,
+    spencerianInkBleed 2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.35s;
 }
+
+.spencerian-path-whip-left { --spencerian-len: 345; --spencerian-dur: 1.8s; }
+.spencerian-path-whip-sub  { --spencerian-len: 75;  --spencerian-dur: 1.2s; }
+.spencerian-path-baseline  { --spencerian-len: 655; --spencerian-dur: 2.2s; }
+.spencerian-path-accent    { --spencerian-len: 185; --spencerian-dur: 1.4s; }
 
 .hero-spencerian-swash {
   opacity: 0;
@@ -6157,10 +6181,32 @@ body {
   animation: spencerianSwashBloom 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
 }
 
+/* Filled swash (no stroke): calibrated bloom duration only */
+.spencerian-path-swash-top { animation-duration: 1.6s; }
+
+/* Terminal accent dots blossom once the flourish arrives (t = 2.0s) */
+.spencerian-terminal-dot {
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dotBloom 0.4s ease forwards 2.0s;
+}
+
 @keyframes spencerianStrokeDraw {
-  0% { stroke-dashoffset: 900; opacity: 0; }
-  15% { opacity: 0.9; }
-  100% { stroke-dashoffset: 0; opacity: 0.9; }
+  from { stroke-dashoffset: var(--spencerian-len); }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes spencerianInkBleed {
+  0%   { opacity: 0; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes dotBloom {
+  0%   { opacity: 0; transform: scale(0); }
+  60%  { opacity: 1; transform: scale(1.35); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes spencerianSwashBloom {
@@ -6202,19 +6248,13 @@ body {
 
 .horological-tumbler {
   overflow: hidden;
-  animation: tumblerRollIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(0.65s + (var(--tumbler-idx, 0) * 110ms));
+  animation: horologicalTumblerRoll 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(0.4s + var(--tumbler-idx, 0) * 0.12s);
 }
 
-@keyframes tumblerRollIn {
-  0% {
-    opacity: 0;
-    transform: translateY(22px) rotateX(-45deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg);
-  }
+@keyframes horologicalTumblerRoll {
+  0%   { opacity: 0; transform: translateY(18px) rotateX(-25deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
 }
 
 /* ── Phase 3: About Magnolia 60s Harmonic Axis & Cultural Wax Seals ── */
@@ -6273,17 +6313,6 @@ body {
 }
 
 /* ── Phase 5: Section Gap Harmonization & Horizons Tetrastyle Portico ── */
-.section {
-  padding-block: clamp(2.5rem, 4vw, 3.8rem) !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-#about, #tools, #horizons, #works, #research, #piano, #credentials, #contact {
-  margin-top: 0 !important;
-  padding-top: clamp(2.5rem, 4vw, 3.8rem) !important;
-}
-
 .pillar-card,
 .horizon-card {
   position: relative;
@@ -6974,3 +7003,34 @@ footer.footer-minimal::before {
 /* ════════════════════════════════════════════════════════════
    END OF STYLESHEET
    ════════════════════════════════════════════════════════════ */
+
+/* ── Theater standby toast (luxury champagne on obsidian glass) ── */
+.theater-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, 16px);
+  max-width: min(92vw, 560px);
+  padding: 0.85rem 1.6rem;
+  background: rgba(13, 13, 15, 0.92);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  color: #dfc285;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999990;
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theater-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

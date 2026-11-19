@@ -20,6 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <!-- Noto Sans Sundanese: Aksara Sunda glyphs (no native Windows font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sundanese:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css?v=3.0.0" />
@@ -100,13 +102,13 @@
           </defs>
 
           <!-- Top Spencerian Calligraphic Swash & Flourish -->
-          <path class="hero-spencerian-swash" d="M 280,38 Q 380,24 470,26 Q 560,28 660,18 Q 630,30 520,32 Q 410,34 310,44 Z" fill="url(#spencerianGold)" opacity="0.65" />
-          <circle cx="270" cy="38" r="2.2" fill="#E8D5B5" />
-          <circle cx="670" cy="18" r="2.2" fill="#E8D5B5" />
+          <path class="hero-spencerian-swash spencerian-path-swash-top" d="M 280,38 Q 380,24 470,26 Q 560,28 660,18 Q 630,30 520,32 Q 410,34 310,44 Z" fill="url(#spencerianGold)" opacity="0.65" />
+          <circle class="spencerian-terminal-dot" cx="270" cy="38" r="2.2" fill="#E8D5B5" />
+          <circle class="spencerian-terminal-dot" cx="670" cy="18" r="2.2" fill="#E8D5B5" />
 
           <!-- Left Quill Flourish -->
-          <path class="hero-spencerian-whip" d="M 120,115 C 160,80 200,55 240,75 C 210,85 180,105 160,135 C 150,150 135,160 115,152 C 95,142 100,125 120,115 Z" fill="none" stroke="url(#spencerianGold)" stroke-width="1.3" opacity="0.75" />
-          <path class="hero-spencerian-whip" d="M 115,152 C 105,156 90,154 85,145 C 80,135 90,122 105,120" fill="none" stroke="url(#spencerianGold)" stroke-width="0.8" opacity="0.5" />
+          <path class="hero-spencerian-whip spencerian-path-whip-left" d="M 120,115 C 160,80 200,55 240,75 C 210,85 180,105 160,135 C 150,150 135,160 115,152 C 95,142 100,125 120,115 Z" fill="none" stroke="url(#spencerianGold)" stroke-width="1.3" opacity="0.75" />
+          <path class="hero-spencerian-whip spencerian-path-whip-sub" d="M 115,152 C 105,156 90,154 85,145 C 80,135 90,122 105,120" fill="none" stroke="url(#spencerianGold)" stroke-width="0.8" opacity="0.5" />
 
           <!-- Main Calligraphic Spencerian Text -->
           <text
@@ -123,9 +125,9 @@
 
           <!-- Underline Spencerian Scroll Flourish & Terminal 'a' Whip Baseline -->
           <path class="hero-spencerian-swash" d="M 220,135 C 340,152 460,158 580,148 C 660,141 740,128 810,108 C 760,125 670,146 570,152 C 450,158 330,154 220,135 Z" fill="url(#spencerianGold)" opacity="0.8" />
-          <path class="hero-spencerian-whip" d="M 160,156 C 320,164 620,164 810,142" fill="none" stroke="url(#spencerianGold)" stroke-width="1.4" opacity="0.85" />
-          <path class="hero-spencerian-whip" d="M 580,150 Q 640,165 710,162 Q 740,160 760,152" fill="none" stroke="url(#spencerianGold)" stroke-width="1.2" opacity="0.7" />
-          <circle cx="765" cy="151" r="2.2" fill="#E8D5B5" />
+          <path class="hero-spencerian-whip spencerian-path-baseline" d="M 160,156 C 320,164 620,164 810,142" fill="none" stroke="url(#spencerianGold)" stroke-width="1.4" opacity="0.85" />
+          <path class="hero-spencerian-whip spencerian-path-accent" d="M 580,150 Q 640,165 710,162 Q 740,160 760,152" fill="none" stroke="url(#spencerianGold)" stroke-width="1.2" opacity="0.7" />
+          <circle class="spencerian-terminal-dot" cx="765" cy="151" r="2.2" fill="#E8D5B5" />
         </svg>
       </div>
 

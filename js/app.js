@@ -1178,6 +1178,8 @@ let _salonSimTimer   = null;
 let _salonSimSeconds = 0;
 let _salonDurationSec = 570; // 9:30 default
 let _urtextAnimId    = null;
+let _urtextVisible   = true;   // flipped by IntersectionObserver on #piano
+let _urtextObserver  = null;
 let _urtextCanvas    = null;
 let _urtextCtx       = null;
 let _urtextPhase     = 0;
@@ -1469,20 +1471,44 @@ function setupUrtextCanvas() {
     _urtextCanvas.height = 90 * (window.devicePixelRatio || 1);
   }
 
+  // Pause the render loop whenever #piano is off-screen (GPU / battery conservation)
+  if (!_urtextObserver && 'IntersectionObserver' in window) {
+    const piano = document.getElementById('piano') || _urtextCanvas;
+    _urtextVisible = false; // the observer reports the true state on first callback
+    _urtextObserver = new IntersectionObserver((entries) => {
+      const entry = entries[entries.length - 1];
+      _urtextVisible = entry.isIntersecting;
+      if (_urtextVisible) startUrtextAnimation();
+      else stopUrtextAnimation();
+    }, { threshold: 0 });
+    _urtextObserver.observe(piano);
+  }
+
   startUrtextAnimation();
 }
 
 /**
  * startUrtextAnimation — runs continuous render loop (taut piano string rest tremor + active harmonic waves).
+ * No-op while #piano is off-screen; the IntersectionObserver resumes it.
  */
 function startUrtextAnimation() {
   cancelAnimationFrame(_urtextAnimId);
+  _urtextAnimId = null;
+  if (!_urtextVisible) return;
   function loop() {
     _urtextPhase += _salonIsPlaying ? 0.055 : 0.015;
     drawUrtextFrame(_urtextPhase);
     _urtextAnimId = requestAnimationFrame(loop);
   }
   _urtextAnimId = requestAnimationFrame(loop);
+}
+
+/**
+ * stopUrtextAnimation — cancels the render loop (called when #piano leaves the viewport).
+ */
+function stopUrtextAnimation() {
+  cancelAnimationFrame(_urtextAnimId);
+  _urtextAnimId = null;
 }
 
 /**
@@ -1993,9 +2019,40 @@ window.toggleTheaterSoundstage = toggleTheaterSoundstage;
 /**
  * handleTheaterPosterClick — attempts to play video or indicates standby status.
  */
+const THEATER_STANDBY_MSG = 'Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon.';
+// Flip to true once assets/video/chess-analysis.mp4 is published.
+const THEATER_VIDEO_AVAILABLE = false;
+
+/**
+ * showTheaterToast — luxury champagne toast (obsidian glass pill, auto-dismiss).
+ */
+function showTheaterToast(msg) {
+  let toast = document.querySelector('.theater-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'theater-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  // Force a reflow so the transition replays when re-triggered
+  void toast.offsetWidth;
+  toast.classList.add('is-visible');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove('is-visible'), 3800);
+}
+window.showTheaterToast = showTheaterToast;
+
 function handleTheaterPosterClick() {
   const video = document.getElementById('strategic-video-player');
   const poster = document.getElementById('theater-standby-poster');
+
+  // Intercept before any network request: the master footage is still in post-production.
+  if (!THEATER_VIDEO_AVAILABLE) {
+    showTheaterToast(THEATER_STANDBY_MSG);
+    return;
+  }
 
   if (video) {
     video.muted = !_theaterSoundUnmuted;
@@ -2089,7 +2146,19 @@ window.handleDiplomaticDispatch = handleDiplomaticDispatch;
 
   const heroDeco = document.querySelector('.hero-deco');
 
+  // Hybrid / touchscreen guardrail: any touch hides the cursor so it never freezes at a tap point.
+  document.addEventListener('touchstart', () => {
+    cursor.style.display = 'none';
+    trail.style.display = 'none';
+  }, { passive: true });
+
   document.addEventListener('mousemove', (e) => {
+    // Ignore compatibility mouse events synthesised from touch input
+    if (e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents === true) return;
+    if (cursor.style.display === 'none') {
+      cursor.style.display = '';
+      trail.style.display = '';
+    }
     mouseX = e.clientX;
     mouseY = e.clientY;
     cursor.style.left = mouseX + 'px';
