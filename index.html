@@ -982,7 +982,8 @@
               </button>
               <div class="theater-accordion-panel">
                 <div class="theater-dossier-body">
-                  <video class="theater-video-echo" src="assets/video/chess-analysis.mp4" muted loop playsinline autoplay aria-hidden="true" onerror="this.style.display='none'"></video>
+                  <!-- Standby background video reel (loaded dynamically when reel is published) -->
+                  <video class="theater-video-echo" data-src="assets/video/chess-analysis.mp4" muted loop playsinline aria-hidden="true" style="display: none;"></video>
                   <div class="dossier-header">
                     <span class="dossier-kicker">Competitive Strategy · Board Vision</span>
                   </div>
@@ -1043,8 +1044,8 @@
           <div class="theater-screen-column">
             <div class="theater-screen-wrapper">
               <!-- Active Discipline / Overture Video Feed -->
-              <video id="strategic-video-player" class="theater-video" preload="metadata" muted loop playsinline controls style="display: none;">
-                <source id="strategic-video-source" src="assets/video/chess-analysis.mp4" type="video/mp4" />
+              <video id="strategic-video-player" class="theater-video" preload="none" muted loop playsinline controls style="display: none;">
+                <source id="strategic-video-source" data-src="assets/video/chess-analysis.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
 

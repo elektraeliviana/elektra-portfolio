@@ -2055,6 +2055,10 @@ function handleTheaterPosterClick() {
   }
 
   if (video) {
+    const source = document.getElementById('strategic-video-source');
+    if (source && source.dataset.src && !video.src) {
+      video.src = source.dataset.src;
+    }
     video.muted = !_theaterSoundUnmuted;
     video.style.display = 'block';
     if (poster) poster.style.display = 'none';
