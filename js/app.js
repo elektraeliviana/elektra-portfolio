@@ -1073,20 +1073,33 @@ function renderSocials(socials, selector, iconsOnly = false) {
  * Grid children get a staggered --delay CSS variable.
  */
 function initScrollAnimations() {
-  // Stagger delay for direct grid children
+  const prefersReducedMotion =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Stagger delay for direct grid children. The index wraps every 6 cards so a
+  // card far down a long grid never waits seconds for its entrance (row ripple).
   const grids = document.querySelectorAll(
-    '.works-grid, .certificates-grid, .languages-grid, .honors-list, .skills-section'
+    '.works-grid, .certificates-grid, .languages-grid, .honors-list, .honors-grid-3, .pillars-grid, .research-companion-grid, .skills-section'
   );
   grids.forEach(grid => {
     Array.from(grid.children).forEach((child, i) => {
-      child.style.setProperty('--delay', `${i * 60}ms`);
+      child.style.setProperty('--delay', `${(i % 6) * 60}ms`);
     });
   });
+
+  // Once the entrance transition has finished, mark the element "settled" so CSS
+  // drops the stagger delay and hover interactions respond instantly.
+  const settle = el => {
+    if (prefersReducedMotion) { el.classList.add('settled'); return; }
+    const delay = parseFloat(el.style.getPropertyValue('--delay')) || 0;
+    setTimeout(() => el.classList.add('settled'), delay + 700);
+  };
 
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible', 'revealed');
+        settle(entry.target);
         revealObserver.unobserve(entry.target); // animate once
       }
     });
@@ -1109,6 +1122,7 @@ function initScrollAnimations() {
   setTimeout(() => {
     document.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
       el.classList.add('visible', 'revealed');
+      settle(el);
     });
   }, 1200);
 }

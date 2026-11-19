@@ -5878,5 +5878,124 @@ p, .about-bio, .section-desc, .companion-desc, .flagship-abstract {
 }
 
 /* ════════════════════════════════════════════════════════════
+   GLOBAL KINETIC CHOREOGRAPHY (TASK-AN-10)
+   Non-destructive: transitions, hover elevation, stagger and
+   watermark breathing only. No grid, font or container changes.
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-reveal: 0.65s;
+  --duration-hover: 0.28s;
+}
+
+/* 1. Unified hover timing for cards that are NOT scroll-revealed */
+.work-card,
+.theater-tab-btn {
+  transition:
+    transform var(--duration-hover) var(--ease-luxury),
+    border-color var(--duration-hover) var(--ease-luxury),
+    box-shadow var(--duration-hover) var(--ease-luxury),
+    background-color var(--duration-hover) var(--ease-luxury),
+    color var(--duration-hover) var(--ease-luxury);
+}
+
+/* 2. Scroll-revealed cards: staggered entrance (--delay set in js/app.js),
+      then a delay-free hover once the entrance has settled. */
+.reveal[style*="--delay"]:not(.settled) {
+  transition-delay: var(--delay, 0ms);
+}
+
+.lang-card.reveal,
+.cert-card.reveal,
+.companion-card.reveal {
+  transition:
+    opacity var(--duration-reveal) var(--ease-luxury) var(--delay, 0ms),
+    transform var(--duration-reveal) var(--ease-luxury) var(--delay, 0ms),
+    border-color var(--duration-hover) var(--ease-luxury),
+    box-shadow var(--duration-hover) var(--ease-luxury);
+}
+
+.lang-card.reveal.settled,
+.cert-card.reveal.settled,
+.companion-card.reveal.settled {
+  transition:
+    opacity var(--duration-hover) var(--ease-luxury),
+    transform var(--duration-hover) var(--ease-luxury),
+    border-color var(--duration-hover) var(--ease-luxury),
+    box-shadow var(--duration-hover) var(--ease-luxury);
+}
+
+/* 3. One restrained, identical hover elevation for every interactive card.
+      (.reveal.revealed pins transform with !important, so revealed cards
+      need the matching !important to lift at all.) */
+.work-card:hover,
+.cert-card:hover,
+.lang-card:hover,
+.companion-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent-primary) 45%, transparent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.lang-card.reveal.revealed:hover,
+.cert-card.reveal.revealed:hover,
+.companion-card.reveal.revealed:hover {
+  transform: translateY(-3px) !important;
+}
+
+/* 4. Watermark breathing cadence (12s–16s). The SVG child breathes so the
+      parent's own opacity / hover transitions keep working untouched.
+      .hero-deco already breathes on a 14s cycle (botanicalAmbientGaze). */
+@keyframes watermarkBreath {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+.about-botanical-watermark svg {
+  animation: watermarkBreath 14s ease-in-out infinite;
+}
+
+.pillar-watermark svg {
+  animation: watermarkBreath 16s ease-in-out infinite;
+}
+
+.pillar-card:nth-child(2) .pillar-watermark svg { animation-delay: -4s; }
+.pillar-card:nth-child(3) .pillar-watermark svg { animation-delay: -8s; }
+.pillar-card:nth-child(4) .pillar-watermark svg { animation-delay: -12s; }
+
+/* 5. Universal reduced-motion safety: lock everything in its restful state */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .about-botanical-watermark svg,
+  .pillar-watermark svg {
+    animation: none;
+    opacity: 1;
+  }
+
+  .work-card:hover,
+  .cert-card:hover,
+  .lang-card:hover,
+  .companion-card:hover {
+    transform: none;
+  }
+
+  .lang-card.reveal.revealed:hover,
+  .cert-card.reveal.revealed:hover,
+  .companion-card.reveal.revealed:hover {
+    transform: translateY(0) !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
    END OF STYLESHEET
    ════════════════════════════════════════════════════════════ */
