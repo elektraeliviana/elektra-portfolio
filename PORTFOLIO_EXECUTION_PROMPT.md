@@ -1155,88 +1155,189 @@ The portfolio is structurally and textually complete. However, across the full s
 
 ## 🛠️ TASK-SN-11: Claude Sonnet 5.5 High Master Aesthetic, Kinetic & Responsive Polish
 
-> **Model Assigned**: **Claude Sonnet 5.5 (Reasoning Tier: High)**  
+> **Assigned Model**: **Claude Sonnet 5.5 (Reasoning Tier: High)**  
 > **Target Files**: `index.html`, `css/style.css`, `js/app.js`  
-> **Mission**: Gemini 4 Argon High has established the core machinery for Phases 0–10 (commit `b4b36db`). Your task is surgical, high-precision aesthetic and kinetic polish. Do NOT rewrite layouts from scratch. Refine timing curves, eliminate visual friction, fix font fallbacks, and harden mobile edge cases.
+> **Current Commit Base**: `2078f20` (Following Gemini 4 Argon High deployment `b4b36db`)  
+> **Execution Mandate**: Surgical, high-precision aesthetic and kinetic polish. Do NOT perform monolithic rewrites. Refine micro-timings, eliminate visual friction, complete font imports, and harden mobile/tablet edge cases.
 
 ---
 
-### Detailed Scope of Enhancements
+### 1. Executive Context & What Has Changed
 
-#### 1. Mobile Touch Guardrail for Gravitational Cursor (`#custom-cursor`)
-* **File**: `js/app.js` & `css/style.css`
-* **Defect**: On touch devices (smartphones/tablets), touch taps can cause the cursor or trail elements to spawn or linger on screen.
-* **Refinement**: 
-  - Ensure `#custom-cursor` and `#custom-cursor-trail` have `display: none !important;` under `@media (hover: none) and (pointer: coarse)`.
-  - In `initGravitationalCursor()`, wrap event listeners with an active touch-abort controller so mobile battery and GPU cycles are 100% preserved.
+In commit `b4b36db`, Gemini 4 Argon High established the master architectural overhaul across the portfolio:
+1. **Hero Spencerian SVG Signature**: Calligraphic flourish branding with gold gradient (`.hero-spencerian-svg`).
+2. **Gravitational Cursor System**: Ambient cursor and trail with hover states and magnetic typography pull (`#custom-cursor`).
+3. **Section Void Compression**: Unified vertical spacing, compressing page height from ~18,028px down to 9,447px (eliminating 296px empty voids).
+4. **Urtext Grand Staff Visualizer**: HTML5 2D canvas dynamically rendering 5-line classical staff and musical wave harmonics (`#urtext-canvas`).
+5. **Interactive Strategic & Kinetic Theater**: 3-discipline switchable telemetry console (Chess Telemetry, Speed Geography, Rhythm Dynamics) with live statistics and video stage.
+6. **Diplomatic Dispatch & Footer**: Wax seal compression button interaction and monoline etched SVG social pills.
 
-#### 2. Spencerian Calligraphy Draw-in Path-by-Path Calibration
-* **File**: `css/style.css` & `index.html`
-* **Defect**: The current draw-in uses a blanket hardcoded `stroke-dasharray: 900;` on all paths. Shorter flourishes (~50px–100px) complete their stroke draw instantly and pop abruptly, while the main signature text is still writing.
-* **Refinement**:
-  - Calibrate the stroke-dasharray and timing per element:
-    - Main title text (`.hero-spencerian-text`): Smooth organic ink bleed (`fade-in + subtle blur reduction` over 1.8s).
-    - Top flourish swash: `stroke-dasharray: 450;` over 1.8s.
-    - Long underline whip (`M 160,156 C 320,164...`): `stroke-dasharray: 750;` over 2.2s with `cubic-bezier(0.16, 1, 0.3, 1)`.
-    - Terminal dots (`<circle ...>`): Blossom softly at $t = 2.0\text{s}$ with scale bloom (`transform: scale(0) -> scale(1)`).
+Now, as Claude Sonnet 5.5 High takes over, the remaining work is the **haute-horlogerie level micro-polish**: calibrating physics, eliminating missing glyphs, safeguarding device performance, and smoothing out responsiveness.
 
-#### 3. Aksara Sunda (Sundanese) Missing-Glyph Tofu Box Repair
-* **File**: `index.html` & `css/style.css`
-* **Defect**: On Windows Chromium (Chrome/Edge/Brave), the Sundanese card renders `ᮘᮞ ᮞᮥᮔ᮪ᮓ` as empty tofu boxes (`▯▯ ▯▯▯▯▯`) because the local system lacks Sundanese fonts.
-* **Refinement**:
-  - In `index.html` `<head>`, append the Google Font link for `Noto Sans Sundanese`:
+---
+
+### 2. Comprehensive Scope of Sonnet 5.5 High Polish Tasks
+
+#### 2.1 Aksara Sunda (Sundanese) Missing Glyphs (Tofu Boxes) Repair
+* **Files**: `index.html` & `css/style.css`
+* **Defect**: On Windows Chromium (Chrome/Edge/Brave), the Sundanese language card renders `ᮘᮞ ᮞᮥᮔ᮪ᮓ` as empty tofu boxes (`▯▯ ▯▯▯▯▯`) because Windows does not ship with a native Sundanese font.
+* **Exact Fix**:
+  - In `index.html` `<head>`, add Google Font link for `Noto Sans Sundanese`:
     ```html
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sundanese:wght@400;600;700&display=swap" rel="stylesheet" />
     ```
-  - In `css/style.css`, declare font-family fallback:
+  - In `css/style.css`, update font-family cascade for language scripts:
     ```css
-    .lang-native-watermark, .lang-native-label {
-      font-family: 'Noto Sans Sundanese', var(--font-display), serif;
+    .lang-native-watermark,
+    .lang-native-label {
+      font-family: 'Noto Sans Sundanese', var(--font-display), 'Cormorant Garamond', serif;
     }
     ```
 
-#### 4. Floating Frosted Pill Navbar Intermediate Tablet Spacing (768px–1024px)
-* **File**: `css/style.css`
-* **Defect**: On tablets and iPad viewports (~768px to 1024px), the 8 navigation links inside the floating capsule (`min-width: 560px; max-width: 860px`) can suffer text-wrapping or collision with the brand logo.
-* **Refinement**:
-  - Set `gap: clamp(0.75rem, 1.5vw, 1.25rem);` on `.nav-links`.
-  - Ensure `.nav-link` font size scales to `clamp(0.72rem, 1.1vw, 0.82rem)` with `white-space: nowrap;`.
+#### 2.2 Spencerian Calligraphy Draw-in Path-by-Path Calibration
+* **Files**: `css/style.css` & `index.html`
+* **Defect**: The current draw-in uses a blanket `stroke-dasharray: 900;` on all paths. Shorter flourish paths (~100px–180px) finish their stroke in the first 0.3s and freeze, while the main text writes over 2.4s. Also, the terminal accent dots (`<circle>`) are rendered statically from frame 0 before the flourish arrives.
+* **Exact Fix**:
+  - Assign individual classes or IDs to each path in `index.html`:
+    - `.spencerian-path-swash-top` (`d="M 280,38..."`): `stroke-dasharray: 450;` animation duration 1.6s.
+    - `.spencerian-path-whip-left` (`d="M 120,115..."`): `stroke-dasharray: 380;` animation duration 1.8s.
+    - `.spencerian-path-whip-sub` (`d="M 115,152..."`): `stroke-dasharray: 120;` animation duration 1.2s.
+    - `.spencerian-path-baseline` (`d="M 160,156 C 320,164..."`): `stroke-dasharray: 750;` animation duration 2.2s.
+    - `.spencerian-path-accent` (`d="M 580,150 Q 640,165..."`): `stroke-dasharray: 210;` animation duration 1.4s.
+    - `.spencerian-terminal-dot` (`<circle ...>`): Hidden at start (`opacity: 0; transform: scale(0)`), blossoms softly at t = 2.0s (`animation: dotBloom 0.4s ease forwards 2.0s`).
+  - Smooth organic ink opacity fade (`animation: spencerianInkBleed 2.0s cubic-bezier(0.16, 1, 0.3, 1) forwards`).
 
-#### 5. Strategic Theater Post-Production Video Feedback Toast
-* **File**: `js/app.js` & `css/style.css`
-* **Defect**: Clicking the 16:9 video standby poster in `#credentials` triggers a console `GET 404 (Not Found)` because `chess-analysis.mp4` is in post-production.
-* **Refinement**:
-  - In `handleTheaterPosterClick()`, intercept clicks gracefully: instead of triggering unhandled audio/video promises, display a luxury floating champagne toast at the bottom of the screen:
-    `"Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon."`
-  - Style `.theater-toast` with dark obsidian glassmorphism (`backdrop-filter: blur(16px)`), gold border, and automatic 3.5s fade-out.
-
-#### 6. Section Vertical Chasm Compression (296px Dead Void Fix)
-* **File**: `css/style.css`
-* **Defect**: Stacked `margin-top: clamp(4.5rem, 8vw, 7rem)` combined with `padding-top: clamp(3rem, 5vw, 4.5rem)` on `#tools`, `#horizons`, `#works`, `#piano`, `#credentials`, and `#contact` generates empty 280px–300px voids between sections.
-* **Refinement**:
-  - Remove redundant `margin-top` overrides.
-  - Establish a clean, unified vertical rhythm:
+#### 2.3 Mobile & Hybrid Touch Guardrail for Gravitational Cursor
+* **Files**: `css/style.css` & `js/app.js`
+* **Defect**: On touch devices and touchscreen laptops (Surface, hybrid 2-in-1s), touch taps cause `#custom-cursor` to jump and stay frozen at the tap coordinate.
+* **Exact Fix**:
+  - In `css/style.css`:
     ```css
-    #about, #tools, #horizons, #works, #research, #piano, #credentials, #contact {
-      margin-top: 0 !important;
-      padding-block: clamp(3.5rem, 6vw, 5.5rem) !important;
+    @media (hover: none) and (pointer: coarse) {
+      #custom-cursor,
+      #custom-cursor-trail {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+    }
+    ```
+  - In `js/app.js` `initGravitationalCursor()`:
+    - Add `touchstart` listener that sets `cursor.style.display = 'none'` and `trail.style.display = 'none'`.
+    - Restore visibility on `mousemove` only if `e.sourceCapabilities?.firesTouchEvents !== true`.
+
+#### 2.4 Floating Frosted Pill Navbar Tablet Scaling (768px–1024px)
+* **File**: `css/style.css`
+* **Defect**: `#navbar.scrolled` inherits `gap: var(--space-xl)` (2rem / 32px) on `.nav-links`. Across 8 navigation items plus brand name, tablet widths (768px–1024px) cause items to wrap into an awkward second line or collide with `ELEKTRA ELIVIANA`.
+* **Exact Fix**:
+  ```css
+  #navbar.scrolled .nav-links {
+    gap: clamp(0.55rem, 1.25vw, 1.15rem) !important;
+  }
+  #navbar.scrolled .nav-link {
+    font-size: clamp(0.72rem, 1.05vw, 0.8rem) !important;
+    white-space: nowrap !important;
+    padding: 0.25rem 0.15rem !important;
+  }
+  #navbar.scrolled .nav-brand {
+    font-size: clamp(0.68rem, 1vw, 0.74rem) !important;
+    letter-spacing: 0.15em !important;
+    white-space: nowrap !important;
+  }
+  ```
+
+#### 2.5 Strategic Video Graceful Standby Toast & Zero 404 Guard
+* **Files**: `js/app.js` & `css/style.css`
+* **Defect**: Clicking the 16:9 video standby poster in `#credentials` attempts `video.play()` on `assets/video/chess-analysis.mp4`, generating an unhandled browser console `GET 404 (Not Found)` error because the video is in post-production.
+* **Exact Fix**:
+  - In `handleTheaterPosterClick()`, intercept clicks before network requests:
+    ```javascript
+    function showTheaterToast(msg) {
+      let toast = document.querySelector('.theater-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'theater-toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.classList.add('is-visible');
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(() => toast.classList.remove('is-visible'), 3800);
+    }
+    ```
+  - Show message: `"Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon."`
+  - Style `.theater-toast` with obsidian glass (`background: rgba(13, 13, 15, 0.92); border: 1px solid rgba(197, 160, 89, 0.4); backdrop-filter: blur(16px); color: #dfc285; border-radius: 999px; font-family: var(--font-mono); box-shadow: 0 10px 30px rgba(0,0,0,0.7);` fixed at `bottom: 2rem; left: 50%; transform: translateX(-50%);`).
+
+#### 2.6 Urtext Canvas 60fps GPU/Battery Conservation (IntersectionObserver)
+* **File**: `js/app.js`
+* **Defect**: `startUrtextAnimation()` runs `requestAnimationFrame` continuously in an infinite loop, rendering mathematical wave harmonics even when the user is looking at other sections.
+* **Exact Fix**:
+  - Connect `#piano` or `#urtext-canvas` to an `IntersectionObserver`:
+    - When intersecting: start/resume `requestAnimationFrame(loop)`.
+    - When not intersecting: cancel animation frame (`cancelAnimationFrame(_urtextAnimId)`).
+  - Preserves laptop battery, mobile temperature, and GPU fill-rate.
+
+#### 2.7 Horological Tumbler Mechanical Counter Animation
+* **Files**: `js/app.js` & `css/style.css`
+* **Defect**: In `index.html`, the 4 hero stat capsules (`100 WPM`, `C2 Proficient`, `European Topography`, `AI Engineering`) have class `.horological-tumbler`, but lack dynamic entry animation.
+* **Exact Fix**:
+  - Add staggered tumbler keyframe animation on reveal:
+    ```css
+    @keyframes horologicalTumblerRoll {
+      0% { opacity: 0; transform: translateY(18px) rotateX(-25deg); }
+      100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+    }
+    .horological-tumbler {
+      animation: horologicalTumblerRoll 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      animation-delay: calc(0.4s + var(--tumbler-idx, 0) * 0.12s);
     }
     ```
 
-#### 7. CSS `!important` Specificity Sanitization
+#### 2.8 CSS Specificity & Cascade Sanitization
 * **File**: `css/style.css`
-* **Defect**: Over 40 `!important` declarations were appended in Phase 0–10 to overpower legacy cascade rules.
-* **Refinement**:
-  - Restructure selector specificity so that core tokens and hover elevations cascade naturally without fragile `!important` wars.
+* **Defect**: Recent hotfixes used multiple `!important` tags on section padding and margins.
+* **Exact Fix**:
+  - Cleanly consolidate duplicate container declarations (`.section-container`) and unify section rules so the stylesheet remains clean, maintainable, and standards-compliant.
 
 ---
 
-### Verification & Acceptance Criteria
-- [ ] Gravitational cursor never appears or interferes on mobile touch screens (`pointer: coarse`).
-- [ ] Spencerian calligraphy draws on with organic fluid cadence; short flourishes do not snap or pop.
+### 3. Step-by-Step Prompt to Paste into Claude Sonnet 5.5 High Chat
+
+```text
+Please read and execute TASK-SN-11 from PORTFOLIO_EXECUTION_PROMPT.md directly in the repository at c:\Users\ASUS PC\.gemini\antigravity\scratch\elektra-portfolio.
+
+Target files:
+1. index.html
+2. css/style.css
+3. js/app.js
+
+Requirements:
+- Implement all 8 points of TASK-SN-11 with surgical precision:
+  1. Add Noto Sans Sundanese webfont link in index.html and update CSS font family to eliminate tofu boxes for ᮘᮞ ᮞᮥᮔ᮪ᮓ.
+  2. Calibrate Spencerian SVG stroke-dasharray per path so short flourishes don't freeze early, and animate terminal dots at t=2.0s.
+  3. Harden mobile/hybrid touchscreen guardrail for #custom-cursor with touchstart suppression.
+  4. Calibrate scrolled pill navbar gap for 768px-1024px tablets (clamp gap: 0.55rem-1.15rem) to prevent link wrapping.
+  5. Prevent video 404 in handleTheaterPosterClick and display the luxury champagne toast.
+  6. Pause Urtext canvas animation when #piano is off-screen via IntersectionObserver.
+  7. Add staggered mechanical roll-in animation to .horological-tumbler capsules in hero.
+  8. Sanitize CSS !important specificity rules and consolidate section padding.
+
+Do not break any existing functionality. Maintain CLS=0 and strict token compliance.
+Commit and push the changes with message:
+git commit -am "feat(polish): sonnet 5.5 master aesthetic, kinetic & responsive polish (TASK-SN-11)"
+git push origin main
+```
+
+---
+
+### 4. Verification & Acceptance Criteria
+- [ ] Gravitational cursor never appears or interferes on mobile touch screens (`pointer: coarse`) or during touch gestures.
+- [ ] Spencerian calligraphy draws on with organic fluid cadence; short flourishes do not snap or pop; terminal dots bloom at $t = 2.0\text{s}$.
 - [ ] Sundanese script `ᮘᮞ ᮞᮥᮔ᮪ᮓ` displays crisp native glyphs on Windows Chromium without tofu boxes.
 - [ ] Floating pill navbar scales seamlessly across 768px, 1024px, 1440px, and 1920px with zero text-wrapping.
 - [ ] Strategic theater standby click shows a refined gold toast message; zero 404 console errors.
-- [ ] Section-to-section vertical gaps feel unified, stately, and free of massive empty black chasms.
+- [ ] Urtext canvas loop pauses when scrolled away from `#piano` section (GPU/battery safe).
+- [ ] Hero horological tumblers roll in smoothly with mechanical stagger.
+- [ ] Section vertical rhythm feels stately and unified.
 - [ ] Validated on local preview and deployed cleanly with commit message:  
   `git commit -am "feat(polish): sonnet 5.5 master aesthetic, kinetic & responsive polish (TASK-SN-11)"`
