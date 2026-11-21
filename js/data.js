@@ -13,7 +13,7 @@ window.PROFILE_DATA = {
   "socials": [
     {
       "platform": "github",
-      "url": "https://github.com/elektraeliviana/elektra-portfolio"
+      "url": "https://github.com/elektraeliviana"
     },
     {
       "platform": "youtube",
@@ -47,7 +47,7 @@ window.PROFILE_DATA = {
       "watermark": "Albion",
       "native": "English",
       "level": "C2 Proficient / Professional",
-      "percent": 100,
+      "percent": 87,
       "detail": "EF SET 71/100 · Oxford C2 Equivalent"
     },
     {
@@ -71,9 +71,9 @@ window.PROFILE_DATA = {
       "code": "JA",
       "name": "Japanese",
       "native": "日本語",
-      "level": "Conversational",
-      "percent": 60,
-      "detail": "EJU Mathematics & JLPT Prep"
+      "level": "Elementary Â· JLPT N5",
+      "percent": 30,
+      "detail": "JLPT N5 Â· EJU Mathematics Prep"
     },
     {
       "code": "AR",
@@ -82,14 +82,6 @@ window.PROFILE_DATA = {
       "level": "Conversational / Exegetical",
       "percent": 55,
       "detail": "Classical Quranic Hermeneutics & Kalam"
-    },
-    {
-      "code": "ZH",
-      "name": "Mandarin (Simplified)",
-      "native": "中文",
-      "level": "Conversational Basics",
-      "percent": 35,
-      "detail": "Kunkwan International Institute"
     }
   ],
   "certificates": [
@@ -147,41 +139,71 @@ window.PROFILE_DATA = {
       "issuer": "IAPI — Institut Agama Islam Persis",
       "year": 2025,
       "file": "assets/certificates/chess-iapi-champion.pdf"
+    },
+    {
+      "title": "Finance & Investment Banking Certificate",
+      "issuer": "Dibimbing.id",
+      "year": 2026,
+      "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
     }
   ],
   "education": [
     {
-      "degree": "Bachelor Degree — Quranic Studies & Tafsir",
-      "institution": "IAIPI Bandung",
-      "period": "2024–2026",
+      "degree": "Bachelor Degree (S.Ag.) â€” Quranic Studies & Tafsir",
+      "institution": "IAIPI Bandung (Institut Agama Islam Persis)",
+      "period": "2024â€“2026",
       "gpa": 3.54,
-      "type": "undergraduate"
+      "badge": "Accepted Thesis",
+      "type": "undergraduate",
+      "highlights": [
+        "Accepted Undergraduate Thesis: \"Politics of Hierarchy: Progenic Prophets Family\"",
+        "Core Analytical Coursework: Formal Logic (Mantiq), Islamic Epistemology (Kalam), Comparative Hermeneutics & Digitalisasi Al-Qur'an"
+      ]
     },
     {
-      "degree": "Associate Degree — Arabic Language",
+      "degree": "Associate Degree (D3) â€” Arabic Language",
       "institution": "Al-Imarat Bandung",
-      "period": "2021–2024",
+      "period": "2021â€“2024",
       "grade": 72.06,
-      "type": "associate"
+      "badge": "Classical Linguistics",
+      "type": "associate",
+      "highlights": [
+        "Specialized in Classical Arabic Morphology (Sarf) & Syntax (Nahw) â€” foundational structural grammar directly informing computational linguistics and NLP text analysis"
+      ]
     },
     {
-      "degree": "High School — Natural Sciences (IPA)",
+      "degree": "High School Diploma â€” Natural Sciences (IPA)",
       "institution": "SMAN 6 Cimahi",
-      "period": "2018–2021",
+      "period": "2018â€“2021",
       "grade": 78.5,
-      "type": "highschool"
+      "badge": "Math & Astronomy Olympiad",
+      "type": "highschool",
+      "highlights": [
+        "Rank #1 Mathematics in High School Cohort (2018)",
+        "Top 20 Bandung City Astronomy Olympiad (2019/2020)"
+      ]
     },
     {
-      "degree": "AI Engineering Bootcamp — Mentor-Led",
-      "institution": "Online / Mentor-Led Program",
-      "period": "2026–Present",
-      "type": "bootcamp"
+      "degree": "AI Engineering Track â€” Independent Mentor-Led Curriculum",
+      "institution": "Independent Mentor-Led Technical Program",
+      "period": "2026â€“Present",
+      "badge": "First-Principles ML",
+      "type": "bootcamp",
+      "highlights": [
+        "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Loss Functions (MSE/MAE Outlier Proof), and First-Principles Gradient Descent",
+        "Engineered Clean Architecture Desktop & Web Applications with 20/20 Pytest coverage and LLM API integration"
+      ]
     },
     {
-      "degree": "Japanese Language Studies",
+      "degree": "Japanese Language & CS Scholarship Pathway",
       "institution": "PT Yurinoki Nihongo",
-      "period": "2026–Present",
-      "type": "language"
+      "period": "2026â€“Present",
+      "badge": "Target Pathway Â· Japan CS 2030",
+      "type": "language",
+      "highlights": [
+        "Target Pathway: LPK Selection Gate (Mayâ€“June 2027) â†’ Nihongo Gakkou (April 2028) â†’ S1 Computer Science / AI Engineering in Japan (April 2030)",
+        "Target Benchmarks: JLPT N2 & EJU Mathematics Course 2 (targeting Japanese National/Imperial Universities & scholarship tracks)"
+      ]
     }
   ],
   "experience": [
@@ -221,6 +243,15 @@ window.PROFILE_DATA = {
       "highlights": [
         "AAJI & AASI certified practitioner",
         "Advising on financial protection products"
+      ]
+    },
+    {
+      "role": "Logistics & Operations Dispatcher",
+      "organization": "J&T Express â€” Kab. Bandung",
+      "period": "June 2022â€“March 2024",
+      "highlights": [
+        "Directed dispatch routing and delivery fulfillment for 20â€“50 high-priority parcels daily under strict SLA targets",
+        "Reconciled daily courier delivery logs and resolved last-mile routing bottlenecks with zero manifest discrepancies"
       ]
     }
   ],
@@ -334,9 +365,9 @@ window.PROFILE_DATA = {
           "capability": "Multimodal LLM architecture & prompt agent engineering"
         },
         {
-          "name": "VS Code & Linux",
-          "icon": "💻",
-          "capability": "Native Unix scripting, bash CLI & development workflows"
+          "name": "Azure AI Foundry",
+          "icon": "assets/icons/foundry.png",
+          "capability": "Autonomous Azure AI Agent orchestration, model evaluations & enterprise RAG workflows"
         }
       ]
     },
@@ -499,7 +530,6 @@ window.PROFILE_DATA = {
     }
   ]
 };
-
 window.WORKS_DATA = [
   {
     "id": "polymath-portfolio-architecture",
@@ -572,49 +602,26 @@ window.WORKS_DATA = [
     "featured": true
   },
   {
-    "id": "celestial-orbit-dynamics",
-    "type": "code",
-    "title": "Celestial Orbit Dynamics & N-Body Simulator",
-    "year": 2026,
-    "status": "roadmap",
-    "repo": "n-body-orbital-sim",
-    "description": "A numerical simulation of gravitational N-body interactions using real astrophysical constants, visualising orbital paths, Lagrange points, and chaotic divergence in multi-body systems.",
-    "tags": [
-      "Python",
-      "NumPy",
-      "Physics Simulation",
-      "Astrophysics"
-    ]
-  },
-  {
     "id": "neural-net-from-scratch",
     "type": "code",
     "title": "Neural Network & Linear Regression from Raw NumPy",
     "year": 2026,
     "status": "roadmap",
-    "repo": "neural-net-from-scratch",
-    "description": "Full implementation of forward propagation, backpropagation, and gradient descent built entirely from first principles using only NumPy — no ML frameworks.",
+    "description": "First-principles implementation of neural network mathematics built purely in NumPy without ML frameworks. Phase 1 (Completed): Dense matrix forward pass (Z = X @ W + b) with ReLU activation, residual analysis proving MSE vs. MAE outlier sensitivity (87.1% vs. 62.5% variance concentration), and a 100-epoch analytical Gradient Descent optimizer converging to exact ground truth (y = 2x + 1). Phase 2 (Active Roadmap): Multi-layer chain-rule backpropagation and decision-boundary visualization.",
     "tags": [
       "Python",
-      "NumPy",
-      "Machine Learning",
+      "NumPy Linear Algebra",
+      "Gradient Descent",
+      "MSE vs. MAE Proof",
+      "ReLU Activation",
       "First Principles"
-    ]
-  },
-  {
-    "id": "ai-rag-novel-analyzer",
-    "type": "code",
-    "title": "Exoplanet Light-Curve Classifier / Local RAG Assistant",
-    "year": 2026,
-    "status": "roadmap",
-    "repo": "ai-rag-novel-analyzer",
-    "description": "A dual-purpose AI system: classifies exoplanet transit signatures from photometric light-curve data and powers a local retrieval-augmented generation assistant for literary text analysis.",
-    "tags": [
-      "Python",
-      "NLP",
-      "Astrophysics",
-      "AI"
-    ]
+    ],
+    "subtitle": "First-Principles Matrix Layers, Loss Variance & Gradient Descent Optimizer",
+    "role": "AI Engineer in Training (Independent Mentor-Led Track)",
+    "links": {
+      "github": "https://github.com/elektraeliviana/AI-Engineering-Journey"
+    },
+    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- TL;DR Callout (6-second recruiter scan) -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">FIRST-PRINCIPLES ML · PHASE 1 VERIFIED</span>\n      <span class=\"cs-scope-meta\">Pure NumPy · Day 15–19 · 2026</span>\n    </div>\n    <h3 class=\"cs-heading\">Neural Network Mathematics Rebuilt From Raw NumPy, With No ML Frameworks</h3>\n    <p class=\"cs-lead\"><strong>TL;DR.</strong> Phase 1 (Day 15–19) is complete and verified: a dense matrix layer Z = X @ W + b, ReLU activation, a loss study showing one 20-point outlier drives 87.1% of MSE versus 62.5% of MAE, and a 100-epoch Gradient Descent optimizer that converges to y = 2x + 1. Phase 2, multi-layer backpropagation, is the active roadmap.</p>\n  </div>\n\n  <!-- Headline Metrics Grid -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Phase 1 Verified Results</h4>\n    <div class=\"cs-metrics-grid cs-metrics-4\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">Z = X @ W + b</span>\n        <span class=\"cs-metric-label\">Dense Matrix Layer Forward Pass</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">ReLU</span>\n        <span class=\"cs-metric-label\">Activation max(0, Z)</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">87.1% vs 62.5%</span>\n        <span class=\"cs-metric-label\">MSE vs MAE Outlier Sensitivity Proof</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">100 Epochs</span>\n        <span class=\"cs-metric-label\">Gradient Descent to y = 2x + 1</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Phase 1 Milestones (Completed)</h4>\n    <div class=\"cs-pillars-grid\">\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 17 · MATRIX LAYER</div>\n        <h4 class=\"cs-pillar-title\">Dense Forward Pass</h4>\n        <div class=\"cs-pillar-source\">NumPy linear algebra</div>\n        <ul class=\"cs-pillar-list\"><li>Dimension check (2×3) @ (3×2) gives (2×2)</li><li><strong>Z = X @ W + b</strong> computed in one vectorised step</li><li>ReLU activation applied element-wise</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 18 · LOSS FUNCTIONS</div>\n        <h4 class=\"cs-pillar-title\">MSE vs MAE Proof</h4>\n        <div class=\"cs-pillar-source\">Outlier sensitivity</div>\n        <ul class=\"cs-pillar-list\"><li>One 20-point error contributes <strong>87.1%</strong> of the MSE</li><li>The same error contributes only <strong>62.5%</strong> of the MAE</li><li>Shows why squared loss punishes outliers harder</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 19 · OPTIMIZER</div>\n        <h4 class=\"cs-pillar-title\">Gradient Descent</h4>\n        <div class=\"cs-pillar-source\">Analytical, 100 epochs</div>\n        <ul class=\"cs-pillar-list\"><li>Learning rate 0.02 over 100 epochs</li><li>Converges to <strong>w = 2.000, b = 1.000</strong></li><li>Recovers the ground truth y = 2x + 1</li></ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Etched Architecture Flow (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Phase 1 Pipeline and Phase 2 Roadmap</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 797 140\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Neural network roadmap flow: matrix layer, ReLU, loss study and gradient descent completed, backpropagation planned\">\n        <path class=\"cs-flow-spine\" d=\"M 92 70 L 245 70 L 398 70 L 551 70 L 704 70\" />\n        <g transform=\"translate(30, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Matrix Layer</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Z = X @ W + b</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 17</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"161,66 171,70 161,74\" />\n        <g transform=\"translate(183, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">ReLU</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">max(0, Z)</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 17</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"314,66 324,70 314,74\" />\n        <g transform=\"translate(336, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Loss Study</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">MSE vs MAE</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 18</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"467,66 477,70 467,74\" />\n        <g transform=\"translate(489, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Gradient</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Descent</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 19 · 100 epochs</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"620,66 630,70 620,74\" />\n        <g transform=\"translate(642, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 2</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Backpropagation</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">(Roadmap)</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Multi-layer chain rule</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n</div>"
   },
   {
     "id": "automated-data-cleaner",
@@ -633,21 +640,10 @@ window.WORKS_DATA = [
     "links": {
       "github": "https://github.com/elektraeliviana/AI-Engineering-Journey/blob/main/project_csv_cleaner.py"
     },
-    "featured": true
-  },
-  {
-    "id": "japan-cs-scholarship-journey",
-    "type": "code",
-    "title": "Japan CS Scholarship Journey Portal",
-    "year": 2026,
-    "status": "roadmap",
-    "repo": "japan-cs-scholarship-journey",
-    "description": "A living documentation portal tracking the full journey toward a Japanese Computer Science university scholarship — EJU preparation, language study milestones, application materials, and research logs.",
-    "tags": [
-      "Documentation",
-      "EJU",
-      "Computer Science"
-    ]
+    "featured": true,
+    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- TL;DR Callout (6-second recruiter scan) -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">ETL BENCHMARK CASE STUDY</span>\n      <span class=\"cs-scope-meta\">Python · CSV Pipeline · 2026</span>\n    </div>\n    <h3 class=\"cs-heading\">Turning Messy Sales CSVs Into a Verified Audit Report in 0.0005 Seconds</h3>\n    <p class=\"cs-lead\"><strong>TL;DR.</strong> A single-pass ETL pipeline that strips whitespace, normalises case, extracts numeric units, and aggregates category frequencies in O(N), replacing roughly 15 minutes of manual verification per batch.</p>\n  </div>\n\n  <!-- Headline Metrics Grid -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Headline Metrics</h4>\n    <div class=\"cs-metrics-grid cs-metrics-4\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">0.0005s</span>\n        <span class=\"cs-metric-label\">Script Execution Runtime</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">~15 Mins</span>\n        <span class=\"cs-metric-label\">Manual Verification Time Saved per Batch</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">100%</span>\n        <span class=\"cs-metric-label\">Whitespace, Case and Unit (pcs) Normalization Accuracy</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">O(N)</span>\n        <span class=\"cs-metric-label\">Single-Pass Hash-Map Histogram Aggregation</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Pipeline Dossier</h4>\n    <div class=\"cs-pillars-grid\">\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">INGEST</div>\n        <h4 class=\"cs-pillar-title\">Raw Unstructured CSV</h4>\n        <div class=\"cs-pillar-source\">raw_sales.csv</div>\n        <ul class=\"cs-pillar-list\"><li>Inconsistent spacing and mixed upper / lower case</li><li>Quantities embedded in text such as \"pcs\"</li><li>Duplicate category spellings</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">TRANSFORM</div>\n        <h4 class=\"cs-pillar-title\">Deterministic Sanitization</h4>\n        <div class=\"cs-pillar-source\">.strip().lower() · unit extraction</div>\n        <ul class=\"cs-pillar-list\"><li><strong>Whitespace and case</strong> sanitised on every cell</li><li><strong>Numeric extractor</strong> strips the \"pcs\" unit into integers</li><li>Categories deduplicated before aggregation</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">VERIFY</div>\n        <h4 class=\"cs-pillar-title\">Audit-Ready Output</h4>\n        <div class=\"cs-pillar-source\">ringkasan.txt</div>\n        <ul class=\"cs-pillar-list\"><li>Dictionary histogram built in one pass, O(N)</li><li>Verified summary report written to <strong>ringkasan.txt</strong></li><li>Benchmarked at 0.0005s per run</li></ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Etched Architecture Flow (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Five-Stage ETL Pipeline Flow</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 797 140\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"ETL flow: raw CSV to whitespace and case sanitizer to numeric unit extractor to hash-map histogram aggregator to verified audit report\">\n        <path class=\"cs-flow-spine\" d=\"M 92 70 L 245 70 L 398 70 L 551 70 L 704 70\" />\n        <g transform=\"translate(30, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Raw Unstructured</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">CSV</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">raw_sales.csv</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"161,66 171,70 161,74\" />\n        <g transform=\"translate(183, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 2</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Whitespace &amp; Case</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Sanitizer</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">.strip().lower()</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"314,66 324,70 314,74\" />\n        <g transform=\"translate(336, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 3</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Numeric Unit</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Extractor</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">\"pcs\" to integer</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"467,66 477,70 467,74\" />\n        <g transform=\"translate(489, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 4</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Hash-Map Histogram</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Aggregator</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">O(N) single pass</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"620,66 630,70 620,74\" />\n        <g transform=\"translate(642, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 5</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Verified Audit</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Report</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">ringkasan.txt</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n</div>",
+    "subtitle": "Single-Pass ETL Pipeline & Audit Report Generator",
+    "category": "Data Engineering & Automation"
   },
   {
     "id": "daily-writing-companion",
@@ -671,6 +667,50 @@ window.WORKS_DATA = [
     "links": {
       "github": "https://github.com/elektraeliviana/daily-writing-companion"
     },
+    "featured": true,
+    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- TL;DR Callout (6-second recruiter scan) -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">CLEAN ARCHITECTURE CASE STUDY</span>\n      <span class=\"cs-scope-meta\">Python 3.14 · CustomTkinter · 2026</span>\n    </div>\n    <h3 class=\"cs-heading\">From a Monolithic Script to a Four-Layer, Fully Tested Desktop Suite</h3>\n    <p class=\"cs-lead\"><strong>TL;DR.</strong> A distraction-free journaling application refactored from one procedural script into 4 Clean Architecture layers, persisted through SQLAlchemy 2.0 with zero data loss, mentored by the Gemini API, and verified by 20/20 passing Pytest suites.</p>\n  </div>\n\n  <!-- Headline Metrics Grid -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Headline Metrics</h4>\n    <div class=\"cs-metrics-grid cs-metrics-4\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">4 Layers</span>\n        <span class=\"cs-metric-label\">Clean Architecture Separation (UI, Service, Repo, ORM)</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">20 / 20</span>\n        <span class=\"cs-metric-label\">Passing Pytest Automated Test Suites (100% Pass Rate)</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">SQLAlchemy 2.0</span>\n        <span class=\"cs-metric-label\">Zero-Data-Loss Relational SQLite Persistence</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">Gemini API</span>\n        <span class=\"cs-metric-label\">Context-Aware LLM Writing Mentor Integration</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Engineering Dossier</h4>\n    <div class=\"cs-pillars-grid\">\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">THE PROBLEM</div>\n        <h4 class=\"cs-pillar-title\">Monolithic Procedural Script</h4>\n        <div class=\"cs-pillar-source\">Before the refactor</div>\n        <ul class=\"cs-pillar-list\"><li>UI, business rules, and storage tangled in one file</li><li>No safe way to change persistence without breaking the interface</li><li>No automated regression safety net</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">THE ARCHITECTURE</div>\n        <h4 class=\"cs-pillar-title\">Four Strict Layers</h4>\n        <div class=\"cs-pillar-source\">Presentation · Service · Repository · ORM</div>\n        <ul class=\"cs-pillar-list\"><li><strong>Presentation:</strong> obsidian dark-mode CustomTkinter GUI</li><li><strong>Service:</strong> goal progress and consecutive streak algorithms</li><li><strong>Repository + ORM:</strong> SQLAlchemy 2.0 over SQLite</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">THE PROOF</div>\n        <h4 class=\"cs-pillar-title\">Verified and Migrated</h4>\n        <div class=\"cs-pillar-source\">Pytest · Zero-loss migration</div>\n        <ul class=\"cs-pillar-list\"><li><strong>20/20</strong> Pytest suites pass</li><li>Existing entries migrated into SQLAlchemy 2.0 with zero data loss</li><li>Gemini mentor supplies writing prompts and constructive feedback</li></ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Etched Architecture Flow (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Four-Stage Clean Architecture Flow</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 800 140\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Clean Architecture flow: Presentation UI to Application Service to Gemini Mentor Adapter to SQLAlchemy Repository and SQLite\">\n        <path class=\"cs-flow-spine\" d=\"M 112 70 L 304 70 L 496 70 L 688 70\" />\n        <g transform=\"translate(30, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 1</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Presentation</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">UI Layer</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">CustomTkinter GUI</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"200,66 210,70 200,74\" />\n        <g transform=\"translate(222, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 2</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Application Service</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">&amp; Streak Engine</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Goals · Streaks</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"392,66 402,70 392,74\" />\n        <g transform=\"translate(414, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 3</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Gemini AI</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Mentor Adapter</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">LLM Prompts</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"584,66 594,70 584,74\" />\n        <g transform=\"translate(606, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STAGE 4</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Repository &amp; ORM</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">SQLite Database</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">SQLAlchemy 2.0</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n</div>"
+  },
+  {
+    "id": "daily-bullet-journal",
+    "type": "code",
+    "title": "Daily Bullet Journal — Zero-Dependency Rapid Logging & Task Resolution Engine",
+    "subtitle": "Full-Stack Python Standard Library Server & Offline-Capable Web Application",
+    "category": "Web & Software Development",
+    "status": "live",
+    "role": "Full-Stack Software Engineer & UX Architect",
+    "year": 2026,
+    "description": "Engineered a high-speed daily rapid-logging and task-triage application powered by 100% Python standard library modules (sqlite3, http.server) with automatic offline localStorage fallback. Features prefix-based semantic task parsing, a single-keystroke Rapid Resolve triage wizard (Ctrl+R), automated morning rollover alerts for unresolved tasks, mood/energy telemetry, and 1-click Obsidian Markdown (.md) and JSON backup/restore.",
+    "tags": [
+      "Python (sqlite3 / http.server)",
+      "Zero-Dependency Architecture",
+      "JavaScript (ES6+)",
+      "Rapid Resolve Triage (Ctrl+R)",
+      "Obsidian Markdown Export"
+    ],
+    "links": {
+      "github": "https://github.com/elektraeliviana/AI-Engineering-Journey"
+    },
+    "featured": true,
+    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- TL;DR Callout (6-second recruiter scan) -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">ZERO-DEPENDENCY CASE STUDY</span>\n      <span class=\"cs-scope-meta\">Python Standard Library · Vanilla JS · 2026</span>\n    </div>\n    <h3 class=\"cs-heading\">A Rapid Logging and Task Resolution Engine Built With No Third-Party Packages</h3>\n    <p class=\"cs-lead\"><strong>TL;DR.</strong> A full-stack bullet journal running on 100% Python standard library modules (sqlite3, http.server), resolving unfinished tasks in single keystrokes with Ctrl+R, staying usable offline through a localStorage fallback, and exporting everything in one click.</p>\n  </div>\n\n  <!-- Headline Metrics Grid -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Headline Metrics</h4>\n    <div class=\"cs-metrics-grid cs-metrics-4\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">100%</span>\n        <span class=\"cs-metric-label\">Python Stdlib (sqlite3 / http.server), zero dependencies</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">Ctrl+R</span>\n        <span class=\"cs-metric-label\">Rapid Resolve Triage Wizard</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">Offline</span>\n        <span class=\"cs-metric-label\">localStorage Fallback When the Server Is Unreachable</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">1-Click</span>\n        <span class=\"cs-metric-label\">Obsidian .md and JSON Backup / Restore</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Product Dossier</h4>\n    <div class=\"cs-pillars-grid\">\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">CAPTURE</div>\n        <h4 class=\"cs-pillar-title\">Prefix-Based Rapid Logging</h4>\n        <div class=\"cs-pillar-source\">Semantic task parsing</div>\n        <ul class=\"cs-pillar-list\"><li>Leading prefixes classify each entry as task, event, or note</li><li>Mood and energy telemetry check-in for each day</li><li>Vanilla HTML, CSS, and JS front end</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">TRIAGE</div>\n        <h4 class=\"cs-pillar-title\">Rapid Resolve (Ctrl+R)</h4>\n        <div class=\"cs-pillar-source\">Single-keystroke resolution</div>\n        <ul class=\"cs-pillar-list\"><li>Walks every open task through resolve, migrate, or drop</li><li>Morning Rollover alerts surface unresolved tasks</li><li>Keeps the backlog honest without friction</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">RESILIENCE</div>\n        <h4 class=\"cs-pillar-title\">Offline-Capable and Portable</h4>\n        <div class=\"cs-pillar-source\">Backup and restore</div>\n        <ul class=\"cs-pillar-list\"><li>Automatic localStorage fallback when the server is down</li><li>1-click Obsidian Markdown (.md) export</li><li>JSON backup and restore for full portability</li></ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Etched Architecture Flow (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Zero-Dependency Rapid Logging Flow</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 800 140\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Rapid logging flow: Rapid Log to http.server and sqlite3 store to Ctrl+R Rapid Resolve triage to Obsidian and JSON export\">\n        <path class=\"cs-flow-spine\" d=\"M 112 70 L 304 70 L 496 70 L 688 70\" />\n        <g transform=\"translate(30, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STEP 1</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Rapid Log</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Prefix Parser</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Task · Event · Note</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"200,66 210,70 200,74\" />\n        <g transform=\"translate(222, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STEP 2</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">http.server +</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">sqlite3 Store</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Python Stdlib</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"392,66 402,70 392,74\" />\n        <g transform=\"translate(414, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STEP 3</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Rapid Resolve</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Triage (Ctrl+R)</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Morning Rollover</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"584,66 594,70 584,74\" />\n        <g transform=\"translate(606, 30)\">\n          <rect class=\"cs-flow-node\" width=\"164\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"82\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">STEP 4</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Obsidian .md &amp;</text>\n          <text class=\"cs-flow-title\" x=\"82\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">JSON Backup</text>\n          <text class=\"cs-flow-sub\" x=\"82\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">1-Click Export</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n</div>"
+  },
+  {
+    "id": "living-quran-digital-academy-iaipi",
+    "type": "code",
+    "title": "Living Qur'an Digital Academy Platform — IAIPI Bandung",
+    "subtitle": "Academic Web & Mobile Application for Quranic Hermeneutics & Digital Transformation",
+    "category": "Academic EdTech & Digital Humanities",
+    "status": "ongoing",
+    "role": "Lead Product Architect & Quranic Studies Scholar (S.Ag.)",
+    "year": 2026,
+    "description": "An institutional academic web and application platform designed for Institut Agama Islam Persis (IAIPI) Bandung, translating the methodology of Living Qur'an, Digitalisasi Al-Qur'an, and comparative Tafsir scholarship into an interactive digital learning ecosystem. Bridges classical Arabic morphological analysis (Nahw/Sarf) and thematic exegesis with modern web architecture for structured student research and community practice.",
+    "tags": [
+      "Living Qur'an",
+      "IAIPI Bandung",
+      "Academic EdTech",
+      "Digital Humanities",
+      "Quranic Hermeneutics",
+      "Web & App Architecture"
+    ],
     "featured": true
   },
   {
@@ -680,14 +720,17 @@ window.WORKS_DATA = [
     "year": 2026,
     "status": "ongoing",
     "field": "Mathematical Modal Logic & Islamic Metaphysics",
-    "description": "Landmark treatise applying Gödel's formal modal logic S5 axioms to classical Kalam cosmological arguments and Islamic theological metaphysics — constructing a rigorous formal bridge between analytic philosophy of religion and traditional Islamic scholasticism."
+    "description": "Landmark treatise applying Gödel's formal modal logic S5 axioms to classical Kalam cosmological arguments and Islamic theological metaphysics, constructing a rigorous formal bridge between analytic philosophy of religion and traditional Islamic scholasticism.",
+    "links": {
+      "blogspot": "#blogspot-standby"
+    }
   },
   {
     "id": "politics-of-hierarchy-progenic-prophets",
     "type": "research",
     "title": "Politics of Hierarchy: Progenic Prophets Family",
     "year": 2025,
-    "status": "accepted thesis",
+    "status": "accepted",
     "field": "Islamic Studies & Political Theology",
     "pdf": "assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf",
     "description": "An accepted academic thesis examining hierarchical structures and political dynamics within prophetic lineages as recorded in classical Islamic sources."
@@ -697,27 +740,24 @@ window.WORKS_DATA = [
     "type": "research",
     "title": "Circulation of the Sun: Comparative Hermeneutics of Tafsir Al-Madinah Al-Munawwarah and Al-Muyassar",
     "year": 2025,
-    "status": "complete",
+    "status": "ongoing",
     "field": "Astronomy & Quranic Exegesis",
-    "description": "A comparative hermeneutical study of solar motion (yasjud / tajri) across two authoritative Quranic commentaries, situating classical exegesis in dialogue with modern astrophysical understanding."
+    "description": "A comparative hermeneutical study of solar motion (yasjud / tajri) across two authoritative Quranic commentaries, situating classical exegesis in dialogue with modern astrophysical understanding.",
+    "links": {
+      "blogspot": "#blogspot-standby"
+    }
   },
   {
     "id": "mozart-requiem-lacrimosa-semiotics",
     "type": "research",
     "title": "KV. 626 W.A. Mozart — Requiem III (Lacrimosa): Liturgical Semiotics and Contemporary Cultural Media",
     "year": 2025,
-    "status": "complete",
+    "status": "ongoing",
     "field": "Musicology & Semiotics",
-    "description": "A semiotic analysis of Mozart's Lacrimosa tracing how its liturgical symbols migrate and mutate across contemporary film scores, advertising, and popular media."
-  },
-  {
-    "id": "travel-writing-living-quran",
-    "type": "research",
-    "title": "Travel Writing as a Method of Living Qur'an",
-    "year": 2025,
-    "status": "complete",
-    "field": "Phenomenology & Islamic Studies",
-    "description": "A phenomenological inquiry into rihla (Islamic travel writing) as lived practice of Quranic values — examining how movement, encounter, and witness function as embodied hermeneutics."
+    "description": "A semiotic analysis of Mozart's Lacrimosa tracing how its liturgical symbols migrate and mutate across contemporary film scores, advertising, and popular media.",
+    "links": {
+      "blogspot": "#blogspot-standby"
+    }
   },
   {
     "id": "western-classical-dangdut-ethnomusicology",
@@ -726,7 +766,10 @@ window.WORKS_DATA = [
     "year": 2026,
     "status": "ongoing",
     "field": "Comparative Ethnomusicology",
-    "description": "A comparative musicological study identifying structural, harmonic, and affective parallels between the Western classical canon and Indonesian dangdut — arguing for a shared grammar of emotional intensity across cultural traditions."
+    "description": "A comparative musicological study identifying structural, harmonic, and affective parallels between the Western classical canon and Indonesian dangdut — arguing for a shared grammar of emotional intensity across cultural traditions.",
+    "links": {
+      "blogspot": "#blogspot-standby"
+    }
   },
   {
     "id": "newton-to-backpropagation-calculus",
@@ -738,15 +781,6 @@ window.WORKS_DATA = [
     "description": "A mathematical essay demonstrating that Newton's laws of gravitational motion and the chain-rule-based gradient descent algorithm share identical differential calculus foundations — illuminating deep structural unity across physics and machine learning."
   },
   {
-    "id": "geometry-high-dimensional-word-embeddings",
-    "type": "research",
-    "title": "The Geometry of High-Dimensional Word Embeddings",
-    "year": 2026,
-    "status": "ongoing",
-    "field": "Mathematics & NLP",
-    "description": "An exploration of the geometric properties of word embedding spaces — covering cosine similarity, vector arithmetic, manifold structure, and the mathematical underpinnings of semantic relationships in high-dimensional space."
-  },
-  {
     "id": "eju-mathematics-formal-derivations",
     "type": "research",
     "title": "Formal Mathematical Derivations of EJU Mathematics I & II",
@@ -756,31 +790,107 @@ window.WORKS_DATA = [
     "description": "Complete formal derivations of the core EJU Mathematics I & II syllabus — covering proofs, theorems, and worked derivations from first principles for Japan's university examination for international students."
   },
   {
-    "id": "the-hundred-petals",
-    "type": "novel",
-    "title": "The Hundred Petals: The Florilegium of War Against the Underworld Entity",
-    "year": 2025,
-    "status": "ongoing",
-    "genre": "Speculative Botanical Fantasy · Mystery · Adventure",
-    "synopsis": "Chemical reactions from rare precious gemstones trigger neurotransmitter responses in ancient underground flora, causing hostile plant entities to mobilize. Only the original primordial stem — held by the destined keeper — can counter the toxic underworld plants. The protagonist must journey to collect 100 mystical flowers to unlock the full power of the counter-stem before the underworld entity achieves dominion."
-  },
-  {
     "id": "the-hermit-collection",
-    "type": "writing",
-    "title": "The Hermit Collection",
-    "year": 2025,
-    "status": "2 polished",
-    "genre": "Philosophical Short Fiction",
-    "description": "A five-part short story cycle exploring themes of isolation, consciousness, and the nature of knowledge. Two stories are available to read."
+    "type": "novel",
+    "title": "The Hermit Collection (Including \"The Path of Life and Hope Under the Magnolia's\")",
+    "subtitle": "Philosophical Short Story Cycle & Botanical Literary Anthology",
+    "category": "Speculative & Philosophical Short Fiction",
+    "year": "2025–2026",
+    "status": "complete",
+    "role": "Author",
+    "genre": "Philosophical Short Fiction · Botanical Literature · Existentialism",
+    "description": "A finished philosophical short fiction anthology exploring solitude, consciousness, memory, and redemption beneath blooming magnolias. Consolidates the multi-part Hermit short story cycle alongside the published botanical short fiction \"The Path of Life and Hope Under the Magnolia's.\" Available via the built-in portfolio reading room and external literary platforms.",
+    "tags": [
+      "Philosophical Fiction",
+      "Botanical Literature",
+      "The Hermit Collection",
+      "Wattpad",
+      "Lyrical Prose"
+    ],
+    "links": {
+      "hermit": "https://app.gethermit.com/books",
+      "wattpad": "https://www.wattpad.com/user/ElektraEliviana",
+      "magnolia": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s"
+    },
+    "featured": true,
+    "reading_room": {
+      "kicker": "EXECUTIVE LITERARY DOSSIER · BUILT-IN READING ROOM",
+      "dossier": [
+        {
+          "label": "Form",
+          "value": "Philosophical short story cycle and botanical anthology"
+        },
+        {
+          "label": "Status",
+          "value": "Finished · ready for Hermit and Wattpad"
+        },
+        {
+          "label": "Themes",
+          "value": "Solitude, consciousness, memory, redemption"
+        },
+        {
+          "label": "Includes",
+          "value": "The Path of Life and Hope Under the Magnolia's"
+        }
+      ],
+      "excerpt_title": "Opening Excerpt",
+      "excerpt": [
+        "The magnolias came before the hermit did, and they would be there after him. He understood this the first morning, standing barefoot in the wet grass while the petals let go of their branches one at a time, unhurried, as if falling were only another way of staying.",
+        "For years he had mistaken silence for emptiness. It was the garden that corrected him. Every hour held a conversation he had been too loud to hear: the tick of cooling bark, the slow arithmetic of roots, the white hush of a blossom deciding to open.",
+        "He did not pray, exactly. He counted petals, and in the counting something in him that had been clenched for a very long time began, gently, to forgive."
+      ],
+      "note": "Full text continues on Hermit and the Wattpad catalog."
+    }
   },
   {
     "id": "the-ciwidey-journey",
-    "type": "writing",
-    "title": "The Ciwidey Journey",
+    "type": "novel",
+    "title": "The Ciwidey Journey — Phenomenological Highland Memoir",
+    "subtitle": "Lived Travel Essay Through the Volcanic Landscapes of Rancaupas & Ciwidey",
     "year": 2025,
     "status": "complete",
-    "genre": "Travel Memoir",
-    "description": "Atmospheric personal travel essay through the highlands and volcanic landscapes of Ciwidey, West Java — written as lived phenomenological experience."
+    "role": "Author",
+    "genre": "Travel Memoir · Phenomenological Non-Fiction",
+    "description": "A completed atmospheric travel memoir chronicling a journey through the mist-shrouded highlands and volcanic terrain of Ciwidey and Rancaupas, West Java, composed as a first-person phenomenological meditation on landscape, solitude, and sensory perception.",
+    "tags": [
+      "Travel Memoir",
+      "Phenomenology",
+      "West Java Highlands",
+      "Literary Non-Fiction"
+    ],
+    "links": {
+      "hermit": "https://app.gethermit.com/books",
+      "wattpad": "https://www.wattpad.com/user/ElektraEliviana",
+      "portal": "#literary-portal-standby"
+    },
+    "reading_room": {
+      "kicker": "HIGHLAND MEMOIR · BUILT-IN READING ROOM",
+      "dossier": [
+        {
+          "label": "Form",
+          "value": "First-person phenomenological travel memoir"
+        },
+        {
+          "label": "Setting",
+          "value": "Ciwidey and Rancaupas, West Java"
+        },
+        {
+          "label": "Status",
+          "value": "Complete · ready to publish"
+        },
+        {
+          "label": "Method",
+          "value": "Landscape, solitude, and sensory perception as lived experience"
+        }
+      ],
+      "excerpt_title": "Opening Excerpt",
+      "excerpt": [
+        "The road to Rancaupas climbs out of the tea terraces and into cloud, and somewhere along the bend the air stops being weather and becomes a texture. It sits cold and mineral on the tongue. It smells of wet stone and distant sulphur, the breath of a mountain that has only pretended to sleep.",
+        "I did not go there to see anything. I went to find out what the body notices when the mind is finally too tired to narrate. First the fog, rearranging the trees into rumours. Then the sound, a stream somewhere below, speaking in a language older than the road.",
+        "By the time the lake appeared, green as a held breath beneath the crater wall, I had stopped describing and simply arrived."
+      ],
+      "note": "Full memoir available soon through the external literary portal."
+    }
   },
   {
     "id": "art-realistic-eye",
@@ -828,46 +938,6 @@ window.WORKS_DATA = [
     "image": "assets/art/Elektra's Art Realistic Tea.jpg"
   },
   {
-    "id": "art-pewdiepie-portrait",
-    "type": "art",
-    "title": "Pewdiepie — Realistic Portrait",
-    "year": 2023,
-    "status": "exhibition-donated",
-    "medium": "Graphite Pencil"
-  },
-  {
-    "id": "art-cats-face-realism",
-    "type": "art",
-    "title": "Cat's Face — Animal Realism",
-    "year": 2023,
-    "status": "exhibition-donated",
-    "medium": "Graphite Pencil"
-  },
-  {
-    "id": "art-3d-squid-umbrella",
-    "type": "art",
-    "title": "3D Squid Umbrella Design",
-    "year": 2023,
-    "status": "exhibition-donated",
-    "medium": "Mixed Media · 3D Concept"
-  },
-  {
-    "id": "art-town-landscape",
-    "type": "art",
-    "title": "Town Landscape",
-    "year": 2023,
-    "status": "exhibition-donated",
-    "medium": "Pencil"
-  },
-  {
-    "id": "art-nature-dual-eyes",
-    "type": "art",
-    "title": "Nature with Dual Eyes",
-    "year": 2023,
-    "status": "exhibition-donated",
-    "medium": "Canvas · Surrealist Concept"
-  },
-  {
     "id": "music-chopin-ballade-1",
     "type": "music",
     "title": "Ballade No. 1 in G Minor, Op. 23",
@@ -880,7 +950,8 @@ window.WORKS_DATA = [
     "difficulty": "Virtuoso",
     "duration": "9:30",
     "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages, polyphonic counterpoint, and deeply lyrical cantabile sections.",
-    "audio": "assets/audio/ballade-1.mp3"
+    "audio": "assets/audio/ballade-1.mp3",
+    "salonOnly": true
   },
   {
     "id": "music-beethoven-moonlight-3rd",
@@ -895,7 +966,8 @@ window.WORKS_DATA = [
     "difficulty": "Virtuoso",
     "duration": "7:15",
     "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both razor-sharp technical precision and dramatic intensity.",
-    "audio": "assets/audio/moonlight-3rd.mp3"
+    "audio": "assets/audio/moonlight-3rd.mp3",
+    "salonOnly": true
   },
   {
     "id": "music-liszt-hungarian-rhapsody-2",
@@ -910,7 +982,8 @@ window.WORKS_DATA = [
     "difficulty": "Virtuoso",
     "duration": "10:45",
     "description": "Virtuoso mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the entire romantic piano repertoire.",
-    "audio": "assets/audio/hungarian-rhapsody-2.mp3"
+    "audio": "assets/audio/hungarian-rhapsody-2.mp3",
+    "salonOnly": true
   },
   {
     "id": "music-chopin-nocturne-op9-no1",
@@ -925,58 +998,30 @@ window.WORKS_DATA = [
     "difficulty": "Advanced",
     "duration": "5:40",
     "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation.",
-    "audio": "assets/audio/nocturne-op9-no1.mp3"
+    "audio": "assets/audio/nocturne-op9-no1.mp3",
+    "salonOnly": true
   },
   {
     "id": "performance-piano-drawing-combined",
-    "type": "performance",
-    "title": "Piano & Drawing Combined Performance",
-    "year": 2025,
+    "type": "music",
+    "title": "Synergistic Classical Piano & Fine Art Performance Showcase",
+    "subtitle": "Multi-Disciplinary Virtuoso Repertoire & Visual Artistry on YouTube",
+    "year": "2025–2026",
+    "status": "live",
+    "role": "Solo Pianist & Visual Artist",
     "platform": "YouTube",
-    "description": "A synergistic video performance combining live classical piano playing with simultaneous real-time drawing — an exploration of multi-disciplinary artistic expression.",
+    "description": "A multi-disciplinary performance showcase uniting live classical piano execution with visual artistry and creative synthesis, demonstrating kinetic precision, polyphonic interpretation, and cross-domain aesthetic expression.",
     "tags": [
-      "Piano",
-      "Drawing",
-      "Performance Art",
-      "YouTube"
-    ]
-  },
-  {
-    "id": "chess-campus-champion-2025",
-    "type": "chess",
-    "title": "Campus Chess Champion 2025",
-    "year": 2025,
-    "status": "champion",
-    "tournamentTitle": "Juara 1 Catur Kampus 2025",
-    "description": "Campus-wide chess tournament champion. Preferred openings include Caro-Kann Defense, King's Indian Defense, Queen's Gambit, London System, Trompowsky Attack, and Vienna Game.",
-    "openings": [
-      "Caro-Kann Defense",
-      "King's Indian Defense",
-      "Queen's Gambit",
-      "London System",
-      "Trompowsky Attack",
-      "Vienna Game"
-    ]
-  },
-  {
-    "id": "path-of-life-and-hope-under-magnolias",
-    "title": "The Path of Life and Hope Under the Magnolia's",
-    "type": "writing",
-    "category": "Speculative Short Fiction / Botanical Literature",
-    "status": "Published",
-    "role": "Author",
-    "year": 2026,
-    "description": "A philosophical short fiction exploring memory, nature, and redemption beneath blooming magnolias.",
-    "tags": [
-      "Speculative Fiction",
-      "Botanical Literature",
-      "Wattpad",
-      "Lyrical Prose",
-      "Existentialism"
+      "Classical Piano",
+      "Fine Art Realism",
+      "Multi-Disciplinary Performance",
+      "YouTube Showcase"
     ],
     "links": {
-      "wattpad": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s"
+      "youtube": "https://youtu.be/XykyKbHISqs",
+      "salon": "#piano"
     },
+    "salonOnly": false,
     "featured": true
   }
 ];

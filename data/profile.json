@@ -47,7 +47,7 @@
       "watermark": "Albion",
       "native": "English",
       "level": "C2 Proficient / Professional",
-      "percent": 100,
+      "percent": 87,
       "detail": "EF SET 71/100 · Oxford C2 Equivalent"
     },
     {
@@ -71,9 +71,9 @@
       "code": "JA",
       "name": "Japanese",
       "native": "日本語",
-      "level": "Conversational",
-      "percent": 60,
-      "detail": "EJU Mathematics & JLPT Prep"
+      "level": "Elementary Â· JLPT N5",
+      "percent": 30,
+      "detail": "JLPT N5 Â· EJU Mathematics Prep"
     },
     {
       "code": "AR",
@@ -82,14 +82,6 @@
       "level": "Conversational / Exegetical",
       "percent": 55,
       "detail": "Classical Quranic Hermeneutics & Kalam"
-    },
-    {
-      "code": "ZH",
-      "name": "Mandarin (Simplified)",
-      "native": "中文",
-      "level": "Conversational Basics",
-      "percent": 35,
-      "detail": "Kunkwan International Institute"
     }
   ],
   "certificates": [
@@ -147,41 +139,71 @@
       "issuer": "IAPI — Institut Agama Islam Persis",
       "year": 2025,
       "file": "assets/certificates/chess-iapi-champion.pdf"
+    },
+    {
+      "title": "Finance & Investment Banking Certificate",
+      "issuer": "Dibimbing.id",
+      "year": 2026,
+      "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
     }
   ],
   "education": [
     {
-      "degree": "Bachelor Degree — Quranic Studies & Tafsir",
-      "institution": "IAIPI Bandung",
-      "period": "2024–2026",
+      "degree": "Bachelor Degree (S.Ag.) â€” Quranic Studies & Tafsir",
+      "institution": "IAIPI Bandung (Institut Agama Islam Persis)",
+      "period": "2024â€“2026",
       "gpa": 3.54,
-      "type": "undergraduate"
+      "badge": "Accepted Thesis",
+      "type": "undergraduate",
+      "highlights": [
+        "Accepted Undergraduate Thesis: \"Politics of Hierarchy: Progenic Prophets Family\"",
+        "Core Analytical Coursework: Formal Logic (Mantiq), Islamic Epistemology (Kalam), Comparative Hermeneutics & Digitalisasi Al-Qur'an"
+      ]
     },
     {
-      "degree": "Associate Degree — Arabic Language",
+      "degree": "Associate Degree (D3) â€” Arabic Language",
       "institution": "Al-Imarat Bandung",
-      "period": "2021–2024",
+      "period": "2021â€“2024",
       "grade": 72.06,
-      "type": "associate"
+      "badge": "Classical Linguistics",
+      "type": "associate",
+      "highlights": [
+        "Specialized in Classical Arabic Morphology (Sarf) & Syntax (Nahw) â€” foundational structural grammar directly informing computational linguistics and NLP text analysis"
+      ]
     },
     {
-      "degree": "High School — Natural Sciences (IPA)",
+      "degree": "High School Diploma â€” Natural Sciences (IPA)",
       "institution": "SMAN 6 Cimahi",
-      "period": "2018–2021",
+      "period": "2018â€“2021",
       "grade": 78.5,
-      "type": "highschool"
+      "badge": "Math & Astronomy Olympiad",
+      "type": "highschool",
+      "highlights": [
+        "Rank #1 Mathematics in High School Cohort (2018)",
+        "Top 20 Bandung City Astronomy Olympiad (2019/2020)"
+      ]
     },
     {
-      "degree": "AI Engineering Bootcamp — Mentor-Led",
-      "institution": "Online / Mentor-Led Program",
-      "period": "2026–Present",
-      "type": "bootcamp"
+      "degree": "AI Engineering Track â€” Independent Mentor-Led Curriculum",
+      "institution": "Independent Mentor-Led Technical Program",
+      "period": "2026â€“Present",
+      "badge": "First-Principles ML",
+      "type": "bootcamp",
+      "highlights": [
+        "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Loss Functions (MSE/MAE Outlier Proof), and First-Principles Gradient Descent",
+        "Engineered Clean Architecture Desktop & Web Applications with 20/20 Pytest coverage and LLM API integration"
+      ]
     },
     {
-      "degree": "Japanese Language Studies",
+      "degree": "Japanese Language & CS Scholarship Pathway",
       "institution": "PT Yurinoki Nihongo",
-      "period": "2026–Present",
-      "type": "language"
+      "period": "2026â€“Present",
+      "badge": "Target Pathway Â· Japan CS 2030",
+      "type": "language",
+      "highlights": [
+        "Target Pathway: LPK Selection Gate (Mayâ€“June 2027) â†’ Nihongo Gakkou (April 2028) â†’ S1 Computer Science / AI Engineering in Japan (April 2030)",
+        "Target Benchmarks: JLPT N2 & EJU Mathematics Course 2 (targeting Japanese National/Imperial Universities & scholarship tracks)"
+      ]
     }
   ],
   "experience": [
@@ -221,6 +243,15 @@
       "highlights": [
         "AAJI & AASI certified practitioner",
         "Advising on financial protection products"
+      ]
+    },
+    {
+      "role": "Logistics & Operations Dispatcher",
+      "organization": "J&T Express â€” Kab. Bandung",
+      "period": "June 2022â€“March 2024",
+      "highlights": [
+        "Directed dispatch routing and delivery fulfillment for 20â€“50 high-priority parcels daily under strict SLA targets",
+        "Reconciled daily courier delivery logs and resolved last-mile routing bottlenecks with zero manifest discrepancies"
       ]
     }
   ],

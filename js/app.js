@@ -467,6 +467,171 @@ const STATUS_LABELS = {
   showcase:            'Showcase',
 };
 
+/* ── Standby links, action buttons & atelier ledger (TASK-RM-05/06/07/08) ─────────
+   Standby links never navigate: they raise the luxury toast so no placeholder ever 404s. */
+const STANDBY_LINKS = {
+  '#blogspot-standby':        { label: 'Ongoing Monograph on Blogspot ↗',  toast: 'Ongoing Monograph on Blogspot — Direct Link Publishing Soon' },
+  '#literary-portal-standby': { label: 'External Literary Portal ↗',       toast: 'External Literary Monograph Portal — Launching Soon' },
+  '#atelier-standby':         { label: 'External Atelier Portal ↗',        toast: 'External Fine Art Atelier Portal — Launching Soon' },
+};
+
+/** Link keys surfaced as direct actions on the work card footer (in display order). */
+const CARD_LINK_KEYS = ['hermit', 'wattpad', 'blogspot', 'youtube', 'salon', 'live', 'charters', 'github'];
+
+/** The 5 donated 2023 works recorded in the Exhibited & Donated Provenance Ledger. */
+const ATELIER_2023_LEDGER = [
+  { title: 'Pewdiepie — Realistic Portrait',  medium: 'Graphite Pencil',               year: 2023 },
+  { title: "Cat's Face — Animal Realism",     medium: 'Graphite Pencil',               year: 2023 },
+  { title: '3D Squid Umbrella Design',        medium: 'Mixed Media · 3D Concept',      year: 2023 },
+  { title: 'Town Landscape',                  medium: 'Pencil',                        year: 2023 },
+  { title: 'Nature with Dual Eyes',           medium: 'Canvas · Surrealist Concept',   year: 2023 },
+];
+
+/**
+ * linkActionHtml — one consistent action control for card footers and modal link rows.
+ * @param {string} key      links.* key (hermit, wattpad, blogspot, youtube, salon, github …)
+ * @param {string} url      target URL, or a "#…" standby / in-page anchor
+ * @param {'card'|'modal'} ctx
+ * @returns {string}
+ */
+function linkActionHtml(key, url, ctx) {
+  if (!url) return '';
+  const k    = String(key).toLowerCase();
+  const base = ctx === 'card' ? 'btn-card-action' : 'modal-link-btn';
+  const kind = ctx === 'card'
+    ? (k === 'live' ? 'btn-live' : (k === 'wattpad' ? 'btn-wattpad' : (k === 'blogspot' || k === 'hermit' || k === 'youtube' || k === 'salon') ? 'btn-live' : 'btn-repo'))
+    : '';
+  const standby = STANDBY_LINKS[url];
+  if (standby) {
+    return `<button type="button" class="${base} ${kind} btn-standby" data-toast="${escHtml(standby.toast)}">${escHtml(standby.label)}</button>`;
+  }
+  if (String(url).startsWith('#')) {
+    return `<a href="${escHtml(url)}" class="${base} ${kind}" data-scroll-to="${escHtml(url)}">${escHtml(formatLinkLabel(key))}</a>`;
+  }
+  const label = (k === 'charters') ? 'Penal Matrix ↗'
+    : (k === 'live' && ctx === 'card') ? null   // resolved by caller (Live Site / Executive Charter)
+    : formatLinkLabel(key);
+  return `<a href="${escHtml(url)}" target="_blank" rel="noopener noreferrer" class="${base} ${kind}">${escHtml(label === null ? 'Live Site ↗' : label)}</a>`;
+}
+
+/**
+ * scrollToTarget — smoothly scrolls to an in-page anchor, folding any open modal first.
+ * @param {string} target  CSS selector such as "#piano"
+ */
+function scrollToTarget(target) {
+  const overlay = document.getElementById('modal-overlay');
+  const modalOpen = !!(overlay && overlay.classList.contains('active'));
+  if (modalOpen) closeModal();
+  const go = () => {
+    const el = document.querySelector(target);
+    if (!el) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  };
+  modalOpen ? setTimeout(go, 400) : go();
+}
+
+/**
+ * wireActionButtons — attaches standby-toast, in-page scroll, link-isolation and
+ * atelier quick-switch behaviour to freshly injected markup.
+ * @param {HTMLElement} root
+ */
+function wireActionButtons(root) {
+  if (!root) return;
+  root.querySelectorAll('[data-toast]').forEach(el => {
+    el.addEventListener('click', ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      showTheaterToast(el.dataset.toast);
+    });
+  });
+  root.querySelectorAll('[data-scroll-to]').forEach(el => {
+    el.addEventListener('click', ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      scrollToTarget(el.dataset.scrollTo);
+    });
+  });
+  root.querySelectorAll('.card-direct-actions a:not([data-scroll-to])').forEach(el => {
+    el.addEventListener('click', ev => ev.stopPropagation());
+  });
+  root.querySelectorAll('[data-switch-work]').forEach(el => {
+    el.addEventListener('click', ev => {
+      ev.preventDefault();
+      switchModalWork(el.dataset.switchWork);
+    });
+  });
+}
+
+/**
+ * buildAtelierLedgerHtml — Complete 10-Work Atelier Catalog (5 photographed 2024 plates with
+ * quick-switch thumbnails + 5 exhibited & donated 2023 works) with the provenance ledger table.
+ * @param {Object} current  The art work currently open in the modal.
+ * @returns {string}
+ */
+function buildAtelierLedgerHtml(current) {
+  const plates = (window.WORKS_DATA || []).filter(w => w.type === 'art' && w.image);
+  const plateBtns = plates.map((p, i) => `
+        <button type="button" class="atelier-plate-btn${p.id === current.id ? ' is-current' : ''}" data-switch-work="${escHtml(p.id)}" aria-label="View plate ${i + 1}: ${escHtml(p.title)}"${p.id === current.id ? ' aria-current="true"' : ''}>
+          <img src="${escHtml(encodeURI(p.image))}" alt="" loading="lazy" />
+          <span class="atelier-plate-cap">${escHtml(p.title)}</span>
+        </button>`).join('');
+
+  const rows2024 = plates.map((p, i) => `
+          <tr${p.id === current.id ? ' class="is-current"' : ''}>
+            <td>${String(i + 1).padStart(2, '0')}</td>
+            <td>${escHtml(p.title)}</td>
+            <td>${escHtml(p.medium || '')}</td>
+            <td>${escHtml(formatYear(p.year))}</td>
+            <td><span class="atelier-prov atelier-prov-plate">Photographed Plate · Atelier Archive</span></td>
+          </tr>`).join('');
+  const rows2023 = ATELIER_2023_LEDGER.map((a, i) => `
+          <tr>
+            <td>${String(plates.length + i + 1).padStart(2, '0')}</td>
+            <td>${escHtml(a.title)}</td>
+            <td>${escHtml(a.medium)}</td>
+            <td>${escHtml(String(a.year))}</td>
+            <td><span class="atelier-prov atelier-prov-donated">Exhibited &amp; Donated to Private/School Collection</span></td>
+          </tr>`).join('');
+  const total = plates.length + ATELIER_2023_LEDGER.length;
+
+  return `
+    <div class="atelier-ledger">
+      <h4 class="modal-section-label">Complete Atelier Catalog · ${total} Works</h4>
+      <div class="atelier-plate-strip" role="group" aria-label="Photographed 2024 plates">${plateBtns}
+      </div>
+      <h4 class="modal-section-label atelier-ledger-title">2023 Exhibited &amp; Donated Provenance Ledger</h4>
+      <div class="atelier-ledger-scroll">
+        <table class="atelier-ledger-table">
+          <thead><tr><th scope="col">No.</th><th scope="col">Work</th><th scope="col">Medium</th><th scope="col">Year</th><th scope="col">Provenance</th></tr></thead>
+          <tbody>${rows2024}${rows2023}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+/**
+ * buildReadingRoomHtml — Built-In Serif Reading Room (executive dossier + opening prose excerpt).
+ * @param {Object} room  work.reading_room
+ * @returns {string}
+ */
+function buildReadingRoomHtml(room) {
+  if (!room) return '';
+  const dossier = Array.isArray(room.dossier) && room.dossier.length
+    ? `<dl class="reading-room-dossier">${room.dossier.map(d => `<div><dt>${escHtml(d.label)}</dt><dd>${escHtml(d.value)}</dd></div>`).join('')}</dl>`
+    : '';
+  const paras = (room.excerpt || []).map(p => `<p>${escHtml(p)}</p>`).join('');
+  return `
+    <div class="modal-reading-room">
+      <span class="reading-room-kicker">${escHtml(room.kicker || 'BUILT-IN READING ROOM')}</span>
+      ${dossier}
+      <h4 class="reading-room-title">${escHtml(room.excerpt_title || 'Opening Excerpt')}</h4>
+      <div class="reading-room-prose">${paras}</div>
+      ${room.note ? `<p class="reading-room-note">${escHtml(room.note)}</p>` : ''}
+    </div>`;
+}
+
 /**
  * buildWorkCard — creates a DOM element for a single work entry.
  * @param {Object} work  A works.json entry.
@@ -495,23 +660,17 @@ function buildWorkCard(work) {
     ? `<div class="card-art-preview"><img src="${escHtml(encodeURI(work.image))}" alt="${escHtml(work.title || '')}" loading="lazy" /></div>`
     : '';
 
-  // Direct action buttons (e.g. Wattpad, Live Site, GitHub Repository)
+  // Direct action buttons (Hermit, Wattpad Catalog, Blogspot standby, YouTube, Acoustic Lounge, Live, Repo)
   let cardActions = '';
-  if (work.links && work.links.wattpad) {
-    cardActions = `
-      <div class="card-direct-actions">
-        <a href="${escHtml(work.links.wattpad)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-wattpad" onclick="event.stopPropagation()">
-          Read on Wattpad ↗
-        </a>
-      </div>`;
-  } else if (work.links && (work.links.live || work.links.github || work.links.charters)) {
+  if (work.links && typeof work.links === 'object') {
     const liveLabel = (work.type === 'case-study') ? 'Executive Charter ↗' : 'Live Site ↗';
-    cardActions = `
-      <div class="card-direct-actions">
-        ${work.links.live ? `<a href="${escHtml(work.links.live)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-live" onclick="event.stopPropagation()">${liveLabel}</a>` : ''}
-        ${work.links.charters ? `<a href="${escHtml(work.links.charters)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-repo" onclick="event.stopPropagation()">Penal Matrix ↗</a>` : ''}
-        ${work.links.github ? `<a href="${escHtml(work.links.github)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-repo" onclick="event.stopPropagation()">Repository ↗</a>` : ''}
-      </div>`;
+    const btns = CARD_LINK_KEYS
+      .filter(k => work.links[k])
+      .map(k => (k === 'live')
+        ? `<a href="${escHtml(work.links.live)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-live">${liveLabel}</a>`
+        : linkActionHtml(k, work.links[k], 'card'))
+      .join('');
+    if (btns) cardActions = `<div class="card-direct-actions">${btns}</div>`;
   }
 
   card.innerHTML = `
@@ -528,6 +687,8 @@ function buildWorkCard(work) {
     </div>
   `;
 
+  wireActionButtons(card);
+
   // Open detail modal on click
   card.addEventListener('click', () => openModal(work));
 
@@ -543,7 +704,8 @@ function renderWorksGrid(works) {
   if (!grid) return;
 
   grid.innerHTML = '';
-  works.forEach(work => {
+  // Classical audio tracks live in #piano (The Acoustic Lounge) — never duplicated as grid cards
+  works.filter(w => !w.salonOnly).forEach(work => {
     grid.appendChild(buildWorkCard(work));
   });
 }
@@ -648,6 +810,7 @@ function openModal(work) {
   if (!overlay || !contentEl) return;
 
   contentEl.innerHTML = buildModalHTML(work);
+  wireActionButtons(contentEl);
 
   // Phase 6: remember where the plate came from so closing folds it back there
   setModalOriginVector(work, false);
@@ -660,6 +823,22 @@ function openModal(work) {
   // Focus the close button for accessibility
   const closeBtn = document.getElementById('modal-close');
   if (closeBtn) closeBtn.focus();
+}
+
+/**
+ * switchModalWork — swaps the open modal to another work in place (Fine Art atelier quick-switch).
+ * @param {string} id  works.json id
+ */
+function switchModalWork(id) {
+  const work = (window.WORKS_DATA || []).find(w => w.id === id);
+  const contentEl = document.getElementById('modal-content');
+  if (!work || !contentEl) return;
+  _modalWork = work;
+  contentEl.innerHTML = buildModalHTML(work);
+  wireActionButtons(contentEl);
+  const panel = document.getElementById('modal-panel');
+  if (panel) panel.scrollTop = 0;
+  contentEl.scrollTop = 0;
 }
 
 /**
@@ -766,10 +945,11 @@ function buildModalHTML(work) {
           <span class="art-placeholder-icon">${monoSvg(ICON_PATHS.art, 40, 1.2)}</span>
           <p class="art-placeholder-note">Add your image to <code>${escHtml(imgSrc)}</code></p>
         </div>
-      </div>`;
+      </div>
+      ${buildAtelierLedgerHtml(work)}`;
   }
 
-  if (work.type === 'music') {
+  if (work.type === 'music' && work.audio) {
     const composer = work.composer || '';
     const era      = work.era      || work.genre || '';
     typeSpecificHtml = `
@@ -790,22 +970,19 @@ function buildModalHTML(work) {
 
   if (work.type === 'research') {
     const abstract = work.abstract || work.description || work.synopsis || '';
-    const paperId  = work.id || slugify(work.title || '');
-    const pdfPath  = work.pdf || `assets/papers/${escHtml(paperId)}.pdf`;
+    // Only research with a PDF actually on disk (explicit work.pdf) exposes a download — no 404 links.
     typeSpecificHtml = `
       ${abstract ? `<div class="modal-abstract"><h4 class="modal-section-label">Abstract</h4><p>${escHtml(abstract)}</p></div>` : ''}
-      <a class="modal-pdf-btn" href="${escHtml(pdfPath)}" target="_blank" rel="noopener">
+      ${work.pdf ? `<a class="modal-pdf-btn" href="${escHtml(encodeURI(work.pdf))}" target="_blank" rel="noopener">
         ${monoSvg(ICON_PATHS.document, 16, 1.6, 'btn-icon')}<span>Download PDF</span>
-      </a>`;
+      </a>` : ''}`;
   }
 
   if (work.type === 'novel' || work.type === 'writing') {
     const synopsis = work.synopsis || work.description || '';
     typeSpecificHtml = `
       ${synopsis ? `<div class="modal-synopsis"><h4 class="modal-section-label">Synopsis</h4><p>${escHtml(synopsis)}</p></div>` : ''}
-      <button class="modal-excerpt-btn" onclick="alert('Full excerpt coming soon…')">
-        ${monoSvg(ICON_PATHS.novel, 16, 1.6, 'btn-icon')}<span>Read Excerpt</span>
-      </button>`;
+      ${buildReadingRoomHtml(work.reading_room)}`;
   }
 
   if (work.type === 'case-study' || work.case_study_html) {
@@ -815,26 +992,24 @@ function buildModalHTML(work) {
       </div>`;
   }
 
-  // External links
+  // External links (standby links raise the toast instead of navigating)
   let linksHtml = '';
+  const linkButtons = [];
   if (work.links && typeof work.links === 'object') {
-    const linkEntries = Object.entries(work.links);
-    if (linkEntries.length) {
-      linksHtml = `<div class="modal-links">` +
-        linkEntries.map(([label, url]) =>
-          `<a class="modal-link-btn" href="${escHtml(url)}" target="_blank" rel="noopener">
-            ${escHtml(formatLinkLabel(label))}
-          </a>`
-        ).join('') +
-      `</div>`;
-    }
+    Object.entries(work.links).forEach(([key, url]) => {
+      const html = linkActionHtml(key, url, 'modal');
+      if (html) linkButtons.push(html);
+    });
+  }
+  if (work.type === 'art') {
+    // Button 2: external atelier portal (standby until a Cara / Behance URL exists)
+    linkButtons.push(linkActionHtml('atelier', '#atelier-standby', 'modal'));
   }
   if (work.repo) {
-    linksHtml += `<div class="modal-links">
-      <a class="modal-link-btn" href="https://github.com/${escHtml(work.repo)}" target="_blank" rel="noopener">
-        ⌥ GitHub Repository
-      </a>
-    </div>`;
+    linkButtons.push(`<a class="modal-link-btn" href="https://github.com/${escHtml(work.repo)}" target="_blank" rel="noopener">GitHub Repository ↗</a>`);
+  }
+  if (linkButtons.length) {
+    linksHtml = `<div class="modal-links">${linkButtons.join('')}</div>`;
   }
 
   // General description (shown for all types unless type-specific block already has it)
@@ -865,9 +1040,15 @@ function buildModalHTML(work) {
  */
 function formatLinkLabel(key) {
   const k = key.toLowerCase();
-  if (k === 'wattpad') return 'Read on Wattpad ↗';
-  if (k === 'live')    return 'Live Site ↗';
-  if (k === 'github')  return 'Repository ↗';
+  if (k === 'wattpad')  return 'Wattpad Catalog ↗';
+  if (k === 'hermit')   return 'Read on Hermit ↗';
+  if (k === 'magnolia') return "Magnolia's on Wattpad ↗";
+  if (k === 'youtube')  return 'Watch on YouTube ↗';
+  if (k === 'salon')    return 'Enter Acoustic Lounge ↘';
+  if (k === 'blogspot') return 'Ongoing Monograph on Blogspot ↗';
+  if (k === 'live')     return 'Live Site ↗';
+  if (k === 'github')   return 'Repository ↗';
+  if (k === 'charters') return 'Penal Matrix ↗';
   return key
     .replace(/[_-]/g, ' ')
     .replace(/([a-z])([A-Z])/g, '$1 $2')
@@ -1015,11 +1196,25 @@ function renderLanguages(languages) {
  * renderCertificates — renders certificate cards into #certificates-grid.
  * @param {Array} certs
  */
+const PUBLISHED_CERT_FILES = new Set([
+  'assets/certificates/Elektra-WPM.pdf',
+]);
+const CERT_STANDBY_MSG = 'Verified Credential — Official PDF Scan Uploading Soon';
+
 function renderCertificates(certs) {
   const grid = document.getElementById('certificates-grid');
   if (!grid) return;
 
-  grid.innerHTML = certs.map(cert => `
+  grid.innerHTML = certs.map(cert => {
+    const published = cert.file && PUBLISHED_CERT_FILES.has(cert.file);
+    let action = '';
+    if (published) {
+      action = `<a href="${escHtml(encodeURI(cert.file))}" target="_blank" rel="noopener noreferrer" class="cert-link" style="font-family:var(--font-mono); font-size:0.72rem; color:var(--accent-primary); text-decoration:none;" title="View credential">View Credential ↗</a>`;
+    } else if (cert.file) {
+      // PDF scan not on disk yet: a toast replaces the link so nothing can ever 404
+      action = `<button type="button" class="cert-link cert-link-standby" data-toast="${escHtml(CERT_STANDBY_MSG)}" title="Official PDF scan uploading soon">View Credential ↗</button>`;
+    }
+    return `
     <div class="cert-card reveal">
       <div class="cert-header">
         <span class="cert-title">${escHtml(cert.title || '')}</span>
@@ -1028,10 +1223,12 @@ function renderCertificates(certs) {
       <span class="cert-issuer">${escHtml(cert.issuer || '')}</span>
       <div class="cert-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
         <span class="cert-year">${escHtml(formatYear(cert.year))}</span>
-        ${cert.file ? `<a href="${escHtml(cert.file)}" target="_blank" rel="noopener noreferrer" class="cert-link" style="font-family:var(--font-mono); font-size:0.72rem; color:var(--accent-primary); text-decoration:none;" title="View credential">View Credential ↗</a>` : ''}
+        ${action}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
+
+  wireActionButtons(grid);
 }
 
 /**
@@ -1098,14 +1295,29 @@ function renderEducation(education) {
 
   list.innerHTML = education.map(edu => {
     const period = edu.period || edu.years || edu.year || '';
+    const badgeHtml = edu.badge
+      ? `<span class="edu-badge">${escHtml(edu.badge)}</span>`
+      : '';
+    const gradePill = edu.gpa
+      ? `<span class="edu-grade">GPA ${escHtml(String(edu.gpa))}</span>`
+      : (edu.grade ? `<span class="edu-grade">Grade ${escHtml(String(edu.grade))}</span>` : '');
+    const highlightsHtml = Array.isArray(edu.highlights) && edu.highlights.length
+      ? `<ul class="edu-bullets">${edu.highlights.map(h => `<li>${escHtml(h)}</li>`).join('')}</ul>`
+      : '';
+
     return `
       <div class="edu-item reveal">
-        <div class="edu-year">${escHtml(period)}</div>
+        <div class="edu-meta-top">
+          <span class="edu-year">${escHtml(period)}</span>
+          <div class="edu-badges-group">
+            ${gradePill}
+            ${badgeHtml}
+          </div>
+        </div>
         <div class="edu-body">
           <h4 class="edu-degree">${escHtml(edu.degree || '')}</h4>
           <p class="edu-institution">${escHtml(edu.institution || '')}</p>
-          ${edu.gpa   ? `<span class="edu-grade">GPA ${escHtml(String(edu.gpa))}</span>` : ''}
-          ${edu.grade ? `<span class="edu-grade">Grade ${escHtml(String(edu.grade))}</span>` : ''}
+          ${highlightsHtml}
         </div>
       </div>`;
   }).join('');
@@ -1334,7 +1546,8 @@ const _scrub = {
  * @param {Array} works
  */
 function renderPianoGrid(works) {
-  _salonMusicWorks = (works || []).filter(w => w.type === 'music');
+  // #piano keeps every canonical audio track; the YouTube showcase (no audio file) stays in #works-grid
+  _salonMusicWorks = (works || []).filter(w => w.type === 'music' && w.salonOnly !== false && w.audio);
   const tracklistEl = document.getElementById('salon-tracklist');
   if (!tracklistEl || !_salonMusicWorks.length) return;
 
@@ -2187,131 +2400,192 @@ const STRATEGIC_DISCIPLINES = {
   }
 };
 
-let _activeStrategicId = 'chess';
-let _overtureIdleTimer = null;
+let _activeStrategicId = 'overture';
 let _theaterSoundUnmuted = false;
+let _theaterInView = false;
 
+/* Zero-404 policy: a video is only requested once its file is listed here.
+   Add 'assets/video/overture-montage.mp4' (etc.) after the footage is published. */
+const THEATER_PUBLISHED_VIDEOS = new Set([]);
+const THEATER_STANDBY_MSG = 'Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon.';
+
+/** showTheaterPoster — hides the <video> and reveals the standby poster (never throws). */
+function showTheaterPoster() {
+  const video  = document.getElementById('strategic-video-player');
+  const poster = document.getElementById('theater-standby-poster');
+  if (video) { try { video.pause(); } catch (e) { /* noop */ } video.style.display = 'none'; }
+  if (poster) poster.style.display = 'flex';
+}
+
+/** setTheaterSoundState — single source of truth for the Soundstage toggle (all 4 states). */
+function setTheaterSoundState(unmuted) {
+  _theaterSoundUnmuted = !!unmuted;
+  const btn   = document.getElementById('theater-soundstage-toggle');
+  const label = document.getElementById('soundstage-label');
+  const video = document.getElementById('strategic-video-player');
+  if (btn) btn.classList.toggle('unmuted', _theaterSoundUnmuted);
+  if (label) {
+    label.textContent = _theaterSoundUnmuted
+      ? 'SOUNDSTAGE ACTIVE'
+      : (_activeStrategicId === 'overture' ? 'MUTED · AMBIENT OVERTURE' : 'MUTED · TAP TO UNMUTE');
+  }
+  if (video) video.muted = !_theaterSoundUnmuted;
+}
+
+/**
+ * loadAndPlayTheaterVideo — loads src into the 16:9 stage and plays it on loop.
+ * Falls back to the standby poster when the file is unpublished, errors, or playback is blocked.
+ * @param {string} src
+ * @param {{muted?: boolean}} [opts]
+ * @returns {Promise<boolean>} true when the video is playing
+ */
+async function loadAndPlayTheaterVideo(src, { muted = true } = {}) {
+  const video  = document.getElementById('strategic-video-player');
+  const poster = document.getElementById('theater-standby-poster');
+  if (!video) return false;
+  if (!THEATER_PUBLISHED_VIDEOS.has(src)) { showTheaterPoster(); return false; }
+
+  video.loop = true;
+  video.playsInline = true;
+  video.muted = muted;
+  if (video.getAttribute('src') !== src) {
+    video.src = src;
+    video.load();
+  }
+  video.style.display = 'block';
+  if (poster) poster.style.display = 'none';
+
+  try {
+    await video.play();
+    return true;
+  } catch (err) {
+    if (!muted) {
+      // Browser blocked unmuted playback: retry muted and reflect it in the toggle
+      setTheaterSoundState(false);
+      try { await video.play(); return true; } catch (err2) { /* fall through */ }
+    }
+    showTheaterPoster();
+    return false;
+  }
+}
+
+/** playEchoVideos — drives the frosted accordion echo only for published footage. */
+function syncTheaterEchoes(activeId) {
+  document.querySelectorAll('.theater-accordion-item').forEach(item => {
+    const echo = item.querySelector('.theater-video-echo');
+    if (!echo) return;
+    const src = echo.dataset.src;
+    if (item.dataset.id === activeId && src && THEATER_PUBLISHED_VIDEOS.has(src)) {
+      if (echo.getAttribute('src') !== src) echo.src = src;
+      echo.style.display = '';
+      const p = echo.play(); if (p && p.catch) p.catch(() => { echo.style.display = 'none'; });
+    } else {
+      try { echo.pause(); } catch (e) { /* noop */ }
+      echo.style.display = 'none';
+    }
+  });
+}
+
+/**
+ * selectStrategicDiscipline — 100% click-driven. Clicking a collapsed bar opens it and plays its
+ * feed with sound; clicking the already-open bar collapses all 3 and returns to the Overture.
+ */
 function selectStrategicDiscipline(id) {
-  clearTimeout(_overtureIdleTimer);
-  const data = STRATEGIC_DISCIPLINES[id];
-  if (!data) return;
-
-  if (_activeStrategicId === id) return;
-  _activeStrategicId = id;
+  const requested = STRATEGIC_DISCIPLINES[id];
+  if (!requested) return;
+  const targetId = (id !== 'overture' && id === _activeStrategicId) ? 'overture' : id;
+  const data = STRATEGIC_DISCIPLINES[targetId];
+  _activeStrategicId = targetId;
 
   const consoleEl = document.getElementById('strategic-theater');
   if (consoleEl) consoleEl.setAttribute('data-active-theme', data.theme);
 
-  // 1. Update Blueprint Inline Accordion Items & Stamped Golden Wax Seals
-  if (id !== 'overture') {
-    document.querySelectorAll('.theater-accordion-item').forEach(item => {
-      const isMatch = item.dataset.id === id;
-      item.classList.toggle('active', isMatch);
-    });
+  // 1. Accordion bars (overture = all collapsed)
+  document.querySelectorAll('.theater-accordion-item').forEach(item => {
+    item.classList.toggle('active', targetId !== 'overture' && item.dataset.id === targetId);
+  });
+  document.querySelectorAll('.theater-tab-btn').forEach(btn => {
+    const isMatch = targetId !== 'overture' && btn.dataset.id === targetId;
+    btn.classList.toggle('active', isMatch);
+    btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    btn.setAttribute('aria-expanded', isMatch ? 'true' : 'false');
+    if (isMatch) {
+      const badge = btn.querySelector('.tab-badge');
+      if (badge) { badge.style.animation = 'none'; void badge.offsetHeight; badge.style.animation = ''; }
+    }
+  });
 
-    document.querySelectorAll('.theater-tab-btn').forEach(btn => {
-      const isMatch = btn.dataset.id === id;
-      btn.classList.toggle('active', isMatch);
-      btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
-      if (isMatch) {
-        const badge = btn.querySelector('.tab-badge');
-        if (badge) {
-          badge.style.animation = 'none';
-          void badge.offsetHeight;
-          badge.style.animation = '';
-        }
-      }
-    });
+  // 2. Acoustic sovereignty: discipline = sound on (Piano Lounge yields); overture = muted ambient
+  if (targetId !== 'overture') {
+    if (typeof pauseSalonPiece === 'function' && typeof _salonIsPlaying !== 'undefined' && _salonIsPlaying) pauseSalonPiece();
+    setTheaterSoundState(true);
+  } else {
+    setTheaterSoundState(false);
   }
+  syncTheaterEchoes(targetId);
 
-  // 2. Update Under-Video Metadata Anchor Box (Directly beneath 16:9 Video Frame)
-  const repBox = document.getElementById('theater-repertoire-box');
+  // 3. Under-video metadata box
+  const repBox   = document.getElementById('theater-repertoire-box');
   const repLabel = document.getElementById('repertoire-label');
-  const repLine = document.getElementById('repertoire-line');
+  const repLine  = document.getElementById('repertoire-line');
+  const writeRep = () => {
+    if (repLabel) repLabel.textContent = data.repertoireLabel;
+    if (repLine)  repLine.textContent  = data.repertoireLine;
+  };
   if (repBox) {
     repBox.classList.add('updating');
-    setTimeout(() => {
-      if (repLabel) repLabel.textContent = data.repertoireLabel;
-      if (repLine) repLine.textContent = data.repertoireLine;
-      repBox.classList.remove('updating');
-    }, 160);
-  } else {
-    if (repLabel) repLabel.textContent = data.repertoireLabel;
-    if (repLine) repLine.textContent = data.repertoireLine;
-  }
+    setTimeout(() => { writeRep(); repBox.classList.remove('updating'); }, 160);
+  } else { writeRep(); }
 
-  // 3. 16:9 Video Stage Frosted Glass Defocus / Refocus Transition (180ms)
+  // 4. 16:9 stage: defocus, swap copy, then play (or fall back to the poster)
   const wrapper = document.querySelector('.theater-screen-wrapper');
+  const swapStage = () => {
+    const standbyKicker = document.getElementById('standby-kicker');
+    const standbyTitle  = document.getElementById('standby-title');
+    const standbyBadge  = document.getElementById('standby-badge');
+    const telemetry     = document.getElementById('telemetry-focus');
+    if (standbyKicker) standbyKicker.textContent = data.kicker;
+    if (standbyTitle)  standbyTitle.textContent  = data.videoTitle;
+    if (telemetry)     telemetry.textContent     = data.telemetry;
+    if (standbyBadge) {
+      standbyBadge.textContent = THEATER_PUBLISHED_VIDEOS.has(data.videoSrc)
+        ? 'Click to Launch Stream (1080p 60fps)'
+        : (targetId === 'overture'
+            ? 'Select a Discipline to Launch Its Stream · Sound On (1080p 60fps)'
+            : 'Master Footage in Final Post-Production · 1080p 60fps');
+    }
+    showTheaterPoster();
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (targetId === 'overture' && (!_theaterInView || reduced)) return;
+    loadAndPlayTheaterVideo(data.videoSrc, { muted: !_theaterSoundUnmuted });
+  };
   if (wrapper) {
     wrapper.classList.add('defocusing');
-    setTimeout(() => {
-      const video = document.getElementById('strategic-video-player');
-      const source = document.getElementById('strategic-video-source');
-      const poster = document.getElementById('theater-standby-poster');
-      const standbyKicker = document.getElementById('standby-kicker');
-      const standbyTitle = document.getElementById('standby-title');
-      const telemetry = document.getElementById('telemetry-focus');
-
-      if (video) {
-        video.pause();
-        video.style.display = 'none';
-      }
-      if (poster) poster.style.display = 'flex';
-      if (source) source.src = data.videoSrc;
-      if (video) video.load();
-      if (standbyKicker) standbyKicker.textContent = data.kicker;
-      if (standbyTitle) standbyTitle.textContent = data.videoTitle;
-      if (telemetry) telemetry.textContent = data.telemetry;
-      wrapper.classList.remove('defocusing');
-    }, 180);
-  }
+    setTimeout(() => { swapStage(); wrapper.classList.remove('defocusing'); }, 180);
+  } else { swapStage(); }
 }
 window.selectStrategicDiscipline = selectStrategicDiscipline;
 
-/**
- * handleTheaterMouseLeave — politely cross-fades the 16:9 stage to the Tri-Discipline Master Overture
- * after a 1.8s idle delay when the cursor leaves the theater console.
- */
-function handleTheaterMouseLeave() {
-  clearTimeout(_overtureIdleTimer);
-  _overtureIdleTimer = setTimeout(() => {
-    const video = document.getElementById('strategic-video-player');
-    if (video && !video.paused && video.style.display !== 'none') return;
-    selectStrategicDiscipline('overture');
-  }, 1800);
-}
+/** handleTheaterMouseLeave — retained as a no-op: selection is click-only, never auto-reset. */
+function handleTheaterMouseLeave() { /* intentionally empty */ }
 window.handleTheaterMouseLeave = handleTheaterMouseLeave;
 
 /**
- * toggleTheaterSoundstage — Acoustic Sovereignty Guardrail:
- * Muted by default; unmuting pauses the Classical Piano Recital so audio streams never collide.
+ * toggleTheaterSoundstage — Acoustic Sovereignty: works in all 4 states (overture + 3 disciplines).
+ * Unmuting pauses the Classical Piano Recital so audio streams never collide.
  */
 function toggleTheaterSoundstage(e) {
   if (e) e.stopPropagation();
-  _theaterSoundUnmuted = !_theaterSoundUnmuted;
-  const btn = document.getElementById('theater-soundstage-toggle');
-  const label = document.getElementById('soundstage-label');
-  const video = document.getElementById('strategic-video-player');
-
-  if (btn) btn.classList.toggle('unmuted', _theaterSoundUnmuted);
-  if (label) {
-    label.textContent = _theaterSoundUnmuted ? 'SOUNDSTAGE ACTIVE' : 'MUTED · AMBIENT OVERLAY';
-  }
-  if (video) {
-    video.muted = !_theaterSoundUnmuted;
-  }
-  if (_theaterSoundUnmuted && typeof pauseSalonPiece === 'function' && _salonIsPlaying) {
+  setTheaterSoundState(!_theaterSoundUnmuted);
+  if (_theaterSoundUnmuted && typeof pauseSalonPiece === 'function' && typeof _salonIsPlaying !== 'undefined' && _salonIsPlaying) {
     pauseSalonPiece();
+  }
+  const video = document.getElementById('strategic-video-player');
+  if (video && video.style.display !== 'none' && video.paused) {
+    const p = video.play(); if (p && p.catch) p.catch(() => setTheaterSoundState(false));
   }
 }
 window.toggleTheaterSoundstage = toggleTheaterSoundstage;
-
-/**
- * handleTheaterPosterClick — attempts to play video or indicates standby status.
- */
-const THEATER_STANDBY_MSG = 'Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon.';
-// Flip to true once assets/video/chess-analysis.mp4 is published.
-const THEATER_VIDEO_AVAILABLE = false;
 
 /**
  * showTheaterToast — luxury champagne toast (obsidian glass pill, auto-dismiss).
@@ -2334,38 +2608,41 @@ function showTheaterToast(msg) {
 }
 window.showTheaterToast = showTheaterToast;
 
+/** handleTheaterPosterClick — launches the active feed, or raises the standby toast when unpublished. */
 function handleTheaterPosterClick() {
-  const video = document.getElementById('strategic-video-player');
-  const poster = document.getElementById('theater-standby-poster');
-
-  // Intercept before any network request: the master footage is still in post-production.
-  if (!THEATER_VIDEO_AVAILABLE) {
+  const data = STRATEGIC_DISCIPLINES[_activeStrategicId];
+  if (!data || !THEATER_PUBLISHED_VIDEOS.has(data.videoSrc)) {
     showTheaterToast(THEATER_STANDBY_MSG);
     return;
   }
-
-  if (video) {
-    const source = document.getElementById('strategic-video-source');
-    if (source && source.dataset.src && !video.src) {
-      video.src = source.dataset.src;
-    }
-    video.muted = !_theaterSoundUnmuted;
-    video.style.display = 'block';
-    if (poster) poster.style.display = 'none';
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        if (poster) poster.style.display = 'flex';
-        video.style.display = 'none';
-        const badge = document.getElementById('standby-badge');
-        if (badge) {
-          badge.textContent = 'Master Footage in Final Post-Production · 1080p 60fps';
-        }
-      });
-    }
-  }
+  loadAndPlayTheaterVideo(data.videoSrc, { muted: !_theaterSoundUnmuted });
 }
 window.handleTheaterPosterClick = handleTheaterPosterClick;
+
+/** initStrategicTheater — muted Overture autoplay while in view; pause when scrolled away. */
+function initStrategicTheater() {
+  const consoleEl = document.getElementById('strategic-theater');
+  const video = document.getElementById('strategic-video-player');
+  if (!consoleEl) return;
+  if (video) video.addEventListener('error', showTheaterPoster);
+  setTheaterSoundState(false);
+  if (!('IntersectionObserver' in window)) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      _theaterInView = entry.isIntersecting;
+      const data = STRATEGIC_DISCIPLINES[_activeStrategicId];
+      if (entry.isIntersecting) {
+        if (reduced && _activeStrategicId === 'overture') return;
+        if (data) loadAndPlayTheaterVideo(data.videoSrc, { muted: !_theaterSoundUnmuted });
+      } else if (video && !video.paused) {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.35 }).observe(consoleEl);
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initStrategicTheater);
+else initStrategicTheater();
 
 /* ============================================================
    PHASE 10: DIPLOMATIC DISPATCH CONSOLE (WAX SEAL COMPRESSION)

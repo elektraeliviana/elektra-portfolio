@@ -1,6 +1,6 @@
 # 🏛️ Master Execution Directive: Elektra Eliviana Portfolio Remodel & Polish
 
-> **Target Workspace**: `c:\Users\ASUS PC\.gemini\antigravity\scratch\elektra-portfolio`  
+> **Target Workspace**: `c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio`  
 > **Aesthetic Guardrails**: Obsidian dark surfaces, champagne gold accents (`#C5A059` / `#D4AF37`), subtle glassmorphism, 1200px luxury container, zero horizontal overflow.
 
 ---
@@ -20,7 +20,10 @@
 | **TASK-MD-09** | Modal UX & Mobile Micro-Fit Polish (Close-Button Spacing & Squeezed Icon) | **COMPLETED & VERIFIED** | `css/style.css` |
 | **TASK-AN-10** | Global Kinetic Choreography & Visual Balance (Non-Destructive Motion System) | **COMPLETED & VERIFIED** | `css/style.css`, `js/app.js` |
 | **TASK-SN-11** | Claude Sonnet 5.5 High Master Aesthetic, Kinetic & Responsive Polish | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js` |
-| **TASK-SN-12** | Claude Sonnet 5.5 High Deep Audit: Dynamic Emoji Purge & Final Kinetic Directives | **READY FOR EXECUTION** | `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js`, `css/style.css`, `index.html` |
+| **TASK-SN-12** | Claude Sonnet 5.5 High Deep Audit: Dynamic Emoji Purge & Final Kinetic Directives | **COMPLETED & VERIFIED** | `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js`, `css/style.css`, `index.html` |
+| **TASK-UX-13 (Phase A)** | Celestial Florilegium About Tree, Languages 3+2 Pyramid, Autoplay Theater & Precision UI Bug Fixes | **COMPLETED & VERIFIED** | `index.html`, `css/style.css`, `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js` |
+| **TASK-RM-01 & 09 (Phase B)** | Academic Pedigree & Operational Leadership Dual-Ledger + Updated CV Sync (J&T Express & Dibimbing Finance Cert) | **COMPLETED & VERIFIED** | `index.html`, `data/profile.json`, `js/data.js`, `css/style.css`, `js/app.js` |
+| **TASK-RM-02..08 (Phase C)** | Works Catalog Pruning, Dibimbing/UXfolio Case Study Modals, IAIPI Living Qur'an Platform, Blogspot Standby Toast, Hermit (`app.gethermit.com/books`) + Main Wattpad Literary Compendium, Fine Art 2024+Provenance Modal & Flagship YouTube Showcase (`youtu.be/XykyKbHISqs`) | **COMPLETED & VERIFIED** | `data/works.json`, `js/data.js`, `js/app.js`, `css/style.css`, `index.html` |
 
 ---
 
@@ -1465,4 +1468,396 @@ Commit and push to GitHub:
 git commit -am "feat(polish): complete TASK-SN-12 dynamic emoji purge & final kinetic directives"
 git push origin main
 ```
+
+---
+
+## 🛠️ TASK-UX-13: Celestial Florilegium About Tree, Languages 3+2 Pyramid, Click-Driven Autoplay Theater & Precision UI Bug Fixes
+
+> **Target Workspace**: `c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio`  
+> **Target Files**: `index.html`, `css/style.css`, `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js`  
+> **Current Commit Base**: `35276f0`  
+> **Execution Mandate**: Surgical, targeted edits only — **DO NOT** rewrite or truncate `css/style.css` or unrelated sections. Keep `js/data.js` 100% synchronized with `data/profile.json` and `data/works.json`.
+
+---
+
+### 1. Professionalism & Perfection Guardrails (Mandatory)
+1. **Luxury Token Compliance**: Use only existing `:root` obsidian & champagne gold tokens (`#0d0d0f`, `#13131a`, `#C5A059`, `#D4AF37`, `#e8e0d0`). No harsh neon or bright white surfaces.
+2. **Dark-Mode Autofill Shield**: Enforce `color-scheme: dark;` and `:-webkit-autofill` inset overrides on all form controls so browsers never inject white/blue autofill backgrounds.
+3. **Floating-Label Single-Line Rule**: Floated `.form-label` elements must use `white-space: nowrap` with `>= 12px` clearance above typed text.
+4. **Minimum Breathing-Room Floor**: Every `.section-header` and `.subsection-desc` must maintain at least `clamp(1.75rem, 3vw, 2.75rem)` clearance above the card/console below it, with `text-wrap: balance` on multi-line descriptions.
+5. **Navbar Symmetry & Contrast Floor**: Maintain symmetric pill padding and `>= 1.25rem` brand-to-link clearance in `#navbar.scrolled`; keep all pills/tags readable (`>= 4.5:1` contrast) and verify zero tofu boxes (`▯`) on non-Latin scripts.
+6. **Zero Regression & Layout Safety**: Preserve `max-width: 1200px`, `CLS = 0`, zero horizontal overflow (`375px`–`4K`), zero console 404 errors, and `@media (prefers-reduced-motion: reduce)`.
+
+---
+
+### 2. Granular Task-by-Task Execution Specifications
+
+#### 2.1 Languages Calibration, 3+2 Centered Pyramid & Sundanese Glyph Fix
+* **Target Files**: `data/profile.json`, `js/data.js`, `css/style.css`, `index.html`
+* **Data Updates (`data/profile.json` + mirror identically in `js/data.js`)**:
+  - **English (`EN`)**: Set `"percent": 87` (keep `"level": "C2 Proficient / Professional"` and `"detail": "EF SET 71/100 · Oxford C2 Equivalent"`).
+  - **Japanese (`JA`)**: Set `"level": "Elementary · JLPT N5"`, `"percent": 30`, `"detail": "JLPT N5 · EJU Mathematics Prep"`.
+  - **Mandarin (`ZH`)**: Remove the entire `"code": "ZH"` object so exactly **5 languages** remain in order (`EN`, `ID`, `SU`, `JA`, `AR`).
+* **Symmetric 3-over-2 Centered Pyramid Grid (`css/style.css`, ~line 4068)**:
+  ```css
+  .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    width: 100%;
+    max-width: 980px;
+    margin-inline: auto;
+  }
+  .languages-grid .lang-card { grid-column: span 2; }
+  .languages-grid .lang-card:nth-child(4) { grid-column: 2 / span 2; }
+  .languages-grid .lang-card:nth-child(5) { grid-column: 4 / span 2; }
+
+  @media (max-width: 820px) {
+    .languages-grid { grid-template-columns: repeat(4, 1fr); }
+    .languages-grid .lang-card,
+    .languages-grid .lang-card:nth-child(4) { grid-column: span 2; }
+    .languages-grid .lang-card:nth-child(5) { grid-column: 2 / span 2; }
+  }
+  @media (max-width: 520px) {
+    .languages-grid { grid-template-columns: 1fr; }
+    .languages-grid .lang-card,
+    .languages-grid .lang-card:nth-child(4),
+    .languages-grid .lang-card:nth-child(5) { grid-column: auto; }
+  }
+  ```
+* **Sundanese (`ᮘᮞ ᮞᮥᮔ᮪ᮓ`) Tofu Box Fix (`css/style.css` & `js/app.js`)**:
+  - Verify the `Noto Sans Sundanese` Google Fonts link in `index.html` loads cleanly and explicitly apply `'Noto Sans Sundanese'` as the primary font on **both** the top-right native label (`.lang-native`, `.lang-native-label`) and bottom-right watermark (`.lang-native-watermark`) for `SU` so `ᮘᮞ ᮞᮥᮔ᮪ᮓ` renders crisp Aksara Sunda glyphs with zero tofu boxes (`▯`).
+
+---
+
+#### 2.2 `#about` Celestial Florilegium Tree Backdrop (Theme 1 + Option A) & Bio Tag Contrast Fix
+* **Target Files**: `index.html`, `css/style.css`
+* **Bespoke SVG Replacement (`index.html`, `.about-botanical-watermark` ~lines 178–229)**:
+  - Author a bespoke, original etched champagne-gold (`#C5A059` → `#E8D5B5` `linearGradient`) **Celestial Florilegium Tree of Life** SVG (`viewBox="0 0 1200 1050"`, `aria-hidden="true"`):
+    - **Crown (behind *"Who I Am · An Unusual Mind"*)**: Ascending vertical celestial orbs (3 graduating spheres above a primary full-moon orb) flanked symmetrically by crescent lunar phases arcing along the upper ring.
+    - **Center (behind the bio paragraph & CTA buttons)**: A thin luminous **astrolabe / ecliptic circle** with fine hairline starburst rays radiating behind a sculpted **Tree of Knowledge** with organic intertwined branches.
+    - **Roots (behind the 3+2 Languages pyramid below)**: Symmetrical, deeply branching golden roots extending beneath the trunk to visually anchor the 5 language cards.
+    - **Corner Filigree (Option A)**: Delicate antique-gold root-filigree corner flourishes framing the 4 corners of `#about` (with a whisper-thin `rgba(197, 160, 89, 0.14)` hairline inner border on desktop, cleanly hidden or scaled down on `<768px` mobile).
+* **Calibrated Visibility & Readability Veil (`css/style.css`)**:
+  - Anchor `.about-botanical-watermark` specifically behind the upper **Bio + 3+2 Languages Pyramid** zone (`position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1200px; max-height: 980px; pointer-events: none; z-index: 0;`) with `opacity: 0.12` on desktop (`0.08` on mobile), so its roots frame the 5 Languages cards while the new 2-Column Academic Pedigree & Operational Leadership Dual-Ledger (`TASK-RM-01`) sits cleanly below the roots without stretching the tree.
+  - Add a soft radial obsidian readability veil behind `.about-bio-container` (`background: radial-gradient(ellipse at center, rgba(13, 13, 15, 0.62) 0%, rgba(13, 13, 15, 0) 72%);`) so every word of the bio stays razor-sharp.
+* **Brighten Bio Tag Pills (`.about-tags`, `css/style.css` ~line 3548)**:
+  - `color: #d4cbbd; background: rgba(19, 19, 26, 0.82); border: 1px solid rgba(197, 160, 89, 0.28);`
+  - Hover: `border-color: rgba(197, 160, 89, 0.65); color: #e8e0d0; transform: translateY(-2px);`
+
+---
+
+#### 2.3 Remove Em-Dashes (`—`) in *Gödel's Ontological Proof*
+* **Target Files**: `index.html`, `data/works.json`, `js/data.js`
+* **`index.html` (`.flagship-abstract`, ~line 802)**:
+  - Replace `S5 modal logic axioms — originally constructed to prove the existence of a supremely perfect being — within` with:
+    `S5 modal logic axioms (originally constructed to prove the existence of a supremely perfect being) within`
+* **`data/works.json` (`id: "godels-ontological-proof-allah"`, ~line 181) & `js/data.js`**:
+  - Replace `Islamic theological metaphysics — constructing a rigorous formal bridge` with:
+    `Islamic theological metaphysics, constructing a rigorous formal bridge`
+
+---
+
+#### 2.4 Strategic & Kinetic Mastery Theater: All-Collapsed Default, Click-Only Selection & Autoplay
+* **Target Files**: `index.html`, `js/app.js`, `css/style.css`
+* **Markup (`index.html`, `#strategic-theater` ~lines 970–1086)**:
+  - Set `data-active-theme="overture"` on `#strategic-theater` and **remove `onmouseleave="handleTheaterMouseLeave()"`**.
+  - Remove `.active` from the Chess `.theater-accordion-item` and its `.theater-tab-btn` so **all 3 bars start collapsed** on initial load (`aria-selected="false"`, `aria-expanded="false"`).
+  - **Remove `onmouseenter="..."`** from all 3 `.theater-tab-btn` buttons so selection is **100% click-driven**.
+  - Convert GeoGuessr and Rhythm `.theater-video-echo` elements to `data-src="assets/video/..."` (removing eager `src=` + `autoplay` so missing files never throw 404 console errors on load).
+  - Initialize the 16:9 stage defaults (`#standby-kicker`, `#standby-title`, `#standby-badge`, `#telemetry-focus`, `#repertoire-label`, `#repertoire-line`) to the **Tri-Discipline Master Overture Montage** (`overture-montage.mp4`).
+  - Keep `.theater-soundstage-toggle` visible across all 4 states (default label: `MUTED · AMBIENT OVERTURE`).
+* **Controller (`js/app.js`, ~lines 2190–2368)**:
+  - Initialize `_activeStrategicId = 'overture'` and `_theaterSoundUnmuted = false`.
+  - **Click-to-Toggle**: Clicking a collapsed bar expands that single discipline and plays its video; clicking the **already open** bar collapses all 3 bars and returns the 16:9 stage to `overture`.
+  - **Autoplay Policy (Option B — Muted Overture, Unmuted on Discipline Click)**:
+    - Create helper `loadAndPlayTheaterVideo(src, { muted })` with `video.loop = true; video.playsInline = true;`.
+    - Via `IntersectionObserver` on `#strategic-theater`, auto-play `overture-montage.mp4` **muted** when in view (and pause when scrolled off-screen).
+    - When a visitor **clicks** `Chess`, `GeoGuessr`, or `Rhythm Games`, immediately switch to its `.mp4` and auto-play **with sound enabled (`muted: false`)** — calling `pauseSalonPiece()` if the Piano Lounge is active, and updating `.theater-soundstage-toggle` to `.unmuted` (`SOUNDSTAGE ACTIVE`). If the browser blocks unmuted playback, retry muted.
+    - On `error` or missing `.mp4` file in `assets/video/`, gracefully keep `#strategic-video-player` hidden and show `#theater-standby-poster` with zero uncaught errors.
+    - Keep `toggleTheaterSoundstage(e)` functional on **all 4 videos (including Overture)**, pausing the Piano Lounge whenever unmuted.
+* **CSS (`css/style.css`)**:
+  - Add `.strategic-theater-console[data-active-theme="overture"] { border-color: rgba(201, 168, 76, 0.35); }`.
+
+---
+
+#### 2.5 Precision Fixes for the 4 Buggy UI Sections
+* **Target Files**: `css/style.css`, `index.html`
+1. **Scrolled Navbar Pill Symmetry & Brand Clearance (`css/style.css`, ~lines 6062–6105)**:
+   ```css
+   #navbar.scrolled .nav-container {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: clamp(1.25rem, 2.5vw, 2.25rem);
+     padding: 0 clamp(1.25rem, 2.2vw, 1.85rem);
+     width: 100%;
+   }
+   #navbar.scrolled .nav-brand {
+     flex-shrink: 0;
+     margin-right: clamp(0.75rem, 1.5vw, 1.5rem);
+     white-space: nowrap;
+   }
+   ```
+2. **Diplomatic Dispatch Form Autofill Shield & Floating-Label Overlap (`css/style.css` ~lines 6841–6890 & `index.html` ~line 1153)**:
+   - Shorten `#dispatch-name` label in `index.html` from `Correspondent Name / Institution` to `Correspondent / Institution`.
+   - Apply `color-scheme: dark;` and full WebKit autofill lock + single-line label clearance:
+     ```css
+     .contact-form .form-input {
+       color-scheme: dark;
+       padding: 1.15rem 1rem 0.75rem;
+     }
+     .contact-form .form-input:-webkit-autofill,
+     .contact-form .form-input:-webkit-autofill:hover,
+     .contact-form .form-input:-webkit-autofill:focus,
+     .contact-form textarea:-webkit-autofill {
+       -webkit-box-shadow: 0 0 0 1000px #0d0d0f inset !important;
+       -webkit-text-fill-color: #e8e0d0 !important;
+       caret-color: #c9a84c;
+       transition: background-color 5000s ease-in-out 0s;
+     }
+     .contact-form .form-label {
+       white-space: nowrap;
+       max-width: calc(100% - 1.5rem);
+       overflow: hidden;
+       text-overflow: ellipsis;
+       pointer-events: none;
+     }
+     .contact-form .form-input:focus ~ .form-label,
+     .contact-form .form-input:not(:placeholder-shown) ~ .form-label,
+     .contact-form .form-input:-webkit-autofill ~ .form-label {
+       top: -0.58rem;
+       font-size: 0.64rem;
+       letter-spacing: 0.08em;
+       padding: 0 0.4rem;
+       line-height: 1.2;
+       background: #0d0d0f;
+     }
+     ```
+3. **Strategic & Kinetic Mastery Header Breathing Room (`css/style.css`)**:
+   - Add `margin-bottom: clamp(1.75rem, 3vw, 2.5rem);` to `.strategic-mastery-subsection .subsection-desc` and `margin-bottom: 0.65rem;` to `.strategic-mastery-subsection .subsection-title`.
+4. **Flagship Research Header Spacing & Orphan-Line Fix (`css/style.css`)**:
+   - Add `margin-bottom: clamp(2.25rem, 4vw, 3.25rem);` to `#research .section-header`.
+   - Apply `max-width: 68ch; margin-inline: auto; text-wrap: balance;` to `.section-desc` and `.subsection-desc`.
+
+---
+
+### 3. Verification & Acceptance Criteria for Phase A (`TASK-UX-13`)
+- [ ] Scrolled navbar pill has clean breathing room between `ELEKTRA ELIVIANA` and `ABOUT` and balanced left/right padding.
+- [ ] `#about` displays the Celestial Florilegium tree + corner filigree clearly (anchored to the upper Bio + 3+2 Languages zone with `max-height: 980px`) with razor-sharp bio readability and bright, legible bio tag pills.
+- [ ] Languages renders 5 cards in a symmetric 3+2 centered pyramid (EN `87%`, JA `30% · Elementary · JLPT N5`, Mandarin removed) and Sundanese `ᮘᮞ ᮞᮥᮔ᮪ᮓ` shows zero tofu boxes.
+- [ ] Flagship Research header has generous clearance above the gold plaque, balanced description lines, and zero em-dashes in Gödel's abstract/modal.
+- [ ] Strategic & Kinetic Mastery subtitle has generous clearance above the theater; all 3 bars start collapsed; hover never switches videos; click expands/autoplays with sound and re-clicking collapses back to Overture; Soundstage toggle works across all 4 states.
+- [ ] Diplomatic Dispatch form stays obsidian under browser autofill and floating labels never wrap or clip typed text.
+- [ ] Zero console errors and zero horizontal overflow across `375px`, `768px`, and `1440px`.
+
+---
+
+## 🛠️ PHASE B (`TASK-RM-01` & `TASK-RM-09`): Academic Pedigree & Operational Leadership Dual-Ledger + Updated CV Synchronization
+
+> **Target Files**: `index.html`, `data/profile.json`, `js/data.js`, `js/app.js`, `css/style.css`  
+> **Reference Blueprint**: Cross-reference `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-01` & `TASK-RM-09`) for full context.
+
+### 1. Updated CV & Question-14 Verbatim Data Synchronization (`data/profile.json` + mirror in `js/data.js`)
+
+1. **Enrich `education` array with verbatim Question-14 badges & highlights:**
+   ```json
+   "education": [
+     {
+       "degree": "Bachelor Degree (S.Ag.) — Quranic Studies & Tafsir",
+       "institution": "IAIPI Bandung (Institut Agama Islam Persis)",
+       "period": "2024–2026",
+       "gpa": 3.54,
+       "badge": "Accepted Thesis",
+       "type": "undergraduate",
+       "highlights": [
+         "Accepted Undergraduate Thesis: \"Politics of Hierarchy: Progenic Prophets Family\"",
+         "Core Analytical Coursework: Formal Logic (Mantiq), Islamic Epistemology (Kalam), Comparative Hermeneutics & Digitalisasi Al-Qur'an"
+       ]
+     },
+     {
+       "degree": "Associate Degree (D3) — Arabic Language",
+       "institution": "Al-Imarat Bandung",
+       "period": "2021–2024",
+       "grade": 72.06,
+       "badge": "Classical Linguistics",
+       "type": "associate",
+       "highlights": [
+         "Specialized in Classical Arabic Morphology (Sarf) & Syntax (Nahw) — foundational structural grammar directly informing computational linguistics and NLP text analysis"
+       ]
+     },
+     {
+       "degree": "High School Diploma — Natural Sciences (IPA)",
+       "institution": "SMAN 6 Cimahi",
+       "period": "2018–2021",
+       "grade": 78.5,
+       "badge": "Math & Astronomy Olympiad",
+       "type": "highschool",
+       "highlights": [
+         "Rank #1 Mathematics in High School Cohort (2018)",
+         "Top 20 Bandung City Astronomy Olympiad (2019/2020)"
+       ]
+     },
+     {
+       "degree": "AI Engineering Track — Independent Mentor-Led Curriculum",
+       "institution": "Independent Mentor-Led Technical Program",
+       "period": "2026–Present",
+       "badge": "First-Principles ML",
+       "type": "bootcamp",
+       "highlights": [
+         "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Loss Functions (MSE/MAE Outlier Proof), and First-Principles Gradient Descent",
+         "Engineered Clean Architecture Desktop & Web Applications with 20/20 Pytest coverage and LLM API integration"
+       ]
+     },
+     {
+       "degree": "Japanese Language & CS Scholarship Pathway",
+       "institution": "PT Yurinoki Nihongo",
+       "period": "2026–Present",
+       "badge": "Target Pathway · Japan CS 2030",
+       "type": "language",
+       "highlights": [
+         "Target Pathway: LPK Selection Gate (May–June 2027) → Nihongo Gakkou (April 2028) → S1 Computer Science / AI Engineering in Japan (April 2030)",
+         "Target Benchmarks: JLPT N2 & EJU Mathematics Course 2 (targeting Japanese National/Imperial Universities & scholarship tracks)"
+       ]
+     }
+   ]
+   ```
+2. **Add J&T Express from Updated CV to `experience` array (`data/profile.json` & `js/data.js`):**
+   ```json
+   {
+     "role": "Logistics & Operations Dispatcher",
+     "organization": "J&T Express — Kab. Bandung",
+     "period": "June 2022–March 2024",
+     "highlights": [
+       "Directed dispatch routing and delivery fulfillment for 20–50 high-priority parcels daily under strict SLA targets",
+       "Reconciled daily courier delivery logs and resolved last-mile routing bottlenecks with zero manifest discrepancies"
+     ]
+   }
+   ```
+3. **Add Dibimbing.id Certificate from Updated CV to `certificates` array (`data/profile.json` & `js/data.js`):**
+   ```json
+   {
+     "title": "Finance & Investment Banking Certificate",
+     "issuer": "Dibimbing.id",
+     "year": 2026,
+     "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
+   }
+   ```
+
+### 2. Render 2-Column Academic Pedigree & Operational Leadership Dual-Ledger (`index.html`, `js/app.js`, `css/style.css`)
+- **In `index.html` (inside `#about`, directly below `.languages-subsection`):** Insert the `.pedigree-ledger-subsection` markup containing `#education-list` (Pillar A: Left Column) and `#experience-timeline` (Pillar B: Right Column) exactly as specified in `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-01`, lines 76–105).
+- **In `js/app.js`:** Upgrade `renderEducation(education)` to render `.edu-badge`, `.edu-grade`, and `.edu-bullets` (`highlights` array) as specified in `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-01`, lines 108–142).
+- **In `css/style.css`:** Append the `.pedigree-ledger-subsection`, `.pedigree-dual-grid`, `.pedigree-column`, `.edu-item`, and `.exp-item` rules (collapsing cleanly to 1 column at `@media (max-width: 900px)`) as specified in `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-01`, lines 145–284).
+
+---
+
+## 🛠️ PHASE C (`TASK-RM-02` through `TASK-RM-08`): High-Signal Works Remodel, Dibimbing Case Studies, Hermit/Wattpad/Blogspot Wiring & Fine Art Atelier
+
+> **Target Files**: `data/works.json`, `js/data.js`, `js/app.js`, `css/style.css`, `index.html`  
+> **Reference Blueprint**: Cross-reference `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-02` through `TASK-RM-08`).
+
+### 1. Works Catalog Pruning (`TASK-RM-02`)
+Remove these **6 retired entries** from `data/works.json` and `js/data.js`:
+1. `ai-rag-novel-analyzer` (*Exoplanet Light-Curve Classifier / Local RAG Assistant*)
+2. `celestial-orbit-dynamics` (*Celestial Orbit Dynamics & N-Body Simulator*)
+3. `geometry-high-dimensional-word-embeddings` (*The Geometry of High-Dimensional Word Embeddings*)
+4. `japan-cs-scholarship-journey` (*Japan CS Scholarship Journey Portal*)
+5. `the-hundred-petals` (*The Hundred Petals: The Florilegium of War Against the Underworld Entity*)
+6. `chess-campus-champion-2025` (*Campus Chess Champion 2025* — also remove the standalone `<button class="filter-btn" data-filter="chess">` pill from `#works-filter-bar` in `index.html`, since Chess is prominently featured in `#credentials` Strategic Theater & Curated Achievements).
+
+### 2. Dibimbing & UXfolio-Grade Technical Case Studies (`TASK-RM-03`)
+In `data/works.json` and `js/data.js`:
+1. **Add New Live Project `daily-bullet-journal`** (*Daily Bullet Journal — Zero-Dependency Rapid Logging & Task Resolution Engine*) with its full metadata and a structured `case_study_html` dossier (`100% Python Stdlib sqlite3/http.server`, `Ctrl+R Rapid Resolve Triage`, `Offline localStorage Fallback`, `1-Click Obsidian .md & JSON Backup`).
+2. **Enrich `daily-writing-companion` and `automated-data-cleaner`** with rich `case_study_html` modals using the existing `.modal-case-study`, `.cs-callout`, `.cs-metrics-grid`, `.cs-pillars-grid`, and `.cs-flow-svg` design system:
+   - `daily-writing-companion`: `4 Layers Clean Architecture`, `20/20 Passing Pytest Suites`, `SQLAlchemy 2.0 Zero-Data-Loss Migration`, `Gemini API Mentor` + 4-stage Clean Architecture SVG flow diagram.
+   - `automated-data-cleaner`: `0.0005s Runtime`, `~15 Mins Saved/Batch`, `100% Whitespace/Case/Unit Normalization`, `O(N) Single-Pass Histogram` + 5-stage ETL SVG flow diagram.
+3. **Update `neural-net-from-scratch` (`status: "roadmap"`):** Update subtitle, description, tags, and `case_study_html` to highlight **Phase 1 Completed NumPy Milestones** (Dense matrix forward pass $Z = XW + b$, ReLU activation, MSE vs. MAE outlier sensitivity proof showing a 20-point error accounts for **87.1% of MSE variance vs. 62.5% of MAE**, and 100-epoch analytical Gradient Descent converging to $y = 2x + 1$) and **Phase 2 Active Roadmap** (multi-layer backpropagation).
+
+### 3. IAIPI Living Qur'an Digital Academy Platform (`TASK-RM-04`)
+In `data/works.json` and `js/data.js`:
+- Replace `travel-writing-living-quran` with `living-quran-digital-academy-iaipi` (*Living Qur'an Digital Academy Platform — IAIPI Bandung*, `type: "code"`, `category: "Academic EdTech & Digital Humanities"`, `status: "ongoing"`, `featured: true`) as specified in `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-04`, lines 365–386).
+
+### 4. Research Papers & Blogspot Standby Toast (`TASK-RM-05`)
+1. **`politics-of-hierarchy-progenic-prophets`**: Keep as `"status": "accepted"` (*Accepted Thesis*) with its direct PDF download (`assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf`).
+2. **Ongoing Blogspot Treatises (`godels-ontological-proof-allah`, `western-classical-dangdut-ethnomusicology`, `circulation-of-the-sun-hermeneutics`, `mozart-requiem-lacrimosa-semiotics`, `newton-to-backpropagation-calculus`):**
+   - Set `"status": "ongoing"` and add `"links": { "blogspot": "#blogspot-standby" }` on `godels-ontological-proof-allah`, `western-classical-dangdut-ethnomusicology`, `circulation-of-the-sun-hermeneutics`, and `mozart-requiem-lacrimosa-semiotics`.
+   - In `js/app.js` (`buildWorkCard()` and `buildModalHTML()`):
+     - Render a champagne-gold button **`Ongoing Monograph on Blogspot ↗`** whenever `work.links && work.links.blogspot`.
+     - If `work.links.blogspot === '#blogspot-standby'`, clicking the button calls `event.preventDefault(); event.stopPropagation(); showTheaterToast('Ongoing Monograph on Blogspot — Direct Link Publishing Soon');` (reusing the luxury obsidian-gold toast!). When a real URL is later placed in `links.blogspot`, it opens directly in a new tab.
+     - Suppress the broken `Download PDF` button in `buildModalHTML()` for research works that do not have an explicit `work.pdf` field on disk (eliminating 404 PDF links on ongoing papers!).
+
+### 5. Literary Compendium: Hermit (`https://app.gethermit.com/books`) + Main Wattpad Link + Built-In Serif Reading Room (`TASK-RM-06`)
+In `data/works.json`, `js/data.js`, and `js/app.js`:
+1. **Remove standalone `path-of-life-and-hope-under-magnolias`** and merge it into **`the-hermit-collection`**:
+   - Set `"type": "novel"`, `"status": "complete"`, `"title": "The Hermit Collection (Including \"The Path of Life and Hope Under the Magnolia's\")"`.
+   - Set `"links"`:
+     ```json
+     "links": {
+       "hermit": "https://app.gethermit.com/books",
+       "wattpad": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s"
+     }
+     ```
+     *(Note: In `js/app.js`, label the Wattpad button **`Wattpad Catalog ↗`** and the Hermit button **`Read on Hermit ↗`** pointing to `https://app.gethermit.com/books`, so visitors can access both your Hermit platform and your main Wattpad presence).*
+   - Include a `case_study_html` (or built-in `.modal-reading-room` block) styled in *Cormorant Garamond* with an **Executive Literary Dossier + Polished Opening Prose Excerpt** inside the portfolio modal (Button 1: Built-In Reading Room), alongside the external **Hermit (`https://app.gethermit.com/books`)** and **Wattpad** buttons (Button 2).
+2. **Update `the-ciwidey-journey`**:
+   - Set `"type": "novel"`, `"status": "complete"`, `"title": "The Ciwidey Journey — Phenomenological Highland Memoir"`.
+   - Include a Built-In Serif Reading Room excerpt from the Ciwidey / Rancaupas highland memoir inside its modal, plus a standby external portal button (`showTheaterToast('External Literary Monograph Portal — Launching Soon')`).
+
+### 6. Fine Art Realism Dual-Architecture (Option 2A — 5 Visual 2024 Cards + Built-In 2023 Provenance Ledger Modal + External Atelier Button) (`TASK-RM-07`)
+1. **On `#works-grid` (`data/works.json` & `js/data.js`):**
+   - Keep the **5 photographed 2024 paintings** (`art-realistic-eye`, `art-flandres-sprite`, `art-detailed-mountain-canvas`, `art-detailed-tree-canvas`, `art-tea-still-life`) as visual cards on `#works-grid`.
+   - Remove the 5 imageless 2023 entries (`art-pewdiepie-portrait`, `art-cats-face-realism`, `art-3d-squid-umbrella`, `art-town-landscape`, `art-nature-dual-eyes`) as separate imageless grid cards so **100% of Fine Art cards on `#works-grid` display real high-resolution artwork**.
+2. **Inside Every Fine Art Modal (`buildModalHTML()` in `js/app.js`):**
+   - Beneath the primary high-res artwork display (Button 1: Built-In Atelier Exhibition), automatically render the **Complete 10-Work Atelier Catalog & 2023 Exhibited/Donated Provenance Ledger Table** (listing the 5 photographed 2024 plates with quick-switch thumbnail buttons + the 5 donated 2023 exhibition works: *Pewdiepie — Realistic Portrait*, *Cat's Face — Animal Realism*, *3D Squid Umbrella Design*, *Town Landscape*, and *Nature with Dual Eyes* with their medium, year `2023`, and provenance status `Exhibited & Donated to Private/School Collection`).
+   - Add **Button 2 (`External Atelier Portal ↗`)** in the modal footer that triggers `showTheaterToast('External Fine Art Atelier Portal — Launching Soon')` until an external Cara.app / Behance URL is added.
+
+### 7. Classical Piano Salon Protection & Flagship YouTube Showcase (`https://youtu.be/XykyKbHISqs`) (`TASK-RM-08`)
+1. **Protect `#piano` (The Acoustic Lounge) while decluttering `#works-grid`:**
+   - On the 4 classical audio entries in `data/works.json` and `js/data.js` (`music-chopin-ballade-1`, `music-beethoven-moonlight-3rd`, `music-liszt-hungarian-rhapsody-2`, `music-chopin-nocturne-op9-no1`), add `"salonOnly": true`.
+   - In `js/app.js`:
+     - In `renderWorksGrid(works)`: filter out items with `w.salonOnly === true` (`works.filter(w => !w.salonOnly)`) so the 4 audio tracks do not appear as duplicate cards in `#works-grid`.
+     - In `renderPianoGrid(works)`: filter `works.filter(w => w.type === 'music' && w.salonOnly !== false && w.audio)` so `#piano` (The Acoustic Lounge Concert Salon) continues to load all 4 canonical tracks (`I`–`IV`) without interruption!
+2. **Upgrade `performance-piano-drawing-combined` as the Flagship Multi-Disciplinary YouTube Card in `#works-grid`:**
+   - Set `"type": "music"` (with `"salonOnly": false` / omitted so it appears under `All` and `Classical Piano` in `#works-grid` without entering the audio-only `#salon-tracklist`), `"status": "live"`, `"featured": true`, `"title": "Synergistic Classical Piano & Fine Art Performance Showcase"`, and `"links": { "youtube": "https://youtu.be/XykyKbHISqs", "salon": "#piano" }`.
+   - In `js/app.js` (`buildWorkCard()` and `buildModalHTML()`): support `work.links.youtube` (rendering **`Watch on YouTube ↗`** opening `https://youtu.be/XykyKbHISqs`) and `work.links.salon` (rendering **`Enter Acoustic Lounge ↘`** scrolling smoothly to `#piano`).
+
+---
+
+## 🚀 Master Copy-Paste Prompt for a Fresh Antigravity Conversation
+
+Copy and paste the block below into a fresh Antigravity conversation to execute **Phase A (`TASK-UX-13`)**, **Phase B (`TASK-RM-01` & `TASK-RM-09`)**, and **Phase C (`TASK-RM-02`–`TASK-RM-08`)** in sequence:
+
+```text
+Please read PORTFOLIO_EXECUTION_PROMPT.md (and cross-reference PORTFOLIO_REMODEL_MASTERPLAN.md) in the workspace at:
+c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio
+
+Execute the complete 3-Phase Master Directive (Phase A: TASK-UX-13, Phase B: TASK-RM-01 & TASK-RM-09, Phase C: TASK-RM-02 through TASK-RM-08) surgically while strictly adhering to the 6 Professionalism & Perfection Guardrails. Always keep js/data.js 100% synchronized with data/profile.json and data/works.json.
+
+PHASE A — TASK-UX-13 (Visual Architecture, Celestial Tree, 3+2 Languages, Autoplay Theater & 4 UI Bug Fixes):
+1. Languages Calibration & 3+2 Pyramid: English 87%, Japanese 30% ("Elementary · JLPT N5"), remove Mandarin, center Japanese & Arabic cleanly beneath the top 3 cards via a 6-column CSS grid, and fix Sundanese (ᮘᮞ ᮞᮥᮔ᮪ᮓ) tofu boxes on both native label and watermark.
+2. #about Celestial Florilegium Tree (Theme 1 + Option A): Replace the faint magnolia watermark with an original etched champagne-gold Celestial Tree of Life SVG (lunar crown, astrolabe ring + starburst rays, deep roots framing Languages, delicate corner root-filigree, anchored to the upper Bio + Languages zone with max-height: 980px, opacity 0.12 desktop / 0.08 mobile, radial bio readability veil) and brighten the 6 .about-tags pills.
+3. Gödel's Ontological Proof: Remove em-dashes (—) using parentheses/commas in both index.html and data/works.json + js/data.js.
+4. Strategic & Kinetic Mastery Theater: Start with all 3 bars collapsed while auto-playing the Tri-Discipline Master Overture Montage muted. Remove hover-switching (onmouseenter) and mouseleave auto-reset. Make selection 100% click-driven (clicking a bar expands it & auto-plays with sound, pausing Piano Lounge if playing; clicking the open bar collapses all 3 and returns to Overture). Keep the unified Soundstage mute/unmute toggle active for all 4 states and fall back cleanly to the standby poster when .mp4 files are not yet in assets/video/ with zero 404 console errors.
+5. Fix the 4 Screenshot UI Bugs: (a) Scrolled navbar pill symmetry & brand-to-ABOUT clearance; (b) Diplomatic Dispatch dark autofill shield (:-webkit-autofill) + single-line non-overlapping floating labels ("Correspondent / Institution"); (c) Strategic & Kinetic Mastery subtitle bottom spacing; (d) Flagship Research header bottom spacing + text-wrap: balance.
+
+PHASE B — TASK-RM-01 & TASK-RM-09 (Academic Pedigree & Operational Leadership Dual-Ledger + Updated CV Sync):
+1. Sync data/profile.json & js/data.js with the Question-14 verbatim academic pedigree (IAIPI GPA 3.54 + Accepted Thesis + Mantiq/Kalam/Hermeneutics; Al-Imarat D3 Arabic Sarf/Nahw; SMAN 6 Cimahi Rank #1 Math & Top 20 Bandung Astronomy Olympiad; Independent Mentor-Led AI Engineering Track modules; PT Yurinoki Nihongo with Target Pathway: LPK Selection Gate May–June 2027 → Nihongo Gakkou April 2028 → S1 CS/AI in Japan April 2030 · JLPT N2 & EJU Math Course 2).
+2. Add Logistics & Operations Dispatcher — J&T Express (Jun 2022–Mar 2024) to experience and Finance & Investment Banking Certificate — Dibimbing.id (2026) to certificates.
+3. Render the 2-Column Academic Pedigree & Operational Leadership Dual-Ledger (#education-list + #experience-timeline) inside #about below .languages-subsection with upgraded renderEducation() and responsive CSS.
+
+PHASE C — TASK-RM-02 through TASK-RM-08 (Works Catalog Pruning, Dibimbing Case Studies, Hermit/Wattpad/Blogspot Wiring, Fine Art 2024+Provenance & Flagship YouTube Showcase):
+1. Prune the 6 retired works (ai-rag-novel-analyzer, celestial-orbit-dynamics, geometry-high-dimensional-word-embeddings, japan-cs-scholarship-journey, the-hundred-petals, chess-campus-champion-2025) and remove the standalone Chess filter pill from #works-filter-bar.
+2. Add daily-bullet-journal (Live) and enrich daily-writing-companion, automated-data-cleaner, and neural-net-from-scratch (Roadmap + verified Phase 1 NumPy Day 15–19 milestones) with Dibimbing/UXfolio-grade case_study_html modals.
+3. Replace travel-writing-living-quran with living-quran-digital-academy-iaipi (Living Qur'an Digital Academy Platform — IAIPI Bandung).
+4. Wire ongoing research papers (godels-ontological-proof-allah, western-classical-dangdut-ethnomusicology, circulation-of-the-sun-hermeneutics, mozart-requiem-lacrimosa-semiotics) with an "Ongoing Monograph on Blogspot ↗" button that triggers showTheaterToast("Ongoing Monograph on Blogspot — Direct Link Publishing Soon"), and hide broken PDF buttons when a paper has no work.pdf on disk.
+5. Merge path-of-life-and-hope-under-magnolias into the-hermit-collection (type: "novel", status: "complete") and update the-ciwidey-journey (type: "novel", status: "complete") with Built-In Serif Reading Room excerpts inside their modals + external links to Hermit (https://app.gethermit.com/books) and Wattpad.
+6. Fine Art Option 2A: Keep the 5 photographed 2024 paintings on #works-grid, remove the 5 imageless 2023 cards as separate empty tiles, and embed the 10-Work Atelier Catalog & 2023 Exhibited/Donated Provenance Ledger Table + Button 2 ("External Atelier Portal ↗" standby toast) inside every Fine Art modal.
+7. Mark the 4 classical audio entries with "salonOnly": true (hidden from #works-grid via renderWorksGrid, while loaded into #piano via renderPianoGrid), and feature performance-piano-drawing-combined as the flagship multi-disciplinary YouTube showcase card (https://youtu.be/XykyKbHISqs + #piano jump link).
+
+Bump asset query strings in index.html to ?v=3.3.0, verify all phases visually in the browser across 375px / 768px / 1440px with zero console errors, update PORTFOLIO_EXECUTION_PROMPT.md status to COMPLETED & VERIFIED, and commit & push:
+git commit -am "feat(remodel): execute Phase A-C master portfolio remodel, pedigree ledger & UI polish (TASK-UX-13 + TASK-RM-01..09)"
+git push origin main
+```
+
+
 
