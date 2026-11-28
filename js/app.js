@@ -469,14 +469,10 @@ const STATUS_LABELS = {
 
 /* ── Standby links, action buttons & atelier ledger (TASK-RM-05/06/07/08) ─────────
    Standby links never navigate: they raise the luxury toast so no placeholder ever 404s. */
-const STANDBY_LINKS = {
-  '#blogspot-standby':        { label: 'Ongoing Monograph on Blogspot ↗',  toast: 'Ongoing Monograph on Blogspot — Direct Link Publishing Soon' },
-  '#literary-portal-standby': { label: 'External Literary Portal ↗',       toast: 'External Literary Monograph Portal — Launching Soon' },
-  '#atelier-standby':         { label: 'External Atelier Portal ↗',        toast: 'External Fine Art Atelier Portal — Launching Soon' },
-};
+const STANDBY_LINKS = {};
 
 /** Link keys surfaced as direct actions on the work card footer (in display order). */
-const CARD_LINK_KEYS = ['hermit', 'wattpad', 'blogspot', 'youtube', 'salon', 'live', 'charters', 'github'];
+const CARD_LINK_KEYS = ['hermit', 'wattpad', 'substack', 'blogspot', 'youtube', 'salon', 'live', 'charters', 'github', 'cara', 'atelier'];
 
 /** The 5 donated 2023 works recorded in the Exhibited & Donated Provenance Ledger. */
 const ATELIER_2023_LEDGER = [
@@ -499,7 +495,7 @@ function linkActionHtml(key, url, ctx) {
   const k    = String(key).toLowerCase();
   const base = ctx === 'card' ? 'btn-card-action' : 'modal-link-btn';
   const kind = ctx === 'card'
-    ? (k === 'live' ? 'btn-live' : (k === 'wattpad' ? 'btn-wattpad' : (k === 'blogspot' || k === 'hermit' || k === 'youtube' || k === 'salon') ? 'btn-live' : 'btn-repo'))
+    ? (k === 'live' ? 'btn-live' : (k === 'wattpad' ? 'btn-wattpad' : (k === 'blogspot' || k === 'hermit' || k === 'youtube' || k === 'salon' || k === 'substack' || k === 'cara' || k === 'atelier') ? 'btn-live' : 'btn-repo'))
     : '';
   const standby = STANDBY_LINKS[url];
   if (standby) {
@@ -561,24 +557,99 @@ function wireActionButtons(root) {
       switchModalWork(el.dataset.switchWork);
     });
   });
+  root.querySelectorAll('[data-plate-src]').forEach(el => {
+    el.addEventListener('click', ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      selectAtelierPlate(el);
+    });
+  });
 }
 
 /**
- * buildAtelierLedgerHtml — Complete 10-Work Atelier Catalog (5 photographed 2024 plates with
- * quick-switch thumbnails + 5 exhibited & donated 2023 works) with the provenance ledger table.
- * @param {Object} current  The art work currently open in the modal.
+ * selectAtelierPlate — swaps the full-size plate shown in .modal-image-area (Fine Art modal).
+ * @param {HTMLElement} btn  a .atelier-plate-btn carrying data-plate-* attributes
+ */
+function selectAtelierPlate(btn) {
+  const img = document.getElementById('modal-plate-img');
+  if (!img || !btn) return;
+  const title = btn.dataset.plateTitle || '';
+  img.style.display = '';
+  const placeholder = img.nextElementSibling;
+  if (placeholder && placeholder.classList.contains('modal-art-placeholder')) placeholder.style.display = 'none';
+  img.src = btn.dataset.plateSrc;
+  img.alt = title;
+  const titleEl = document.getElementById('modal-plate-title');
+  const metaEl  = document.getElementById('modal-plate-meta');
+  if (titleEl) titleEl.textContent = title;
+  if (metaEl)  metaEl.textContent  = btn.dataset.plateMeta || '';
+  document.querySelectorAll('#modal-content .atelier-plate-btn').forEach(b => {
+    const on = b === btn;
+    b.classList.toggle('is-current', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+}
+
+/**
+ * typesetModalMath — renders KaTeX ($…$ inline, $$…$$ display) inside freshly injected modal markup.
+ * KaTeX is loaded with `defer`, so retry briefly if it has not finished loading yet.
+ * @param {HTMLElement} root
+ */
+function typesetModalMath(root) {
+  if (!root) return;
+  const run = () => {
+    if (typeof window.renderMathInElement !== 'function') return false;
+    window.renderMathInElement(root, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$',  right: '$',  display: false },
+      ],
+      throwOnError: false,
+    });
+    return true;
+  };
+  if (run()) return;
+  let tries = 0;
+  const timer = setInterval(() => { if (run() || ++tries > 40) clearInterval(timer); }, 150);
+}
+
+/**
+ * collectAtelierPlates — every photographed plate across the Fine Art cards, tagged with its card id.
+ * @returns {Array<Object>}
+ */
+function collectAtelierPlates() {
+  const out = [];
+  (window.WORKS_DATA || []).filter(w => w.type === 'art').forEach(card => {
+    const plates = (Array.isArray(card.plates) && card.plates.length)
+      ? card.plates
+      : (card.image ? [{ title: card.title, medium: card.medium, year: card.year, image: card.image }] : []);
+    plates.forEach(p => out.push(Object.assign({ cardId: card.id }, p)));
+  });
+  return out;
+}
+
+/**
+ * buildAtelierLedgerHtml — click-to-inspect plate strip (all photographed plates) + the
+ * 2023 Exhibited & Donated Provenance Ledger (5 donated works).
+ * @param {Object} current  The art card currently open in the modal.
  * @returns {string}
  */
 function buildAtelierLedgerHtml(current) {
-  const plates = (window.WORKS_DATA || []).filter(w => w.type === 'art' && w.image);
-  const plateBtns = plates.map((p, i) => `
-        <button type="button" class="atelier-plate-btn${p.id === current.id ? ' is-current' : ''}" data-switch-work="${escHtml(p.id)}" aria-label="View plate ${i + 1}: ${escHtml(p.title)}"${p.id === current.id ? ' aria-current="true"' : ''}>
+  const plates   = collectAtelierPlates();
+  const firstImg = (current.plates && current.plates[0] && current.plates[0].image) || current.image;
+  const metaOf   = p => [p.medium, formatYear(p.year)].filter(Boolean).join(' · ');
+
+  const plateBtns = plates.map((p, i) => {
+    const on = p.image === firstImg;
+    return `
+        <button type="button" class="atelier-plate-btn${on ? ' is-current' : ''}" data-plate-src="${escHtml(encodeURI(p.image))}" data-plate-title="${escHtml(p.title)}" data-plate-meta="${escHtml(metaOf(p))}" aria-label="Inspect plate ${i + 1}: ${escHtml(p.title)}" aria-pressed="${on ? 'true' : 'false'}">
           <img src="${escHtml(encodeURI(p.image))}" alt="" loading="lazy" />
           <span class="atelier-plate-cap">${escHtml(p.title)}</span>
-        </button>`).join('');
+        </button>`;
+  }).join('');
 
   const rows2024 = plates.map((p, i) => `
-          <tr${p.id === current.id ? ' class="is-current"' : ''}>
+          <tr${p.cardId === current.id ? ' class="is-current"' : ''}>
             <td>${String(i + 1).padStart(2, '0')}</td>
             <td>${escHtml(p.title)}</td>
             <td>${escHtml(p.medium || '')}</td>
@@ -597,8 +668,8 @@ function buildAtelierLedgerHtml(current) {
 
   return `
     <div class="atelier-ledger">
-      <h4 class="modal-section-label">Complete Atelier Catalog · ${total} Works</h4>
-      <div class="atelier-plate-strip" role="group" aria-label="Photographed 2024 plates">${plateBtns}
+      <h4 class="modal-section-label">Complete Atelier Catalog · ${total} Works · Select a Plate to Inspect</h4>
+      <div class="atelier-plate-strip" role="group" aria-label="Photographed plates">${plateBtns}
       </div>
       <h4 class="modal-section-label atelier-ledger-title">2023 Exhibited &amp; Donated Provenance Ledger</h4>
       <div class="atelier-ledger-scroll">
@@ -616,19 +687,31 @@ function buildAtelierLedgerHtml(current) {
  * @param {Object} room  work.reading_room
  * @returns {string}
  */
+function linkifyEscaped(str) {
+  return escHtml(str).replace(/https?:\/\/[^\s<]+/g, raw => {
+    const m = raw.match(/[.,;:)]+$/);
+    const tail = m ? m[0] : '';
+    const url = tail ? raw.slice(0, -tail.length) : raw;
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${tail}`;
+  });
+}
+
 function buildReadingRoomHtml(room) {
   if (!room) return '';
   const dossier = Array.isArray(room.dossier) && room.dossier.length
     ? `<dl class="reading-room-dossier">${room.dossier.map(d => `<div><dt>${escHtml(d.label)}</dt><dd>${escHtml(d.value)}</dd></div>`).join('')}</dl>`
     : '';
-  const paras = (room.excerpt || []).map(p => `<p>${escHtml(p)}</p>`).join('');
+  const paras = (room.excerpt || []).map(p => {
+    const isDisplay = /^\s*\$\$[\s\S]*\$\$\s*$/.test(p);
+    return `<p${isDisplay ? ' class="reading-room-display"' : ''}>${escHtml(p)}</p>`;
+  }).join('');
   return `
     <div class="modal-reading-room">
       <span class="reading-room-kicker">${escHtml(room.kicker || 'BUILT-IN READING ROOM')}</span>
       ${dossier}
       <h4 class="reading-room-title">${escHtml(room.excerpt_title || 'Opening Excerpt')}</h4>
       <div class="reading-room-prose">${paras}</div>
-      ${room.note ? `<p class="reading-room-note">${escHtml(room.note)}</p>` : ''}
+      ${room.note ? `<p class="reading-room-note">${linkifyEscaped(room.note)}</p>` : ''}
     </div>`;
 }
 
@@ -656,9 +739,18 @@ function buildWorkCard(work) {
   const subtitle = work.composer || work.genre || work.field || work.medium
     || work.subtitle || '';
 
-  const artThumbnail = (work.type === 'art' && work.image)
-    ? `<div class="card-art-preview"><img src="${escHtml(encodeURI(work.image))}" alt="${escHtml(work.title || '')}" loading="lazy" /></div>`
-    : '';
+  let artThumbnail = '';
+  if (work.type === 'art') {
+    const allPlates = (Array.isArray(work.plates) && work.plates.length)
+      ? work.plates
+      : (work.image ? [{ title: work.title, image: work.image }] : []);
+    const shown = allPlates.slice(0, 3);
+    if (shown.length) {
+      artThumbnail = `<div class="card-art-preview card-art-mosaic mosaic-${shown.length}" role="img" aria-label="${escHtml(work.title || '')} — ${allPlates.length} plates">`
+        + shown.map(p => `<img src="${escHtml(encodeURI(p.image))}" alt="" loading="lazy" />`).join('')
+        + '</div>';
+    }
+  }
 
   // Direct action buttons (Hermit, Wattpad Catalog, Blogspot standby, YouTube, Acoustic Lounge, Live, Repo)
   let cardActions = '';
@@ -811,6 +903,7 @@ function openModal(work) {
 
   contentEl.innerHTML = buildModalHTML(work);
   wireActionButtons(contentEl);
+  typesetModalMath(contentEl);
 
   // Phase 6: remember where the plate came from so closing folds it back there
   setModalOriginVector(work, false);
@@ -836,6 +929,7 @@ function switchModalWork(id) {
   _modalWork = work;
   contentEl.innerHTML = buildModalHTML(work);
   wireActionButtons(contentEl);
+  typesetModalMath(contentEl);
   const panel = document.getElementById('modal-panel');
   if (panel) panel.scrollTop = 0;
   contentEl.scrollTop = 0;
@@ -931,21 +1025,28 @@ function buildModalHTML(work) {
   let typeSpecificHtml = '';
 
   if (work.type === 'art') {
-    const artId = work.id || slugify(work.title || '');
-    const imgSrc = work.image ? encodeURI(work.image) : `assets/art/${escHtml(artId)}.jpg`;
+    const artId  = work.id || slugify(work.title || '');
+    const plates = (Array.isArray(work.plates) && work.plates.length)
+      ? work.plates
+      : [{ title: work.title, medium: work.medium, year: work.year, image: work.image }];
+    const first  = plates[0];
+    const imgSrc = first.image ? encodeURI(first.image) : `assets/art/${escHtml(artId)}.jpg`;
+    const meta0  = [first.medium, formatYear(first.year)].filter(Boolean).join(' · ');
     typeSpecificHtml = `
       <div class="modal-image-area">
         <img
+          id="modal-plate-img"
           src="${escHtml(imgSrc)}"
-          alt="${escHtml(work.title)}"
+          alt="${escHtml(first.title || work.title)}"
           class="modal-art-img"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
         <div class="modal-art-placeholder" style="display:none;">
           <span class="art-placeholder-icon">${monoSvg(ICON_PATHS.art, 40, 1.2)}</span>
-          <p class="art-placeholder-note">Add your image to <code>${escHtml(imgSrc)}</code></p>
+          <p class="art-placeholder-note">Plate image unavailable</p>
         </div>
       </div>
+      <p class="modal-plate-caption"><strong id="modal-plate-title">${escHtml(first.title || work.title)}</strong><span id="modal-plate-meta">${escHtml(meta0)}</span></p>
       ${buildAtelierLedgerHtml(work)}`;
   }
 
@@ -970,12 +1071,10 @@ function buildModalHTML(work) {
 
   if (work.type === 'research') {
     const abstract = work.abstract || work.description || work.synopsis || '';
-    // Only research with a PDF actually on disk (explicit work.pdf) exposes a download — no 404 links.
+    // Research abstracts and built-in scholarly readers only — no local manuscript is ever linked.
     typeSpecificHtml = `
       ${abstract ? `<div class="modal-abstract"><h4 class="modal-section-label">Abstract</h4><p>${escHtml(abstract)}</p></div>` : ''}
-      ${work.pdf ? `<a class="modal-pdf-btn" href="${escHtml(encodeURI(work.pdf))}" target="_blank" rel="noopener">
-        ${monoSvg(ICON_PATHS.document, 16, 1.6, 'btn-icon')}<span>Download PDF</span>
-      </a>` : ''}`;
+      ${work.reading_room ? buildReadingRoomHtml(work.reading_room) : ''}`;
   }
 
   if (work.type === 'novel' || work.type === 'writing') {
@@ -1000,10 +1099,6 @@ function buildModalHTML(work) {
       const html = linkActionHtml(key, url, 'modal');
       if (html) linkButtons.push(html);
     });
-  }
-  if (work.type === 'art') {
-    // Button 2: external atelier portal (standby until a Cara / Behance URL exists)
-    linkButtons.push(linkActionHtml('atelier', '#atelier-standby', 'modal'));
   }
   if (work.repo) {
     linkButtons.push(`<a class="modal-link-btn" href="https://github.com/${escHtml(work.repo)}" target="_blank" rel="noopener">GitHub Repository ↗</a>`);
@@ -1045,7 +1140,10 @@ function formatLinkLabel(key) {
   if (k === 'magnolia') return "Magnolia's on Wattpad ↗";
   if (k === 'youtube')  return 'Watch on YouTube ↗';
   if (k === 'salon')    return 'Enter Acoustic Lounge ↘';
-  if (k === 'blogspot') return 'Ongoing Monograph on Blogspot ↗';
+  if (k === 'blogspot') return 'Read on Blogger ↗';
+  if (k === 'substack') return 'Read on Substack ↗';
+  if (k === 'cara')     return 'View Post on Cara ↗';
+  if (k === 'atelier')  return 'Cara Atelier ↗';
   if (k === 'live')     return 'Live Site ↗';
   if (k === 'github')   return 'Repository ↗';
   if (k === 'charters') return 'Penal Matrix ↗';
@@ -1208,7 +1306,10 @@ function renderCertificates(certs) {
   grid.innerHTML = certs.map(cert => {
     const published = cert.file && PUBLISHED_CERT_FILES.has(cert.file);
     let action = '';
-    if (published) {
+    if (cert.url) {
+      // External verification (e.g. EF SET) — opens the issuer's own page
+      action = `<a href="${escHtml(cert.url)}" target="_blank" rel="noopener noreferrer" class="cert-link" style="font-family:var(--font-mono); font-size:0.72rem; color:var(--accent-primary); text-decoration:none;" title="Verify credential online">View Credential ↗</a>`;
+    } else if (published) {
       action = `<a href="${escHtml(encodeURI(cert.file))}" target="_blank" rel="noopener noreferrer" class="cert-link" style="font-family:var(--font-mono); font-size:0.72rem; color:var(--accent-primary); text-decoration:none;" title="View credential">View Credential ↗</a>`;
     } else if (cert.file) {
       // PDF scan not on disk yet: a toast replaces the link so nothing can ever 404
@@ -1399,6 +1500,11 @@ const SOCIAL_PATHS = {
   discord:   '<path d="M8.500 7C6.600 7.400 5.100 8.100 4 9c-1.300 3.200-1.800 6.200-1.500 9.200 1.400 1 3 1.700 4.700 2l1-1.700M15.500 7c1.900.4 3.400 1.100 4.500 2 1.300 3.200 1.800 6.200 1.500 9.200-1.400 1-3 1.700-4.700 2l-1-1.700M9 7c2-.8 4-.8 6 0M8.200 17.300c2.500 1 5.100 1 7.600 0"/><circle cx="9.200" cy="12.500" r="1.300"/><circle cx="14.800" cy="12.500" r="1.300"/>',
   email:     '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.500 7 8.500 6.500L20.500 7"/>',
   link:      '<path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/>',
+  contra:      '<circle cx="12" cy="12" r="9"/><path d="M15.500 9.200a4.500 4.500 0 1 0 0 5.600"/>',
+  substack:    '<path d="M5 4h14M5 8h14"/><path d="M5 12v8l7-4 7 4v-8z"/>',
+  cara:        '<rect x="3.500" y="4.500" width="17" height="15" rx="2.500"/><path d="M16.200 9.400a4.200 4.200 0 1 0 0 5.200"/>',
+  huggingface: '<circle cx="12" cy="12" r="9"/><path d="M8.500 14c1 1.600 2.200 2.300 3.500 2.300s2.500-.7 3.500-2.300"/><circle cx="9.300" cy="10" r=".7"/><circle cx="14.700" cy="10" r=".7"/><path d="M4.500 15.500c-1.200.2-1.900 1.200-1.400 2.200M19.500 15.500c1.200.2 1.900 1.200 1.400 2.200"/>',
+  kaggle:      '<path d="M7 4v16M17 5l-8.500 8.200M10.800 11.400 17.500 20"/>',
 };
 
 const SOCIAL_ICONS = {};
@@ -1414,6 +1520,11 @@ const SOCIAL_LABELS = {
   instagram: 'Instagram',
   discord:   'Discord',
   email:     'Email',
+  contra:      'Contra',
+  substack:    'Substack',
+  cara:        'Cara.app',
+  huggingface: 'Hugging Face',
+  kaggle:      'Kaggle',
 };
 
 /**
@@ -1519,18 +1630,68 @@ function initScrollAnimations() {
    ============================================================ */
 
 let _salonMusicWorks = [];
+let _salonPlayableCount = 0;   // tracks 0.._salonPlayableCount-1 are recorded & playable; the rest are repertoire-only
 let _salonActiveIdx  = 0;
 let _salonAudio      = null;
+let _salonFadeRaf    = 0;
+let _salonFadeToken  = 0;
+let _salonAdvanceTmr = null;
 let _salonIsPlaying  = false;
 let _salonSimTimer   = null;
 let _salonSimSeconds = 0;
-let _salonDurationSec = 570; // 9:30 default
+let _salonDurationSec = 265; // 4:25 default
 let _urtextAnimId    = null;
 let _urtextVisible   = true;   // flipped by IntersectionObserver on #piano
 let _urtextObserver  = null;
 let _urtextCanvas    = null;
 let _urtextCtx       = null;
 let _urtextPhase     = 0;
+
+/**
+ * fadeAudioElement — smoothly ramps an HTMLAudioElement's volume with a raised-cosine curve
+ * so play, pause, and track transitions never click or jump abruptly (works on file:// and https://).
+ * @param {HTMLAudioElement} audio
+ * @param {number} toVol     Target volume (0..1)
+ * @param {number} durMs     Ramp duration in milliseconds
+ * @param {Function} [done]  Optional callback when the ramp finishes
+ */
+function fadeAudioElement(audio, toVol, durMs, done) {
+  cancelAnimationFrame(_salonFadeRaf);
+  _salonFadeRaf = 0;
+  const token = ++_salonFadeToken;
+  if (!audio) {
+    if (done) done();
+    return;
+  }
+  let fromVol = 1;
+  try { fromVol = typeof audio.volume === 'number' ? audio.volume : 1; } catch (_) {}
+  const target = Math.max(0, Math.min(1, toVol));
+  if (durMs <= 0 || Math.abs(target - fromVol) < 0.005) {
+    try { audio.volume = target; } catch (_) {}
+    if (done) done();
+    return;
+  }
+  const t0 = performance.now();
+  const step = (now) => {
+    if (token !== _salonFadeToken) return;
+    const p = Math.min(1, (now - t0) / durMs);
+    const eased = 0.5 - 0.5 * Math.cos(Math.PI * p);
+    try {
+      audio.volume = Math.max(0, Math.min(1, fromVol + (target - fromVol) * eased));
+    } catch (_) {
+      // Read-only volume on certain mobile webviews: finish cleanly
+      if (done) done();
+      return;
+    }
+    if (p < 1) {
+      _salonFadeRaf = requestAnimationFrame(step);
+    } else {
+      _salonFadeRaf = 0;
+      if (done) done();
+    }
+  };
+  _salonFadeRaf = requestAnimationFrame(step);
+}
 
 /** Phase 8: elastic-tension scrubber state (all positions are 0‒1 fractions of the timeline) */
 const _scrub = {
@@ -1546,21 +1707,40 @@ const _scrub = {
  * @param {Array} works
  */
 function renderPianoGrid(works) {
-  // #piano keeps every canonical audio track; the YouTube showcase (no audio file) stays in #works-grid
-  _salonMusicWorks = (works || []).filter(w => w.type === 'music' && w.salonOnly !== false && w.audio);
+  // #piano: recorded solo MP3s first (I–IV), then repertoire-only works (V–VI · Recording Soon).
+  // The YouTube showcase (no audio file, not repertoire-only) stays in #works-grid.
+  const salonWorks = (works || []).filter(w => w.type === 'music' && w.salonOnly !== false && (w.audio || w.repertoireOnly));
+  const recorded   = salonWorks.filter(w => w.audio && !w.repertoireOnly);
+  const repertoire = salonWorks.filter(w => w.repertoireOnly || !w.audio);
+  _salonMusicWorks = recorded.concat(repertoire);
+  _salonPlayableCount = recorded.length;
   const tracklistEl = document.getElementById('salon-tracklist');
   if (!tracklistEl || !_salonMusicWorks.length) return;
 
-  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+  const countEl = document.getElementById('salon-program-count');
+  if (countEl) {
+    countEl.textContent = repertoire.length
+      ? `${recorded.length} Recorded · ${repertoire.length} In Repertoire`
+      : `${recorded.length} Recorded Works`;
+  }
+
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
 
   tracklistEl.innerHTML = _salonMusicWorks.map((work, idx) => {
     const rNum = romanNumerals[idx] || (idx + 1);
     const keyInfo = work.key || work.era || '';
     const opusInfo = work.opus ? ` · ${work.opus}` : '';
-    const isActive = idx === _salonActiveIdx ? 'active' : '';
+    const isRep = idx >= _salonPlayableCount;
+    const isActive = idx === _salonActiveIdx ? ' active' : '';
+    const subHeader = (isRep && idx === _salonPlayableCount)
+      ? '<div class="salon-repertoire-subheader" role="presentation">IN REPERTOIRE · RECORDING SOON</div>'
+      : '';
+    const indicator = isRep
+      ? `<span class="track-recording-soon" id="salon-track-indicator-${idx}">Recording Soon</span>`
+      : `<div class="track-play-indicator" id="salon-track-indicator-${idx}">${idx === _salonActiveIdx && _salonIsPlaying ? '⏸' : '▶'}</div>`;
 
-    return `
-      <div class="salon-track-item ${isActive}" data-idx="${idx}" onclick="selectSalonPiece(${idx})">
+    return `${subHeader}
+      <div class="salon-track-item${isRep ? ' is-repertoire' : ''}${isActive}" data-idx="${idx}" onclick="selectSalonPiece(${idx})">
         <span class="track-num">${rNum}</span>
         <div class="track-info">
           <h4 class="track-title">${escHtml(work.title || 'Untitled')}</h4>
@@ -1569,9 +1749,7 @@ function renderPianoGrid(works) {
             <span>${escHtml(keyInfo + opusInfo)}</span>
           </div>
         </div>
-        <div class="track-play-indicator" id="salon-track-indicator-${idx}">
-          ${idx === _salonActiveIdx && _salonIsPlaying ? '⏸' : '▶'}
-        </div>
+        ${indicator}
       </div>
     `;
   }).join('');
@@ -1592,10 +1770,11 @@ function renderPianoGrid(works) {
  */
 function selectSalonPiece(idx) {
   if (idx < 0 || idx >= _salonMusicWorks.length) return;
+  clearTimeout(_salonAdvanceTmr);
 
   const wasPlaying = _salonIsPlaying;
   if (_salonIsPlaying) {
-    pauseSalonPiece();
+    pauseSalonPiece({ fadeMs: 210 });
   }
 
   _salonActiveIdx = idx;
@@ -1605,7 +1784,7 @@ function selectSalonPiece(idx) {
   document.querySelectorAll('.salon-track-item').forEach((item, i) => {
     item.classList.toggle('active', i === idx);
     const ind = document.getElementById(`salon-track-indicator-${i}`);
-    if (ind) ind.textContent = '▶';
+    if (ind && i < _salonPlayableCount) ind.textContent = '▶';
   });
 
   // Phase 8: Archival Manuscript Page Turn in Soft Darkness
@@ -1613,7 +1792,7 @@ function selectSalonPiece(idx) {
     updateSalonStage(idx);
   });
 
-  if (wasPlaying) {
+  if (wasPlaying && idx < _salonPlayableCount) {
     setTimeout(() => playSalonPiece(), 290);
   }
 }
@@ -1669,6 +1848,8 @@ function updateSalonStage(idx) {
   const stageTempo = document.getElementById('stage-tempo');
   const stageDesc = document.getElementById('stage-desc');
   const timeTotal = document.getElementById('time-total');
+  const timeStatus = document.getElementById('time-status');
+  const urtextTimeSig = document.getElementById('urtext-time-sig');
   const urtextTempo = document.getElementById('urtext-tempo-marking');
   const urtextExpr = document.getElementById('urtext-expression');
   const fill = document.getElementById('stage-scrub-fill');
@@ -1677,12 +1858,25 @@ function updateSalonStage(idx) {
 
   if (stageTitle) stageTitle.textContent = work.title || '';
   if (stageComposer) stageComposer.textContent = work.composer || '';
-  if (stageEra) stageEra.textContent = work.era ? `${work.era} Canon` : 'Romantic Canon';
+  if (stageEra) stageEra.textContent = work.era ? (work.era.includes('Canon') || work.era.includes('Interlude') ? work.era : `${work.era} Canon`) : 'Romantic Canon';
   if (stageKey) stageKey.textContent = `${work.key || 'Solo Repertoire'}${work.opus ? ` · ${work.opus}` : ''}`;
   if (stageTempo) stageTempo.textContent = work.tempo || 'Virtuoso Movement';
   if (stageDesc) stageDesc.textContent = work.description || '';
-  if (urtextTempo) urtextTempo.textContent = work.tempo ? work.tempo.split('–')[0].trim() : 'Presto con fuoco';
-  if (urtextExpr) urtextExpr.textContent = idx % 2 === 0 ? 'espress. e legato' : 'appassionato e brillante';
+  if (urtextTimeSig) urtextTimeSig.textContent = work.timeSig || '4/4';
+  if (urtextTempo) urtextTempo.textContent = work.tempo ? work.tempo.split('–')[0].trim() : 'Moderato';
+  if (urtextExpr) urtextExpr.textContent = work.expression || (idx % 2 === 0 ? 'espress. e legato' : 'appassionato e brillante');
+  const isRep = idx >= _salonPlayableCount;
+  const playBtnEl = document.getElementById('stage-play-btn');
+  if (playBtnEl) {
+    playBtnEl.classList.toggle('is-disabled', isRep);
+    playBtnEl.setAttribute('aria-disabled', isRep ? 'true' : 'false');
+  }
+  const scrubBarEl = document.getElementById('stage-scrub-bar');
+  if (scrubBarEl) scrubBarEl.classList.toggle('is-disabled', isRep);
+  if (timeStatus) {
+    if (isRep) timeStatus.textContent = 'In Repertoire · Recording Soon';
+    else if (!_salonIsPlaying) timeStatus.textContent = 'Salon Recording Ready';
+  }
 
   // A new piece cancels any in-flight scrub spring
   cancelAnimationFrame(_scrub.raf);
@@ -1690,7 +1884,7 @@ function updateSalonStage(idx) {
   _scrub.target = _scrub.thumb = _scrub.fill = 0; _scrub.thumbV = _scrub.fillV = 0;
 
   _salonDurationSec = parseDurationSec(work.duration);
-  if (timeTotal) timeTotal.textContent = work.duration || formatTimeSec(_salonDurationSec);
+  if (timeTotal) timeTotal.textContent = isRep ? '—:—' : (work.duration || formatTimeSec(_salonDurationSec));
   if (fill) fill.style.width = '0%';
   if (thumb) thumb.style.left = '0%';
   if (timeCur) timeCur.textContent = '0:00';
@@ -1703,6 +1897,10 @@ function initSalonControls() {
   const playBtn = document.getElementById('stage-play-btn');
   if (playBtn) {
     playBtn.onclick = () => {
+      if (_salonActiveIdx >= _salonPlayableCount) {
+        showTheaterToast('In Active Solo Repertoire — Studio Recording Coming Soon');
+        return;
+      }
       if (_salonIsPlaying) {
         pauseSalonPiece();
       } else {
@@ -1727,6 +1925,7 @@ function initSalonControls() {
     };
 
     scrubBar.addEventListener('pointerdown', (e) => {
+      if (_salonActiveIdx >= _salonPlayableCount) return;   // repertoire-only: nothing to scrub
       if (e.button !== undefined && e.button !== 0) return;
       e.preventDefault();
       _scrub.dragging  = true;
@@ -1771,6 +1970,7 @@ function initSalonControls() {
 
     // Keyboard: ←/→ nudge 5 s, Home/End jump
     scrubBar.addEventListener('keydown', (e) => {
+      if (_salonActiveIdx >= _salonPlayableCount) return;
       const dur = Math.max(1, _salonDurationSec);
       let secs = null;
       if (e.key === 'ArrowRight' || e.key === 'ArrowUp') secs = _salonSimSeconds + 5;
@@ -1866,11 +2066,23 @@ function scrubFinish(bar) {
 }
 
 /**
- * playSalonPiece — starts audio playback (real or synthetic fallback).
+ * playSalonPiece — starts audio playback with a smooth raised-cosine fade-in and auto-advances across the recital program.
  */
 function playSalonPiece() {
   const work = _salonMusicWorks[_salonActiveIdx];
   if (!work) return;
+  clearTimeout(_salonAdvanceTmr);
+
+  // Repertoire-only works have no recording yet
+  if (_salonActiveIdx >= _salonPlayableCount || !work.audio) {
+    showTheaterToast('In Active Solo Repertoire — Studio Recording Coming Soon');
+    return;
+  }
+
+  // Acoustic sovereignty: pause/mute Strategic Theater if unmuted so streams never collide
+  if (typeof _theaterSoundUnmuted !== 'undefined' && _theaterSoundUnmuted && typeof setTheaterSoundState === 'function') {
+    setTheaterSoundState(false);
+  }
 
   _salonIsPlaying = true;
   const playIcon = document.getElementById('stage-play-icon');
@@ -1879,23 +2091,66 @@ function playSalonPiece() {
   const trackInd = document.getElementById(`salon-track-indicator-${_salonActiveIdx}`);
   if (trackInd) trackInd.textContent = '⏸';
 
-  const audioSrc = work.audio || `assets/audio/${work.id || 'track'}.mp3`;
+  const rawAudioSrc = work.audio || `assets/audio/${work.id || 'track'}.mp3`;
+  const encodedSrc  = encodeURI(rawAudioSrc);
 
   // Attempt real audio if present
   let realAudioStarted = false;
   try {
-    if (!_salonAudio || _salonAudio.src !== new URL(audioSrc, window.location.href).href) {
-      if (_salonAudio) _salonAudio.pause();
-      _salonAudio = new Audio(audioSrc);
+    const targetHref = new URL(encodedSrc, window.location.href).href;
+    if (!_salonAudio || _salonAudio.dataset.resolvedHref !== targetHref) {
+      if (_salonAudio) {
+        try { _salonAudio.pause(); } catch (_) {}
+      }
+      const audioEl = new Audio(encodedSrc);
+      audioEl.preload = 'auto';
+      audioEl.dataset.resolvedHref = targetHref;
+
+      audioEl.addEventListener('loadedmetadata', () => {
+        if (_salonAudio !== audioEl || isNaN(audioEl.duration) || audioEl.duration <= 0) return;
+        _salonDurationSec = audioEl.duration;
+        const timeTotal = document.getElementById('time-total');
+        if (timeTotal) timeTotal.textContent = formatTimeSec(_salonDurationSec);
+      });
+
+      audioEl.addEventListener('ended', () => {
+        if (_salonAudio !== audioEl) return;
+        _salonIsPlaying = false;
+        clearInterval(_salonSimTimer);
+        _salonSimTimer = null;
+        const statusEl = document.getElementById('time-status');
+        if (statusEl) statusEl.textContent = 'Next Recital Work…';
+        // Natural concert-hall breath before turning the score to the next work
+        _salonAdvanceTmr = setTimeout(() => {
+          const nextIdx = (_salonActiveIdx + 1) % Math.max(1, _salonPlayableCount);
+          _salonIsPlaying = true;
+          selectSalonPiece(nextIdx);
+        }, 750);
+      });
+
+      _salonAudio = audioEl;
+      if (_salonSimSeconds > 0.25) {
+        audioEl.addEventListener('loadedmetadata', () => {
+          if (_salonAudio === audioEl && _salonSimSeconds < audioEl.duration) {
+            try { audioEl.currentTime = _salonSimSeconds; } catch (_) {}
+          }
+        }, { once: true });
+      }
     }
+
+    try { _salonAudio.volume = 0.02; } catch (_) {}
     const playPromise = _salonAudio.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
+        if (!_salonIsPlaying) {
+          try { _salonAudio.pause(); } catch (_) {}
+          return;
+        }
         realAudioStarted = true;
+        fadeAudioElement(_salonAudio, 1.0, 280);
         const statusEl = document.getElementById('time-status');
-        if (statusEl) statusEl.textContent = 'Live Audio Playing';
+        if (statusEl) statusEl.textContent = 'Salon Master Playing';
       }).catch(() => {
-        // Fallback to synthetic
         realAudioStarted = false;
       });
     }
@@ -1903,32 +2158,34 @@ function playSalonPiece() {
     realAudioStarted = false;
   }
 
-  // Fallback simulator loop (runs smoothly whether audio plays or is in preview)
+  // Timeline sync & fallback simulator loop
   clearInterval(_salonSimTimer);
   _salonSimTimer = setInterval(() => {
     if (_scrub.dragging || _scrub.animating) return;   // visitor is scrubbing
     if (_salonAudio && realAudioStarted && !isNaN(_salonAudio.currentTime) && _salonAudio.duration > 0) {
       _salonSimSeconds = _salonAudio.currentTime;
       _salonDurationSec = _salonAudio.duration;
-    } else {
+    } else if (!realAudioStarted) {
       _salonSimSeconds += 0.25;
       if (_salonSimSeconds >= _salonDurationSec) {
         _salonSimSeconds = 0;
-        selectSalonPiece((_salonActiveIdx + 1) % _salonMusicWorks.length);
+        selectSalonPiece((_salonActiveIdx + 1) % Math.max(1, _salonPlayableCount));
         return;
       }
     }
     updateSalonTimeline();
-  }, 250);
+  }, 200);
 
   // Start Urtext canvas animation loop
   startUrtextAnimation();
 }
 
 /**
- * pauseSalonPiece — pauses audio and halts animation.
+ * pauseSalonPiece — smoothly ramps volume down before pausing so chords never click on stop.
+ * @param {{fadeMs?: number}} [opts]
  */
-function pauseSalonPiece() {
+function pauseSalonPiece(opts = {}) {
+  clearTimeout(_salonAdvanceTmr);
   _salonIsPlaying = false;
   const playIcon = document.getElementById('stage-play-icon');
   if (playIcon) playIcon.textContent = '▶';
@@ -1936,8 +2193,18 @@ function pauseSalonPiece() {
   const trackInd = document.getElementById(`salon-track-indicator-${_salonActiveIdx}`);
   if (trackInd) trackInd.textContent = '▶';
 
-  if (_salonAudio) {
-    try { _salonAudio.pause(); } catch (_) {}
+  const statusEl = document.getElementById('time-status');
+  if (statusEl) statusEl.textContent = 'Recital Paused';
+
+  const audioToPause = _salonAudio;
+  const fadeMs = typeof opts.fadeMs === 'number' ? opts.fadeMs : 190;
+  if (audioToPause) {
+    fadeAudioElement(audioToPause, 0.0, fadeMs, () => {
+      if (!_salonIsPlaying || _salonAudio !== audioToPause) {
+        try { audioToPause.pause(); } catch (_) {}
+        try { audioToPause.volume = 1.0; } catch (_) {}
+      }
+    });
   }
 
   clearInterval(_salonSimTimer);
@@ -2348,7 +2615,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 const STRATEGIC_DISCIPLINES = {
   overture: {
     id: "overture",
-    theme: "chess",
+    theme: "overture",
     title: "Synthesized Kinetic Reflexes — Polymath Overview",
     kicker: "TRI-DISCIPLINE MASTER OVERTURE · AMBIENT FEED",
     badge: "Tri-Discipline Composite",
@@ -2357,7 +2624,7 @@ const STRATEGIC_DISCIPLINES = {
     repertoireLine: "Positional Game Theory · European Topographical Meta · Virtuoso Multi-Finger Mechanics",
     videoSrc: "assets/video/overture-montage.mp4",
     videoTitle: "Tri-Discipline Master Overture Montage",
-    telemetry: "1920 × 1080 · 60 FPS · Composite Master Feed"
+    focus: "Tri-Discipline Composite Master Feed"
   },
   chess: {
     id: "chess",
@@ -2368,9 +2635,9 @@ const STRATEGIC_DISCIPLINES = {
     description: "Deep positional play, dynamic tactical foresight, and sharp opening theoretical preparation. Campus and national competitive tournament champion.",
     repertoireLabel: "Favorite Repertoire:",
     repertoireLine: "Caro-Kann Defense · Queen's Gambit · Sicilian Najdorf Variation",
-    videoSrc: "assets/video/chess-analysis.mp4",
+    videoSrc: "assets/video/chess-showcase.mp4",
     videoTitle: "Chess Analysis & Tactical Repertoire",
-    telemetry: "1920 × 1080 · 60 FPS · Tournament Replay"
+    focus: "Tournament & Opening Prep"
   },
   geoguessr: {
     id: "geoguessr",
@@ -2381,9 +2648,9 @@ const STRATEGIC_DISCIPLINES = {
     description: "High-accuracy regional deduction via architectural nuances, flora geography, utility infrastructure, road meta, and linguistic visual cues.",
     repertoireLabel: "Domain Focus:",
     repertoireLine: "European Meta · Regional Topography · High-Accuracy Location Inference",
-    videoSrc: "assets/video/geoguessr-analysis.mp4",
+    videoSrc: "assets/video/geoguessr-showcase.mp4",
     videoTitle: "GeoGuessr European Meta Deduction",
-    telemetry: "1920 × 1080 · 60 FPS · NMPZ 5k Runs"
+    focus: "European Meta Deduction"
   },
   rhythm: {
     id: "rhythm",
@@ -2394,9 +2661,9 @@ const STRATEGIC_DISCIPLINES = {
     description: "Million Master in Cytus; elite multi-finger coordination across VOEZ, Deemo, Dynamix, BanG Dream!, and osu! Directly connects multi-finger kinetic speed to virtuoso classical piano mechanics.",
     repertoireLabel: "Kinetic Link:",
     repertoireLine: "Directly connects multi-finger kinetic speed & finger independence to virtuoso classical piano mechanics.",
-    videoSrc: "assets/video/rhythm-gameplay.mp4",
+    videoSrc: "assets/video/rhythm-showcase.mp4",
     videoTitle: "High-BPM Multi-Finger Finger Cam & Play",
-    telemetry: "1920 × 1080 · 60 FPS · Million Master"
+    focus: "Million Master Multi-Finger Showcase"
   }
 };
 
@@ -2405,8 +2672,8 @@ let _theaterSoundUnmuted = false;
 let _theaterInView = false;
 
 /* Zero-404 policy: a video is only requested once its file is listed here.
-   Add 'assets/video/overture-montage.mp4' (etc.) after the footage is published. */
-const THEATER_PUBLISHED_VIDEOS = new Set([]);
+   The Overture is intentionally absent — it shows the static overture-master-titled.png poster. */
+const THEATER_PUBLISHED_VIDEOS = new Set(['assets/video/chess-showcase.mp4', 'assets/video/geoguessr-showcase.mp4', 'assets/video/rhythm-showcase.mp4']);
 const THEATER_STANDBY_MSG = 'Match Telemetry & Analysis Reel currently in post-production (1080p 60fps). Full footage dropping soon.';
 
 /** showTheaterPoster — hides the <video> and reveals the standby poster (never throws). */
@@ -2533,6 +2800,8 @@ function selectStrategicDiscipline(id) {
     if (repLine)  repLine.textContent  = data.repertoireLine;
   };
   if (repBox) {
+    // Overture = static poster only: the Synthesized Domains box stays collapsed until a discipline opens
+    repBox.setAttribute('aria-hidden', targetId === 'overture' ? 'true' : 'false');
     repBox.classList.add('updating');
     setTimeout(() => { writeRep(); repBox.classList.remove('updating'); }, 160);
   } else { writeRep(); }
@@ -2546,7 +2815,7 @@ function selectStrategicDiscipline(id) {
     const telemetry     = document.getElementById('telemetry-focus');
     if (standbyKicker) standbyKicker.textContent = data.kicker;
     if (standbyTitle)  standbyTitle.textContent  = data.videoTitle;
-    if (telemetry)     telemetry.textContent     = data.telemetry;
+    if (telemetry)     telemetry.textContent     = data.focus;
     if (standbyBadge) {
       standbyBadge.textContent = THEATER_PUBLISHED_VIDEOS.has(data.videoSrc)
         ? 'Click to Launch Stream (1080p 60fps)'
@@ -2610,6 +2879,7 @@ window.showTheaterToast = showTheaterToast;
 
 /** handleTheaterPosterClick — launches the active feed, or raises the standby toast when unpublished. */
 function handleTheaterPosterClick() {
+  if (_activeStrategicId === 'overture') return;   // static poster — nothing to launch
   const data = STRATEGIC_DISCIPLINES[_activeStrategicId];
   if (!data || !THEATER_PUBLISHED_VIDEOS.has(data.videoSrc)) {
     showTheaterToast(THEATER_STANDBY_MSG);
@@ -2843,8 +3113,9 @@ window.handleDiplomaticDispatch = handleDiplomaticDispatch;
    observed individually and get .ink-revealed as they enter the viewport.
    ============================================================ */
 (function initInkBleedTitles() {
-  const titles = Array.from(document.querySelectorAll('.section-title, .subsection-title'))
-    .filter(el => el.classList.contains('subsection-title') || !el.closest('.reveal'));
+  // Every .section-title, .subsection-title and .contact-title is observed individually —
+  // no title is revealed early by its parent section's .reveal.
+  const titles = Array.from(document.querySelectorAll('.section-title, .subsection-title, .contact-title'));
   if (!titles.length) return;
 
   if (!('IntersectionObserver' in window)) {
@@ -2852,20 +3123,16 @@ window.handleDiplomaticDispatch = handleDiplomaticDispatch;
     return;
   }
   titles.forEach(el => el.classList.add('ink-pending'));
+  const reveal = el => {
+    el.classList.remove('ink-pending');
+    el.classList.add('ink-revealed');
+    inkObserver.unobserve(el);
+  };
   const inkObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.remove('ink-pending');
-      entry.target.classList.add('ink-revealed');
-      inkObserver.unobserve(entry.target);
+      // A title already scrolled past (e.g. anchor-link jump) is revealed silently so it never stays hidden
+      if (entry.isIntersecting || entry.boundingClientRect.bottom < 0) reveal(entry.target);
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.35 });
   titles.forEach(el => inkObserver.observe(el));
-  // Safety net: never leave a heading permanently hidden
-  setTimeout(() => titles.forEach(el => {
-    if (el.classList.contains('ink-pending')) {
-      el.classList.remove('ink-pending');
-      el.classList.add('ink-revealed');
-    }
-  }), 4000);
 })();

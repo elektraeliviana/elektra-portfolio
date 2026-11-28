@@ -1,6 +1,6 @@
 window.PROFILE_DATA = {
   "name": "Elektra Eliviana",
-  "location": "Bandung, West Java, Indonesia · Open to Relocation",
+  "location": "Bandung, West Java, Indonesia · Open to Relocation & Remote",
   "email": "elivianaelektra@gmail.com",
   "headline": "Operations & Process Automation Specialist · AI Engineer in Training · Polymath",
   "bio": "Elektra Eliviana is a polymath whose intellectual architecture spans mathematical modal logic, speculative botanical literature, classical piano virtuosity, fine art realism, and high-performance process automation — a rare convergence forged through Olympiad-level competition in mathematics and astronomy, rigorous academic study in Quranic hermeneutics, and hands-on community leadership at scale. A decorated competitive scholar and self-directed autodidact, she is currently deepening her technical edge through a mentor-led AI Engineering bootcamp while pursuing original research that bridges formal logic, Islamic metaphysics, and machine learning theory. Her work defies disciplinary boundaries, embodying the conviction that the most consequential innovations emerge precisely at the intersections others leave unexplored.",
@@ -12,32 +12,52 @@ window.PROFILE_DATA = {
   },
   "socials": [
     {
+      "platform": "email",
+      "url": "mailto:elivianaelektra@gmail.com"
+    },
+    {
+      "platform": "contra",
+      "url": "https://contra.com/elektraeliviana/"
+    },
+    {
       "platform": "github",
       "url": "https://github.com/elektraeliviana"
+    },
+    {
+      "platform": "huggingface",
+      "url": "https://huggingface.co/elektraeliviana"
+    },
+    {
+      "platform": "kaggle",
+      "url": "https://www.kaggle.com/elektraeliviana"
+    },
+    {
+      "platform": "substack",
+      "url": "https://elektraeliviana.substack.com/"
+    },
+    {
+      "platform": "cara",
+      "url": "https://cara.app/elektraeliviana"
     },
     {
       "platform": "youtube",
       "url": "https://youtube.com/@fundrawingandmusic5045"
     },
     {
-      "platform": "bluesky",
-      "url": "https://bsky.app/profile/elektraeliviana.bsky.social"
+      "platform": "instagram",
+      "url": "https://instagram.com/elektraeliviana"
     },
     {
       "platform": "twitter",
       "url": "https://x.com/ElektraEliviana"
     },
     {
-      "platform": "instagram",
-      "url": "https://instagram.com/elektraeliviana"
+      "platform": "bluesky",
+      "url": "https://bsky.app/profile/elektraeliviana.bsky.social"
     },
     {
       "platform": "discord",
       "url": "e1ektra"
-    },
-    {
-      "platform": "email",
-      "url": "mailto:elivianaelektra@gmail.com"
     }
   ],
   "languages": [
@@ -71,9 +91,9 @@ window.PROFILE_DATA = {
       "code": "JA",
       "name": "Japanese",
       "native": "日本語",
-      "level": "Elementary Â· JLPT N5",
+      "level": "Elementary · JLPT N5",
       "percent": 30,
-      "detail": "JLPT N5 Â· EJU Mathematics Prep"
+      "detail": "JLPT N5 · EJU Mathematics Prep"
     },
     {
       "code": "AR",
@@ -86,72 +106,60 @@ window.PROFILE_DATA = {
   ],
   "certificates": [
     {
-      "title": "EF SET C2 Proficient",
+      "title": "EF SET English Certificate — C2 Proficient (71/100)",
       "issuer": "EF Education First",
       "year": 2026,
-      "file": "assets/certificates/ef-set.pdf"
+      "url": "https://cert.efset.org/yFmbSW"
     },
     {
-      "title": "Microsoft Applied Skills — Power Automate & Power Apps",
-      "issuer": "Microsoft",
-      "year": 2026,
-      "file": "assets/certificates/microsoft-power-automate.pdf"
-    },
-    {
-      "title": "Python & Deep Learning Track",
-      "issuer": "Kaggle / Google",
-      "year": 2026,
-      "file": "assets/certificates/kaggle-python.pdf"
-    },
-    {
-      "title": "Typing Speed 100 WPM Certified",
-      "issuer": "Typing.com",
+      "title": "Typing.com 100 WPM",
+      "issuer": "Typing.com · 98% Accuracy",
       "year": 2026,
       "file": "assets/certificates/Elektra-WPM.pdf"
     },
     {
-      "title": "Fundamentals of Digital Marketing",
-      "issuer": "Google Digital Garage",
+      "title": "Microsoft Applied Skills: Developing Agents in Microsoft Foundry · ID: 393C6DE4752CBF84",
+      "issuer": "Microsoft",
+      "year": 2026,
+      "file": "assets/certificates/microsoft-foundry-agents.pdf"
+    },
+    {
+      "title": "Python Programming",
+      "issuer": "Kaggle Learn",
+      "year": 2026,
+      "file": "assets/certificates/kaggle-python.pdf"
+    },
+    {
+      "title": "Finance Series 8.0 – Investment Banking",
+      "issuer": "Dibimbing.id",
+      "year": 2026,
+      "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
+    },
+    {
+      "title": "Fundamentals of Digital Marketing · ID: 478186342",
+      "issuer": "Google",
       "year": 2026,
       "file": "assets/certificates/google-digital-marketing.pdf"
     },
     {
-      "title": "AAJI & AASI Licensed Financial Agent",
-      "issuer": "PT FWD Insurance",
+      "title": "AAJI & AASI Regulatory Licenses",
+      "issuer": "Asosiasi Asuransi Jiwa & Syariah Indonesia",
       "year": 2026,
       "validity": "2026–2028",
-      "file": "assets/certificates/fwd-aaji.pdf"
+      "file": "assets/certificates/aaji-aasi-licenses.pdf"
     },
     {
-      "title": "TOEFL Prediction Certificate",
-      "issuer": "TOEFL Prediction Program",
-      "year": 2026,
-      "file": "assets/certificates/toefl-prediction.pdf"
-    },
-    {
-      "title": "Amazing Mandarin Conversation Certificate",
-      "issuer": "PT Kunkwan Mandarin",
-      "year": 2026,
-      "file": "assets/certificates/mandarin-conversation.pdf"
-    },
-    {
-      "title": "Chess IAPI Champion Certificate",
-      "issuer": "IAPI — Institut Agama Islam Persis",
+      "title": "Campus Chess Champion Certificate",
+      "issuer": "IAIPI Bandung",
       "year": 2025,
-      "file": "assets/certificates/chess-iapi-champion.pdf"
-    },
-    {
-      "title": "Finance & Investment Banking Certificate",
-      "issuer": "Dibimbing.id",
-      "year": 2026,
-      "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
+      "file": "assets/certificates/chess-iaipi-champion.pdf"
     }
   ],
   "education": [
     {
-      "degree": "Bachelor Degree (S.Ag.) â€” Quranic Studies & Tafsir",
-      "institution": "IAIPI Bandung (Institut Agama Islam Persis)",
-      "period": "2024â€“2026",
+      "degree": "Bachelor Degree (S.Ag.) — Quranic Studies & Tafsir",
+      "institution": "Institut Agama Islam Persis (IAIPI) Bandung",
+      "period": "2024–2026",
       "gpa": 3.54,
       "badge": "Accepted Thesis",
       "type": "undergraduate",
@@ -161,20 +169,20 @@ window.PROFILE_DATA = {
       ]
     },
     {
-      "degree": "Associate Degree (D3) â€” Arabic Language",
-      "institution": "Al-Imarat Bandung",
-      "period": "2021â€“2024",
+      "degree": "Diploma 2 (D2) — Arabic Language & Literature",
+      "institution": "Ma'had Al-Imarat Bandung",
+      "period": "2021–2024",
       "grade": 72.06,
       "badge": "Classical Linguistics",
       "type": "associate",
       "highlights": [
-        "Specialized in Classical Arabic Morphology (Sarf) & Syntax (Nahw) â€” foundational structural grammar directly informing computational linguistics and NLP text analysis"
+        "Classical Arabic Grammar (Nahwu/Sharaf), Morphological Analysis, Translation, and Structured Syntax — foundational structural grammar informing computational linguistics and text analysis"
       ]
     },
     {
-      "degree": "High School Diploma â€” Natural Sciences (IPA)",
+      "degree": "High School Diploma — Natural Sciences (IPA)",
       "institution": "SMAN 6 Cimahi",
-      "period": "2018â€“2021",
+      "period": "2018–2021",
       "grade": 78.5,
       "badge": "Math & Astronomy Olympiad",
       "type": "highschool",
@@ -184,74 +192,72 @@ window.PROFILE_DATA = {
       ]
     },
     {
-      "degree": "AI Engineering Track â€” Independent Mentor-Led Curriculum",
+      "degree": "AI Engineering Track — Independent Mentor-Led Curriculum",
       "institution": "Independent Mentor-Led Technical Program",
-      "period": "2026â€“Present",
+      "period": "2026–Present",
       "badge": "First-Principles ML",
       "type": "bootcamp",
       "highlights": [
-        "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Loss Functions (MSE/MAE Outlier Proof), and First-Principles Gradient Descent",
+        "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Sigmoid/Softmax & Cross-Entropy, Leak-Free Multivariate Z-Score Classifiers, Chain-Rule Backpropagation (<1e-9 gradient check), and a 2-Layer Raw NumPy Neural Network solving XOR at 100% accuracy",
         "Engineered Clean Architecture Desktop & Web Applications with 20/20 Pytest coverage and LLM API integration"
       ]
     },
     {
       "degree": "Japanese Language & CS Scholarship Pathway",
       "institution": "PT Yurinoki Nihongo",
-      "period": "2026â€“Present",
-      "badge": "Target Pathway Â· Japan CS 2030",
+      "period": "2026–Present",
+      "badge": "Target Pathway · Japan CS 2030",
       "type": "language",
       "highlights": [
-        "Target Pathway: LPK Selection Gate (Mayâ€“June 2027) â†’ Nihongo Gakkou (April 2028) â†’ S1 Computer Science / AI Engineering in Japan (April 2030)",
+        "Target Pathway: LPK Selection Gate (May–June 2027) → Nihongo Gakkou (April 2028) → S1 Computer Science / AI Engineering in Japan (April 2030)",
         "Target Benchmarks: JLPT N2 & EJU Mathematics Course 2 (targeting Japanese National/Imperial Universities & scholarship tracks)"
       ]
     }
   ],
   "experience": [
     {
-      "role": "Head Administrator / Community Manager",
-      "organization": "Empire of Caveine",
-      "period": "June 2024–Present",
+      "role": "Head Administrator / Operations & Community Manager",
+      "organization": "Empire of Caveine — Remote",
+      "period": "Jun 2024 – Present",
       "highlights": [
-        "Governed a 40,000+ member digital community",
-        "Oversaw a 16-member staff team",
-        "Authored SOPs and incident protocols",
-        "Achieved 87.5% task completion rate"
+        "Direct daily operations for a 40,000+ member digital community and supervise a 16-member cross-functional staff team, maintaining zero critical escalation incidents across 2.5 years",
+        "Authored an 81-page codified operational SOP and governance charter (Piagam Agung 33 pp. & Kitab Hukum 48 pp.), establishing a 6-tier violation and escalation matrix (Golongan I–VI), evidentiary logging standards, and staff discretion limits",
+        "Built standardized staff recruitment, vetting, onboarding documentation, and shift accountability trackers in MS Excel and Google Sheets while executing fact-based dispute mediation"
+      ]
+    },
+    {
+      "role": "Regulatory Compliance & Risk Documentation Associate (AAJI/AASI Licensed)",
+      "organization": "PT FWD Insurance Indonesia — Bandung",
+      "period": "Oct 2026 – Present",
+      "highlights": [
+        "Credentialed under AAJI and AASI national regulatory frameworks; apply KYC verification standards, risk underwriting compliance, and confidentiality protocols to audit and control financial policy documentation"
+      ]
+    },
+    {
+      "role": "Religious Teacher & Academic Coordinator",
+      "organization": "Kuttab Al-Barokah — Kota Bandung",
+      "period": "Sep 2023 – Mar 2026",
+      "highlights": [
+        "Delivered structured curriculum to a dedicated student cohort while maintaining daily attendance logs, longitudinal progress records, and formal assessment documentation with zero filing backlogs",
+        "Collaborated with 11 fellow educators to redesign standardized student evaluation rubrics, coordinate school events, and ensure cross-subject instructional and administrative continuity"
       ]
     },
     {
       "role": "Operations & Administration Intern",
-      "organization": "Jamil Industry",
-      "period": "June 2025–July 2025",
+      "organization": "Jamil Industry (Garment / Dress Manufacturing) — Kab. Bandung",
+      "period": "Jun 2025 – Jul 2025",
       "highlights": [
-        "Processed 50–100 daily orders with zero discrepancies",
-        "Coordinated a 6-member staff workflow"
+        "Processed, logged, and audited 50–100 daily garment manufacturing orders in MS Excel, achieving zero fulfillment discrepancies through rigorous end-of-day physical-to-ledger inventory reconciliation",
+        "Coordinated daily shift handoffs and workflow sequencing for a 6-person warehouse and production team, resolving vendor and order-fulfillment inquiries within strict SLA targets"
       ]
     },
     {
-      "role": "Educator & Academic Coordinator",
-      "organization": "Kuttab Al-Barokah",
-      "period": "September 2023–March 2026",
+      "role": "Logistics Courier (Sprinter) & Operations Admin Support",
+      "organization": "J&T Express — Kab. Bandung",
+      "period": "Jun 2022 – Mar 2024",
       "highlights": [
-        "Led a team of 11 educators",
-        "Delivered structured curriculum across multiple disciplines"
-      ]
-    },
-    {
-      "role": "Licensed Financial & Protection Advisor",
-      "organization": "PT FWD Insurance & PT Agrodana",
-      "period": "October 2026–Present",
-      "highlights": [
-        "AAJI & AASI certified practitioner",
-        "Advising on financial protection products"
-      ]
-    },
-    {
-      "role": "Logistics & Operations Dispatcher",
-      "organization": "J&T Express â€” Kab. Bandung",
-      "period": "June 2022â€“March 2024",
-      "highlights": [
-        "Directed dispatch routing and delivery fulfillment for 20â€“50 high-priority parcels daily under strict SLA targets",
-        "Reconciled daily courier delivery logs and resolved last-mile routing bottlenecks with zero manifest discrepancies"
+        "Executed high-SLA routing and delivery fulfillment for 20–50 priority parcels daily across 21 months of continuous express logistics operations",
+        "Supported drop-point administrative workflows by reconciling daily courier waybill manifests against physical parcel logs, resolving route/address escalations, and coordinating with central dispatch"
       ]
     }
   ],
@@ -270,8 +276,8 @@ window.PROFILE_DATA = {
       "Clockify · Google Analytics"
     ],
     "Education & Academic Honors": [
-      "BSc Quranic Studies & Tafsir — IAIPI (GPA 3.54)",
-      "Associate Degree Arabic Language — Al-Imarat",
+      "S.Ag. Quranic Studies & Tafsir — IAIPI Bandung (GPA 3.54)",
+      "D2 Arabic Language & Literature — Ma'had Al-Imarat",
       "AI Engineering Bootcamp (Mentor-Led, 2026–Present)",
       "Japanese Language Studies — PT Yurinoki Nihongo",
       "Juara 4–6 Olimpiade Matematika (2016/2017)",
@@ -282,13 +288,13 @@ window.PROFILE_DATA = {
       "Kontestan Debat Agama Islam (2019/2020)"
     ],
     "Experience & Leadership": [
-      "Head Admin — Empire of Caveine (40,000+ members, 16 staff)",
-      "Operations Intern — Jamil Industry (50–100 orders/day, zero errors)",
-      "Educator & Academic Coordinator — Kuttab Al-Barokah (11 educators)",
-      "Licensed Financial Advisor — PT FWD Insurance & PT Agrodana",
+      "Head Administrator — Empire of Caveine (40,000+ members, 16 staff)",
+      "Regulatory Compliance Associate — PT FWD Insurance",
+      "Operations Intern — Jamil Industry (50–100 orders/day, zero fulfillment discrepancies)",
+      "Religious Teacher — Kuttab Al-Barokah (collaborated with 11 fellow educators)",
       "SOP Authoring & Incident Protocol Design",
-      "Staff Recruitment Pipeline Management",
-      "87.5% task completion rate under governance",
+      "6-Tier Violation & Escalation Matrix (Golongan I–VI)",
+      "Staff Recruitment, Vetting & Onboarding Documentation",
       "Conflict Resolution & Cross-Team Coordination",
       "Inventory Reconciliation & Warehouse Operations"
     ]
@@ -530,6 +536,7 @@ window.PROFILE_DATA = {
     }
   ]
 };
+
 window.WORKS_DATA = [
   {
     "id": "polymath-portfolio-architecture",
@@ -548,7 +555,7 @@ window.WORKS_DATA = [
       "Vercel CI/CD"
     ],
     "links": {
-      "live": "https://elektra-portfolio-nine.vercel.app",
+      "live": "https://elektra-eliviana-portfolio.vercel.app",
       "github": "https://github.com/elektraeliviana/elektra-portfolio"
     },
     "featured": true
@@ -598,30 +605,32 @@ window.WORKS_DATA = [
       "live": "assets/docs/PIAGAM_AGUNG_KEKAISARAN_CAVEINE.pdf",
       "charters": "assets/docs/KITAB_HUKUM_KEKAISARAN_CAVEINE.pdf"
     },
-    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- Executive Summary Callout -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">TRUST & SAFETY CASE STUDY</span>\n      <span class=\"cs-scope-meta\">81 Pages Codified · 40,000+ Members · 2024–Present</span>\n    </div>\n    <h3 class=\"cs-heading\">Architecting an 81-Page Codified Governance & Platform Trust/Safety Framework</h3>\n    <p class=\"cs-lead\">\n      Operating large-scale digital ecosystems (40,000+ concurrent members) requires transitioning from reactive, arbitrary moderation to <strong>formal, codified jurisprudence</strong>. As Head Administrator and Trust & Safety Policy Architect for the <em>Empire of Caveine</em> digital platform, I drafted, implemented, and governed an exhaustive two-pillar statutory ecosystem comprising an 81-page codified legal framework.\n    </p>\n  </div>\n\n  <!-- Primary Jurisprudential Maxims -->\n  <div class=\"cs-maxim-card\">\n    <div class=\"cs-maxim-latin\">\"Justitia caeca est, Fiat justitia ruat caelum\"</div>\n    <div class=\"cs-maxim-trans\">Justice is blind, and justice must be upheld though the heavens fall. — <em>Mukadimah Kitab Hukum</em></div>\n    <div class=\"cs-maxim-sub\">Guided by the statutory principle of <strong>Lex Specialis derogat legi generali</strong> (special channel rules take precedence over general norms, while remaining subordinate to the Constitutional Charter).</div>\n  </div>\n\n  <!-- 3 Pillars Architecture Grid -->\n  <div class=\"cs-pillars-grid\">\n    \n    <!-- Pillar 1 -->\n    <div class=\"cs-pillar-card\">\n      <div class=\"cs-pillar-num\">PILLAR I · 33 PAGES</div>\n      <h4 class=\"cs-pillar-title\">Constitutional & Executive Architecture</h4>\n      <div class=\"cs-pillar-source\">Piagam Agung Kekaisaran (PAK)</div>\n      <ul class=\"cs-pillar-list\">\n        <li><strong>Statutory Supremacy:</strong> Codified hierarchical legal structure where the Constitutional Charter supersedes all operational rules and channel guidelines.</li>\n        <li><strong>Executive Continuity:</strong> Defined clear succession protocols (<em>Pelaksana Tugas / Plt</em>), quorum requirements, and 2/3 supermajority voting matrices for leadership transitions and amendments.</li>\n        <li><strong>Single-Identity Enforcement:</strong> Enacted anti-evasion protocols (<em>Pasal 14</em>) linking secondary/alternate accounts to prevent bad actors from evading disciplinary sanctions.</li>\n        <li><strong>Demographic Safety Thresholds:</strong> Established rigorous age-verification rules and child safety boundaries aligning with international digital platform compliance standards.</li>\n      </ul>\n    </div>\n\n    <!-- Pillar 2 -->\n    <div class=\"cs-pillar-card\">\n      <div class=\"cs-pillar-num\">PILLAR II · 48 PAGES</div>\n      <h4 class=\"cs-pillar-title\">Penal Matrix & Discretionary Bounds</h4>\n      <div class=\"cs-pillar-source\">Kitab Hukum Kekaisaran (KHK)</div>\n      <ul class=\"cs-pillar-list\">\n        <li><strong>Strict Standard of Proof:</strong> Mandated full contextual logging (<em>Pasal 3C</em>) for incident adjudication. Criminalized doctored/falsified screenshots (<em>Fake Chat</em>) with severe penalties.</li>\n        <li><strong>6-Tier Violation Taxonomy:</strong> Structured violations from Golongan I (Basic Order), II (Social Ethics), III (Ecosystem Security), IV (Severe Moral Hazards), V (Demographic Exploitation), up to VI (Critical Compromise & Treason).</li>\n        <li><strong>Discretionary Boundaries (Anti-Abuse):</strong> Enforced strict duration ceilings on moderator timeouts (<em>Pasal 6</em>: max 3 days for Gol I/II, max 1 week for Gol III), curbing arbitrary moderator overreach.</li>\n        <li><strong>Appellate Tribunal & Amnesty:</strong> Provided formal due-process appeal channels (<em>Bab VI</em>) allowing penalized users to submit evidence, seek mediation, and qualify for earned record expungement (<em>Pemutihan</em>).</li>\n      </ul>\n    </div>\n\n    <!-- Pillar 3 -->\n    <div class=\"cs-pillar-card\">\n      <div class=\"cs-pillar-num\">PILLAR III · OPERATIONAL PROTOCOLS</div>\n      <h4 class=\"cs-pillar-title\">Emergency Defense & AI Governance</h4>\n      <div class=\"cs-pillar-source\">Operational SOPs & AI Addenda</div>\n      <ul class=\"cs-pillar-list\">\n        <li><strong>Bot Raid Defense (Pasal 13):</strong> Engineered multi-stage emergency response protocols during coordinated mass-join raids, including lockdown triggers, automated role suspension, and containment channels.</li>\n        <li><strong>AI Agent Governance (Pasal 12A):</strong> Established an acceptable-use framework for generative AI and automated bot agents, distinguishing synthetic hallucinations from human malicious intent.</li>\n        <li><strong>Shift Management & SOPs:</strong> Standardized incident escalation matrices across 16 staff members covering 24/7 cross-time-zone coverage.</li>\n        <li><strong>Cross-DM Evidence Jurisdiction:</strong> Regulated the admissibility of off-platform or private DM evidence, protecting user privacy while prosecuting predatory harassment and doxxing.</li>\n      </ul>\n    </div>\n\n  </div>\n\n  <!-- Quantified Operational Impact -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Quantified Operational & Governance Impact</h4>\n    <div class=\"cs-metrics-grid\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">40,000+</span>\n        <span class=\"cs-metric-label\">Active Members Governed</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">81</span>\n        <span class=\"cs-metric-label\">Codified Statutory Pages</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">16</span>\n        <span class=\"cs-metric-label\">Staff Officers Directed</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">87.5%</span>\n        <span class=\"cs-metric-label\">Shift Task Completion Rate</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">-40%</span>\n        <span class=\"cs-metric-label\">Onboarding & Ramp-Up Time</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">0</span>\n        <span class=\"cs-metric-label\">Catastrophic Raid Breaches</span>\n      </div>\n    </div>\n  </div>\n\n  <!-- Visual Escalation Flow Architecture (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Codified Incident Escalation & Adjudication Lifecycle</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 860 180\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n        <!-- Connecting Flow Spine -->\n        <path class=\"cs-flow-spine\" d=\"M 120 70 L 260 70 L 400 70 L 540 70 L 680 70 L 760 70\" />\n\n        <!-- Node 1: Ingestion -->\n        <g transform=\"translate(40, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Incident</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Detection</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Auto / Report</text>\n        </g>\n\n        <!-- Arrow 1 -->\n        <polygon class=\"cs-flow-arrow\" points=\"165,66 175,70 165,74\" />\n\n        <!-- Node 2: Evidence Audit -->\n        <g transform=\"translate(185, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 2</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Evidence</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Audit (3C)</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Context Logs</text>\n        </g>\n\n        <!-- Arrow 2 -->\n        <polygon class=\"cs-flow-arrow\" points=\"310,66 320,70 310,74\" />\n\n        <!-- Node 3: Taxonomy Tiering -->\n        <g transform=\"translate(330, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 3</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Taxonomy</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Tiering</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Golongan I–VI</text>\n        </g>\n\n        <!-- Arrow 3 -->\n        <polygon class=\"cs-flow-arrow\" points=\"455,66 465,70 455,74\" />\n\n        <!-- Node 4: Discretion Bounds -->\n        <g transform=\"translate(475, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 4</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Discretion</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Ceilings (P.6)</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Anti-Abuse Cap</text>\n        </g>\n\n        <!-- Arrow 4 -->\n        <polygon class=\"cs-flow-arrow\" points=\"600,66 610,70 600,74\" />\n\n        <!-- Node 5: Execution -->\n        <g transform=\"translate(620, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 5</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Sanction</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Execution</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Warn/Timeout/Ban</text>\n        </g>\n\n        <!-- Arrow 5 -->\n        <polygon class=\"cs-flow-arrow\" points=\"745,66 755,70 745,74\" />\n\n        <!-- Node 6: Appellate -->\n        <g transform=\"translate(765, 30)\">\n          <rect class=\"cs-flow-node\" width=\"85\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"42.5\" y=\"28\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 6</text>\n          <text class=\"cs-flow-title\" x=\"42.5\" y=\"46\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\">Appellate</text>\n          <text class=\"cs-flow-title\" x=\"42.5\" y=\"62\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\">Tribunal</text>\n          <text class=\"cs-flow-sub\" x=\"42.5\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Amnesty / Review</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n  <!-- Primary Source Documents Download CTA -->\n  <div class=\"cs-docs-cta\">\n    <h4 class=\"cs-docs-title\">Primary Statutory Charters (81 Pages Total)</h4>\n    <p class=\"cs-docs-desc\">Original constitutional charters and technical penal matrices authored and codified by Elektra Eliviana:</p>\n    <div class=\"cs-docs-actions\">\n      <a href=\"assets/docs/PIAGAM_AGUNG_KEKAISARAN_CAVEINE.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-doc-download\">\n        <span class=\"doc-icon\"><svg width='26' height='26' viewBox='0 0 24 24' fill='none' stroke='#C5A059' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' focusable='false'><path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5'/><path d='M8.5 12.5h7M8.5 15.5h7M8.5 18.5h4'/></svg></span>\n        <div class=\"doc-meta\">\n          <span class=\"doc-name\">Piagam Agung Kekaisaran (PAK)</span>\n          <span class=\"doc-sub\">Constitutional & Executive Charter · 33 Pages PDF</span>\n        </div>\n      </a>\n      <a href=\"assets/docs/KITAB_HUKUM_KEKAISARAN_CAVEINE.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-doc-download\">\n        <span class=\"doc-icon\"><svg width='26' height='26' viewBox='0 0 24 24' fill='none' stroke='#C5A059' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' focusable='false'><path d='M12 3v17M8 21h8M4 6.5h16'/><path d='M6 6.5 3 13.5h6zM18 6.5l-3 7h6z'/><path d='M3 13.5a3 3 0 0 0 6 0M15 13.5a3 3 0 0 0 6 0'/></svg></span>\n        <div class=\"doc-meta\">\n          <span class=\"doc-name\">Kitab Hukum Kekaisaran (KHK)</span>\n          <span class=\"doc-sub\">Penal, Procedural & Discretionary Matrix · 48 Pages PDF</span>\n        </div>\n      </a>\n    </div>\n  </div>\n\n</div>",
+    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- Executive Summary Callout -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">TRUST & SAFETY CASE STUDY</span>\n      <span class=\"cs-scope-meta\">81 Pages Codified · 40,000+ Members · 2024–Present</span>\n    </div>\n    <h3 class=\"cs-heading\">Architecting an 81-Page Codified Governance & Platform Trust/Safety Framework</h3>\n    <p class=\"cs-lead\">\n      Operating large-scale digital ecosystems (40,000+ concurrent members) requires transitioning from reactive, arbitrary moderation to <strong>formal, codified jurisprudence</strong>. As Head Administrator and Trust & Safety Policy Architect for the <em>Empire of Caveine</em> digital platform, I drafted, implemented, and governed an exhaustive two-pillar statutory ecosystem comprising an 81-page codified legal framework.\n    </p>\n  </div>\n\n  <!-- Primary Jurisprudential Maxims -->\n  <div class=\"cs-maxim-card\">\n    <div class=\"cs-maxim-latin\">\"Justitia caeca est, Fiat justitia ruat caelum\"</div>\n    <div class=\"cs-maxim-trans\">Justice is blind, and justice must be upheld though the heavens fall. — <em>Mukadimah Kitab Hukum</em></div>\n    <div class=\"cs-maxim-sub\">Guided by the statutory principle of <strong>Lex Specialis derogat legi generali</strong> (special channel rules take precedence over general norms, while remaining subordinate to the Constitutional Charter).</div>\n  </div>\n\n  <!-- 3 Pillars Architecture Grid -->\n  <div class=\"cs-pillars-grid\">\n    \n    <!-- Pillar 1 -->\n    <div class=\"cs-pillar-card\">\n      <div class=\"cs-pillar-num\">PILLAR I · 33 PAGES</div>\n      <h4 class=\"cs-pillar-title\">Constitutional & Executive Architecture</h4>\n      <div class=\"cs-pillar-source\">Piagam Agung Kekaisaran (PAK)</div>\n      <ul class=\"cs-pillar-list\">\n        <li><strong>Statutory Supremacy:</strong> Codified hierarchical legal structure where the Constitutional Charter supersedes all operational rules and channel guidelines.</li>\n        <li><strong>Executive Continuity:</strong> Defined clear succession protocols (<em>Pelaksana Tugas / Plt</em>), quorum requirements, and 2/3 supermajority voting matrices for leadership transitions and amendments.</li>\n        <li><strong>Single-Identity Enforcement:</strong> Enacted anti-evasion protocols (<em>Pasal 14</em>) linking secondary/alternate accounts to prevent bad actors from evading disciplinary sanctions.</li>\n        <li><strong>Demographic Safety Thresholds:</strong> Established rigorous age-verification rules and child safety boundaries aligning with international digital platform compliance standards.</li>\n      </ul>\n    </div>\n\n    <!-- Pillar 2 -->\n    <div class=\"cs-pillar-card\">\n      <div class=\"cs-pillar-num\">PILLAR II · 48 PAGES</div>\n      <h4 class=\"cs-pillar-title\">Penal Matrix & Discretionary Bounds</h4>\n      <div class=\"cs-pillar-source\">Kitab Hukum Kekaisaran (KHK)</div>\n      <ul class=\"cs-pillar-list\">\n        <li><strong>Strict Standard of Proof:</strong> Mandated full contextual logging (<em>Pasal 3C</em>) for incident adjudication. Criminalized doctored/falsified screenshots (<em>Fake Chat</em>) with severe penalties.</li>\n        <li><strong>6-Tier Violation Taxonomy:</strong> Structured violations from Golongan I (Basic Order), II (Social Ethics), III (Ecosystem Security), IV (Severe Moral Hazards), V (Demographic Exploitation), up to VI (Critical Compromise & Treason).</li>\n        <li><strong>Discretionary Boundaries (Anti-Abuse):</strong> Enforced strict duration ceilings on moderator timeouts (<em>Pasal 6</em>: max 3 days for Gol I/II, max 1 week for Gol III), curbing arbitrary moderator overreach.</li>\n        <li><strong>Appellate Tribunal & Amnesty:</strong> Provided formal due-process appeal channels (<em>Bab VI</em>) allowing penalized users to submit evidence, seek mediation, and qualify for earned record expungement (<em>Pemutihan</em>).</li>\n      </ul>\n    </div>\n\n    <!-- Pillar 3 -->\n    <div class=\"cs-pillar-card\">\n      <div class=\"cs-pillar-num\">PILLAR III · OPERATIONAL PROTOCOLS</div>\n      <h4 class=\"cs-pillar-title\">Emergency Defense & AI Governance</h4>\n      <div class=\"cs-pillar-source\">Operational SOPs & AI Addenda</div>\n      <ul class=\"cs-pillar-list\">\n        <li><strong>Bot Raid Defense (Pasal 13):</strong> Engineered multi-stage emergency response protocols during coordinated mass-join raids, including lockdown triggers, automated role suspension, and containment channels.</li>\n        <li><strong>AI Agent Governance (Pasal 12A):</strong> Established an acceptable-use framework for generative AI and automated bot agents, distinguishing synthetic hallucinations from human malicious intent.</li>\n        <li><strong>Shift Management & SOPs:</strong> Standardized incident escalation matrices across 16 staff members covering 24/7 cross-time-zone coverage.</li>\n        <li><strong>Cross-DM Evidence Jurisdiction:</strong> Regulated the admissibility of off-platform or private DM evidence, protecting user privacy while prosecuting predatory harassment and doxxing.</li>\n      </ul>\n    </div>\n\n  </div>\n\n  <!-- Quantified Operational Impact -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Quantified Operational & Governance Impact</h4>\n    <div class=\"cs-metrics-grid\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">40,000+</span>\n        <span class=\"cs-metric-label\">Active Members Governed</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">81</span>\n        <span class=\"cs-metric-label\">Codified Statutory Pages</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">16</span>\n        <span class=\"cs-metric-label\">Staff Officers Directed</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">2.5+ Yrs</span>\n        <span class=\"cs-metric-label\">Continuous Governance · Jun 2024 – Present</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">6-Tier</span>\n        <span class=\"cs-metric-label\">Escalation Matrix · Golongan I–VI</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">0</span>\n        <span class=\"cs-metric-label\">Critical Escalation Incidents</span>\n      </div>\n    </div>\n  </div>\n\n  <!-- Visual Escalation Flow Architecture (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Codified Incident Escalation & Adjudication Lifecycle</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 860 180\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\">\n        <!-- Connecting Flow Spine -->\n        <path class=\"cs-flow-spine\" d=\"M 120 70 L 260 70 L 400 70 L 540 70 L 680 70 L 760 70\" />\n\n        <!-- Node 1: Ingestion -->\n        <g transform=\"translate(40, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Incident</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Detection</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Auto / Report</text>\n        </g>\n\n        <!-- Arrow 1 -->\n        <polygon class=\"cs-flow-arrow\" points=\"165,66 175,70 165,74\" />\n\n        <!-- Node 2: Evidence Audit -->\n        <g transform=\"translate(185, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 2</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Evidence</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Audit (3C)</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Context Logs</text>\n        </g>\n\n        <!-- Arrow 2 -->\n        <polygon class=\"cs-flow-arrow\" points=\"310,66 320,70 310,74\" />\n\n        <!-- Node 3: Taxonomy Tiering -->\n        <g transform=\"translate(330, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 3</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Taxonomy</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Tiering</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Golongan I–VI</text>\n        </g>\n\n        <!-- Arrow 3 -->\n        <polygon class=\"cs-flow-arrow\" points=\"455,66 465,70 455,74\" />\n\n        <!-- Node 4: Discretion Bounds -->\n        <g transform=\"translate(475, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 4</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Discretion</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Ceilings (P.6)</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Anti-Abuse Cap</text>\n        </g>\n\n        <!-- Arrow 4 -->\n        <polygon class=\"cs-flow-arrow\" points=\"600,66 610,70 600,74\" />\n\n        <!-- Node 5: Execution -->\n        <g transform=\"translate(620, 30)\">\n          <rect class=\"cs-flow-node\" width=\"110\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"55\" y=\"28\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\">PHASE 5</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"46\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Sanction</text>\n          <text class=\"cs-flow-title\" x=\"55\" y=\"62\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Execution</text>\n          <text class=\"cs-flow-sub\" x=\"55\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Warn/Timeout/Ban</text>\n        </g>\n\n        <!-- Arrow 5 -->\n        <polygon class=\"cs-flow-arrow\" points=\"745,66 755,70 745,74\" />\n\n        <!-- Node 6: Appellate -->\n        <g transform=\"translate(765, 30)\">\n          <rect class=\"cs-flow-node\" width=\"85\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"42.5\" y=\"28\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 6</text>\n          <text class=\"cs-flow-title\" x=\"42.5\" y=\"46\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\">Appellate</text>\n          <text class=\"cs-flow-title\" x=\"42.5\" y=\"62\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\">Tribunal</text>\n          <text class=\"cs-flow-sub\" x=\"42.5\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Amnesty / Review</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n  <!-- Primary Source Documents Download CTA -->\n  <div class=\"cs-docs-cta\">\n    <h4 class=\"cs-docs-title\">Primary Statutory Charters (81 Pages Total)</h4>\n    <p class=\"cs-docs-desc\">Original constitutional charters and technical penal matrices authored and codified by Elektra Eliviana:</p>\n    <div class=\"cs-docs-actions\">\n      <a href=\"assets/docs/PIAGAM_AGUNG_KEKAISARAN_CAVEINE.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-doc-download\">\n        <span class=\"doc-icon\"><svg width='26' height='26' viewBox='0 0 24 24' fill='none' stroke='#C5A059' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' focusable='false'><path d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h5'/><path d='M8.5 12.5h7M8.5 15.5h7M8.5 18.5h4'/></svg></span>\n        <div class=\"doc-meta\">\n          <span class=\"doc-name\">Piagam Agung Kekaisaran (PAK)</span>\n          <span class=\"doc-sub\">Constitutional & Executive Charter · 33 Pages PDF</span>\n        </div>\n      </a>\n      <a href=\"assets/docs/KITAB_HUKUM_KEKAISARAN_CAVEINE.pdf\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn-doc-download\">\n        <span class=\"doc-icon\"><svg width='26' height='26' viewBox='0 0 24 24' fill='none' stroke='#C5A059' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true' focusable='false'><path d='M12 3v17M8 21h8M4 6.5h16'/><path d='M6 6.5 3 13.5h6zM18 6.5l-3 7h6z'/><path d='M3 13.5a3 3 0 0 0 6 0M15 13.5a3 3 0 0 0 6 0'/></svg></span>\n        <div class=\"doc-meta\">\n          <span class=\"doc-name\">Kitab Hukum Kekaisaran (KHK)</span>\n          <span class=\"doc-sub\">Penal, Procedural & Discretionary Matrix · 48 Pages PDF</span>\n        </div>\n      </a>\n    </div>\n  </div>\n\n</div>",
     "featured": true
   },
   {
     "id": "neural-net-from-scratch",
     "type": "code",
-    "title": "Neural Network & Linear Regression from Raw NumPy",
+    "title": "Neural Network & Multivariate Classifiers from Raw NumPy",
     "year": 2026,
-    "status": "roadmap",
-    "description": "First-principles implementation of neural network mathematics built purely in NumPy without ML frameworks. Phase 1 (Completed): Dense matrix forward pass (Z = X @ W + b) with ReLU activation, residual analysis proving MSE vs. MAE outlier sensitivity (87.1% vs. 62.5% variance concentration), and a 100-epoch analytical Gradient Descent optimizer converging to exact ground truth (y = 2x + 1). Phase 2 (Active Roadmap): Multi-layer chain-rule backpropagation and decision-boundary visualization.",
+    "status": "live",
+    "description": "First-principles neural network mathematics built purely in NumPy without ML frameworks. Verified milestones: a 2-layer MLP (2→4→1) solving XOR at 100% accuracy through W2.T matrix backpropagation, analytical 5-link chain-rule gradients verified below 1e-9 against a central finite difference, an OOP RawLinearRegression (R² > 0.99) with Sigmoid/Softmax, clipped binary cross-entropy and a leak-free Z-score multivariate classifier, and the MSE vs. MAE outlier proof (87.1% vs. 62.5%).",
     "tags": [
       "Python",
-      "NumPy Linear Algebra",
-      "Gradient Descent",
-      "MSE vs. MAE Proof",
-      "ReLU Activation",
+      "NumPy",
+      "Backpropagation",
+      "XOR MLP",
+      "Cross-Entropy",
+      "Z-Score Classifier",
       "First Principles"
     ],
-    "subtitle": "First-Principles Matrix Layers, Loss Variance & Gradient Descent Optimizer",
+    "subtitle": "From Matrix Layers to a Backpropagated XOR Network — Week 3 & 4 Verified",
     "role": "AI Engineer in Training (Independent Mentor-Led Track)",
     "links": {
       "github": "https://github.com/elektraeliviana/AI-Engineering-Journey"
     },
-    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- TL;DR Callout (6-second recruiter scan) -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">FIRST-PRINCIPLES ML · PHASE 1 VERIFIED</span>\n      <span class=\"cs-scope-meta\">Pure NumPy · Day 15–19 · 2026</span>\n    </div>\n    <h3 class=\"cs-heading\">Neural Network Mathematics Rebuilt From Raw NumPy, With No ML Frameworks</h3>\n    <p class=\"cs-lead\"><strong>TL;DR.</strong> Phase 1 (Day 15–19) is complete and verified: a dense matrix layer Z = X @ W + b, ReLU activation, a loss study showing one 20-point outlier drives 87.1% of MSE versus 62.5% of MAE, and a 100-epoch Gradient Descent optimizer that converges to y = 2x + 1. Phase 2, multi-layer backpropagation, is the active roadmap.</p>\n  </div>\n\n  <!-- Headline Metrics Grid -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Phase 1 Verified Results</h4>\n    <div class=\"cs-metrics-grid cs-metrics-4\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">Z = X @ W + b</span>\n        <span class=\"cs-metric-label\">Dense Matrix Layer Forward Pass</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">ReLU</span>\n        <span class=\"cs-metric-label\">Activation max(0, Z)</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">87.1% vs 62.5%</span>\n        <span class=\"cs-metric-label\">MSE vs MAE Outlier Sensitivity Proof</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">100 Epochs</span>\n        <span class=\"cs-metric-label\">Gradient Descent to y = 2x + 1</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Phase 1 Milestones (Completed)</h4>\n    <div class=\"cs-pillars-grid\">\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 17 · MATRIX LAYER</div>\n        <h4 class=\"cs-pillar-title\">Dense Forward Pass</h4>\n        <div class=\"cs-pillar-source\">NumPy linear algebra</div>\n        <ul class=\"cs-pillar-list\"><li>Dimension check (2×3) @ (3×2) gives (2×2)</li><li><strong>Z = X @ W + b</strong> computed in one vectorised step</li><li>ReLU activation applied element-wise</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 18 · LOSS FUNCTIONS</div>\n        <h4 class=\"cs-pillar-title\">MSE vs MAE Proof</h4>\n        <div class=\"cs-pillar-source\">Outlier sensitivity</div>\n        <ul class=\"cs-pillar-list\"><li>One 20-point error contributes <strong>87.1%</strong> of the MSE</li><li>The same error contributes only <strong>62.5%</strong> of the MAE</li><li>Shows why squared loss punishes outliers harder</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 19 · OPTIMIZER</div>\n        <h4 class=\"cs-pillar-title\">Gradient Descent</h4>\n        <div class=\"cs-pillar-source\">Analytical, 100 epochs</div>\n        <ul class=\"cs-pillar-list\"><li>Learning rate 0.02 over 100 epochs</li><li>Converges to <strong>w = 2.000, b = 1.000</strong></li><li>Recovers the ground truth y = 2x + 1</li></ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Etched Architecture Flow (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Phase 1 Pipeline and Phase 2 Roadmap</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 797 140\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Neural network roadmap flow: matrix layer, ReLU, loss study and gradient descent completed, backpropagation planned\">\n        <path class=\"cs-flow-spine\" d=\"M 92 70 L 245 70 L 398 70 L 551 70 L 704 70\" />\n        <g transform=\"translate(30, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Matrix Layer</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Z = X @ W + b</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 17</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"161,66 171,70 161,74\" />\n        <g transform=\"translate(183, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">ReLU</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">max(0, Z)</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 17</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"314,66 324,70 314,74\" />\n        <g transform=\"translate(336, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Loss Study</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">MSE vs MAE</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 18</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"467,66 477,70 467,74\" />\n        <g transform=\"translate(489, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 1</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Gradient</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Descent</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 19 · 100 epochs</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"620,66 630,70 620,74\" />\n        <g transform=\"translate(642, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">PHASE 2</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Backpropagation</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">(Roadmap)</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Multi-layer chain rule</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n</div>"
+    "case_study_html": "<div class=\"modal-case-study\">\n\n  <!-- TL;DR Callout (6-second recruiter scan) -->\n  <div class=\"cs-callout\">\n    <div class=\"cs-callout-header\">\n      <span class=\"cs-badge-gold\">FIRST-PRINCIPLES ML · WEEK 3 &amp; 4 VERIFIED</span>\n      <span class=\"cs-scope-meta\">Pure NumPy · Day 17–27 · 2026</span>\n    </div>\n    <h3 class=\"cs-heading\">A Neural Network, Backpropagation and Classifiers Rebuilt From Raw NumPy, With No ML Frameworks</h3>\n    <p class=\"cs-lead\"><strong>TL;DR.</strong> Weeks 3 and 4 of the AI-Engineering-Journey are complete and verified: a 2-layer MLP (2 → 4 → 1) with symmetry-breaking weights solves XOR at 100% accuracy through hand-derived W2.T backpropagation, whose 5-link chain-rule gradients agree with Newton's central finite difference to better than 1e-9.</p>\n  </div>\n\n  <!-- Headline Metrics Grid -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Verified Results</h4>\n    <div class=\"cs-metrics-grid cs-metrics-4\">\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">100.0% XOR</span>\n        <span class=\"cs-metric-label\">2-Layer MLP (2 → 4 → 1) · Symmetry-Breaking Weights &amp; W2.T Matrix Backpropagation · day27_mini_neural_network.py</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">&lt; 1e-9</span>\n        <span class=\"cs-metric-label\">Analytical 5-Link Chain-Rule Gradients vs. Newton's Central Finite Difference · day26_chain_rule_backprop.py</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">R² &gt; 0.99</span>\n        <span class=\"cs-metric-label\">OOP RawLinearRegression, Sigmoid/Softmax, np.clip Binary Cross-Entropy &amp; Leak-Free Z-Score MultivariateClassifier · day20–day25</span>\n      </div>\n      <div class=\"cs-metric-box\">\n        <span class=\"cs-metric-val\">87.1% vs 62.5%</span>\n        <span class=\"cs-metric-label\">MSE vs. MAE Outlier Variance Proof · day18_loss_functions.py</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Verified Milestones</h4>\n    <div class=\"cs-pillars-grid\">\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 17–18 · LAYERS &amp; LOSS</div>\n        <h4 class=\"cs-pillar-title\">Matrix Layer &amp; Loss Study</h4>\n        <div class=\"cs-pillar-source\">NumPy linear algebra</div>\n        <ul class=\"cs-pillar-list\"><li><strong>Z = X @ W + b</strong> in one vectorised step</li><li>One 20-point error drives <strong>87.1%</strong> of MSE vs. <strong>62.5%</strong> of MAE</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 20–25 · CLASSIFIERS</div>\n        <h4 class=\"cs-pillar-title\">Regression to Classification</h4>\n        <div class=\"cs-pillar-source\">OOP, leak-free preprocessing</div>\n        <ul class=\"cs-pillar-list\"><li>OOP <strong>RawLinearRegression</strong> with R² &gt; 0.99</li><li>Sigmoid, Softmax and <strong>np.clip</strong> binary cross-entropy</li><li>Z-score fitted on training data only</li></ul>\n      </div>\n      <div class=\"cs-pillar-card\">\n        <div class=\"cs-pillar-num\">DAY 26–27 · BACKPROPAGATION</div>\n        <h4 class=\"cs-pillar-title\">Chain Rule to XOR</h4>\n        <div class=\"cs-pillar-source\">Gradient check &amp; mini network</div>\n        <ul class=\"cs-pillar-list\"><li>5-link chain rule, error <strong>&lt; 1e-9</strong></li><li>2 → 4 → 1 MLP solves XOR at <strong>100%</strong></li></ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Etched Architecture Flow (SVG) -->\n  <div class=\"cs-section\">\n    <h4 class=\"cs-section-title\">Verified Pipeline</h4>\n    <div class=\"cs-flow-container\">\n      <svg viewBox=\"0 0 797 140\" class=\"cs-flow-svg\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Neural network pipeline, all stages verified: matrix layer, loss study, classifiers, chain-rule backpropagation, and XOR mini neural network\">\n        <path class=\"cs-flow-spine\" d=\"M 92 70 L 245 70 L 398 70 L 551 70 L 704 70\" />\n        <g transform=\"translate(30, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">VERIFIED · LIVE</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Matrix Layer</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Z = X @ W + b</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 17</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"161,66 171,70 161,74\" />\n        <g transform=\"translate(183, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">VERIFIED · LIVE</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Loss Study</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">MSE vs MAE</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 18</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"314,66 324,70 314,74\" />\n        <g transform=\"translate(336, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">VERIFIED · LIVE</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Classifiers</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Sigmoid · Softmax</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 20–25</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"467,66 477,70 467,74\" />\n        <g transform=\"translate(489, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">VERIFIED · LIVE</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Backprop</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Chain Rule</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 26 · &lt;1e-9</text>\n        </g>\n        <polygon class=\"cs-flow-arrow\" points=\"620,66 630,70 620,74\" />\n        <g transform=\"translate(642, 30)\">\n          <rect class=\"cs-flow-node\" width=\"125\" height=\"80\" rx=\"8\" />\n          <text class=\"cs-flow-phase\" x=\"62\" y=\"25\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"700\">VERIFIED · LIVE</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"44\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">Mini Neural Net</text>\n          <text class=\"cs-flow-title\" x=\"62\" y=\"60\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\">XOR 2→4→1</text>\n          <text class=\"cs-flow-sub\" x=\"62\" y=\"100\" text-anchor=\"middle\" font-size=\"9\">Day 27 · 100%</text>\n        </g>\n      </svg>\n    </div>\n  </div>\n\n</div>",
+    "featured": true
   },
   {
     "id": "automated-data-cleaner",
@@ -722,7 +731,40 @@ window.WORKS_DATA = [
     "field": "Mathematical Modal Logic & Islamic Metaphysics",
     "description": "Landmark treatise applying Gödel's formal modal logic S5 axioms to classical Kalam cosmological arguments and Islamic theological metaphysics, constructing a rigorous formal bridge between analytic philosophy of religion and traditional Islamic scholasticism.",
     "links": {
-      "blogspot": "#blogspot-standby"
+      "blogspot": "https://elektra-private-notes.blogspot.com/"
+    },
+    "reading_room": {
+      "kicker": "EXECUTIVE DOSSIER · BUILT-IN SCHOLARLY READER",
+      "dossier": [
+        {
+          "label": "Author",
+          "value": "Elektra Eliviana"
+        },
+        {
+          "label": "Status",
+          "value": "Ongoing · Treatise in Progress"
+        },
+        {
+          "label": "Formal Core",
+          "value": "Modal logic S5 with second-order positive properties"
+        },
+        {
+          "label": "Classical Bridge",
+          "value": "Kalam: Wājib al-Wujūd (the Necessary Existent) and contingency (imkān) elimination"
+        }
+      ],
+      "excerpt_title": "Treatise Excerpt · From Positive Properties to Necessary Existence",
+      "excerpt": [
+        "Gödel's argument begins from one primitive notion: a property is positive, written $P(\\varphi)$, when it is purely good-making, independent of any particular world and free of privation. Two axioms discipline the notion. Positivity is closed under necessary entailment, and for every property exactly one of $\\varphi$ and its negation $\\neg\\varphi$ is positive. The divine predicate is then defined as the conjunction of every positive property:",
+        "$$G(x) \\iff \\forall \\varphi\\,\\big[\\,P(\\varphi) \\to \\varphi(x)\\,\\big]$$",
+        "Axiom 3 asserts that $G$ is itself positive, $P(G)$. A positive property cannot be inconsistent, so it is possibly exemplified, $\\Diamond \\exists x\\, G(x)$. Gödel then shows that $G$ is the essence of any being that has it, and that necessary existence is itself a positive property. Together these yield $\\Diamond \\Box \\exists x\\, G(x)$, and the S5 axiom $\\Diamond \\Box \\varphi \\to \\Box \\varphi$, under which every possibility is necessarily possible, collapses the nested modality into the conclusion:",
+        "$$\\Box \\exists x\\, G(x)$$",
+        "The classical tradition, in its Kalam and Avicennan registers, reaches a structurally parallel conclusion by a different road. It starts from contingent existents (mumkin al-wujūd), whose existence and non-existence are equally possible in themselves, and argues that an infinite regress of contingent causes (tasalsul) can never explain why any contingent being exists at all. The chain must terminate in an ontologically Necessary Existent, Wājib al-Wujūd, whose non-existence is impossible by its very essence. Where Gödel expresses necessity with the operator $\\Box$, the mutakallimūn express it as the impossibility of non-existence for a being whose existence is identical with its essence.",
+        "The Qur'anic text frames the same relation in the language of address rather than axiom. Q.S. At-Ṭūr 52:35 poses an exhaustive dilemma: were they created from nothing, or are they their own creators? The verse excludes causeless contingency and self-causation at once. Q.S. Al-Qaṣaṣ 28:88, kullu shay'in hālikun illā wajhahu, marks every contingent thing as perishing in itself while the Face remains, an ontological contrast mirrored by the difference between a merely possible property and a necessarily exemplified one. Q.S. Al-Baqarah 2:255 names al-Ḥayy al-Qayyūm, the Living and Self-Subsisting, whose subsistence is not borrowed from another.",
+        "The teleological strand follows from the same premises. Q.S. Āli ʿImrān 3:191 records the reflective conclusion, rabbanā mā khalaqta hādhā bāṭilan, 'our Lord, You did not create this in vain.' If the Necessary Existent is also the source of every positive attribute, then purposiveness in creation is not an afterthought to the ontological argument but an entailment of what it means for the divine predicate to contain every positive property.",
+        "Methodological caution. A valid derivation in S5 shows only that the conclusion follows from the axioms; the theological weight rests on whether the axioms, above all the positivity of $G$ and of necessary existence, are accepted. The treatise therefore treats Gödel's system as a disciplined formal language for Kalam necessity, and then examines each axiom against classical Islamic theological commitments, rather than as an independent proof."
+      ],
+      "note": "Reader note: extended working notes and earlier drafts are shared on the private notes journal at https://elektra-private-notes.blogspot.com/"
     }
   },
   {
@@ -732,8 +774,39 @@ window.WORKS_DATA = [
     "year": 2025,
     "status": "accepted",
     "field": "Islamic Studies & Political Theology",
-    "pdf": "assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf",
-    "description": "An accepted academic thesis examining hierarchical structures and political dynamics within prophetic lineages as recorded in classical Islamic sources."
+    "description": "An accepted undergraduate thesis examining hierarchical structures and political dynamics within prophetic lineages as narrated in the Qur'an and recorded in classical Islamic sources.",
+    "reading_room": {
+      "kicker": "ACCEPTED UNDERGRADUATE THESIS · EXECUTIVE ABSTRACT DOSSIER",
+      "dossier": [
+        {
+          "label": "Author",
+          "value": "Elektra Eliviana"
+        },
+        {
+          "label": "Title",
+          "value": "Politics of Hierarchy: Progenic Prophets Family"
+        },
+        {
+          "label": "Degree",
+          "value": "S.Ag. · Quranic Studies & Tafsir · Accepted"
+        },
+        {
+          "label": "Institution",
+          "value": "Institut Agama Islam Persis (IAIPI) Bandung"
+        },
+        {
+          "label": "Field",
+          "value": "Islamic Studies & Political Theology"
+        }
+      ],
+      "excerpt_title": "Executive Abstract",
+      "excerpt": [
+        "This thesis examines how authority, succession, and rank are ordered within the families of prophets narrated in the Qur'an, and asks whether prophetic lineage operates as a political structure of hierarchy as well as a line of spiritual transmission.",
+        "It reads the relevant Qur'anic narratives alongside classical tafsir and historiographical sources, tracing how genealogical legitimacy, inherited prophetic office, and political succession are described, qualified, and in places distinguished from one another.",
+        "The work contributes a structured account of the language of lineage and hierarchy in prophetic narratives, and situates the question within the study of Qur'anic political hermeneutics."
+      ],
+      "note": "The full manuscript is not published on this site."
+    }
   },
   {
     "id": "circulation-of-the-sun-hermeneutics",
@@ -744,7 +817,44 @@ window.WORKS_DATA = [
     "field": "Astronomy & Quranic Exegesis",
     "description": "A comparative hermeneutical study of solar motion (yasjud / tajri) across two authoritative Quranic commentaries, situating classical exegesis in dialogue with modern astrophysical understanding.",
     "links": {
-      "blogspot": "#blogspot-standby"
+      "blogspot": "https://elektra-private-notes.blogspot.com/"
+    },
+    "reading_room": {
+      "kicker": "EXECUTIVE DOSSIER · BUILT-IN SCHOLARLY READER",
+      "dossier": [
+        {
+          "label": "Author",
+          "value": "Elektra Eliviana"
+        },
+        {
+          "label": "Status",
+          "value": "Ongoing · Comparative Study in Progress"
+        },
+        {
+          "label": "Text",
+          "value": "Q.S. Yāsīn 36:38 · wa ash-shamsu tajrī li-mustaqarrin lahā"
+        },
+        {
+          "label": "Sources",
+          "value": "Tafsīr al-Madīnah al-Munawwarah · Tafsīr al-Muyassar"
+        },
+        {
+          "label": "Modern Frame",
+          "value": "Solar apex motion · Galactic orbital period"
+        }
+      ],
+      "excerpt_title": "Treatise Excerpt · The Running of the Sun",
+      "excerpt": [
+        "Q.S. Yāsīn 36:38 reads: wa ash-shamsu tajrī li-mustaqarrin lahā dhālika taqdīru al-ʿazīzi al-ʿalīm, 'and the sun runs toward a place of rest, or an appointed term, for it; that is the decree of the Almighty, the All-Knowing.' The interpretive weight falls on two words: the verb tajrī, 'runs, flows,' and the noun mustaqarr, which can be read as a locus of rest (a place) or as a term (a time).",
+        "The comparative method reads Tafsīr al-Madīnah al-Munawwarah and Tafsīr al-Muyassar side by side. For each it asks how mustaqarr is glossed, as temporal or locative; whether the running of the sun is read phenomenally, as it appears to an observer, or as a real motion; and how the transmitted reports connected to the verse are handled.",
+        "The astronomical frame is deliberately modest. Relative to the local standard of rest, the Sun moves at roughly 20 km/s toward the solar apex in the constellation Hercules, a peculiar motion that is the Sun's own drift among its neighbouring stars:",
+        "$$v_{\\mathrm{apex}} \\approx 20\\ \\mathrm{km\\,s^{-1}} \\quad \\text{toward Hercules}$$",
+        "On a far larger scale the Sun orbits the centre of the Milky Way at about 230 km/s from a distance of roughly 8.2 kpc, so that one galactic revolution takes",
+        "$$T = \\frac{2\\pi R_0}{v_\\odot} \\approx \\frac{2\\pi \\times 8.2\\ \\mathrm{kpc}}{230\\ \\mathrm{km\\,s^{-1}}} \\approx 2.2 \\times 10^{8}\\ \\mathrm{yr},$$",
+        "a galactic year of the order of 225–250 million years once the uncertainties in $R_0$ and $v_\\odot$ are carried through.",
+        "Two disciplines are kept apart on purpose. Classical exegesis reads the verse in the Arabic of its address, where tajrī may be phenomenological language and mustaqarr a term decreed rather than a coordinate. Astrophysics supplies measured motions, not interpretations of scripture. The study therefore proposes dialogue rather than concordism: the measured apex motion and galactic orbit show that the Sun is never at rest in an absolute sense, which is compatible with, and does not prove, the verse's declaration that its running has an appointed term known to the Almighty, the All-Knowing."
+      ],
+      "note": "Reader note: extended working notes and earlier drafts are shared on the private notes journal at https://elektra-private-notes.blogspot.com/"
     }
   },
   {
@@ -754,10 +864,7 @@ window.WORKS_DATA = [
     "year": 2025,
     "status": "ongoing",
     "field": "Musicology & Semiotics",
-    "description": "A semiotic analysis of Mozart's Lacrimosa tracing how its liturgical symbols migrate and mutate across contemporary film scores, advertising, and popular media.",
-    "links": {
-      "blogspot": "#blogspot-standby"
-    }
+    "description": "A semiotic analysis of Mozart's Lacrimosa tracing how its liturgical symbols migrate and mutate across contemporary film scores, advertising, and popular media."
   },
   {
     "id": "western-classical-dangdut-ethnomusicology",
@@ -766,10 +873,7 @@ window.WORKS_DATA = [
     "year": 2026,
     "status": "ongoing",
     "field": "Comparative Ethnomusicology",
-    "description": "A comparative musicological study identifying structural, harmonic, and affective parallels between the Western classical canon and Indonesian dangdut — arguing for a shared grammar of emotional intensity across cultural traditions.",
-    "links": {
-      "blogspot": "#blogspot-standby"
-    }
+    "description": "A comparative musicological study identifying structural, harmonic, and affective parallels between the Western classical canon and Indonesian dangdut — arguing for a shared grammar of emotional intensity across cultural traditions."
   },
   {
     "id": "newton-to-backpropagation-calculus",
@@ -810,7 +914,8 @@ window.WORKS_DATA = [
     "links": {
       "hermit": "https://app.gethermit.com/books",
       "wattpad": "https://www.wattpad.com/user/ElektraEliviana",
-      "magnolia": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s"
+      "magnolia": "https://www.wattpad.com/story/414636110-the-path-of-life-and-hope-under-the-magnolia%27s",
+      "substack": "https://elektraeliviana.substack.com/"
     },
     "featured": true,
     "reading_room": {
@@ -839,7 +944,7 @@ window.WORKS_DATA = [
         "For years he had mistaken silence for emptiness. It was the garden that corrected him. Every hour held a conversation he had been too loud to hear: the tick of cooling bark, the slow arithmetic of roots, the white hush of a blossom deciding to open.",
         "He did not pray, exactly. He counted petals, and in the counting something in him that had been clenched for a very long time began, gently, to forgive."
       ],
-      "note": "Full text continues on Hermit and the Wattpad catalog."
+      "note": "Full text continues on Hermit, Substack, and the Wattpad catalog."
     }
   },
   {
@@ -848,10 +953,10 @@ window.WORKS_DATA = [
     "title": "The Ciwidey Journey — Phenomenological Highland Memoir",
     "subtitle": "Lived Travel Essay Through the Volcanic Landscapes of Rancaupas & Ciwidey",
     "year": 2025,
-    "status": "complete",
+    "status": "ongoing",
     "role": "Author",
     "genre": "Travel Memoir · Phenomenological Non-Fiction",
-    "description": "A completed atmospheric travel memoir chronicling a journey through the mist-shrouded highlands and volcanic terrain of Ciwidey and Rancaupas, West Java, composed as a first-person phenomenological meditation on landscape, solitude, and sensory perception.",
+    "description": "An ongoing atmospheric travel memoir chronicling a journey through the mist-shrouded highlands and volcanic terrain of Ciwidey and Rancaupas, West Java, composed as a first-person phenomenological meditation on landscape, solitude, and sensory perception.",
     "tags": [
       "Travel Memoir",
       "Phenomenology",
@@ -861,7 +966,7 @@ window.WORKS_DATA = [
     "links": {
       "hermit": "https://app.gethermit.com/books",
       "wattpad": "https://www.wattpad.com/user/ElektraEliviana",
-      "portal": "#literary-portal-standby"
+      "substack": "https://elektraeliviana.substack.com/"
     },
     "reading_room": {
       "kicker": "HIGHLAND MEMOIR · BUILT-IN READING ROOM",
@@ -876,7 +981,7 @@ window.WORKS_DATA = [
         },
         {
           "label": "Status",
-          "value": "Complete · ready to publish"
+          "value": "Ongoing · Highland Memoir in Progress"
         },
         {
           "label": "Method",
@@ -889,85 +994,160 @@ window.WORKS_DATA = [
         "I did not go there to see anything. I went to find out what the body notices when the mind is finally too tired to narrate. First the fog, rearranging the trees into rumours. Then the sound, a stream somewhere below, speaking in a language older than the road.",
         "By the time the lake appeared, green as a held breath beneath the crater wall, I had stopped describing and simply arrived."
       ],
-      "note": "Full memoir available soon through the external literary portal."
+      "note": "Serialized updates publishing on Substack, Hermit, and Wattpad."
     }
   },
   {
-    "id": "art-realistic-eye",
+    "id": "art-traditional-graphite-studies",
     "type": "art",
-    "title": "Realistic Eye",
-    "year": 2024,
+    "title": "Traditional Graphite & Sketchbook Studies",
+    "year": "2023–2024",
     "status": "showcase",
-    "medium": "Graphite Pencil",
-    "image": "assets/art/Elektra's Art Realistic Eye.jpg"
+    "medium": "Graphite Pencil on Paper",
+    "image": "assets/art/Elektra's Art Realistic Eye.jpg",
+    "plates": [
+      {
+        "title": "Realistic Eye",
+        "medium": "Graphite Pencil",
+        "year": 2024,
+        "image": "assets/art/Elektra's Art Realistic Eye.jpg"
+      },
+      {
+        "title": "Flandre's Sprite — Character Sketch",
+        "medium": "Graphite Pencil on Paper",
+        "year": 2024,
+        "image": "assets/art/Elektra's Art Flandre's Sprite.jpg"
+      },
+      {
+        "title": "Realistic Tea Still Life",
+        "medium": "Graphite Pencil",
+        "year": 2024,
+        "image": "assets/art/Elektra's Art Realistic Tea.jpg"
+      }
+    ],
+    "links": {
+      "cara": "https://cara.app/post/6aa3b3e7-743e-4b21-81e7-e2ea70e9ef04",
+      "atelier": "https://cara.app/elektraeliviana"
+    }
   },
   {
-    "id": "art-flandres-sprite",
+    "id": "art-acrylic-canvas-paintings",
     "type": "art",
-    "title": "Flandre's Sprite",
-    "year": 2024,
-    "status": "showcase",
-    "medium": "Digital Art · Krita",
-    "image": "assets/art/Elektra's Art Flandre's Sprite.jpg"
-  },
-  {
-    "id": "art-detailed-mountain-canvas",
-    "type": "art",
-    "title": "Detailed Mountain on Canvas",
-    "year": 2024,
+    "title": "Acrylic Canvas & Botanical Landscapes",
+    "year": "2023–2024",
     "status": "showcase",
     "medium": "Acrylic on Canvas",
-    "image": "assets/art/Elektra's Art Realistic Mountain.jpg"
-  },
-  {
-    "id": "art-detailed-tree-canvas",
-    "type": "art",
-    "title": "Detailed Tree on Canvas",
-    "year": 2024,
-    "status": "showcase",
-    "medium": "Acrylic on Canvas · Botanical",
-    "image": "assets/art/Elektra's Art Tree.jpg"
-  },
-  {
-    "id": "art-tea-still-life",
-    "type": "art",
-    "title": "Realistic Tea Still Life",
-    "year": 2024,
-    "status": "showcase",
-    "medium": "Graphite Pencil",
-    "image": "assets/art/Elektra's Art Realistic Tea.jpg"
+    "image": "assets/art/Elektra's Art Realistic Mountain.jpg",
+    "plates": [
+      {
+        "title": "Detailed Mountain on Canvas",
+        "medium": "Acrylic on Canvas",
+        "year": 2024,
+        "image": "assets/art/Elektra's Art Realistic Mountain.jpg"
+      },
+      {
+        "title": "Detailed Tree on Canvas",
+        "medium": "Acrylic on Canvas · Botanical",
+        "year": 2024,
+        "image": "assets/art/Elektra's Art Tree.jpg"
+      }
+    ],
+    "links": {
+      "cara": "https://cara.app/post/4c9556fd-4131-473f-b2b5-44eccc8c091f",
+      "atelier": "https://cara.app/elektraeliviana"
+    }
   },
   {
     "id": "music-chopin-ballade-1",
     "type": "music",
     "title": "Ballade No. 1 in G Minor, Op. 23",
-    "year": 2025,
+    "year": 2026,
     "composer": "Frédéric Chopin",
     "opus": "Op. 23",
     "key": "G Minor",
-    "tempo": "Largo – Presto con fuoco",
-    "era": "Romantic",
+    "tempo": "Largo – Moderato",
+    "timeSig": "6/4",
+    "expression": "pesante · espressivo",
+    "era": "Romantic Canon",
     "difficulty": "Virtuoso",
-    "duration": "9:30",
-    "description": "One of Chopin's most dramatic and technically demanding works. Features stormy octave passages, polyphonic counterpoint, and deeply lyrical cantabile sections.",
-    "audio": "assets/audio/ballade-1.mp3",
+    "duration": "4:25",
+    "description": "Performed solo by Elektra Eliviana. Opening with Chopin's brooding Neapolitan chord and unfolding into richly voiced Romantic lyricism, rubato phrasing, and dramatic harmonic tension.",
+    "audio": "assets/audio/Ballade no. 1 in G Minor Opus 23.mp3",
+    "salonOnly": true
+  },
+  {
+    "id": "music-chopin-nocturne-op9-no2",
+    "type": "music",
+    "title": "Nocturne in E-flat Major, Op. 9, No. 2",
+    "year": 2026,
+    "composer": "Frédéric Chopin",
+    "opus": "Op. 9 No. 2",
+    "key": "E♭ Major",
+    "tempo": "Andante – Cantabile",
+    "timeSig": "12/8",
+    "expression": "espress. dolcissimo",
+    "era": "Romantic Canon",
+    "difficulty": "Advanced",
+    "duration": "0:56",
+    "description": "Performed solo by Elektra Eliviana. An intimate salon excerpt capturing Chopin's singing bel canto right-hand melody floating gracefully above warm, resonant 12/8 accompaniment.",
+    "audio": "assets/audio/Nocturne Opus 9 No. 2.mp3",
+    "salonOnly": true
+  },
+  {
+    "id": "music-chopin-waltz-a-minor",
+    "type": "music",
+    "title": "Waltz in A Minor, B. 150, Op. Posth.",
+    "year": 2026,
+    "composer": "Frédéric Chopin",
+    "opus": "B. 150",
+    "key": "A Minor",
+    "tempo": "Allegretto",
+    "timeSig": "3/4",
+    "expression": "leggiero e cantabile",
+    "era": "Romantic Canon",
+    "difficulty": "Intermediate-Advanced",
+    "duration": "2:03",
+    "description": "Performed solo by Elektra Eliviana. Chopin's posthumous A-minor waltz balancing wistful melancholic elegance, crisp ornamental turns, and buoyant triple-meter grace.",
+    "audio": "assets/audio/Waltz in A Minor, B. 150, Op. Posth.mp3",
+    "salonOnly": true
+  },
+  {
+    "id": "music-ib-memory-interlude",
+    "type": "music",
+    "title": "Memory (Ib's Theme — Ib)",
+    "year": 2026,
+    "composer": "Kouri · Arr. Solo Celesta",
+    "opus": "Salon Interlude",
+    "key": "D Minor",
+    "tempo": "Andantino malinconico",
+    "timeSig": "3/4",
+    "expression": "delicato · misterioso",
+    "era": "Contemporary Interlude",
+    "difficulty": "Lyrical Interlude",
+    "duration": "2:19",
+    "description": "Performed by Elektra Eliviana on delicate celesta/music-box timbre as a quiet recital interlude—evoking gallery stillness, nostalgia, and crystalline harmonic simplicity.",
+    "audio": "assets/audio/Ib - Memory.mp3",
     "salonOnly": true
   },
   {
     "id": "music-beethoven-moonlight-3rd",
     "type": "music",
     "title": "Piano Sonata No. 14 \"Moonlight\" — 3rd Movement, Presto Agitato",
-    "year": 2025,
+    "year": 2026,
     "composer": "Ludwig van Beethoven",
     "opus": "Op. 27 No. 2",
     "key": "C♯ Minor",
-    "tempo": "Presto Agitato",
-    "era": "Classical-Romantic",
+    "tempo": "Presto agitato",
+    "timeSig": "4/4",
+    "expression": "agitato · sforzando",
+    "era": "Classical-Romantic Canon",
     "difficulty": "Virtuoso",
-    "duration": "7:15",
-    "description": "Beethoven's most turbulent sonata movement — a relentless storm of triplet arpeggios demanding both razor-sharp technical precision and dramatic intensity.",
-    "audio": "assets/audio/moonlight-3rd.mp3",
-    "salonOnly": true
+    "duration": null,
+    "description": "In active solo repertoire · Recording soon. Beethoven's stormy C-sharp minor finale demanding rapid surging arpeggios, sforzando accents, and dramatic architectural control.",
+    "audio": null,
+    "salonOnly": true,
+    "repertoireOnly": true,
+    "status": "repertoire"
   },
   {
     "id": "music-liszt-hungarian-rhapsody-2",
@@ -977,29 +1157,17 @@ window.WORKS_DATA = [
     "composer": "Franz Liszt",
     "opus": "S. 244/2",
     "key": "C♯ Minor / F♯ Major",
-    "tempo": "Lassan – Friska",
-    "era": "Romantic",
+    "tempo": "Lento a capriccio – Friska",
+    "timeSig": "2/4",
+    "expression": "capriccioso · brillante",
+    "era": "Romantic Virtuoso Canon",
     "difficulty": "Virtuoso",
-    "duration": "10:45",
-    "description": "Virtuoso mastery including the famous Friska section — one of the most iconic and technically ferocious showpieces in the entire romantic piano repertoire.",
-    "audio": "assets/audio/hungarian-rhapsody-2.mp3",
-    "salonOnly": true
-  },
-  {
-    "id": "music-chopin-nocturne-op9-no1",
-    "type": "music",
-    "title": "Nocturne in B-flat Minor, Op. 9, No. 1",
-    "year": 2024,
-    "composer": "Frédéric Chopin",
-    "opus": "Op. 9 No. 1",
-    "key": "B♭ Minor",
-    "tempo": "Larghetto (cantabile)",
-    "era": "Romantic",
-    "difficulty": "Advanced",
-    "duration": "5:40",
-    "description": "A deeply introspective nocturne marked by its long-breathed melodic lines, rich left-hand arpeggios, and characteristic Chopin ornamentation.",
-    "audio": "assets/audio/nocturne-op9-no1.mp3",
-    "salonOnly": true
+    "duration": null,
+    "description": "In active solo repertoire · Recording soon. Liszt's monumental concert rhapsody contrasting solemn Lassan rhetoric with dazzling Friska octave and repeated-note virtuosity.",
+    "audio": null,
+    "salonOnly": true,
+    "repertoireOnly": true,
+    "status": "repertoire"
   },
   {
     "id": "performance-piano-drawing-combined",

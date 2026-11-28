@@ -1,6 +1,6 @@
 {
   "name": "Elektra Eliviana",
-  "location": "Bandung, West Java, Indonesia · Open to Relocation",
+  "location": "Bandung, West Java, Indonesia · Open to Relocation & Remote",
   "email": "elivianaelektra@gmail.com",
   "headline": "Operations & Process Automation Specialist · AI Engineer in Training · Polymath",
   "bio": "Elektra Eliviana is a polymath whose intellectual architecture spans mathematical modal logic, speculative botanical literature, classical piano virtuosity, fine art realism, and high-performance process automation — a rare convergence forged through Olympiad-level competition in mathematics and astronomy, rigorous academic study in Quranic hermeneutics, and hands-on community leadership at scale. A decorated competitive scholar and self-directed autodidact, she is currently deepening her technical edge through a mentor-led AI Engineering bootcamp while pursuing original research that bridges formal logic, Islamic metaphysics, and machine learning theory. Her work defies disciplinary boundaries, embodying the conviction that the most consequential innovations emerge precisely at the intersections others leave unexplored.",
@@ -12,32 +12,52 @@
   },
   "socials": [
     {
+      "platform": "email",
+      "url": "mailto:elivianaelektra@gmail.com"
+    },
+    {
+      "platform": "contra",
+      "url": "https://contra.com/elektraeliviana/"
+    },
+    {
       "platform": "github",
       "url": "https://github.com/elektraeliviana"
+    },
+    {
+      "platform": "huggingface",
+      "url": "https://huggingface.co/elektraeliviana"
+    },
+    {
+      "platform": "kaggle",
+      "url": "https://www.kaggle.com/elektraeliviana"
+    },
+    {
+      "platform": "substack",
+      "url": "https://elektraeliviana.substack.com/"
+    },
+    {
+      "platform": "cara",
+      "url": "https://cara.app/elektraeliviana"
     },
     {
       "platform": "youtube",
       "url": "https://youtube.com/@fundrawingandmusic5045"
     },
     {
-      "platform": "bluesky",
-      "url": "https://bsky.app/profile/elektraeliviana.bsky.social"
+      "platform": "instagram",
+      "url": "https://instagram.com/elektraeliviana"
     },
     {
       "platform": "twitter",
       "url": "https://x.com/ElektraEliviana"
     },
     {
-      "platform": "instagram",
-      "url": "https://instagram.com/elektraeliviana"
+      "platform": "bluesky",
+      "url": "https://bsky.app/profile/elektraeliviana.bsky.social"
     },
     {
       "platform": "discord",
       "url": "e1ektra"
-    },
-    {
-      "platform": "email",
-      "url": "mailto:elivianaelektra@gmail.com"
     }
   ],
   "languages": [
@@ -71,9 +91,9 @@
       "code": "JA",
       "name": "Japanese",
       "native": "日本語",
-      "level": "Elementary Â· JLPT N5",
+      "level": "Elementary · JLPT N5",
       "percent": 30,
-      "detail": "JLPT N5 Â· EJU Mathematics Prep"
+      "detail": "JLPT N5 · EJU Mathematics Prep"
     },
     {
       "code": "AR",
@@ -86,72 +106,60 @@
   ],
   "certificates": [
     {
-      "title": "EF SET C2 Proficient",
+      "title": "EF SET English Certificate — C2 Proficient (71/100)",
       "issuer": "EF Education First",
       "year": 2026,
-      "file": "assets/certificates/ef-set.pdf"
+      "url": "https://cert.efset.org/yFmbSW"
     },
     {
-      "title": "Microsoft Applied Skills — Power Automate & Power Apps",
-      "issuer": "Microsoft",
-      "year": 2026,
-      "file": "assets/certificates/microsoft-power-automate.pdf"
-    },
-    {
-      "title": "Python & Deep Learning Track",
-      "issuer": "Kaggle / Google",
-      "year": 2026,
-      "file": "assets/certificates/kaggle-python.pdf"
-    },
-    {
-      "title": "Typing Speed 100 WPM Certified",
-      "issuer": "Typing.com",
+      "title": "Typing.com 100 WPM",
+      "issuer": "Typing.com · 98% Accuracy",
       "year": 2026,
       "file": "assets/certificates/Elektra-WPM.pdf"
     },
     {
-      "title": "Fundamentals of Digital Marketing",
-      "issuer": "Google Digital Garage",
+      "title": "Microsoft Applied Skills: Developing Agents in Microsoft Foundry · ID: 393C6DE4752CBF84",
+      "issuer": "Microsoft",
+      "year": 2026,
+      "file": "assets/certificates/microsoft-foundry-agents.pdf"
+    },
+    {
+      "title": "Python Programming",
+      "issuer": "Kaggle Learn",
+      "year": 2026,
+      "file": "assets/certificates/kaggle-python.pdf"
+    },
+    {
+      "title": "Finance Series 8.0 – Investment Banking",
+      "issuer": "Dibimbing.id",
+      "year": 2026,
+      "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
+    },
+    {
+      "title": "Fundamentals of Digital Marketing · ID: 478186342",
+      "issuer": "Google",
       "year": 2026,
       "file": "assets/certificates/google-digital-marketing.pdf"
     },
     {
-      "title": "AAJI & AASI Licensed Financial Agent",
-      "issuer": "PT FWD Insurance",
+      "title": "AAJI & AASI Regulatory Licenses",
+      "issuer": "Asosiasi Asuransi Jiwa & Syariah Indonesia",
       "year": 2026,
       "validity": "2026–2028",
-      "file": "assets/certificates/fwd-aaji.pdf"
+      "file": "assets/certificates/aaji-aasi-licenses.pdf"
     },
     {
-      "title": "TOEFL Prediction Certificate",
-      "issuer": "TOEFL Prediction Program",
-      "year": 2026,
-      "file": "assets/certificates/toefl-prediction.pdf"
-    },
-    {
-      "title": "Amazing Mandarin Conversation Certificate",
-      "issuer": "PT Kunkwan Mandarin",
-      "year": 2026,
-      "file": "assets/certificates/mandarin-conversation.pdf"
-    },
-    {
-      "title": "Chess IAPI Champion Certificate",
-      "issuer": "IAPI — Institut Agama Islam Persis",
+      "title": "Campus Chess Champion Certificate",
+      "issuer": "IAIPI Bandung",
       "year": 2025,
-      "file": "assets/certificates/chess-iapi-champion.pdf"
-    },
-    {
-      "title": "Finance & Investment Banking Certificate",
-      "issuer": "Dibimbing.id",
-      "year": 2026,
-      "file": "assets/certificates/dibimbing-finance-investment-banking.pdf"
+      "file": "assets/certificates/chess-iaipi-champion.pdf"
     }
   ],
   "education": [
     {
-      "degree": "Bachelor Degree (S.Ag.) â€” Quranic Studies & Tafsir",
-      "institution": "IAIPI Bandung (Institut Agama Islam Persis)",
-      "period": "2024â€“2026",
+      "degree": "Bachelor Degree (S.Ag.) — Quranic Studies & Tafsir",
+      "institution": "Institut Agama Islam Persis (IAIPI) Bandung",
+      "period": "2024–2026",
       "gpa": 3.54,
       "badge": "Accepted Thesis",
       "type": "undergraduate",
@@ -161,20 +169,20 @@
       ]
     },
     {
-      "degree": "Associate Degree (D3) â€” Arabic Language",
-      "institution": "Al-Imarat Bandung",
-      "period": "2021â€“2024",
+      "degree": "Diploma 2 (D2) — Arabic Language & Literature",
+      "institution": "Ma'had Al-Imarat Bandung",
+      "period": "2021–2024",
       "grade": 72.06,
       "badge": "Classical Linguistics",
       "type": "associate",
       "highlights": [
-        "Specialized in Classical Arabic Morphology (Sarf) & Syntax (Nahw) â€” foundational structural grammar directly informing computational linguistics and NLP text analysis"
+        "Classical Arabic Grammar (Nahwu/Sharaf), Morphological Analysis, Translation, and Structured Syntax — foundational structural grammar informing computational linguistics and text analysis"
       ]
     },
     {
-      "degree": "High School Diploma â€” Natural Sciences (IPA)",
+      "degree": "High School Diploma — Natural Sciences (IPA)",
       "institution": "SMAN 6 Cimahi",
-      "period": "2018â€“2021",
+      "period": "2018–2021",
       "grade": 78.5,
       "badge": "Math & Astronomy Olympiad",
       "type": "highschool",
@@ -184,74 +192,72 @@
       ]
     },
     {
-      "degree": "AI Engineering Track â€” Independent Mentor-Led Curriculum",
+      "degree": "AI Engineering Track — Independent Mentor-Led Curriculum",
       "institution": "Independent Mentor-Led Technical Program",
-      "period": "2026â€“Present",
+      "period": "2026–Present",
       "badge": "First-Principles ML",
       "type": "bootcamp",
       "highlights": [
-        "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Loss Functions (MSE/MAE Outlier Proof), and First-Principles Gradient Descent",
+        "Completed Modules: Python Core & Algorithms, Automated ETL/CSV Pipelines (0.0005s runtime), NumPy Linear Algebra, Sigmoid/Softmax & Cross-Entropy, Leak-Free Multivariate Z-Score Classifiers, Chain-Rule Backpropagation (<1e-9 gradient check), and a 2-Layer Raw NumPy Neural Network solving XOR at 100% accuracy",
         "Engineered Clean Architecture Desktop & Web Applications with 20/20 Pytest coverage and LLM API integration"
       ]
     },
     {
       "degree": "Japanese Language & CS Scholarship Pathway",
       "institution": "PT Yurinoki Nihongo",
-      "period": "2026â€“Present",
-      "badge": "Target Pathway Â· Japan CS 2030",
+      "period": "2026–Present",
+      "badge": "Target Pathway · Japan CS 2030",
       "type": "language",
       "highlights": [
-        "Target Pathway: LPK Selection Gate (Mayâ€“June 2027) â†’ Nihongo Gakkou (April 2028) â†’ S1 Computer Science / AI Engineering in Japan (April 2030)",
+        "Target Pathway: LPK Selection Gate (May–June 2027) → Nihongo Gakkou (April 2028) → S1 Computer Science / AI Engineering in Japan (April 2030)",
         "Target Benchmarks: JLPT N2 & EJU Mathematics Course 2 (targeting Japanese National/Imperial Universities & scholarship tracks)"
       ]
     }
   ],
   "experience": [
     {
-      "role": "Head Administrator / Community Manager",
-      "organization": "Empire of Caveine",
-      "period": "June 2024–Present",
+      "role": "Head Administrator / Operations & Community Manager",
+      "organization": "Empire of Caveine — Remote",
+      "period": "Jun 2024 – Present",
       "highlights": [
-        "Governed a 40,000+ member digital community",
-        "Oversaw a 16-member staff team",
-        "Authored SOPs and incident protocols",
-        "Achieved 87.5% task completion rate"
+        "Direct daily operations for a 40,000+ member digital community and supervise a 16-member cross-functional staff team, maintaining zero critical escalation incidents across 2.5 years",
+        "Authored an 81-page codified operational SOP and governance charter (Piagam Agung 33 pp. & Kitab Hukum 48 pp.), establishing a 6-tier violation and escalation matrix (Golongan I–VI), evidentiary logging standards, and staff discretion limits",
+        "Built standardized staff recruitment, vetting, onboarding documentation, and shift accountability trackers in MS Excel and Google Sheets while executing fact-based dispute mediation"
+      ]
+    },
+    {
+      "role": "Regulatory Compliance & Risk Documentation Associate (AAJI/AASI Licensed)",
+      "organization": "PT FWD Insurance Indonesia — Bandung",
+      "period": "Oct 2026 – Present",
+      "highlights": [
+        "Credentialed under AAJI and AASI national regulatory frameworks; apply KYC verification standards, risk underwriting compliance, and confidentiality protocols to audit and control financial policy documentation"
+      ]
+    },
+    {
+      "role": "Religious Teacher & Academic Coordinator",
+      "organization": "Kuttab Al-Barokah — Kota Bandung",
+      "period": "Sep 2023 – Mar 2026",
+      "highlights": [
+        "Delivered structured curriculum to a dedicated student cohort while maintaining daily attendance logs, longitudinal progress records, and formal assessment documentation with zero filing backlogs",
+        "Collaborated with 11 fellow educators to redesign standardized student evaluation rubrics, coordinate school events, and ensure cross-subject instructional and administrative continuity"
       ]
     },
     {
       "role": "Operations & Administration Intern",
-      "organization": "Jamil Industry",
-      "period": "June 2025–July 2025",
+      "organization": "Jamil Industry (Garment / Dress Manufacturing) — Kab. Bandung",
+      "period": "Jun 2025 – Jul 2025",
       "highlights": [
-        "Processed 50–100 daily orders with zero discrepancies",
-        "Coordinated a 6-member staff workflow"
+        "Processed, logged, and audited 50–100 daily garment manufacturing orders in MS Excel, achieving zero fulfillment discrepancies through rigorous end-of-day physical-to-ledger inventory reconciliation",
+        "Coordinated daily shift handoffs and workflow sequencing for a 6-person warehouse and production team, resolving vendor and order-fulfillment inquiries within strict SLA targets"
       ]
     },
     {
-      "role": "Educator & Academic Coordinator",
-      "organization": "Kuttab Al-Barokah",
-      "period": "September 2023–March 2026",
+      "role": "Logistics Courier (Sprinter) & Operations Admin Support",
+      "organization": "J&T Express — Kab. Bandung",
+      "period": "Jun 2022 – Mar 2024",
       "highlights": [
-        "Led a team of 11 educators",
-        "Delivered structured curriculum across multiple disciplines"
-      ]
-    },
-    {
-      "role": "Licensed Financial & Protection Advisor",
-      "organization": "PT FWD Insurance & PT Agrodana",
-      "period": "October 2026–Present",
-      "highlights": [
-        "AAJI & AASI certified practitioner",
-        "Advising on financial protection products"
-      ]
-    },
-    {
-      "role": "Logistics & Operations Dispatcher",
-      "organization": "J&T Express â€” Kab. Bandung",
-      "period": "June 2022â€“March 2024",
-      "highlights": [
-        "Directed dispatch routing and delivery fulfillment for 20â€“50 high-priority parcels daily under strict SLA targets",
-        "Reconciled daily courier delivery logs and resolved last-mile routing bottlenecks with zero manifest discrepancies"
+        "Executed high-SLA routing and delivery fulfillment for 20–50 priority parcels daily across 21 months of continuous express logistics operations",
+        "Supported drop-point administrative workflows by reconciling daily courier waybill manifests against physical parcel logs, resolving route/address escalations, and coordinating with central dispatch"
       ]
     }
   ],
@@ -270,8 +276,8 @@
       "Clockify · Google Analytics"
     ],
     "Education & Academic Honors": [
-      "BSc Quranic Studies & Tafsir — IAIPI (GPA 3.54)",
-      "Associate Degree Arabic Language — Al-Imarat",
+      "S.Ag. Quranic Studies & Tafsir — IAIPI Bandung (GPA 3.54)",
+      "D2 Arabic Language & Literature — Ma'had Al-Imarat",
       "AI Engineering Bootcamp (Mentor-Led, 2026–Present)",
       "Japanese Language Studies — PT Yurinoki Nihongo",
       "Juara 4–6 Olimpiade Matematika (2016/2017)",
@@ -282,13 +288,13 @@
       "Kontestan Debat Agama Islam (2019/2020)"
     ],
     "Experience & Leadership": [
-      "Head Admin — Empire of Caveine (40,000+ members, 16 staff)",
-      "Operations Intern — Jamil Industry (50–100 orders/day, zero errors)",
-      "Educator & Academic Coordinator — Kuttab Al-Barokah (11 educators)",
-      "Licensed Financial Advisor — PT FWD Insurance & PT Agrodana",
+      "Head Administrator — Empire of Caveine (40,000+ members, 16 staff)",
+      "Regulatory Compliance Associate — PT FWD Insurance",
+      "Operations Intern — Jamil Industry (50–100 orders/day, zero fulfillment discrepancies)",
+      "Religious Teacher — Kuttab Al-Barokah (collaborated with 11 fellow educators)",
       "SOP Authoring & Incident Protocol Design",
-      "Staff Recruitment Pipeline Management",
-      "87.5% task completion rate under governance",
+      "6-Tier Violation & Escalation Matrix (Golongan I–VI)",
+      "Staff Recruitment, Vetting & Onboarding Documentation",
       "Conflict Resolution & Cross-Team Coordination",
       "Inventory Reconciliation & Warehouse Operations"
     ]

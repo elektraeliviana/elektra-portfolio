@@ -1,7 +1,7 @@
 import urllib.request
 import re
 
-url = 'https://elektra-portfolio-nwvb.vercel.app/'
+url = 'https://portfolio-elektra.vercel.app/'
 try:
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     with urllib.request.urlopen(req, timeout=15) as res:

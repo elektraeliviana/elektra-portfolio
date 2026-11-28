@@ -1,6 +1,6 @@
 # 🏛️ Master Execution Directive: Elektra Eliviana Portfolio Remodel & Polish
 
-> **Target Workspace**: `c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio`  
+> **Target Workspace**: `<repo-root>`  
 > **Aesthetic Guardrails**: Obsidian dark surfaces, champagne gold accents (`#C5A059` / `#D4AF37`), subtle glassmorphism, 1200px luxury container, zero horizontal overflow.
 
 ---
@@ -1473,7 +1473,7 @@ git push origin main
 
 ## 🛠️ TASK-UX-13: Celestial Florilegium About Tree, Languages 3+2 Pyramid, Click-Driven Autoplay Theater & Precision UI Bug Fixes
 
-> **Target Workspace**: `c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio`  
+> **Target Workspace**: `<repo-root>`  
 > **Target Files**: `index.html`, `css/style.css`, `js/app.js`, `data/profile.json`, `data/works.json`, `js/data.js`  
 > **Current Commit Base**: `35276f0`  
 > **Execution Mandate**: Surgical, targeted edits only — **DO NOT** rewrite or truncate `css/style.css` or unrelated sections. Keep `js/data.js` 100% synchronized with `data/profile.json` and `data/works.json`.
@@ -1778,7 +1778,7 @@ In `data/works.json` and `js/data.js`:
 - Replace `travel-writing-living-quran` with `living-quran-digital-academy-iaipi` (*Living Qur'an Digital Academy Platform — IAIPI Bandung*, `type: "code"`, `category: "Academic EdTech & Digital Humanities"`, `status: "ongoing"`, `featured: true`) as specified in `PORTFOLIO_REMODEL_MASTERPLAN.md` (`TASK-RM-04`, lines 365–386).
 
 ### 4. Research Papers & Blogspot Standby Toast (`TASK-RM-05`)
-1. **`politics-of-hierarchy-progenic-prophets`**: Keep as `"status": "accepted"` (*Accepted Thesis*) with its direct PDF download (`assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf`).
+1. **`politics-of-hierarchy-progenic-prophets`**: Keep as `"status": "accepted"` (*Accepted Thesis*) with its direct PDF download (`<removed thesis PDF>`).
 2. **Ongoing Blogspot Treatises (`godels-ontological-proof-allah`, `western-classical-dangdut-ethnomusicology`, `circulation-of-the-sun-hermeneutics`, `mozart-requiem-lacrimosa-semiotics`, `newton-to-backpropagation-calculus`):**
    - Set `"status": "ongoing"` and add `"links": { "blogspot": "#blogspot-standby" }` on `godels-ontological-proof-allah`, `western-classical-dangdut-ethnomusicology`, `circulation-of-the-sun-hermeneutics`, and `mozart-requiem-lacrimosa-semiotics`.
    - In `js/app.js` (`buildWorkCard()` and `buildModalHTML()`):
@@ -1829,7 +1829,7 @@ Copy and paste the block below into a fresh Antigravity conversation to execute 
 
 ```text
 Please read PORTFOLIO_EXECUTION_PROMPT.md (and cross-reference PORTFOLIO_REMODEL_MASTERPLAN.md) in the workspace at:
-c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio
+<repo-root>
 
 Execute the complete 3-Phase Master Directive (Phase A: TASK-UX-13, Phase B: TASK-RM-01 & TASK-RM-09, Phase C: TASK-RM-02 through TASK-RM-08) surgically while strictly adhering to the 6 Professionalism & Perfection Guardrails. Always keep js/data.js 100% synchronized with data/profile.json and data/works.json.
 

@@ -1,0 +1,5 @@
+# Untouched raw audio backups (remastered versions live in assets/audio/)
+assets/audio/_originals/
+
+# Raw source videos (too large for GitHub; web-optimized showcases live in assets/video/)
+assets/video/_originals/

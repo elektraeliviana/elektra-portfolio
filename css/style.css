@@ -1186,6 +1186,7 @@ section {
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem;
   margin-bottom: var(--space-2xl);
   border-bottom: 1px solid var(--border-gold);
@@ -6066,7 +6067,7 @@ body {
   transform: translateX(-50%) !important;
   width: auto !important;
   min-width: 560px;
-  max-width: 860px;
+  max-width: min(980px, calc(100vw - 32px));
   padding: 0.5rem 1.85rem !important;
   background: rgba(10, 10, 14, 0.84) !important;
   backdrop-filter: blur(22px) saturate(1.5) !important;
@@ -7250,9 +7251,9 @@ footer.footer-minimal::before {
   }
 }
 
-.reveal.revealed .section-title,
 .section-title.ink-revealed,
-.subsection-title.ink-revealed {
+.subsection-title.ink-revealed,
+.contact-title.ink-revealed {
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 45%, transparent 55%, transparent 100%);
   mask-image: linear-gradient(90deg, #000 0%, #000 45%, transparent 55%, transparent 100%);
   -webkit-mask-size: 250% 100%;
@@ -7265,8 +7266,10 @@ footer.footer-minimal::before {
 }
 
 .section-title.ink-pending,
-.subsection-title.ink-pending {
+.subsection-title.ink-pending,
+.contact-title.ink-pending {
   opacity: 0;
+  transform: translateY(10px);
 }
 
 /* ── 5. Phase 0: gravitational hairline dividers ── */
@@ -7298,17 +7301,20 @@ footer.footer-minimal::before {
 
 /* ── Reduced-motion safety for every TASK-SN-12 effect ── */
 @media (prefers-reduced-motion: reduce) {
-  .reveal.revealed .section-title,
   .section-title.ink-revealed,
-  .subsection-title.ink-revealed {
+  .subsection-title.ink-revealed,
+  .contact-title.ink-revealed {
     animation: none;
     -webkit-mask-image: none;
     mask-image: none;
   }
 
   .section-title.ink-pending,
-  .subsection-title.ink-pending {
+  .subsection-title.ink-pending,
+  .contact-title.ink-pending {
     opacity: 1;
+    transform: none;
+    letter-spacing: normal;
   }
 
   #about.revealed .section-container,
@@ -7672,3 +7678,264 @@ button.cert-link-standby:hover { color: #dfc285; }
 @media (prefers-reduced-motion: reduce) {
   .about-botanical-watermark svg { animation: none; opacity: 1; }
 }
+
+
+/* ════════════════════════════════════════════════════════════
+   V4.0.0 — Quill Unveil · Title Settle · Strategic Theater Overture ·
+   Centered Orphan Rows · Acoustic Lounge Repertoire · Fine Art Mosaic ·
+   11 Social Pills · Scholarly Reader
+   Obsidian #0d0d0f / #13131a · Champagne #C5A059 / #dfc285 · Ivory #e8e0d0
+   ════════════════════════════════════════════════════════════ */
+
+/* ── 1a. Hero 'Elektra Eliviana': left-to-right quill unveil + living champagne sheen ── */
+.hero-spencerian-text {
+  clip-path: inset(0 100% 0 0);
+  animation: heroQuillUnveil 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+@keyframes heroQuillUnveil {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+.hero-spencerian-sheen-band {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translateX(-320px) skewX(-18deg);
+  opacity: 0;
+  animation: heroGoldSheen 10s ease-in-out 2.6s infinite;
+}
+@keyframes heroGoldSheen {
+  0%   { transform: translateX(-320px) skewX(-18deg); opacity: 0; }
+  4%   { opacity: 1; }
+  26%  { transform: translateX(1020px) skewX(-18deg); opacity: 1; }
+  30%  { transform: translateX(1020px) skewX(-18deg); opacity: 0; }
+  100% { transform: translateX(1020px) skewX(-18deg); opacity: 0; }
+}
+
+/* ── 1b. Titles: tracking settle + rise + champagne sheen + centre-out hairline ── */
+@keyframes titleTrackingSettle {
+  from { opacity: 0; transform: translateY(10px); letter-spacing: 0.08em; }
+}
+.section-title.ink-revealed,
+.subsection-title.ink-revealed,
+.contact-title.ink-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  animation:
+    inkBleedLateral 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.12s backwards,
+    titleTrackingSettle 0.95s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+@media (max-width: 860px) {
+  /* Wide tracking can re-wrap long headings on narrow screens → keep CLS = 0 */
+  @keyframes titleTrackingSettle {
+    from { opacity: 0; transform: translateY(10px); }
+  }
+}
+@media (min-width: 861px) {
+  .section-title.ink-pending,
+  .subsection-title.ink-pending,
+  .contact-title.ink-pending { letter-spacing: 0.08em; }
+}
+.section-title::after,
+.subsection-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 1px;
+  margin: 0.65rem auto 0;
+  background: linear-gradient(90deg, transparent, #C5A059, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+.section-title.ink-revealed::after,
+.subsection-title.ink-revealed::after { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spencerian-text { clip-path: none; animation: none; }
+  .hero-spencerian-sheen-band { animation: none; opacity: 0; }
+  .section-title.ink-pending,
+  .subsection-title.ink-pending,
+  .contact-title.ink-pending { opacity: 1; transform: none; letter-spacing: normal; }
+  .section-title::after,
+  .subsection-title::after { transform: scaleX(1); transition: none; }
+  .section-title.ink-revealed,
+  .subsection-title.ink-revealed,
+  .contact-title.ink-revealed { animation: none; transform: none; }
+}
+
+/* ── 2. Strategic & Kinetic Mastery ── */
+.strategic-theater-console .theater-accordion-item .theater-tab-btn,
+.strategic-theater-console .theater-tab-btn {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.85rem;
+  row-gap: 0.32rem;
+  align-items: center;
+  padding: 0.85rem 1.1rem !important;
+}
+.theater-tab-btn .tab-icon {
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theater-tab-btn .tab-label {
+  grid-column: 2;
+  grid-row: 1;
+  line-height: 1.3;
+  white-space: normal;
+  min-width: 0;
+}
+.theater-tab-btn .tab-badge {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+  max-width: 100%;
+  white-space: normal;
+}
+.strategic-theater-console[data-active-theme="overture"] .theater-sidebar { align-self: center; }
+.strategic-theater-console:not([data-active-theme="overture"]) .theater-sidebar { align-self: start; }
+
+/* Static Overture triptych: artwork only, nothing covers the bottom title lockup */
+.strategic-theater-console[data-active-theme="overture"] #theater-standby-poster {
+  background: url('../assets/art/overture-master-titled.png') center / cover no-repeat;
+  cursor: default;
+}
+.strategic-theater-console[data-active-theme="overture"] #theater-standby-poster .standby-backdrop-glow,
+.strategic-theater-console[data-active-theme="overture"] #theater-standby-poster .standby-content,
+.strategic-theater-console[data-active-theme="overture"] #theater-standby-poster .standby-telemetry {
+  display: none;
+}
+#theater-repertoire-box[aria-hidden="true"],
+.strategic-theater-console[data-active-theme="overture"] #theater-repertoire-box {
+  display: none;
+}
+
+/* ── 3. Global polish ── */
+.about-botanical-watermark {
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 98%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 98%);
+}
+.works-filter { margin-inline: auto; }
+
+/* Centre trailing 1- and 2-card rows (cards never leave the grid flow when a works filter is active) */
+@media (min-width: 901px) {
+  .certificates-grid,
+  .certs-grid,
+  .honors-grid-3,
+  .works-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .certificates-grid > *,
+  .certs-grid > *,
+  .honors-grid-3 > *,
+  .works-grid > * { grid-column: span 2; }
+  .certificates-grid > *:last-child:nth-child(3n + 1),
+  .certs-grid > *:last-child:nth-child(3n + 1),
+  .honors-grid-3 > *:last-child:nth-child(3n + 1),
+  .works-grid > *:last-child:nth-child(3n + 1) { grid-column: 3 / span 2; }
+  .certificates-grid > *:nth-last-child(2):nth-child(3n + 1),
+  .certs-grid > *:nth-last-child(2):nth-child(3n + 1),
+  .honors-grid-3 > *:nth-last-child(2):nth-child(3n + 1),
+  .works-grid > *:nth-last-child(2):nth-child(3n + 1) { grid-column: 2 / span 2; }
+  .certificates-grid > *:last-child:nth-child(3n + 2),
+  .certs-grid > *:last-child:nth-child(3n + 2),
+  .honors-grid-3 > *:last-child:nth-child(3n + 2),
+  .works-grid > *:last-child:nth-child(3n + 2) { grid-column: 4 / span 2; }
+}
+
+/* ── 4. Acoustic Lounge · In Repertoire ── */
+.salon-repertoire-subheader {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #C5A059;
+  padding: 0.75rem 0.25rem 0.35rem;
+  margin-top: 0.4rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.18);
+}
+.salon-track-item.is-repertoire { opacity: 0.86; }
+.salon-track-item.is-repertoire:hover,
+.salon-track-item.is-repertoire.active { opacity: 1; }
+.track-recording-soon {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  color: #dfc285;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+#stage-play-btn.is-disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+#stage-scrub-bar.is-disabled { opacity: 0.4; pointer-events: none; }
+
+/* ── 5. Fine Art multi-plate mosaic & modal plate caption ── */
+.card-art-preview.card-art-mosaic {
+  display: grid;
+  gap: 4px;
+  height: 190px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+  background: #0d0d0f;
+  border: 1px solid rgba(197, 160, 89, 0.22);
+}
+.card-art-mosaic img { width: 100%; height: 100%; object-fit: cover; min-height: 0; }
+.card-art-mosaic.mosaic-3 { grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; }
+.card-art-mosaic.mosaic-3 img:first-child { grid-row: 1 / span 2; }
+.card-art-mosaic.mosaic-2 { grid-template-columns: 1fr 1fr; }
+.card-art-mosaic.mosaic-1 { grid-template-columns: 1fr; }
+.modal-plate-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.65rem 0 0.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.16);
+}
+#modal-plate-title { font-family: var(--font-display); font-size: 1.05rem; color: #e8e0d0; font-weight: 500; }
+#modal-plate-meta  { font-family: var(--font-mono); font-size: 0.7rem; color: #C5A059; }
+
+/* ── 6. Footer: 11 centered pills in two balanced rows ── */
+.footer-social-pills {
+  max-width: 880px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 0.65rem;
+}
+.footer-social-pills .social-pill { padding: 0.46rem 1rem; }
+
+/* ── 7. Scholarly custom reader & KaTeX display blocks ── */
+.modal-panel:has(.modal-reading-room) { max-width: min(820px, 100%); }
+.reading-room-prose p.reading-room-display {
+  text-align: center;
+  overflow-x: auto;
+  padding: 0.55rem 0.75rem;
+  margin: 1.1rem 0;
+  background: rgba(197, 160, 89, 0.04);
+  border-left: 2px solid rgba(197, 160, 89, 0.35);
+  border-radius: 4px;
+}
+.reading-room-prose p.reading-room-display::first-letter {
+  float: none;
+  font-size: inherit;
+  padding: 0;
+  color: inherit;
+}
+.reading-room-prose .katex-display { margin: 0; }
+.reading-room-note a { color: #C5A059; text-decoration: underline; text-underline-offset: 3px; }
+.reading-room-note a:hover { color: #dfc285; }

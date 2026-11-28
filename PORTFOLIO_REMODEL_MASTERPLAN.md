@@ -1,6 +1,6 @@
 # 🏛️ Master Architectural Blueprint: Fresh-Graduate Polymath & AI Engineering Portfolio Remodel
 
-> **Target Workspace**: `c:\Data Elektra\Elektra's Interest\Computing Field\Web & Development\elektra-portfolio`  
+> **Target Workspace**: `<repo-root>`  
 > **Strategic Positioning**: Operations & Process Automation Specialist · AI Engineer in Training (Independent Mentor-Led Track) · Polymath  
 > **Aesthetic Guardrails**: Obsidian dark surfaces (`#0d0d0f` / `#13131a`), champagne gold accents (`#C5A059` / `#D4AF37` / `var(--accent-primary)`), 1200px container max, zero horizontal overflow, restrained kinetic choreography.  
 > **Benchmark Standards**:
@@ -53,7 +53,7 @@
 | Portfolio Pillar / Asset | Button 1: Built-In Portfolio Experience (`elektra-portfolio`) | Button 2: Recommended External Website / App | Why This Combination Wins |
 | :--- | :--- | :--- | :--- |
 | **Ongoing Research Essays**<br>• *Gödel's Ontological Proof*<br>• *Western Classical & Dangdut*<br>• *Circulation of the Sun*<br>• *Mozart Requiem Lacrimosa*<br>• *Newton to Backpropagation* | **Built-In Scholarly Abstract & KaTeX Preview Modal** (displays formal axioms, vellum marginalia, and chapter structure inside your site). | **Primary (Live Now):** **Blogspot (Blogger)** (`Read Ongoing Treatise on Blogspot ↗`)<br>**Future/Companion Upgrade:** **Substack** (for serialized academic essays) + **Zenodo (CERN)** (when exporting stable PDF chapters for a permanent academic DOI). | Blogspot gives you zero-friction immediate publishing today; Zenodo adds formal academic citation power whenever a chapter PDF is finalized. |
-| **Finished Thesis**<br>• *Politics of Hierarchy: Progenic Prophets Family* | **Built-In Thesis Modal** with abstract, sociological framework (Parsons / Bourdieu / Mannheim), and 1-click PDF viewer. | **Direct Local/Vercel PDF** (`assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf`) + **IAIPI Repository / Zenodo DOI**. | Zero login walls; HRDs and scholarship committees can verify your accepted 100%-complete undergraduate thesis in one click. |
+| **Finished Thesis**<br>• *Politics of Hierarchy: Progenic Prophets Family* | **Built-In Thesis Modal** with abstract, sociological framework (Parsons / Bourdieu / Mannheim), and 1-click PDF viewer. | **Direct Local/Vercel PDF** (`<removed thesis PDF>`) + **IAIPI Repository / Zenodo DOI**. | Zero login walls; HRDs and scholarship committees can verify your accepted 100%-complete undergraduate thesis in one click. |
 | **Literary Fiction & Memoirs**<br>• *The Hermit Collection* (merging *Under the Magnolia's*)<br>• *The Ciwidey Journey* | **Built-In Serif Reading Room Modal** (renders polished excerpts or full chapters from your local `.docx` manuscripts in Cormorant Garamond). | **1. Wattpad** (already live for *Under the Magnolia's*)<br>**2. Substack (`substack.com`)** — *#1 Recommended Platform* for *The Hermit Collection* & *The Ciwidey Journey*<br>**3. Medium / Notion + Super.so** (alternative clean literary micro-site). | Substack is the gold standard among literary readers, tech founders, and academics for philosophical short fiction cycles and travel memoirs. |
 | **Fine Art Realism (10 Works)**<br>• 5 Photographed Plates (2024)<br>• 5 Exhibition-Donated Works (2023) | **Built-In Atelier Lightbox & Provenance Modal** (5-plate visual carousel + formal **2023 Exhibited & Donated Provenance Ledger** table so no card ever renders without an image). | **1. Cara.app (`cara.app`)** — *#1 Human-Artist Portfolio Platform*<br>**2. Behance (`behance.net`)** — *Best for HRD/Recruiter Case Studies*<br>**3. Future Standalone Vercel Site** (`elektra-atelier.vercel.app`). | Solves the "5 imageless 2023 art cards" problem inside your built-in portfolio while establishing a dedicated external art presence. |
 | **Classical Piano & Performance**<br>• 4 Classical Recordings<br>• *Piano & Drawing Combined* | **`#piano` — The Acoustic Lounge Concert Salon** (Dual-pane audio player + HTML5 Canvas Urtext Manuscript Visualizer). | **YouTube (`https://youtu.be/XykyKbHISqs`)** — Flagship multi-disciplinary performance card in `#works-grid` linking directly to your YouTube video & channel (`@fundrawingandmusic5045`). | Eliminates the 5 duplicate music/chess cards in `#works-grid` while driving visitors to your YouTube video and `#piano` salon. |
@@ -390,7 +390,7 @@ Per your directive in Answer #1 (*"Travel Writing as a Method of Living Qur'an: 
 ### TASK-RM-05: Research Papers & Blogspot Monograph Integration
 
 1. **Accepted Undergraduate Thesis (`Finished`):**
-   - `politics-of-hierarchy-progenic-prophets` (*Politics of Hierarchy: Progenic Prophets Family*) — Status: `"accepted"`, full downloadable PDF (`assets/papers/Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf`).
+   - `politics-of-hierarchy-progenic-prophets` (*Politics of Hierarchy: Progenic Prophets Family*) — Status: `"accepted"`, full downloadable PDF (`<removed thesis PDF>`).
 2. **Ongoing Blogspot Treatises (`status: "ongoing"` with Direct Blogspot Action Button):**
    - `godels-ontological-proof-allah` (*Gödel's Ontological Proof to Define the Existence of Allah* — readable on Blogspot)
    - `western-classical-dangdut-ethnomusicology` (*The Structural Intensity of Western Classical Repertoire and Its Parallels in Indonesian Dangdut* — readable on Blogspot)
@@ -538,8 +538,8 @@ This section permanently archives the **14-question strategic interview**, **Ele
 ---
 
 #### **Question 2: Updated CV Scan (`Elektra_Eliviana_CV_Updated.docx`) & Project Discussion**
-* **Interview Inquiry:** Scan `C:\Data Elektra\Tugas v2.1\Data Kerja\Data Penting\CV\my CV\CV Elektra\Elektra_Eliviana_CV_Updated.docx` and discuss what projects and credentials from the CV should be placed on the portfolio.
-* **Elektra's Directive (Answer #2):** *"Scan through my CV at `C:\Data Elektra\Tugas v2.1\Data Kerja\Data Penting\CV\my CV\CV Elektra\Elektra_Eliviana_CV_Updated.docx` and discuss with me about what projects shall I put on my portfolio."*
+* **Interview Inquiry:** Scan `<local-path>` and discuss what projects and credentials from the CV should be placed on the portfolio.
+* **Elektra's Directive (Answer #2):** *"Scan through my CV at `<local-path>` and discuss with me about what projects shall I put on my portfolio."*
 * **CV Scan Findings & Discussion:**
   1. **3 Applied Technical & Governance Projects Highlighted in the Updated CV:**
      * *Production Web Platforms & Agentic Deployment* (2 live platforms: `elektra-portfolio` & `rizki-portfolio` with `<60s` Git-to-Vercel CI/CD and rollback protection).
@@ -554,7 +554,7 @@ This section permanently archives the **14-question strategic interview**, **Ele
 
 #### **Questions 3 & 4: Thesis Confirmation & New Creative Works**
 * **Elektra's Directives (Answers #3 & #4):**
-  * **Question 3 (Completed Academic Thesis):** Confirmed that ***"Politics of Hierarchy: Progenic Prophets Family"*** (`Luthfi Fauzan Prophetic Political Regeneration and Family Lineage Hierarchy in the Qur'an.pdf`) is the accepted, completed undergraduate thesis at IAIPI Bandung.
+  * **Question 3 (Completed Academic Thesis):** Confirmed that ***"Politics of Hierarchy: Progenic Prophets Family"*** (`<removed thesis PDF>`) is the accepted, completed undergraduate thesis at IAIPI Bandung.
   * **Question 4 (Creative & Literary Works Ready for Upload):** Confirmed `"yes"` — *The Hermit Collection* (merging *Under the Magnolia's*), *The Ciwidey Journey* (`day 1 Ciwidey Rancaupas.docx`), classical piano recordings, and the multi-disciplinary YouTube video are ready.
 
 ---
@@ -564,7 +564,7 @@ This section permanently archives the **14-question strategic interview**, **Ele
 #### **Question 5: Handling the 4 `"roadmap"` Code Projects**
 * **Elektra's Directive (Answer #5):** Covered in Answer #1 — eliminate `ai-rag-novel-analyzer`, `celestial-orbit-dynamics`, and `japan-cs-scholarship-journey`, and keep **`neural-net-from-scratch` (*Neural Network & Linear Regression from Raw NumPy*)** as `roadmap`.
 * **Local Workspace Discovery & Discussion:**
-  * Scanning `C:\Data Elektra\Elektra's Interest\Computing Field\AI Engineering\AI Engineering Journey` revealed 5 completed Python/NumPy scripts (`day15_numpy_basics.py`, `day16_vector_math.py`, `day17_matrix_layer.py`, `day18_loss_functions.py`, `day19_gradient_descent.py`).
+  * Scanning `<local-path>` revealed 5 completed Python/NumPy scripts (`day15_numpy_basics.py`, `day16_vector_math.py`, `day17_matrix_layer.py`, `day18_loss_functions.py`, `day19_gradient_descent.py`).
   * Therefore, while keeping `neural-net-from-scratch` in `"status": "roadmap"`, we enrich its description and modal with **Verified Phase 1 Milestones** (Dense layer $Z = XW + b$, ReLU activation, MSE vs. MAE 87.1% vs. 62.5% outlier sensitivity proof, and 100-epoch Linear Regression Gradient Descent converging to $y = 2x + 1$) while framing multi-layer backpropagation as Phase 2 Roadmap.
 
 #### **Questions 6 & 7: Blogspot Placement for Research Papers & Website/App Recommendations**
